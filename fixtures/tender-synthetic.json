@@ -1,0 +1,34 @@
+{
+  "disclaimer": "Only fictional demonstration data; no actual supplier or personal details",
+  "tender": {
+    "title": "Тестовая закупка комплекта оборудования",
+    "selectionMode": "items",
+    "items": [
+      { "id": "item-a", "name": "Насос (учебный)", "quantity": 2, "unit": "шт." },
+      { "id": "item-b", "name": "Шкаф управления (учебный)", "quantity": 1, "unit": "шт." },
+      { "id": "item-c", "name": "Монтаж (учебный)", "quantity": 1, "unit": "усл." }
+    ]
+  },
+  "suppliers": [
+    { "id": "supplier-a", "name": "ООО «Поставщик-А (тест)»", "email": "tender@example.invalid" },
+    { "id": "supplier-b", "name": "ООО «Поставщик-Б (тест)»", "email": null }
+  ],
+  "offers": [
+    {
+      "supplierId": "supplier-a",
+      "initialTotalRub": 100000,
+      "stages": [
+        { "name": "Этап 2", "response": "received", "totalRub": 95000 },
+        { "name": "Переторжка", "response": "received", "totalRub": 90000 },
+        { "name": "Этап 4", "response": "no_reply", "totalRub": null }
+      ],
+      "accreditation": null
+    },
+    {
+      "supplierId": "supplier-b",
+      "initialTotalRub": null,
+      "stages": [],
+      "accreditation": { "status": "conditional", "reportName": "test-accreditation.pdf" }
+    }
+  ]
+}

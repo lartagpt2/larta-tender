@@ -1,11 +1,41 @@
 import { test, expect } from '@playwright/test';
-test('web connects to the local API without a database', async ({ page, request }) => {
-  const response = await request.get('http://127.0.0.1:3000/health');
+test('desktop navigation, API and persistent themes', async ({ page, request }) => {
+  const response = await request.get('http://127.0.0.1:3000/api/health');
   expect(response.ok()).toBeTruthy();
-  expect(await response.json()).toEqual({ status: 'ok', persistence: 'not-configured' });
+  expect((await response.json()).status).toBe('ok');
+  expect(response.headers()['x-correlation-id']).toMatch(/^[a-f0-9-]{36}$/);
   await page.goto('/');
-  await expect(page.getByRole('heading', { name: 'Тендерная платформа' })).toBeVisible();
-  await expect(page.getByRole('status')).toHaveText('API: ok');
-  await page.getByRole('button', { name: 'Проверить соединение' }).click();
-  await expect(page.getByRole('status')).toHaveText('API: ok');
+  await expect(page.getByRole('heading', { name: 'Тендеры', exact: true })).toBeVisible();
+  await expect(page.getByRole('status')).toHaveText('API подключён');
+  await page.screenshot({ path: 'test-results/task002-desktop.png', fullPage: true });
+  await page.getByRole('link', { name: /Документы S03/ }).click();
+  await expect(page.getByRole('heading', { name: 'Документы', exact: true }).first()).toBeVisible();
+  await expect(page).toHaveURL(/\/documents$/);
+  await page.getByLabel('Тема оформления').selectOption('current');
+  await expect(page.locator('.app-shell')).toHaveAttribute('data-theme', 'current');
+  await page.reload();
+  await expect(page.locator('.app-shell')).toHaveAttribute('data-theme', 'current');
+  await page.goto('/not-a-screen');
+  await expect(page.getByRole('heading', { name: 'Страница не найдена', level: 1 })).toBeVisible();
+});
+test('mobile menu closes by route, backdrop and Escape', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/');
+  const menu = page.getByRole('button', { name: 'Открыть меню' });
+  await menu.click();
+  await expect(page.getByRole('dialog')).toBeVisible();
+  await page.getByRole('link', { name: /Сравнение S05/ }).click();
+  await expect(page.getByRole('heading', { name: 'Сравнение', exact: true }).first()).toBeVisible();
+  await expect(page.getByRole('dialog')).toHaveCount(0);
+  await menu.click();
+  await page.keyboard.press('Escape');
+  await expect(menu).toBeFocused();
+  await menu.click();
+  await page.getByRole('button', { name: 'Закрыть меню по фону' }).click({ position: { x: 350, y: 300 } });
+  await expect(page.getByRole('dialog')).toHaveCount(0);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBeTruthy();
+  await menu.click();
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await expect(page.getByRole('dialog')).toHaveCount(0);
+  await page.getByLabel('Тема оформления').selectOption('current');
 });
