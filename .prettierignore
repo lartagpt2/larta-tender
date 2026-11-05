@@ -1,0 +1,7 @@
+node_modules
+dist
+coverage
+graphify-out
+package-lock.json
+playwright-report
+test-results

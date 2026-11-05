@@ -1,0 +1,26 @@
+:root {
+  font-family: Inter, 'Segoe UI', sans-serif;
+  color: #203329;
+  background: #f3f5f1;
+  font-synthesis: none;
+}
+body {
+  margin: 0;
+}
+main {
+  max-width: 1100px;
+  margin: 70px auto;
+  padding: 32px;
+}
+h1 {
+  font-size: clamp(30px, 5vw, 48px);
+  letter-spacing: -1.7px;
+}
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #63766b;
+}
+button {
+  cursor: pointer;
+}

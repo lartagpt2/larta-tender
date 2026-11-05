@@ -1,0 +1,9 @@
+# Dependency resolution and generated output are not application code.
+package-lock.json
+node_modules/
+**/dist/
+graphify-out/
+playwright-report/
+test-results/
+.env
+.env.*

@@ -1,0 +1,13 @@
+{
+  "name": "@tender/api",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "tsx watch src/main.ts",
+    "build": "tsc -p .",
+    "start": "node dist/main.js"
+  },
+  "dependencies": {
+    "@tender/shared": "0.1.0"
+  }
+}
