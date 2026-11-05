@@ -7,7 +7,7 @@ export default defineConfig({
   webServer: [
     {
       command: 'npm run dev:api',
-      url: 'http://127.0.0.1:3000/health',
+      url: 'http://127.0.0.1:3000/api/health',
       reuseExistingServer: false,
       timeout: 90000,
     },

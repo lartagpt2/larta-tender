@@ -1,5 +1,5 @@
 import { mkdtempSync, mkdirSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
-import { join, resolve } from 'node:path';
+import { join, resolve, sep } from 'node:path';
 import { FileStore } from './file-store';
 const workspace = resolve(__dirname, '../../../../..');
 let fixture: string;
@@ -7,7 +7,7 @@ beforeEach(() => {
   fixture = mkdtempSync(join(workspace, 'temp', 'storage-test-'));
 });
 afterEach(() => {
-  if (!fixture.startsWith(join(workspace, 'temp') + '\\')) throw new Error('Unsafe cleanup');
+  if (!fixture.startsWith(join(workspace, 'temp') + sep)) throw new Error('Unsafe cleanup');
   rmSync(fixture, { recursive: true, force: true });
 });
 test('persists, reads and deduplicates identical bytes', async () => {
