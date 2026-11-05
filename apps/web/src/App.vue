@@ -27,6 +27,9 @@ function closeMenu(restoreFocus = false) {
   menuOpen.value = false;
   if (restoreFocus) void nextTick(() => menuButton.value?.focus());
 }
+function handleResize() {
+  if (window.innerWidth >= 768 && menuOpen.value) closeMenu();
+}
 function keydown(event: KeyboardEvent) {
   if (!menuOpen.value) return;
   if (event.key === 'Escape') {
@@ -75,6 +78,7 @@ onMounted(() => {
     /* Browser may deny storage. */
   }
   document.addEventListener('keydown', keydown);
+  window.addEventListener('resize', handleResize);
 });
 watch(theme, (value) => {
   try {
@@ -85,6 +89,7 @@ watch(theme, (value) => {
 });
 onBeforeUnmount(() => {
   document.removeEventListener('keydown', keydown);
+  window.removeEventListener('resize', handleResize);
   document.body.style.overflow = '';
 });
 </script>

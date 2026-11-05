@@ -34,4 +34,8 @@ test('mobile menu closes by route, backdrop and Escape', async ({ page }) => {
   await page.getByRole('button', { name: 'Закрыть меню по фону' }).click({ position: { x: 350, y: 300 } });
   await expect(page.getByRole('dialog')).toHaveCount(0);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBeTruthy();
+  await menu.click();
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await expect(page.getByRole('dialog')).toHaveCount(0);
+  await page.getByLabel('Тема оформления').selectOption('current');
 });

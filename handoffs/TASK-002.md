@@ -59,7 +59,7 @@ TASK-003 и следующие задачи не начинались, PR не �
 | npm run test:web (в составе check)                                         | PASS      | 4 теста, 2 файла: денежная арифметика и навигация                                                      |
 | npm run build (в составе check)                                            | PASS      | shared/api TypeScript; Vite 7.3.7 — 200 модулей, web bundle около 354 kB до gzip                       |
 | npm run format:check                                                       | PASS      | Все подходящие файлы соответствуют Prettier                                                            |
-| npm run test:e2e                                                           | PASS      | 2 сценария Chromium: desktop navigation/API/theme/404 и mobile menu; финальный прогон 11.9 s           |
+| npm run test:e2e                                                           | PASS      | 2 сценария Chromium: desktop navigation/API/theme/404 и mobile menu; финальный прогон 10.3 s           |
 | OpenAPI opt-in/production/default-off через app.inject                     | PASS      | JSON доступен только в разрешённом режиме, скрыт в production и без opt-in                             |
 | Проверка correlationId и ошибок                                            | PASS      | Собственный UUID, header/body ID совпадают, private message/stack не попадают в ответ или лог фильтра  |
 | npm audit --omit=dev --fetch-retries=0 --fetch-timeout=10000               | PASS      | found 0 vulnerabilities; это аудит runtime, не полный SAST/анализ dev-зависимостей                     |
@@ -109,3 +109,7 @@ TASK-003 и следующие задачи не начинались, PR не �
 - Бренд-токены и будущие правила сравнимости цен; для разработки каркаса они не использовались как выдуманные утверждённые данные.
 
 **Подтверждение приёмки:** заполняет человек; агентом не выставлено.
+
+## Дополнительная проверка перед сдачей
+
+При расширении открытого мобильного меню до desktop меню теперь сбрасывается и освобождает inert/scroll-lock. После этой правки повторно прошли typecheck, ESLint, web production build и оба Playwright-сценария (10.3 s). Мобильный сценарий дополнен resize и проверкой доступности выбора темы после него. Изменение включено отдельным fix-коммитом в тот же PR; API и БД не менялись.
