@@ -1,0 +1,290 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/api/health": {
+      "get": {
+        "operationId": "HealthController_health",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["health"]
+      }
+    },
+    "/api/tenders": {
+      "get": {
+        "operationId": "TendersController_list",
+        "parameters": [
+          {
+            "name": "authorization",
+            "required": true,
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "At most 100 visible tenders, newest first",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TenderDto"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid DTO or UUID"
+          },
+          "401": {
+            "description": "Development token required"
+          },
+          "404": {
+            "description": "Missing or inaccessible tender"
+          },
+          "503": {
+            "description": "Data access disabled pending migration approval"
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": ["tenders"]
+      },
+      "post": {
+        "operationId": "TendersController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTenderDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TenderDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid DTO or UUID"
+          },
+          "401": {
+            "description": "Development token required"
+          },
+          "404": {
+            "description": "Missing or inaccessible tender"
+          },
+          "503": {
+            "description": "Data access disabled pending migration approval"
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": ["tenders"]
+      }
+    },
+    "/api/tenders/{id}": {
+      "get": {
+        "operationId": "TendersController_get",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TenderDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid DTO or UUID"
+          },
+          "401": {
+            "description": "Development token required"
+          },
+          "404": {
+            "description": "Missing or inaccessible tender"
+          },
+          "503": {
+            "description": "Data access disabled pending migration approval"
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": ["tenders"]
+      }
+    },
+    "/api/tenders/{id}/lots": {
+      "get": {
+        "operationId": "TendersController_lots",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/LotDto"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid DTO or UUID"
+          },
+          "401": {
+            "description": "Development token required"
+          },
+          "404": {
+            "description": "Missing or inaccessible tender"
+          },
+          "503": {
+            "description": "Data access disabled pending migration approval"
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": ["tenders"]
+      }
+    }
+  },
+  "info": {
+    "title": "Larta Tender API",
+    "description": "",
+    "version": "1.1",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "securitySchemes": {
+      "bearer": {
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "type": "http"
+      }
+    },
+    "schemas": {
+      "HealthDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "ok"
+          },
+          "service": {
+            "type": "string",
+            "example": "larta-tender"
+          },
+          "persistence": {
+            "type": "string",
+            "example": "not-configured",
+            "description": "Database connection is not probed."
+          }
+        },
+        "required": ["status", "service", "persistence"]
+      },
+      "TenderDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "title": {
+            "type": "string"
+          },
+          "revision": {
+            "type": "number"
+          }
+        },
+        "required": ["id", "title", "revision"]
+      },
+      "CreateTenderDto": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "maxLength": 300,
+            "example": "Synthetic tender"
+          }
+        },
+        "required": ["title"]
+      },
+      "LotDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "ordinal": {
+            "type": "number"
+          }
+        },
+        "required": ["id", "name", "ordinal"]
+      }
+    }
+  }
+}

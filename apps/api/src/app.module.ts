@@ -1,9 +1,11 @@
+import { DynamicModule } from '@nestjs/common';
+import { DataOptions, TendersModule } from './tenders.module';
 import { Controller, Get, Inject, Injectable, Module } from '@nestjs/common';
 import { ApiOkResponse, ApiProperty, ApiTags } from '@nestjs/swagger';
 export class HealthDto {
-  @ApiProperty({ example: 'ok' }) status = 'ok';
-  @ApiProperty({ example: 'larta-tender' }) service = 'larta-tender';
-  @ApiProperty({ example: 'not-configured', description: 'Database connection is not probed.' })
+  @ApiProperty({ type: String, example: 'ok' }) status = 'ok';
+  @ApiProperty({ type: String, example: 'larta-tender' }) service = 'larta-tender';
+  @ApiProperty({ type: String, example: 'not-configured', description: 'Database connection is not probed.' })
   persistence = 'not-configured';
 }
 @Injectable()
@@ -23,4 +25,8 @@ export class HealthController {
   }
 }
 @Module({ controllers: [HealthController], providers: [HealthService] })
-export class AppModule {}
+export class AppModule {
+  static register(options: DataOptions): DynamicModule {
+    return { module: AppModule, imports: [TendersModule.register(options)] };
+  }
+}
