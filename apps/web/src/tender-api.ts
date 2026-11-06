@@ -33,13 +33,18 @@ export interface Specification {
   status: string;
 }
 export async function api<T>(path: string, options: RequestInit = {}): Promise<T> {
-  const response = await fetch('/api' + path, {
-    ...options,
-    headers: {
-      ...(options.body instanceof FormData ? {} : { 'Content-Type': 'application/json' }),
-      ...options.headers,
-    },
-  });
+  let response: Response;
+  try {
+    response = await fetch('/api' + path, {
+      ...options,
+      headers: {
+        ...(options.body instanceof FormData ? {} : { 'Content-Type': 'application/json' }),
+        ...options.headers,
+      },
+    });
+  } catch {
+    throw new Error('Нет соединения с сервером. Обновите страницу после восстановления соединения.');
+  }
   if (!response.ok) {
     const messages: Record<number, string> = {
       400: 'Проверьте поля и формат файла.',
