@@ -64,13 +64,11 @@ test('specification creation uploads a real original and never invents recognize
   await page.goto('/tenders/new');
   await page.getByLabel('Название тендера').fill(title);
   await page.getByRole('radio', { name: 'Через ТЗ', exact: true }).check();
-  await page
-    .getByLabel('Файл ТЗ')
-    .setInputFiles({
-      name: 'synthetic-tz.txt',
-      mimeType: 'text/plain',
-      buffer: Buffer.from('Синтетическое ТЗ. Насос 2 шт.'),
-    });
+  await page.getByLabel('Файл ТЗ').setInputFiles({
+    name: 'synthetic-tz.txt',
+    mimeType: 'text/plain',
+    buffer: Buffer.from('Синтетическое ТЗ. Насос 2 шт.'),
+  });
   await page.getByRole('button', { name: 'Создать тендер', exact: true }).click();
   await expect(page.getByRole('heading', { name: title, exact: true })).toBeVisible();
   await expect(page.getByText('synthetic-tz.txt', { exact: true })).toBeVisible();
