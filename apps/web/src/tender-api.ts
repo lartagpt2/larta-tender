@@ -1,5 +1,6 @@
 import { z } from 'zod';
 export const itemSchema = z.object({
+  technicalRequirements: z.string().max(8000).optional(),
   name: z.string().trim().min(1, 'Укажите наименование').max(500),
   quantity: z
     .string()
@@ -38,7 +39,7 @@ export async function api<T>(path: string, options: RequestInit = {}): Promise<T
     response = await fetch('/api' + path, {
       ...options,
       headers: {
-        ...(options.body instanceof FormData ? {} : { 'Content-Type': 'application/json' }),
+        ...(typeof options.body === 'string' ? { 'Content-Type': 'application/json' } : {}),
         ...options.headers,
       },
     });

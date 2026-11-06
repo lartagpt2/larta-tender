@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, nextTick, ref } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/vue-query';
 import { z } from 'zod';
+import PdfDraftPanel from './PdfDraftPanel.vue';
 import ScopeItemsEditor from './ScopeItemsEditor.vue';
 import {
   api,
@@ -28,6 +29,27 @@ const reopened = ref(false),
   editing = ref(false),
   editError = ref('');
 const editItems = ref<ScopeItem[]>([]);
+const fileInput = ref<HTMLInputElement>();
+function chooseOther() {
+  reopened.value = true;
+  void nextTick(() => {
+    fileInput.value?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    fileInput.value?.focus();
+  });
+}
+function statusLabel(status: string) {
+  return (
+    (
+      {
+        uploaded: 'Ожидает обработки',
+        processing: 'Извлечение текста',
+        needs_review: 'Требуется проверка',
+        confirmed: 'Состав подтверждён',
+        failed: 'Ошибка обработки',
+      } as Record<string, string>
+    )[status] ?? 'Ожидает обработки'
+  );
+}
 const file = ref<File>();
 const uploadKey = ref(crypto.randomUUID());
 const patch = useMutation({
@@ -61,7 +83,12 @@ function pick(event: Event) {
   uploadKey.value = crypto.randomUUID();
 }
 function edit() {
-  editItems.value = scope.value!.items.map((i) => ({ name: i.name, quantity: i.quantity, unit: i.unit }));
+  editItems.value = scope.value!.items.map((i) => ({
+    name: i.name,
+    quantity: i.quantity,
+    unit: i.unit,
+    technicalRequirements: i.technicalRequirements ?? undefined,
+  }));
   editing.value = true;
   editError.value = '';
 }
@@ -126,7 +153,13 @@ function chooseMode(event: Event) {
           </thead>
           <tbody>
             <tr v-for="item in scope.items" :key="item.id">
-              <td>{{ item.name }}</td>
+              <td>
+                {{ item.name }}
+                <details v-if="item.technicalRequirements">
+                  <summary>Технические условия</summary>
+                  <p class="preserve-text">{{ item.technicalRequirements }}</p>
+                </details>
+              </td>
               <td>{{ item.quantity }}</td>
               <td>{{ item.unit }}</td>
             </tr>
@@ -151,7 +184,7 @@ function chooseMode(event: Event) {
     <section class="content-card purchase-card">
       <div class="card-heading">
         <h2>Техническое задание</h2>
-        <span v-if="documents.data.value?.length" class="subtle-tag">Ожидает обработки</span>
+        <span v-if="documents.data.value?.length" class="subtle-tag">ТЗ загружено</span>
       </div>
       <div v-if="scope.specificationSkipped && !reopened" class="compact-specification">
         <p>Загрузка ТЗ пропущена. Работа с КП доступна независимо от ТЗ.</p>
@@ -159,13 +192,13 @@ function chooseMode(event: Event) {
       </div>
       <template v-else>
         <p>
-          Загрузите оригинал ТЗ. Автоматическая обработка пока недоступна; загруженный файл не подтверждает
-          состав закупки.
+          Загрузите оригинал ТЗ. Из текстового PDF подготовим черновик состава. Для скана потребуется OCR или
+          ручной ввод. Подтвердите состав после проверки.
         </p>
         <form class="upload-panel" @submit.prevent="upload.mutate()">
           <fieldset :disabled="upload.isPending.value || patch.isPending.value">
             <legend>Загрузка ТЗ</legend>
-            <label>Файл ТЗ<input type="file" accept=".pdf,.txt" @change="pick" /></label>
+            <label>Файл ТЗ<input ref="fileInput" type="file" accept=".pdf,.txt" @change="pick" /></label>
             <p>PDF или TXT, до 20 МБ.</p>
             <div class="form-actions">
               <button class="primary-action" type="submit" :disabled="!file">
@@ -196,9 +229,20 @@ function chooseMode(event: Event) {
             class="text-action"
             :aria-label="`Скачать оригинал ${doc.name}`"
             >{{ doc.name }}</a
-          ><span>Ожидает обработки · состав не подтверждён из этого файла</span>
+          ><span>{{ statusLabel(doc.status) }}</span>
         </li>
       </ul>
+      <template v-for="doc in documents.data.value" :key="`draft-${doc.id}`">
+        <PdfDraftPanel
+          v-if="/\.pdf$/i.test(doc.name)"
+          v-show="!scope.specificationSkipped || reopened"
+          :tender-id="id"
+          :document-id="doc.id"
+          :revision="scope.revision"
+          :composition-confirmed="scope.scopeStatus === 'confirmed'"
+          @replace="chooseOther"
+        />
+      </template>
     </section>
     <section class="content-card purchase-card" aria-label="Коммерческие предложения">
       <div class="card-heading"><h2>Коммерческие предложения</h2></div>

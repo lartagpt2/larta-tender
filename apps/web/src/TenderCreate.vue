@@ -114,8 +114,8 @@ function pick(event: Event) {
       <div v-if="mode === 'specification'" class="upload-panel">
         <label>Файл ТЗ<input type="file" accept=".pdf,.txt" @change="pick" /></label>
         <p>
-          PDF или TXT, до 20 МБ. После загрузки документ будет ожидать обработки. Позиции не подтверждаются
-          автоматически.
+          PDF или TXT, до 20 МБ. Из текстового PDF подготовим черновик состава. Для сканов потребуется OCR или
+          ручной ввод. Позиции подтверждает закупщик.
         </p>
       </div>
       <p v-if="mode === 'title'" class="subtitle">

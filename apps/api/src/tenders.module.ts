@@ -1,3 +1,6 @@
+import { ParseIntPipe } from '@nestjs/common';
+import { TzExtractionRepository } from './extraction/extraction-repository';
+import { ConfirmDraftDto } from './extraction/extraction.dto';
 import { PayloadTooLargeException } from '@nestjs/common';
 import { Res } from '@nestjs/common';
 import { ApiHeader, ApiProduces } from '@nestjs/swagger';
@@ -90,10 +93,12 @@ export interface DataOptions {
   actorId?: string;
   repository?: TenderRepository;
   scopeRepository?: ScopeRepository;
+  extractionRepository?: TzExtractionRepository;
 }
 class DataContext {
   readonly repository?: TenderRepository;
   readonly scope?: ScopeRepository;
+  readonly extractions?: TzExtractionRepository;
   private pool?: Pool;
   constructor(private readonly options: DataOptions) {
     if (options.enabled && options.environment !== 'production') {
@@ -103,6 +108,8 @@ class DataContext {
           (this.pool = new Pool({ max: 5, connectionTimeoutMillis: 5000, statement_timeout: 10000 })),
         );
       this.scope = options.scopeRepository ?? (this.pool ? new PgScopeRepository(this.pool) : undefined);
+      this.extractions =
+        options.extractionRepository ?? (this.pool ? new TzExtractionRepository(this.pool) : undefined);
     }
   }
   actor(header?: string): string {
@@ -281,6 +288,65 @@ class TendersController {
     if (!storageRoot) throw new ServiceUnavailableException();
     const blob = await new FileStore(storageRoot, workspace).put(content);
     return scope.attach(actor, id, key, blob, file.filename, mime);
+  }
+  private extractions(): TzExtractionRepository {
+    if (!this.data.extractions) throw new ServiceUnavailableException();
+    return this.data.extractions;
+  }
+  private store(): FileStore {
+    const root = process.env.STORAGE_ROOT;
+    if (!root) throw new ServiceUnavailableException();
+    return new FileStore(root, resolve(__dirname, '../../../..'));
+  }
+  @Get(':id/tz/:documentId/draft')
+  draft(
+    @Headers('authorization') header: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Param('documentId', new ParseUUIDPipe()) documentId: string,
+  ) {
+    const actor = this.data.actor(header);
+    return this.extractions().latest(actor, id, documentId);
+  }
+  @Post(':id/tz/:documentId/extractions')
+  extract(
+    @Headers('authorization') header: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Param('documentId', new ParseUUIDPipe()) documentId: string,
+  ) {
+    const actor = this.data.actor(header);
+    return this.extractions().extract(actor, id, documentId, this.store());
+  }
+  @Get(':id/tz/:documentId/source/:page')
+  source(
+    @Headers('authorization') header: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Param('documentId', new ParseUUIDPipe()) documentId: string,
+    @Param('page', new ParseIntPipe()) page: number,
+  ) {
+    const actor = this.data.actor(header);
+    if (page < 1 || page > 30) throw new BadRequestException();
+    return this.extractions().page(actor, id, documentId, page, this.store());
+  }
+  @Post(':id/tz/:documentId/extractions/:runId/confirm')
+  @ApiBody({ type: ConfirmDraftDto })
+  @ApiCreatedResponse({ type: ScopeStateDto })
+  confirm(
+    @Headers('authorization') header: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Param('documentId', new ParseUUIDPipe()) documentId: string,
+    @Param('runId', new ParseUUIDPipe()) runId: string,
+    @Body(
+      new ValidationPipe({
+        expectedType: ConfirmDraftDto,
+        whitelist: true,
+        forbidNonWhitelisted: true,
+        transform: true,
+      }),
+    )
+    input: ConfirmDraftDto,
+  ) {
+    const actor = this.data.actor(header);
+    return this.extractions().confirm(actor, id, documentId, runId, input);
   }
   @Get(':id/lots')
   @ApiOkResponse({ type: LotDto, isArray: true })

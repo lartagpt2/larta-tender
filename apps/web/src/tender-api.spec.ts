@@ -35,3 +35,14 @@ describe('API connection failures', () => {
     await expect(api('/tenders')).rejects.toThrow('Данные изменились');
   });
 });
+
+it('does not label an empty extraction POST as JSON', async () => {
+  const fetch = vi.fn().mockResolvedValue({ ok: true, json: async () => ({ status: 'draft' }) });
+  vi.stubGlobal('fetch', fetch);
+  try {
+    await api('/tenders/synthetic/tz/synthetic/extractions', { method: 'POST' });
+    expect(fetch.mock.calls[0][1].headers).not.toHaveProperty('Content-Type');
+  } finally {
+    vi.unstubAllGlobals();
+  }
+});
