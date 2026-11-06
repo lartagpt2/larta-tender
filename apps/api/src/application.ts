@@ -1,3 +1,4 @@
+import multipart from '@fastify/multipart';
 import 'reflect-metadata';
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
@@ -35,6 +36,7 @@ export async function createApplication(options: ApplicationOptions = {}): Promi
       logger: options.logger,
     },
   );
+  await app.register(multipart, { limits: { fileSize: 20 * 1024 * 1024, files: 1, fields: 0, parts: 1 } });
   app.setGlobalPrefix('api');
   app.useGlobalPipes(new ValidationPipe({ whitelist: true, forbidNonWhitelisted: true, transform: true }));
   app.useGlobalFilters(new HttpErrorFilter());

@@ -89,8 +89,8 @@ export async function receiveDocument(
   key: string,
   hash: string,
   insert: (id: string) => Promise<void>,
+  id: string = randomUUID(),
 ): Promise<string> {
-  const id = randomUUID();
   const claimed = await client.query(
     'INSERT INTO tender_app.document_receipt(tender_id,request_key,request_hash,document_id) VALUES($1,$2,$3,$4) ON CONFLICT(tender_id,request_key) DO NOTHING RETURNING document_id',
     [tenderId, key, hash, id],
