@@ -1,0 +1,782 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/api/health": {
+      "get": {
+        "operationId": "HealthController_health",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["health"]
+      }
+    },
+    "/api/tenders": {
+      "get": {
+        "operationId": "TendersController_list",
+        "parameters": [
+          {
+            "name": "authorization",
+            "required": true,
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "At most 100 visible tenders, newest first",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TenderDto"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid DTO or UUID"
+          },
+          "401": {
+            "description": "Development token required"
+          },
+          "403": {
+            "description": "Read-only member"
+          },
+          "404": {
+            "description": "Missing or inaccessible tender"
+          },
+          "409": {
+            "description": "Stale revision or conflicting receipt"
+          },
+          "413": {
+            "description": "File exceeds 20 MiB"
+          },
+          "503": {
+            "description": "Data access disabled pending migration approval"
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": ["tenders"]
+      },
+      "post": {
+        "operationId": "TendersController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTenderDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TenderDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid DTO or UUID"
+          },
+          "401": {
+            "description": "Development token required"
+          },
+          "403": {
+            "description": "Read-only member"
+          },
+          "404": {
+            "description": "Missing or inaccessible tender"
+          },
+          "409": {
+            "description": "Stale revision or conflicting receipt"
+          },
+          "413": {
+            "description": "File exceeds 20 MiB"
+          },
+          "503": {
+            "description": "Data access disabled pending migration approval"
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": ["tenders"]
+      }
+    },
+    "/api/tenders/{id}": {
+      "get": {
+        "operationId": "TendersController_get",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TenderDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid DTO or UUID"
+          },
+          "401": {
+            "description": "Development token required"
+          },
+          "403": {
+            "description": "Read-only member"
+          },
+          "404": {
+            "description": "Missing or inaccessible tender"
+          },
+          "409": {
+            "description": "Stale revision or conflicting receipt"
+          },
+          "413": {
+            "description": "File exceeds 20 MiB"
+          },
+          "503": {
+            "description": "Data access disabled pending migration approval"
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": ["tenders"]
+      }
+    },
+    "/api/tenders/{id}/scope": {
+      "get": {
+        "operationId": "TendersController_readScope",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScopeStateDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid DTO or UUID"
+          },
+          "401": {
+            "description": "Development token required"
+          },
+          "403": {
+            "description": "Read-only member"
+          },
+          "404": {
+            "description": "Missing or inaccessible tender"
+          },
+          "409": {
+            "description": "Stale revision or conflicting receipt"
+          },
+          "413": {
+            "description": "File exceeds 20 MiB"
+          },
+          "503": {
+            "description": "Data access disabled pending migration approval"
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": ["tenders"]
+      },
+      "patch": {
+        "operationId": "TendersController_saveScope",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ScopePatchDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScopeStateDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid DTO or UUID"
+          },
+          "401": {
+            "description": "Development token required"
+          },
+          "403": {
+            "description": "Read-only member"
+          },
+          "404": {
+            "description": "Missing or inaccessible tender"
+          },
+          "409": {
+            "description": "Stale revision or conflicting receipt"
+          },
+          "413": {
+            "description": "File exceeds 20 MiB"
+          },
+          "503": {
+            "description": "Data access disabled pending migration approval"
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": ["tenders"]
+      }
+    },
+    "/api/tenders/{id}/tz": {
+      "get": {
+        "operationId": "TendersController_specifications",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SpecificationDto"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid DTO or UUID"
+          },
+          "401": {
+            "description": "Development token required"
+          },
+          "403": {
+            "description": "Read-only member"
+          },
+          "404": {
+            "description": "Missing or inaccessible tender"
+          },
+          "409": {
+            "description": "Stale revision or conflicting receipt"
+          },
+          "413": {
+            "description": "File exceeds 20 MiB"
+          },
+          "503": {
+            "description": "Data access disabled pending migration approval"
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": ["tenders"]
+      },
+      "post": {
+        "operationId": "TendersController_uploadSpecification",
+        "parameters": [
+          {
+            "name": "idempotency-key",
+            "required": true,
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": ["file"],
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SpecificationDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid DTO or UUID"
+          },
+          "401": {
+            "description": "Development token required"
+          },
+          "403": {
+            "description": "Read-only member"
+          },
+          "404": {
+            "description": "Missing or inaccessible tender"
+          },
+          "409": {
+            "description": "Stale revision or conflicting receipt"
+          },
+          "413": {
+            "description": "File exceeds 20 MiB"
+          },
+          "503": {
+            "description": "Data access disabled pending migration approval"
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": ["tenders"]
+      }
+    },
+    "/api/tenders/{id}/tz/{documentId}/original": {
+      "get": {
+        "operationId": "TendersController_downloadSpecification",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "documentId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid DTO or UUID"
+          },
+          "401": {
+            "description": "Development token required"
+          },
+          "403": {
+            "description": "Read-only member"
+          },
+          "404": {
+            "description": "Missing or inaccessible tender"
+          },
+          "409": {
+            "description": "Stale revision or conflicting receipt"
+          },
+          "413": {
+            "description": "File exceeds 20 MiB"
+          },
+          "503": {
+            "description": "Data access disabled pending migration approval"
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": ["tenders"]
+      }
+    },
+    "/api/tenders/{id}/lots": {
+      "get": {
+        "operationId": "TendersController_lots",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/LotDto"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid DTO or UUID"
+          },
+          "401": {
+            "description": "Development token required"
+          },
+          "403": {
+            "description": "Read-only member"
+          },
+          "404": {
+            "description": "Missing or inaccessible tender"
+          },
+          "409": {
+            "description": "Stale revision or conflicting receipt"
+          },
+          "413": {
+            "description": "File exceeds 20 MiB"
+          },
+          "503": {
+            "description": "Data access disabled pending migration approval"
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": ["tenders"]
+      }
+    }
+  },
+  "info": {
+    "title": "Larta Tender API",
+    "description": "",
+    "version": "1.1",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "securitySchemes": {
+      "bearer": {
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "type": "http"
+      }
+    },
+    "schemas": {
+      "HealthDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "ok"
+          },
+          "service": {
+            "type": "string",
+            "example": "larta-tender"
+          },
+          "persistence": {
+            "type": "string",
+            "example": "not-configured",
+            "description": "Database connection is not probed."
+          }
+        },
+        "required": ["status", "service", "persistence"]
+      },
+      "TenderDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "title": {
+            "type": "string"
+          },
+          "revision": {
+            "type": "number"
+          }
+        },
+        "required": ["id", "title", "revision"]
+      },
+      "ScopeItemDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "quantity": {
+            "type": "string",
+            "example": "2.000001",
+            "description": "Positive NUMERIC(18,6) as text"
+          },
+          "unit": {
+            "type": "string",
+            "maxLength": 40
+          }
+        },
+        "required": ["name", "quantity", "unit"]
+      },
+      "CreateTenderDto": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "maxLength": 300,
+            "example": "Synthetic tender"
+          },
+          "creationMode": {
+            "type": "string",
+            "enum": ["title", "manual", "specification"]
+          },
+          "items": {
+            "maxItems": 100,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ScopeItemDto"
+            }
+          }
+        },
+        "required": ["title"]
+      },
+      "ScopeItemStateDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "quantity": {
+            "type": "string",
+            "example": "2.000001",
+            "description": "Positive NUMERIC(18,6) as text"
+          },
+          "unit": {
+            "type": "string",
+            "maxLength": 40
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": ["name", "quantity", "unit", "id"]
+      },
+      "ScopeStateDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "title": {
+            "type": "string"
+          },
+          "revision": {
+            "type": "number"
+          },
+          "selectionMode": {
+            "type": "string",
+            "enum": ["lot", "items"]
+          },
+          "specificationSkipped": {
+            "type": "boolean"
+          },
+          "scopeStatus": {
+            "type": "string"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ScopeItemStateDto"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "revision",
+          "selectionMode",
+          "specificationSkipped",
+          "scopeStatus",
+          "items"
+        ]
+      },
+      "ScopePatchDto": {
+        "type": "object",
+        "properties": {
+          "revision": {
+            "type": "number",
+            "minimum": 1
+          },
+          "selectionMode": {
+            "type": "string",
+            "enum": ["lot", "items"]
+          },
+          "specificationSkipped": {
+            "type": "boolean"
+          },
+          "items": {
+            "maxItems": 100,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ScopeItemDto"
+            }
+          }
+        },
+        "required": ["revision"]
+      },
+      "SpecificationDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "description": "uploaded means waiting, not parsed"
+          }
+        },
+        "required": ["id", "name", "status"]
+      },
+      "LotDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "ordinal": {
+            "type": "number"
+          }
+        },
+        "required": ["id", "name", "ordinal"]
+      }
+    }
+  }
+}

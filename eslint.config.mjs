@@ -26,6 +26,8 @@ export default ts.config(
       'vue/singleline-html-element-content-newline': 'off',
       'vue/html-closing-bracket-newline': 'off',
       'vue/html-indent': 'off',
+      // Prettier formats Vue void elements with a closing slash.
+      'vue/html-self-closing': ['warn', { html: { void: 'any' } }],
       'vue/multiline-html-element-content-newline': 'off',
     },
   },

@@ -1,3 +1,18 @@
+import { PayloadTooLargeException } from '@nestjs/common';
+import { Res } from '@nestjs/common';
+import { ApiHeader, ApiProduces } from '@nestjs/swagger';
+import { FastifyReply } from 'fastify';
+import { ValidateIf } from 'class-validator';
+import { BadRequestException, Patch, Req } from '@nestjs/common';
+import { ApiConsumes } from '@nestjs/swagger';
+import { Type } from 'class-transformer';
+import { ArrayMaxSize, IsArray, IsIn, ValidateNested } from 'class-validator';
+import { resolve } from 'node:path';
+import { FastifyRequest } from 'fastify';
+import { ScopeItemDto, ScopePatchDto } from './scope.dto';
+import { PgScopeRepository, ScopeRepository } from './data/scope-repository';
+import { FileStore } from './storage/file-store';
+import { specificationType } from './specification-file';
 import {
   Body,
   Controller,
@@ -22,7 +37,7 @@ import {
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
-import { IsString, Length, Matches } from 'class-validator';
+import { isUUID, IsString, Length, Matches } from 'class-validator';
 import { timingSafeEqual } from 'node:crypto';
 import { Pool } from 'pg';
 import { PgTenderRepository, TenderRepository } from './data/repository';
@@ -32,11 +47,36 @@ export class CreateTenderDto {
   @Length(1, 300)
   @Matches(/\S/)
   title!: string;
+  @ApiProperty({ type: String, required: false, enum: ['title', 'manual', 'specification'] })
+  @ValidateIf((_object, value) => value !== undefined)
+  @IsIn(['title', 'manual', 'specification'])
+  creationMode?: 'title' | 'manual' | 'specification';
+  @ApiProperty({ type: [ScopeItemDto], required: false, maxItems: 100 })
+  @ValidateIf((_object, value) => value !== undefined)
+  @IsArray()
+  @ArrayMaxSize(100)
+  @ValidateNested({ each: true })
+  @Type(() => ScopeItemDto)
+  items?: ScopeItemDto[];
 }
 export class TenderDto {
   @ApiProperty({ type: String, format: 'uuid' }) id!: string;
   @ApiProperty({ type: String }) title!: string;
   @ApiProperty({ type: Number }) revision!: number;
+}
+export class ScopeItemStateDto extends ScopeItemDto {
+  @ApiProperty({ type: String, format: 'uuid' }) id!: string;
+}
+export class ScopeStateDto extends TenderDto {
+  @ApiProperty({ enum: ['lot', 'items'] }) selectionMode!: string;
+  @ApiProperty({ type: Boolean }) specificationSkipped!: boolean;
+  @ApiProperty({ type: String }) scopeStatus!: string;
+  @ApiProperty({ type: [ScopeItemStateDto] }) items!: ScopeItemStateDto[];
+}
+export class SpecificationDto {
+  @ApiProperty({ type: String, format: 'uuid' }) id!: string;
+  @ApiProperty({ type: String }) name!: string;
+  @ApiProperty({ type: String, description: 'uploaded means waiting, not parsed' }) status!: string;
 }
 export class LotDto {
   @ApiProperty({ type: String, format: 'uuid' }) id!: string;
@@ -49,9 +89,11 @@ export interface DataOptions {
   token?: string;
   actorId?: string;
   repository?: TenderRepository;
+  scopeRepository?: ScopeRepository;
 }
 class DataContext {
   readonly repository?: TenderRepository;
+  readonly scope?: ScopeRepository;
   private pool?: Pool;
   constructor(private readonly options: DataOptions) {
     if (options.enabled && options.environment !== 'production') {
@@ -60,6 +102,7 @@ class DataContext {
         new PgTenderRepository(
           (this.pool = new Pool({ max: 5, connectionTimeoutMillis: 5000, statement_timeout: 10000 })),
         );
+      this.scope = options.scopeRepository ?? (this.pool ? new PgScopeRepository(this.pool) : undefined);
     }
   }
   actor(header?: string): string {
@@ -85,6 +128,9 @@ class DataContext {
 @ApiTags('tenders')
 @ApiBearerAuth()
 @ApiResponse({ status: 400, description: 'Invalid DTO or UUID' })
+@ApiResponse({ status: 403, description: 'Read-only member' })
+@ApiResponse({ status: 409, description: 'Stale revision or conflicting receipt' })
+@ApiResponse({ status: 413, description: 'File exceeds 20 MiB' })
 @ApiResponse({ status: 401, description: 'Development token required' })
 @ApiResponse({ status: 404, description: 'Missing or inaccessible tender' })
 @ApiResponse({ status: 503, description: 'Data access disabled pending migration approval' })
@@ -113,6 +159,11 @@ class TendersController {
     body: CreateTenderDto,
   ) {
     const actor = this.data.actor(header);
+    if (body.creationMode === 'manual') {
+      if (!body.items?.length) throw new BadRequestException();
+      return this.scope().createManual(actor, body.title.trim(), body.items);
+    }
+    if (body.items?.length) throw new BadRequestException();
     return this.data.repository!.create(actor, body.title.trim());
   }
   @Get(':id')
@@ -120,6 +171,116 @@ class TendersController {
   get(@Headers('authorization') header: string | undefined, @Param('id', new ParseUUIDPipe()) id: string) {
     const actor = this.data.actor(header);
     return this.data.repository!.get(actor, id);
+  }
+  private scope(): ScopeRepository {
+    if (!this.data.scope) throw new ServiceUnavailableException();
+    return this.data.scope;
+  }
+  @Get(':id/scope')
+  @ApiOkResponse({ type: ScopeStateDto })
+  readScope(
+    @Headers('authorization') header: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+  ) {
+    return this.scope().read(this.data.actor(header), id);
+  }
+  @Patch(':id/scope')
+  @ApiOkResponse({ type: ScopeStateDto })
+  @ApiBody({ type: ScopePatchDto })
+  saveScope(
+    @Headers('authorization') header: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Body(
+      new ValidationPipe({
+        expectedType: ScopePatchDto,
+        whitelist: true,
+        forbidNonWhitelisted: true,
+        transform: true,
+      }),
+    )
+    body: ScopePatchDto,
+  ) {
+    return this.scope().save(this.data.actor(header), id, body);
+  }
+  @Get(':id/tz')
+  @ApiOkResponse({ type: SpecificationDto, isArray: true })
+  specifications(
+    @Headers('authorization') header: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+  ) {
+    return this.scope().documents(this.data.actor(header), id);
+  }
+  @Get(':id/tz/:documentId/original')
+  @ApiProduces('application/octet-stream')
+  @ApiOkResponse({ schema: { type: 'string', format: 'binary' } })
+  async downloadSpecification(
+    @Headers('authorization') header: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Param('documentId', new ParseUUIDPipe()) documentId: string,
+    @Res() reply: FastifyReply,
+  ) {
+    const document = await this.scope().original(this.data.actor(header), id, documentId);
+    const storageRoot = process.env.STORAGE_ROOT;
+    if (!storageRoot) throw new ServiceUnavailableException();
+    const content = await new FileStore(storageRoot, resolve(__dirname, '../../../..')).get(document.key);
+    return reply
+      .header('content-type', 'application/octet-stream')
+      .header('x-content-type-options', 'nosniff')
+      .header('content-disposition', `attachment; filename*=UTF-8''${encodeURIComponent(document.name)}`)
+      .send(content);
+  }
+  @Post(':id/tz')
+  @ApiHeader({ name: 'Idempotency-Key', required: true, schema: { type: 'string', format: 'uuid' } })
+  @ApiCreatedResponse({ type: SpecificationDto })
+  @ApiConsumes('multipart/form-data')
+  @ApiBody({
+    schema: {
+      type: 'object',
+      required: ['file'],
+      properties: { file: { type: 'string', format: 'binary' } },
+    },
+  })
+  async uploadSpecification(
+    @Headers('authorization') header: string | undefined,
+    @Headers('idempotency-key') key: string,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Req() request: FastifyRequest,
+  ) {
+    const actor = this.data.actor(header);
+    if (!isUUID(key)) throw new BadRequestException();
+    const scope = this.scope();
+    await scope.assertWrite(actor, id);
+    let file: { filename: string; mimetype: string; content: Buffer } | undefined;
+    try {
+      for await (const part of request.parts()) {
+        if (part.type !== 'file' || part.fieldname !== 'file' || file) throw new BadRequestException();
+        const content = await part.toBuffer();
+        if (part.file.truncated) throw new PayloadTooLargeException();
+        file = { filename: part.filename, mimetype: part.mimetype, content };
+      }
+    } catch (error) {
+      const code = (error as { code?: string }).code;
+      if (code === 'FST_REQ_FILE_TOO_LARGE') throw new PayloadTooLargeException();
+      if (
+        code &&
+        [
+          'FST_PARTS_LIMIT',
+          'FST_FILES_LIMIT',
+          'FST_FIELDS_LIMIT',
+          'FST_INVALID_MULTIPART_CONTENT_TYPE',
+        ].includes(code)
+      )
+        throw new BadRequestException();
+      throw error;
+    }
+    if (!file) throw new BadRequestException();
+    const content = file.content;
+    const mime = specificationType(file.filename, file.mimetype, content);
+    const workspace = resolve(__dirname, '../../../..');
+    const storageRoot = process.env.STORAGE_ROOT;
+    if (!storageRoot) throw new ServiceUnavailableException();
+    const blob = await new FileStore(storageRoot, workspace).put(content);
+    return scope.attach(actor, id, key, blob, file.filename, mime);
   }
   @Get(':id/lots')
   @ApiOkResponse({ type: LotDto, isArray: true })
