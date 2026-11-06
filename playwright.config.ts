@@ -8,9 +8,14 @@ export default defineConfig({
     {
       command: 'npm run dev:api',
       url: 'http://127.0.0.1:3000/api/health',
-      reuseExistingServer: false,
+      reuseExistingServer: process.env.PW_REUSE_SERVERS === 'true',
       timeout: 90000,
     },
-    { command: 'npm run dev:web', url: 'http://127.0.0.1:5173', reuseExistingServer: false, timeout: 90000 },
+    {
+      command: 'npm run dev:web',
+      url: 'http://127.0.0.1:5173',
+      reuseExistingServer: process.env.PW_REUSE_SERVERS === 'true',
+      timeout: 90000,
+    },
   ],
 });

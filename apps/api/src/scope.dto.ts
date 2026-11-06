@@ -14,6 +14,11 @@ import {
   ValidateNested,
 } from 'class-validator';
 export class ScopeItemDto {
+  @ApiPropertyOptional({ type: String, maxLength: 8000 })
+  @ValidateIf((_object, value) => value !== undefined)
+  @IsString()
+  @Length(0, 8000)
+  technicalRequirements?: string;
   @ApiProperty({ type: String, maxLength: 500 }) @IsString() @Length(1, 500) @Matches(/\S/) name!: string;
   @ApiProperty({ type: String, example: '2.000001', description: 'Positive NUMERIC(18,6) as text' })
   @IsString()

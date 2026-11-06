@@ -25,8 +25,8 @@ export interface TenderScope {
 }
 const visible = `t.owner_id=$1 OR EXISTS(SELECT 1 FROM tender_app.tender_member m WHERE m.tender_id=t.id AND m.user_id=$1)`;
 export class PgScopeRepository {
-  constructor(private readonly pool: Pool) {}
-  private async lock(
+  constructor(protected readonly pool: Pool) {}
+  protected async lock(
     c: PoolClient,
     actor: string,
     id: string,
@@ -54,7 +54,7 @@ export class PgScopeRepository {
       await this.lock(c, actor, id);
     });
   }
-  private async audit(
+  protected async audit(
     c: PoolClient,
     actor: string,
     id: string,
@@ -76,7 +76,7 @@ export class PgScopeRepository {
       ],
     );
   }
-  private async replaceItems(c: PoolClient, actor: string, id: string, items: ScopeItemDto[]) {
+  protected async replaceItems(c: PoolClient, actor: string, id: string, items: ScopeItemDto[]) {
     const offers = await c.query('SELECT 1 FROM tender_app.offer WHERE tender_id=$1 LIMIT 1', [id]);
     if (offers.rowCount) throw new ConflictException();
     const lots = await c.query('SELECT id FROM tender_app.lot WHERE tender_id=$1 ORDER BY ordinal', [id]);
@@ -92,8 +92,17 @@ export class PgScopeRepository {
     await c.query('DELETE FROM tender_app.lot_item WHERE lot_id=$1', [lot]);
     for (const [i, item] of items.entries())
       await c.query(
-        'INSERT INTO tender_app.lot_item(id,lot_id,ordinal,item_name,quantity,unit,created_by) VALUES($1,$2,$3,$4,$5,$6,$7)',
-        [randomUUID(), lot, i + 1, item.name.trim(), item.quantity, item.unit.trim(), actor],
+        'INSERT INTO tender_app.lot_item(id,lot_id,ordinal,item_name,quantity,unit,created_by,tech_requirements) VALUES($1,$2,$3,$4,$5,$6,$7,$8)',
+        [
+          randomUUID(),
+          lot,
+          i + 1,
+          item.name.trim(),
+          item.quantity,
+          item.unit.trim(),
+          actor,
+          item.technicalRequirements ?? null,
+        ],
       );
   }
   async createManual(actor: string, title: string, items: ScopeItemDto[]) {
@@ -111,7 +120,7 @@ export class PgScopeRepository {
   }
   async read(actor: string, id: string): Promise<TenderScope> {
     const r = await this.pool.query<TenderScope>(
-      `SELECT t.id,t.title,t.revision,t.selection_mode AS "selectionMode",t.specification_skipped AS "specificationSkipped",t.scope_status AS "scopeStatus",COALESCE((SELECT json_agg(json_build_object('id',i.id,'name',i.item_name,'quantity',i.quantity::text,'unit',i.unit) ORDER BY l.ordinal,i.ordinal) FROM tender_app.lot l JOIN tender_app.lot_item i ON i.lot_id=l.id WHERE l.tender_id=t.id),'[]'::json) AS items FROM tender_app.tender t WHERE t.id=$2 AND (${visible})`,
+      `SELECT t.id,t.title,t.revision,t.selection_mode AS "selectionMode",t.specification_skipped AS "specificationSkipped",t.scope_status AS "scopeStatus",COALESCE((SELECT json_agg(json_build_object('id',i.id,'name',i.item_name,'quantity',i.quantity::text,'unit',i.unit,'technicalRequirements',i.tech_requirements) ORDER BY l.ordinal,i.ordinal) FROM tender_app.lot l JOIN tender_app.lot_item i ON i.lot_id=l.id WHERE l.tender_id=t.id),'[]'::json) AS items FROM tender_app.tender t WHERE t.id=$2 AND (${visible})`,
       [actor, id],
     );
     if (!r.rows[0]) throw new NotFoundException();
