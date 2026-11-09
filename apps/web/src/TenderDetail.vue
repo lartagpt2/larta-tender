@@ -4,6 +4,7 @@ import { RouterLink, useRoute } from 'vue-router';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/vue-query';
 import { z } from 'zod';
 import PdfDraftPanel from './PdfDraftPanel.vue';
+import OfferRegistry from './OfferRegistry.vue';
 import ScopeItemsEditor from './ScopeItemsEditor.vue';
 import {
   api,
@@ -244,10 +245,6 @@ function chooseMode(event: Event) {
         />
       </template>
     </section>
-    <section class="content-card purchase-card" aria-label="Коммерческие предложения">
-      <div class="card-heading"><h2>Коммерческие предложения</h2></div>
-      <p>Пока нет загруженных КП.</p>
-      <p class="subtitle">Техническое задание не является обязательным для работы с предложениями.</p>
-    </section>
+    <OfferRegistry :key="id" :tender-id="id" />
   </template>
 </template>
