@@ -1,3 +1,6 @@
+import { Query } from '@nestjs/common';
+import { PgVerificationRepository } from './comparison/verification-repository';
+import { VerificationDto, CreateComparisonLotDto } from './comparison/verification.dto';
 import { PgOfferRepository } from './data/offer-repository';
 import { IncomingOfferFile } from './offer-files';
 import { AssociateOfferDto } from './offer.dto';
@@ -98,12 +101,14 @@ export interface DataOptions {
   scopeRepository?: ScopeRepository;
   extractionRepository?: TzExtractionRepository;
   offerRepository?: PgOfferRepository;
+  verificationRepository?: PgVerificationRepository;
 }
 class DataContext {
   readonly repository?: TenderRepository;
   readonly scope?: ScopeRepository;
   readonly extractions?: TzExtractionRepository;
   readonly offers?: PgOfferRepository;
+  readonly verifications?: PgVerificationRepository;
   private pool?: Pool;
   constructor(private readonly options: DataOptions) {
     if (options.enabled && options.environment !== 'production') {
@@ -113,6 +118,8 @@ class DataContext {
           (this.pool = new Pool({ max: 5, connectionTimeoutMillis: 5000, statement_timeout: 10000 })),
         );
       this.scope = options.scopeRepository ?? (this.pool ? new PgScopeRepository(this.pool) : undefined);
+      this.verifications =
+        options.verificationRepository ?? (this.pool ? new PgVerificationRepository(this.pool) : undefined);
       this.offers = options.offerRepository ?? (this.pool ? new PgOfferRepository(this.pool) : undefined);
       this.extractions =
         options.extractionRepository ?? (this.pool ? new TzExtractionRepository(this.pool) : undefined);
@@ -449,6 +456,100 @@ class TendersController {
     if (!files.length) throw new BadRequestException();
     if (stageId !== undefined && !isUUID(stageId)) throw new BadRequestException();
     return repo.batch(actor, id, key, files, this.store(), stageId);
+  }
+  private verifications(): PgVerificationRepository {
+    if (!this.data.verifications) throw new ServiceUnavailableException();
+    return this.data.verifications;
+  }
+  private comparisonOptions(lotId?: string, mode?: string, itemId?: string) {
+    if (
+      (lotId !== undefined && !isUUID(lotId)) ||
+      (itemId !== undefined && !isUUID(itemId)) ||
+      (mode !== undefined && !['lot', 'items'].includes(mode))
+    )
+      throw new BadRequestException();
+    return { lotId, mode: mode as 'lot' | 'items' | undefined, itemId };
+  }
+  @Get(':id/verification')
+  verificationContext(
+    @Headers('authorization') h: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+  ) {
+    return this.verifications().context(this.data.actor(h), id);
+  }
+  @Post(':id/verification/lot')
+  @ApiBody({ type: CreateComparisonLotDto })
+  createComparisonLot(
+    @Headers('authorization') h: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Body(
+      new ValidationPipe({
+        expectedType: CreateComparisonLotDto,
+        whitelist: true,
+        forbidNonWhitelisted: true,
+        transform: true,
+      }),
+    )
+    body: CreateComparisonLotDto,
+  ) {
+    return this.verifications().createDefaultLot(this.data.actor(h), id, body.expectedRevision);
+  }
+  @Post(':id/verification')
+  @ApiBody({ type: VerificationDto })
+  saveVerification(
+    @Headers('authorization') h: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Body(
+      new ValidationPipe({
+        expectedType: VerificationDto,
+        whitelist: true,
+        forbidNonWhitelisted: true,
+        transform: true,
+      }),
+    )
+    body: VerificationDto,
+  ) {
+    return this.verifications().saveVerification(this.data.actor(h), id, body);
+  }
+  @Get(':id/comparison')
+  comparison(
+    @Headers('authorization') h: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Query('lotId') lotId?: string,
+    @Query('mode') mode?: string,
+    @Query('itemId') itemId?: string,
+  ) {
+    const options = this.comparisonOptions(lotId, mode, itemId);
+    return this.verifications().comparison(
+      this.data.actor(h),
+      id,
+      options.lotId,
+      options.mode,
+      options.itemId,
+    );
+  }
+  @Get(':id/comparison.csv')
+  async comparisonCsv(
+    @Headers('authorization') h: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Res() reply: FastifyReply,
+    @Query('lotId') lotId?: string,
+    @Query('mode') mode?: string,
+    @Query('itemId') itemId?: string,
+  ) {
+    const options = this.comparisonOptions(lotId, mode, itemId);
+    const content = await this.verifications().export(
+      this.data.actor(h),
+      id,
+      options.lotId,
+      options.mode,
+      options.itemId,
+    );
+    return reply
+      .header('content-type', 'text/csv; charset=utf-8')
+      .header('x-content-type-options', 'nosniff')
+      .header('content-disposition', 'attachment; filename="comparison.csv"')
+      .send(content);
   }
   @Get(':id/lots')
   @ApiOkResponse({ type: LotDto, isArray: true })

@@ -245,6 +245,12 @@ function chooseMode(event: Event) {
         />
       </template>
     </section>
+    <div class="form-actions">
+      <RouterLink :to="`/review?tenderId=${id}`" class="secondary-action">Проверить КП</RouterLink
+      ><RouterLink :to="`/comparison?tenderId=${id}`" class="secondary-action"
+        >Сравнить предложения</RouterLink
+      >
+    </div>
     <OfferRegistry :key="id" :tender-id="id" />
   </template>
 </template>
