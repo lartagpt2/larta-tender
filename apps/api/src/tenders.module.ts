@@ -1,6 +1,6 @@
 import { PgOfferRepository } from './data/offer-repository';
 import { IncomingOfferFile } from './offer-files';
-import { IsInt, Min, IsUUID } from 'class-validator';
+import { AssociateOfferDto } from './offer.dto';
 import { ParseIntPipe } from '@nestjs/common';
 import { TzExtractionRepository } from './extraction/extraction-repository';
 import { ConfirmDraftDto } from './extraction/extraction.dto';
@@ -47,11 +47,6 @@ import { isUUID, IsString, Length, Matches } from 'class-validator';
 import { timingSafeEqual } from 'node:crypto';
 import { Pool } from 'pg';
 import { PgTenderRepository, TenderRepository } from './data/repository';
-export class AssociateOfferDto {
-  @IsInt() @Min(1) revision!: number;
-  @ValidateIf((_o, v) => v !== null) @IsUUID() supplierId!: string | null;
-  @IsString() @Length(1, 1000) @Matches(/\S/) note!: string;
-}
 export class CreateTenderDto {
   @ApiProperty({ type: String, maxLength: 300, example: 'Synthetic tender' })
   @IsString()
@@ -374,6 +369,10 @@ class TendersController {
   ) {
     return this.offers().suppliers(this.data.actor(h), id);
   }
+  @Get(':id/offer-stages')
+  offerStages(@Headers('authorization') h: string | undefined, @Param('id', new ParseUUIDPipe()) id: string) {
+    return this.offers().stages(this.data.actor(h), id);
+  }
   @Patch(':id/offers/:documentId/association')
   association(
     @Headers('authorization') h: string | undefined,
@@ -396,6 +395,7 @@ class TendersController {
       body.revision,
       body.supplierId,
       body.note.trim(),
+      body.newSupplier,
     );
   }
   @Get(':id/offers/:documentId/original')
@@ -420,6 +420,7 @@ class TendersController {
     @Headers('idempotency-key') key: string,
     @Param('id', new ParseUUIDPipe()) id: string,
     @Req() request: FastifyRequest,
+    @Headers('x-tender-stage-id') stageId?: string,
   ) {
     const actor = this.data.actor(h),
       repo = this.offers();
@@ -446,7 +447,8 @@ class TendersController {
       throw e;
     }
     if (!files.length) throw new BadRequestException();
-    return repo.batch(actor, id, key, files, this.store());
+    if (stageId !== undefined && !isUUID(stageId)) throw new BadRequestException();
+    return repo.batch(actor, id, key, files, this.store(), stageId);
   }
   @Get(':id/lots')
   @ApiOkResponse({ type: LotDto, isArray: true })
