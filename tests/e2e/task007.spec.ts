@@ -168,13 +168,11 @@ test('accreditation upload and history remain supplier-specific', async ({ page,
     ['2026-01-01', 'pending', 'Synthetic initial resource'],
     ['2026-02-01', 'passed', 'Synthetic updated resource'],
   ]) {
-    await page
-      .getByLabel('Файл отчёта', { exact: true })
-      .setInputFiles({
-        name: 'synthetic-accreditation.txt',
-        mimeType: 'text/plain',
-        buffer: Buffer.from('Synthetic accreditation evidence'),
-      });
+    await page.getByLabel('Файл отчёта', { exact: true }).setInputFiles({
+      name: 'synthetic-accreditation.txt',
+      mimeType: 'text/plain',
+      buffer: Buffer.from('Synthetic accreditation evidence'),
+    });
     await page.getByLabel('Дата отчёта', { exact: true }).fill(date);
     await page.getByLabel('Статус отчёта', { exact: true }).selectOption(status);
     await page.getByLabel('Источник отчёта', { exact: true }).fill(source);
