@@ -1,3 +1,5 @@
+import OfferReview from './OfferReview.vue';
+import OfferComparison from './OfferComparison.vue';
 import TenderList from './TenderList.vue';
 import TenderCreate from './TenderCreate.vue';
 import TenderDetail from './TenderDetail.vue';
@@ -13,8 +15,10 @@ export const router = createRouter({
     { path: '/tenders/new', component: TenderCreate },
     { path: '/tenders/:id', component: TenderDetail },
     { path: '/documents', component: DocumentsPage },
+    { path: '/review', component: OfferReview },
+    { path: '/comparison', component: OfferComparison },
     ...screens
-      .filter((s) => !['S01', 'S02', 'S03'].includes(s.code))
+      .filter((s) => !['S01', 'S02', 'S03', 'S04', 'S05'].includes(s.code))
       .map((screen) => ({ path: screen.path, component: WorkspacePage, props: { screen } })),
     {
       path: '/:pathMatch(.*)*',
