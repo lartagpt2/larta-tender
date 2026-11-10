@@ -1,3 +1,4 @@
+import { stagePrice, CommercialPrice } from '../stages/stage-calculation';
 import { BadRequestException, ConflictException, NotFoundException } from '@nestjs/common';
 import { randomUUID } from 'node:crypto';
 import { Pool, PoolClient } from 'pg';
@@ -59,6 +60,7 @@ interface Version {
   documentName: string;
   sha256: string;
   stage: string | null;
+  stageId: string | null;
 }
 interface VerifiedOffer {
   id: string;
@@ -90,7 +92,7 @@ export class PgVerificationRepository extends PgScopeRepository {
     ).rows;
     const versions = (
       await this.pool.query<Version & { offerId: string }>(
-        `SELECT v.id,v.offer_id AS "offerId",v.version,v.amount::text,v.currency,v.is_initial AS "isInitial",fd.value::jsonb AS metadata,u.display_name AS "actorName",v.created_at AS "createdAt",d.original_name AS "documentName",d.blob_sha256 AS sha256,st.label AS stage FROM tender_app.offer_version v JOIN tender_app.document d ON d.id=v.source_document_id JOIN tender_app.app_user u ON u.id=v.created_by LEFT JOIN tender_app.tender_stage st ON st.id=v.stage_id LEFT JOIN tender_app.field_decision fd ON fd.document_id=v.source_document_id AND fd.field_key='offer.verification.v1' AND (CASE WHEN fd.field_key='offer.verification.v1' THEN fd.value::jsonb END)->>'versionId'=v.id::text WHERE v.tender_id=$1 ORDER BY v.version`,
+        `SELECT v.id,v.offer_id AS "offerId",v.version,v.amount::text,v.currency,v.is_initial AS "isInitial",fd.value::jsonb AS metadata,u.display_name AS "actorName",v.created_at AS "createdAt",d.original_name AS "documentName",d.blob_sha256 AS sha256,st.label AS stage,v.stage_id AS "stageId" FROM tender_app.offer_version v JOIN tender_app.document d ON d.id=v.source_document_id JOIN tender_app.app_user u ON u.id=v.created_by LEFT JOIN tender_app.tender_stage st ON st.id=v.stage_id LEFT JOIN tender_app.field_decision fd ON fd.document_id=v.source_document_id AND fd.field_key='offer.verification.v1' AND (CASE WHEN fd.field_key='offer.verification.v1' THEN fd.value::jsonb END)->>'versionId'=v.id::text WHERE v.tender_id=$1 ORDER BY v.version`,
         [id],
       )
     ).rows;
@@ -156,7 +158,7 @@ export class PgVerificationRepository extends PgScopeRepository {
         throw new BadRequestException();
       const document = (
         await c.query(
-          "SELECT id,stage_id,batch_id FROM tender_app.document WHERE tender_id=$1 AND id=$2 AND purpose='offer'",
+          "SELECT id,stage_id,batch_id FROM tender_app.document d WHERE tender_id=$1 AND id=$2 AND purpose='offer' AND (NOT EXISTS(SELECT 1 FROM tender_app.field_decision role WHERE role.document_id=d.id AND role.field_key='accreditation.file.v1') OR EXISTS(SELECT 1 FROM tender_app.field_decision rr WHERE rr.document_id=d.id AND rr.field_key='offer.received.v1'))",
           [id, input.documentId],
         )
       ).rows[0];
@@ -400,8 +402,67 @@ export class PgVerificationRepository extends PgScopeRepository {
     const offers = (await this.offers(actor, id)).filter(
       (o) => o.lotId === chosen?.id && o.versions.some((v) => v.metadata),
     );
-    const current = offers.map((o) => o.versions.filter((v) => v.metadata).at(-1)!);
+    const stages = (
+      await this.pool.query<{ id: string; label: string; ordinal: number }>(
+        'SELECT id,label,ordinal FROM tender_app.tender_stage WHERE tender_id=$1 ORDER BY ordinal',
+        [id],
+      )
+    ).rows;
+    const responses = (
+      await this.pool.query<{
+        stage_id: string;
+        offer_id: string;
+        response_status: 'received' | 'no_reply' | 'withdrawn';
+        offer_version_id: string | null;
+      }>(
+        'SELECT stage_id,offer_id,response_status,offer_version_id FROM tender_app.stage_response WHERE tender_id=$1',
+        [id],
+      )
+    ).rows;
+    const baselines = (
+      await this.pool.query<{ value: { offerId: string; versionId: string; stageId: string } }>(
+        `SELECT fd.value::jsonb AS value FROM tender_app.field_decision fd JOIN tender_app.document d ON d.id=fd.document_id WHERE d.tender_id=$1 AND fd.field_key='stage.baseline.v1'`,
+        [id],
+      )
+    ).rows;
+    const current = offers.map((o) => {
+      if (!stages.length) return o.versions.filter((v) => v.metadata).at(-1)!;
+      const baselineId = baselines.find((b) => b.value.offerId === o.id)?.value.versionId;
+      let version = o.versions.find((v) => v.id === baselineId && v.metadata);
+      for (const stage of stages) {
+        const response = responses.find((r) => r.stage_id === stage.id && r.offer_id === o.id);
+        if (response?.response_status === 'received')
+          version = o.versions.find((v) => v.id === response.offer_version_id && v.metadata);
+      }
+      // An unregistered technical snapshot is visible for review but never treated as a confirmed commercial baseline.
+      return version ?? o.versions.filter((v) => v.metadata).at(-1)!;
+    });
     const results = current.map((v) => calculate(v.metadata!, required, selectedMode, selectedItem));
+    if (stages.length)
+      for (let i = 0; i < offers.length; i++) {
+        const registered =
+          baselines.some((b) => b.value.offerId === offers[i].id) ||
+          responses.some((r) => r.offer_id === offers[i].id && r.response_status === 'received');
+        const lastResponse = [...stages]
+          .reverse()
+          .map((s) => responses.find((r) => r.stage_id === s.id && r.offer_id === offers[i].id))
+          .find((r) => r && r.response_status !== 'no_reply');
+        if (!registered || lastResponse?.response_status === 'withdrawn') {
+          results[i] = {
+            ...results[i],
+            base: null,
+            comparable: null,
+            rankable: false,
+            warnings: [
+              ...results[i].warnings,
+              {
+                code: 'commercial_price_missing',
+                message: 'Нет действующей подтверждённой коммерческой цены',
+              },
+            ],
+          };
+        }
+      }
     const places = ranks(
       results.map((r, i) => ({
         value: r.comparable,
@@ -536,12 +597,86 @@ export class PgVerificationRepository extends PgScopeRepository {
           lines.map((r, i) => display(r.base, current[i].metadata!.fields.currency)),
         );
       }
+    if (stages.length) {
+      const chains = offers.map((o) => {
+        const baselineId = baselines.find((b) => b.value.offerId === o.id)?.value.versionId;
+        const baseline = o.versions.find((v) => v.id === baselineId)?.metadata;
+        const startingPrice: CommercialPrice | null = baseline
+          ? {
+              amount: calculate(baseline, required, selectedMode, selectedItem).comparable,
+              currency: baseline.fields.currency,
+              vatMode: baseline.fields.vatMode,
+            }
+          : null;
+        let previous: CommercialPrice | null = null;
+        return stages.map((stage) => {
+          if (stage.id === baselines.find((b) => b.value.offerId === o.id)?.value.stageId)
+            previous = startingPrice;
+          const response = responses.find((r) => r.stage_id === stage.id && r.offer_id === o.id);
+          const version = o.versions.find((v) => v.id === response?.offer_version_id);
+          const m = version?.metadata;
+          const next = stagePrice(previous, {
+            status: response?.response_status ?? 'pending',
+            price: m
+              ? {
+                  amount: calculate(m, required, selectedMode, selectedItem).comparable,
+                  currency: m.fields.currency,
+                  vatMode: m.fields.vatMode,
+                }
+              : undefined,
+          });
+          previous = next.current;
+          const original = current[offers.indexOf(o)].metadata!.original;
+          const overall =
+            next.current &&
+            next.current.currency === original.currency &&
+            next.current.vatMode === original.vatMode
+              ? discount(selectedMode === 'lot' ? original.amount : null, next.current.amount)
+              : null;
+          return { ...next, overall, version: version?.version };
+        });
+      });
+      for (let n = 0; n < stages.length; n++) {
+        const stage = stages[n],
+          label = `Этап ${stage.ordinal}: ${stage.label}`;
+        add(
+          'stage:' + stage.id,
+          label + ' · цена',
+          chains.map((c) =>
+            c[n].current ? display(c[n].current!.amount, c[n].current!.currency) : 'Не определено',
+          ),
+        );
+        add(
+          'stage_discount:' + stage.id,
+          label + ' · скидка, %',
+          chains.map((c) => c[n].discount ?? 'Не определено'),
+        );
+        add(
+          'stage_overall:' + stage.id,
+          label + ' · общее снижение, %',
+          chains.map((c) => c[n].overall ?? 'Не определено'),
+        );
+        const statuses = {
+          received: 'Ответ получен',
+          no_reply: 'Нет ответа — сохранена предыдущая цена',
+          withdrawn: 'Предложение отозвано',
+          pending: 'Ответ ещё не зафиксирован',
+        };
+        add(
+          'stage_response:' + stage.id,
+          label + ' · ответ',
+          chains.map(
+            (c) => statuses[c[n].status] + (c[n].version ? ' · техническая версия ' + c[n].version : ''),
+          ),
+        );
+      }
+    }
     for (const version of [
       ...new Set(offers.flatMap((o) => o.versions.filter((v) => !v.isInitial).map((v) => v.version))),
     ].sort((a, b) => a - b)) {
       add(
         'version:' + version,
-        'Цена версии ' + version,
+        'Техническое сохранение ' + version,
         offers.map((o) => {
           const v = o.versions.find((v) => v.version === version);
           if (!v?.metadata) return 'Нет версии';
@@ -555,7 +690,7 @@ export class PgVerificationRepository extends PgScopeRepository {
       );
       add(
         'discount:' + version,
-        'Скидка версии ' + version + ', %',
+        'Изменение между сохранениями ' + version + ', %',
         offers.map((o) => {
           const v = o.versions.find((v) => v.version === version);
           if (!v?.metadata || !calculate(v.metadata, required, 'lot').rankable) return 'Не определено';

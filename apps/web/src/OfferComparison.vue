@@ -47,6 +47,10 @@ function choose(key: string, event: Event) {
     <RouterLink v-if="id" :to="`/review?tenderId=${id}`" class="secondary-action">К проверке КП</RouterLink>
   </section>
   <TenderSelector :tender-id="id" />
+  <nav v-if="id" class="comparison-controls">
+    <RouterLink :to="`/stages?tenderId=${id}`">Коммерческие этапы</RouterLink
+    ><RouterLink :to="`/accreditation?tenderId=${id}`">Аккредитация</RouterLink>
+  </nav>
   <p v-if="!id">Выберите тендер для сравнения.</p>
   <p v-else-if="query.isPending.value">Рассчитываем сравнение…</p>
   <p v-else-if="query.isError.value" role="alert">{{ query.error.value?.message }}</p>
@@ -131,9 +135,11 @@ function choose(key: string, event: Event) {
       </table>
     </div>
     <p>
-      Исходная цена и история версий относятся к лоту; в режиме позиций актуальная стоимость относится к
-      выбранной позиции. Неизвестные суммы не считаются нулём. Разные валюты и базы НДС не объединяются в
-      общий рейтинг. Расходы лота не распределяются по позициям автоматически.
+      Технические сохранения КП не являются коммерческими этапами. Строки этапов показывают отдельно
+      зафиксированные ответы поставщиков. Исходная цена и история сохранений относятся к лоту; в режиме
+      позиций актуальная стоимость относится к выбранной позиции. Неизвестные суммы не считаются нулём. Разные
+      валюты и базы НДС не объединяются в общий рейтинг. Расходы лота не распределяются по позициям
+      автоматически.
     </p>
   </section>
 </template>

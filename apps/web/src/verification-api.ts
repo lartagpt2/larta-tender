@@ -64,6 +64,7 @@ export interface VerificationContext {
       version: number;
       metadata: VerificationMeta | null;
       isInitial: boolean;
+      stageId: string | null;
       amount: string | null;
     }[];
   }[];
