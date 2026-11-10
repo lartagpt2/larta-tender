@@ -1,3 +1,6 @@
+import { PgOfferRepository } from './data/offer-repository';
+import { IncomingOfferFile } from './offer-files';
+import { AssociateOfferDto } from './offer.dto';
 import { ParseIntPipe } from '@nestjs/common';
 import { TzExtractionRepository } from './extraction/extraction-repository';
 import { ConfirmDraftDto } from './extraction/extraction.dto';
@@ -94,11 +97,13 @@ export interface DataOptions {
   repository?: TenderRepository;
   scopeRepository?: ScopeRepository;
   extractionRepository?: TzExtractionRepository;
+  offerRepository?: PgOfferRepository;
 }
 class DataContext {
   readonly repository?: TenderRepository;
   readonly scope?: ScopeRepository;
   readonly extractions?: TzExtractionRepository;
+  readonly offers?: PgOfferRepository;
   private pool?: Pool;
   constructor(private readonly options: DataOptions) {
     if (options.enabled && options.environment !== 'production') {
@@ -108,6 +113,7 @@ class DataContext {
           (this.pool = new Pool({ max: 5, connectionTimeoutMillis: 5000, statement_timeout: 10000 })),
         );
       this.scope = options.scopeRepository ?? (this.pool ? new PgScopeRepository(this.pool) : undefined);
+      this.offers = options.offerRepository ?? (this.pool ? new PgOfferRepository(this.pool) : undefined);
       this.extractions =
         options.extractionRepository ?? (this.pool ? new TzExtractionRepository(this.pool) : undefined);
     }
@@ -347,6 +353,102 @@ class TendersController {
   ) {
     const actor = this.data.actor(header);
     return this.extractions().confirm(actor, id, documentId, runId, input);
+  }
+  private offers(): PgOfferRepository {
+    if (!this.data.offers) throw new ServiceUnavailableException();
+    return this.data.offers;
+  }
+  @Get(':id/offers')
+  offerList(@Headers('authorization') h: string | undefined, @Param('id', new ParseUUIDPipe()) id: string) {
+    return this.offers().list(this.data.actor(h), id);
+  }
+  @Get(':id/suppliers')
+  offerSuppliers(
+    @Headers('authorization') h: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+  ) {
+    return this.offers().suppliers(this.data.actor(h), id);
+  }
+  @Get(':id/offer-stages')
+  offerStages(@Headers('authorization') h: string | undefined, @Param('id', new ParseUUIDPipe()) id: string) {
+    return this.offers().stages(this.data.actor(h), id);
+  }
+  @Patch(':id/offers/:documentId/association')
+  association(
+    @Headers('authorization') h: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Param('documentId', new ParseUUIDPipe()) doc: string,
+    @Body(
+      new ValidationPipe({
+        expectedType: AssociateOfferDto,
+        whitelist: true,
+        forbidNonWhitelisted: true,
+        transform: true,
+      }),
+    )
+    body: AssociateOfferDto,
+  ) {
+    return this.offers().associate(
+      this.data.actor(h),
+      id,
+      doc,
+      body.revision,
+      body.supplierId,
+      body.note.trim(),
+      body.newSupplier,
+    );
+  }
+  @Get(':id/offers/:documentId/original')
+  async offerOriginal(
+    @Headers('authorization') h: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Param('documentId', new ParseUUIDPipe()) doc: string,
+    @Res() reply: FastifyReply,
+  ) {
+    const original = await this.offers().originalOffer(this.data.actor(h), id, doc);
+    return reply
+      .header('content-type', 'application/octet-stream')
+      .header('x-content-type-options', 'nosniff')
+      .header('content-disposition', `attachment; filename*=UTF-8''${encodeURIComponent(original.name)}`)
+      .send(await this.store().get(original.key));
+  }
+  @Post(':id/offers/batches')
+  @ApiConsumes('multipart/form-data')
+  @ApiHeader({ name: 'Idempotency-Key', required: true, schema: { type: 'string', format: 'uuid' } })
+  async uploadOffers(
+    @Headers('authorization') h: string | undefined,
+    @Headers('idempotency-key') key: string,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Req() request: FastifyRequest,
+    @Headers('x-tender-stage-id') stageId?: string,
+  ) {
+    const actor = this.data.actor(h),
+      repo = this.offers();
+    if (!isUUID(key)) throw new BadRequestException();
+    await repo.assertWrite(actor, id);
+    const files: IncomingOfferFile[] = [];
+    let total = 0;
+    try {
+      for await (const part of request.parts({
+        limits: { files: 10, parts: 10, fields: 0, fileSize: 20 * 1024 * 1024 },
+      })) {
+        if (part.type !== 'file' || part.fieldname !== 'files') throw new BadRequestException();
+        const content = await part.toBuffer();
+        total += content.length;
+        if (part.file.truncated || total > 40 * 1024 * 1024) throw new PayloadTooLargeException();
+        files.push({ name: part.filename, mime: part.mimetype, content });
+      }
+    } catch (e) {
+      const code = (e as { code?: string }).code;
+      if (e instanceof PayloadTooLargeException || code?.startsWith('FST_'))
+        await repo.rejectBatch(actor, id, 'multipart_limits');
+      if (code === 'FST_REQ_FILE_TOO_LARGE') throw new PayloadTooLargeException();
+      if (code?.startsWith('FST_')) throw new BadRequestException();
+      throw e;
+    }
+    if (!files.length) throw new BadRequestException();
+    if (stageId !== undefined && !isUUID(stageId)) throw new BadRequestException();
+    return repo.batch(actor, id, key, files, this.store(), stageId);
   }
   @Get(':id/lots')
   @ApiOkResponse({ type: LotDto, isArray: true })
