@@ -1,0 +1,5517 @@
+{
+  "at": "2026-11-11T10:45:14.276Z",
+  "method": "replay retained first F outputs through v4 validator; no new inference",
+  "oldPrimaryUntouched": true,
+  "before": {
+    "summary": {
+      "documents": 12,
+      "completed": 12,
+      "exactRowCounts": 12,
+      "supplierCorrect": 12,
+      "buyerAsSupplier": 0,
+      "knownCorrect": 365,
+      "knownTotal": 383,
+      "knownAccuracy": 0.9530026109660574,
+      "nullCorrect": 19,
+      "nullTotal": 19,
+      "nonNullWhenMissing": 0,
+      "criticalCorrect": 244,
+      "criticalTotal": 252,
+      "byField": {
+        "supplierName": {
+          "correct": 12,
+          "total": 12,
+          "knownCorrect": 12,
+          "knownTotal": 12,
+          "missingCorrect": 0,
+          "missingTotal": 0
+        },
+        "taxId": {
+          "correct": 12,
+          "total": 12,
+          "knownCorrect": 11,
+          "knownTotal": 11,
+          "missingCorrect": 1,
+          "missingTotal": 1
+        },
+        "buyerName": {
+          "correct": 12,
+          "total": 12,
+          "knownCorrect": 12,
+          "knownTotal": 12,
+          "missingCorrect": 0,
+          "missingTotal": 0
+        },
+        "total": {
+          "correct": 12,
+          "total": 12,
+          "knownCorrect": 11,
+          "knownTotal": 11,
+          "missingCorrect": 1,
+          "missingTotal": 1
+        },
+        "currency": {
+          "correct": 12,
+          "total": 12,
+          "knownCorrect": 12,
+          "knownTotal": 12,
+          "missingCorrect": 0,
+          "missingTotal": 0
+        },
+        "delivery": {
+          "correct": 12,
+          "total": 12,
+          "knownCorrect": 11,
+          "knownTotal": 11,
+          "missingCorrect": 1,
+          "missingTotal": 1
+        },
+        "payment": {
+          "correct": 12,
+          "total": 12,
+          "knownCorrect": 12,
+          "knownTotal": 12,
+          "missingCorrect": 0,
+          "missingTotal": 0
+        },
+        "vat": {
+          "correct": 12,
+          "total": 12,
+          "knownCorrect": 12,
+          "knownTotal": 12,
+          "missingCorrect": 0,
+          "missingTotal": 0
+        },
+        "deliveryCost": {
+          "correct": 12,
+          "total": 12,
+          "knownCorrect": 0,
+          "knownTotal": 0,
+          "missingCorrect": 12,
+          "missingTotal": 12
+        },
+        "items.description": {
+          "correct": 40,
+          "total": 42,
+          "knownCorrect": 40,
+          "knownTotal": 42,
+          "missingCorrect": 0,
+          "missingTotal": 0
+        },
+        "items.quantity": {
+          "correct": 40,
+          "total": 42,
+          "knownCorrect": 40,
+          "knownTotal": 42,
+          "missingCorrect": 0,
+          "missingTotal": 0
+        },
+        "items.unit": {
+          "correct": 40,
+          "total": 42,
+          "knownCorrect": 40,
+          "knownTotal": 42,
+          "missingCorrect": 0,
+          "missingTotal": 0
+        },
+        "items.unitPrice": {
+          "correct": 40,
+          "total": 42,
+          "knownCorrect": 39,
+          "knownTotal": 41,
+          "missingCorrect": 1,
+          "missingTotal": 1
+        },
+        "items.lineTotal": {
+          "correct": 40,
+          "total": 42,
+          "knownCorrect": 39,
+          "knownTotal": 41,
+          "missingCorrect": 1,
+          "missingTotal": 1
+        },
+        "items.currency": {
+          "correct": 36,
+          "total": 42,
+          "knownCorrect": 36,
+          "knownTotal": 42,
+          "missingCorrect": 0,
+          "missingTotal": 0
+        },
+        "items.delivery": {
+          "correct": 40,
+          "total": 42,
+          "knownCorrect": 38,
+          "knownTotal": 40,
+          "missingCorrect": 2,
+          "missingTotal": 2
+        }
+      }
+    },
+    "pair": {
+      "knownPairs": {
+        "correct": 35,
+        "total": 41,
+        "accuracy": 0.8536585365853658,
+        "errors": [
+          {
+            "id": "f02-table",
+            "index": 0,
+            "description": "Преобразователь ГС-811",
+            "price": "12750",
+            "currency": "RUB",
+            "correct": false
+          },
+          {
+            "id": "f02-table",
+            "index": 1,
+            "description": "Скоба ГС-812",
+            "price": "83.4",
+            "currency": "RUB",
+            "correct": false
+          },
+          {
+            "id": "f02-table",
+            "index": 2,
+            "description": "Штуцер ГС-813",
+            "price": "211.8",
+            "currency": "RUB",
+            "correct": false
+          },
+          {
+            "id": "f02-table",
+            "index": 3,
+            "description": "Прокладка ГС-814",
+            "price": "9.75",
+            "currency": "RUB",
+            "correct": false
+          },
+          {
+            "id": "f09-euro",
+            "index": 0,
+            "description": "Энкодер СО-981",
+            "price": "286.4",
+            "currency": "EUR",
+            "correct": false
+          },
+          {
+            "id": "f09-euro",
+            "index": 1,
+            "description": "Втулка СО-982",
+            "price": "8.95",
+            "currency": "EUR",
+            "correct": false
+          }
+        ]
+      },
+      "pricedUnknownCurrency": {
+        "correct": 0,
+        "total": 0,
+        "accuracy": null,
+        "errors": []
+      },
+      "unpriced": {
+        "correct": 1,
+        "total": 1,
+        "accuracy": 1,
+        "errors": []
+      }
+    }
+  },
+  "after": {
+    "summary": {
+      "documents": 12,
+      "completed": 12,
+      "exactRowCounts": 12,
+      "supplierCorrect": 12,
+      "buyerAsSupplier": 0,
+      "knownCorrect": 369,
+      "knownTotal": 383,
+      "knownAccuracy": 0.9634464751958225,
+      "nullCorrect": 19,
+      "nullTotal": 19,
+      "nonNullWhenMissing": 0,
+      "criticalCorrect": 244,
+      "criticalTotal": 252,
+      "byField": {
+        "supplierName": {
+          "correct": 12,
+          "total": 12,
+          "knownCorrect": 12,
+          "knownTotal": 12,
+          "missingCorrect": 0,
+          "missingTotal": 0
+        },
+        "taxId": {
+          "correct": 12,
+          "total": 12,
+          "knownCorrect": 11,
+          "knownTotal": 11,
+          "missingCorrect": 1,
+          "missingTotal": 1
+        },
+        "buyerName": {
+          "correct": 12,
+          "total": 12,
+          "knownCorrect": 12,
+          "knownTotal": 12,
+          "missingCorrect": 0,
+          "missingTotal": 0
+        },
+        "total": {
+          "correct": 12,
+          "total": 12,
+          "knownCorrect": 11,
+          "knownTotal": 11,
+          "missingCorrect": 1,
+          "missingTotal": 1
+        },
+        "currency": {
+          "correct": 12,
+          "total": 12,
+          "knownCorrect": 12,
+          "knownTotal": 12,
+          "missingCorrect": 0,
+          "missingTotal": 0
+        },
+        "delivery": {
+          "correct": 12,
+          "total": 12,
+          "knownCorrect": 11,
+          "knownTotal": 11,
+          "missingCorrect": 1,
+          "missingTotal": 1
+        },
+        "payment": {
+          "correct": 12,
+          "total": 12,
+          "knownCorrect": 12,
+          "knownTotal": 12,
+          "missingCorrect": 0,
+          "missingTotal": 0
+        },
+        "vat": {
+          "correct": 12,
+          "total": 12,
+          "knownCorrect": 12,
+          "knownTotal": 12,
+          "missingCorrect": 0,
+          "missingTotal": 0
+        },
+        "deliveryCost": {
+          "correct": 12,
+          "total": 12,
+          "knownCorrect": 0,
+          "knownTotal": 0,
+          "missingCorrect": 12,
+          "missingTotal": 12
+        },
+        "items.description": {
+          "correct": 40,
+          "total": 42,
+          "knownCorrect": 40,
+          "knownTotal": 42,
+          "missingCorrect": 0,
+          "missingTotal": 0
+        },
+        "items.quantity": {
+          "correct": 40,
+          "total": 42,
+          "knownCorrect": 40,
+          "knownTotal": 42,
+          "missingCorrect": 0,
+          "missingTotal": 0
+        },
+        "items.unit": {
+          "correct": 40,
+          "total": 42,
+          "knownCorrect": 40,
+          "knownTotal": 42,
+          "missingCorrect": 0,
+          "missingTotal": 0
+        },
+        "items.unitPrice": {
+          "correct": 40,
+          "total": 42,
+          "knownCorrect": 39,
+          "knownTotal": 41,
+          "missingCorrect": 1,
+          "missingTotal": 1
+        },
+        "items.lineTotal": {
+          "correct": 40,
+          "total": 42,
+          "knownCorrect": 39,
+          "knownTotal": 41,
+          "missingCorrect": 1,
+          "missingTotal": 1
+        },
+        "items.currency": {
+          "correct": 40,
+          "total": 42,
+          "knownCorrect": 40,
+          "knownTotal": 42,
+          "missingCorrect": 0,
+          "missingTotal": 0
+        },
+        "items.delivery": {
+          "correct": 40,
+          "total": 42,
+          "knownCorrect": 38,
+          "knownTotal": 40,
+          "missingCorrect": 2,
+          "missingTotal": 2
+        }
+      }
+    },
+    "pair": {
+      "knownPairs": {
+        "correct": 39,
+        "total": 41,
+        "accuracy": 0.9512195121951219,
+        "errors": [
+          {
+            "id": "f09-euro",
+            "index": 0,
+            "description": "Энкодер СО-981",
+            "price": "286.4",
+            "currency": "EUR",
+            "correct": false
+          },
+          {
+            "id": "f09-euro",
+            "index": 1,
+            "description": "Втулка СО-982",
+            "price": "8.95",
+            "currency": "EUR",
+            "correct": false
+          }
+        ]
+      },
+      "pricedUnknownCurrency": {
+        "correct": 0,
+        "total": 0,
+        "accuracy": null,
+        "errors": []
+      },
+      "unpriced": {
+        "correct": 1,
+        "total": 1,
+        "accuracy": 1,
+        "errors": []
+      }
+    }
+  },
+  "suggestions": [
+    {
+      "caseId": "f09-euro",
+      "index": 0,
+      "original": "Энкодер CO-981",
+      "originals": [
+        "CO-981"
+      ],
+      "ambiguous": [
+        {
+          "original": "CO-981",
+          "characters": [
+            {
+              "index": 0,
+              "character": "C",
+              "codepoint": "U+0043"
+            },
+            {
+              "index": 1,
+              "character": "O",
+              "codepoint": "U+004F"
+            }
+          ],
+          "mixedScripts": false
+        }
+      ],
+      "candidates": [
+        {
+          "id": "f09-euro-0",
+          "name": "Энкодер СО-981",
+          "sourceArticle": "CO-981",
+          "targetArticle": "СО-981",
+          "reason": "visual_homoglyph"
+        }
+      ],
+      "truncated": false,
+      "automaticallyApplied": false
+    },
+    {
+      "caseId": "f09-euro",
+      "index": 1,
+      "original": "Втулка CO-982",
+      "originals": [
+        "CO-982"
+      ],
+      "ambiguous": [
+        {
+          "original": "CO-982",
+          "characters": [
+            {
+              "index": 0,
+              "character": "C",
+              "codepoint": "U+0043"
+            },
+            {
+              "index": 1,
+              "character": "O",
+              "codepoint": "U+004F"
+            }
+          ],
+          "mixedScripts": false
+        }
+      ],
+      "candidates": [
+        {
+          "id": "f09-euro-1",
+          "name": "Втулка СО-982",
+          "sourceArticle": "CO-982",
+          "targetArticle": "СО-982",
+          "reason": "visual_homoglyph"
+        }
+      ],
+      "truncated": false,
+      "automaticallyApplied": false
+    }
+  ],
+  "provenance": [
+    {
+      "caseId": "f02-table",
+      "index": 0,
+      "kind": "native_header",
+      "scope": "document",
+      "code": "RUB",
+      "page": 1,
+      "line": 13,
+      "excerpt": "Валюта предложения: RUB",
+      "rowPage": 1,
+      "rowLine": 8
+    },
+    {
+      "caseId": "f02-table",
+      "index": 1,
+      "kind": "native_header",
+      "scope": "document",
+      "code": "RUB",
+      "page": 1,
+      "line": 13,
+      "excerpt": "Валюта предложения: RUB",
+      "rowPage": 1,
+      "rowLine": 9
+    },
+    {
+      "caseId": "f02-table",
+      "index": 2,
+      "kind": "native_header",
+      "scope": "document",
+      "code": "RUB",
+      "page": 1,
+      "line": 13,
+      "excerpt": "Валюта предложения: RUB",
+      "rowPage": 1,
+      "rowLine": 10
+    },
+    {
+      "caseId": "f02-table",
+      "index": 3,
+      "kind": "native_header",
+      "scope": "document",
+      "code": "RUB",
+      "page": 1,
+      "line": 13,
+      "excerpt": "Валюта предложения: RUB",
+      "rowPage": 1,
+      "rowLine": 11
+    }
+  ],
+  "results": [
+    {
+      "id": "f01-letter",
+      "status": "needs_review",
+      "error": null,
+      "expectedRows": 3,
+      "actualRows": 3,
+      "matchedRows": 3,
+      "rowPrecision": 1,
+      "rowRecall": 1,
+      "knownCorrect": 29,
+      "knownTotal": 29,
+      "unknownCorrect": 1,
+      "unknownTotal": 1,
+      "supplierCorrect": true,
+      "buyerAsSupplier": false,
+      "critical": [
+        {
+          "path": "supplierName",
+          "expected": "ООО «СИНТЕТИКА Кедровый маршрут»",
+          "actual": "ООО «СИНТЕТИКА Кедровый маршрут»",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "taxId",
+          "expected": "0000001201",
+          "actual": "0000001201",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "total",
+          "expected": "7609.5",
+          "actual": "7609.5",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "delivery",
+          "expected": "11 рабочих дней",
+          "actual": "11 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "payment",
+          "expected": "Оплата через 14 календарных дней после приёмки",
+          "actual": "Оплата через 14 календарных дней после приёмки",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "deliveryCost",
+          "expected": null,
+          "actual": null,
+          "correct": true,
+          "expectedMissing": true
+        },
+        {
+          "path": "items[0].quantity",
+          "expected": "7",
+          "actual": "7",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].unitPrice",
+          "expected": "438.5",
+          "actual": "438.5",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].lineTotal",
+          "expected": "3069.5",
+          "actual": "3069.5",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].delivery",
+          "expected": "6 рабочих дней",
+          "actual": "6 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].quantity",
+          "expected": "24",
+          "actual": "24",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].unitPrice",
+          "expected": "17.25",
+          "actual": "17.25",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].lineTotal",
+          "expected": "414",
+          "actual": "414",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].delivery",
+          "expected": "3 рабочих дня",
+          "actual": "3 рабочих дня",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].quantity",
+          "expected": "2",
+          "actual": "2",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].unitPrice",
+          "expected": "2063",
+          "actual": "2063",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].lineTotal",
+          "expected": "4126",
+          "actual": "4126",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].delivery",
+          "expected": "11 рабочих дней",
+          "actual": "11 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        }
+      ],
+      "expectedWarnings": [],
+      "missingWarnings": [],
+      "warnings": [],
+      "checks": [
+        {
+          "path": "supplierName",
+          "expected": "ООО «СИНТЕТИКА Кедровый маршрут»",
+          "actual": "ООО «СИНТЕТИКА Кедровый маршрут»",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "taxId",
+          "expected": "0000001201",
+          "actual": "0000001201",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "buyerName",
+          "expected": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+          "actual": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "total",
+          "expected": "7609.5",
+          "actual": "7609.5",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "delivery",
+          "expected": "11 рабочих дней",
+          "actual": "11 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "payment",
+          "expected": "Оплата через 14 календарных дней после приёмки",
+          "actual": "Оплата через 14 календарных дней после приёмки",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "vat",
+          "expected": "Без НДС",
+          "actual": "Без НДС",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "deliveryCost",
+          "expected": null,
+          "actual": null,
+          "correct": true,
+          "expectedMissing": true
+        },
+        {
+          "path": "items[0].description",
+          "expected": "Реле учебное КМ-701",
+          "actual": "Реле учебное КМ-701",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].quantity",
+          "expected": "7",
+          "actual": "7",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].unit",
+          "expected": "шт.",
+          "actual": "шт.",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].unitPrice",
+          "expected": "438.5",
+          "actual": "438.5",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].lineTotal",
+          "expected": "3069.5",
+          "actual": "3069.5",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].delivery",
+          "expected": "6 рабочих дней",
+          "actual": "6 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].description",
+          "expected": "Клемма учебная КМ-702",
+          "actual": "Клемма учебная КМ-702",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].quantity",
+          "expected": "24",
+          "actual": "24",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].unit",
+          "expected": "шт.",
+          "actual": "шт.",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].unitPrice",
+          "expected": "17.25",
+          "actual": "17.25",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].lineTotal",
+          "expected": "414",
+          "actual": "414",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].delivery",
+          "expected": "3 рабочих дня",
+          "actual": "3 рабочих дня",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].description",
+          "expected": "Корпус учебный КМ-703",
+          "actual": "Корпус учебный КМ-703",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].quantity",
+          "expected": "2",
+          "actual": "2",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].unit",
+          "expected": "шт.",
+          "actual": "шт.",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].unitPrice",
+          "expected": "2063",
+          "actual": "2063",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].lineTotal",
+          "expected": "4126",
+          "actual": "4126",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].delivery",
+          "expected": "11 рабочих дней",
+          "actual": "11 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "f02-table",
+      "status": "needs_review",
+      "error": null,
+      "expectedRows": 4,
+      "actualRows": 4,
+      "matchedRows": 4,
+      "rowPrecision": 1,
+      "rowRecall": 1,
+      "knownCorrect": 36,
+      "knownTotal": 36,
+      "unknownCorrect": 1,
+      "unknownTotal": 1,
+      "supplierCorrect": true,
+      "buyerAsSupplier": false,
+      "critical": [
+        {
+          "path": "supplierName",
+          "expected": "ООО «СИНТЕТИКА Гранатовый сектор»",
+          "actual": "ООО «СИНТЕТИКА Гранатовый сектор»",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "taxId",
+          "expected": "0000001202",
+          "actual": "0000001202",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "total",
+          "expected": "41802.6",
+          "actual": "41802.6",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "delivery",
+          "expected": "Не позднее 18.02.2027",
+          "actual": "Не позднее 18.02.2027",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "payment",
+          "expected": "Оплата через 14 календарных дней после приёмки",
+          "actual": "Оплата через 14 календарных дней после приёмки",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "deliveryCost",
+          "expected": null,
+          "actual": null,
+          "correct": true,
+          "expectedMissing": true
+        },
+        {
+          "path": "items[0].quantity",
+          "expected": "3",
+          "actual": "3",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].unitPrice",
+          "expected": "12750",
+          "actual": "12750",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].lineTotal",
+          "expected": "38250",
+          "actual": "38250",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].delivery",
+          "expected": "21 календарный день",
+          "actual": "21 календарный день",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].quantity",
+          "expected": "16",
+          "actual": "16",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].unitPrice",
+          "expected": "83.4",
+          "actual": "83.4",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].lineTotal",
+          "expected": "1334.4",
+          "actual": "1334.4",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].delivery",
+          "expected": "7 календарных дней",
+          "actual": "7 календарных дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].quantity",
+          "expected": "9",
+          "actual": "9",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].unitPrice",
+          "expected": "211.8",
+          "actual": "211.8",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].lineTotal",
+          "expected": "1906.2",
+          "actual": "1906.2",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].delivery",
+          "expected": "14 календарных дней",
+          "actual": "14 календарных дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].quantity",
+          "expected": "32",
+          "actual": "32",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].unitPrice",
+          "expected": "9.75",
+          "actual": "9.75",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].lineTotal",
+          "expected": "312",
+          "actual": "312",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].delivery",
+          "expected": "5 календарных дней",
+          "actual": "5 календарных дней",
+          "correct": true,
+          "expectedMissing": false
+        }
+      ],
+      "expectedWarnings": [],
+      "missingWarnings": [],
+      "warnings": [
+        "raw_value_not_in_evidence",
+        "currency_from_verified_header"
+      ],
+      "checks": [
+        {
+          "path": "supplierName",
+          "expected": "ООО «СИНТЕТИКА Гранатовый сектор»",
+          "actual": "ООО «СИНТЕТИКА Гранатовый сектор»",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "taxId",
+          "expected": "0000001202",
+          "actual": "0000001202",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "buyerName",
+          "expected": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+          "actual": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "total",
+          "expected": "41802.6",
+          "actual": "41802.6",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "delivery",
+          "expected": "Не позднее 18.02.2027",
+          "actual": "Не позднее 18.02.2027",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "payment",
+          "expected": "Оплата через 14 календарных дней после приёмки",
+          "actual": "Оплата через 14 календарных дней после приёмки",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "vat",
+          "expected": "Без НДС",
+          "actual": "Без НДС",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "deliveryCost",
+          "expected": null,
+          "actual": null,
+          "correct": true,
+          "expectedMissing": true
+        },
+        {
+          "path": "items[0].description",
+          "expected": "Преобразователь ГС-811",
+          "actual": "Преобразователь ГС-811",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].quantity",
+          "expected": "3",
+          "actual": "3",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].unit",
+          "expected": "шт.",
+          "actual": "шт.",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].unitPrice",
+          "expected": "12750",
+          "actual": "12750",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].lineTotal",
+          "expected": "38250",
+          "actual": "38250",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].delivery",
+          "expected": "21 календарный день",
+          "actual": "21 календарный день",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].description",
+          "expected": "Скоба ГС-812",
+          "actual": "Скоба ГС-812",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].quantity",
+          "expected": "16",
+          "actual": "16",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].unit",
+          "expected": "шт.",
+          "actual": "шт.",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].unitPrice",
+          "expected": "83.4",
+          "actual": "83.4",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].lineTotal",
+          "expected": "1334.4",
+          "actual": "1334.4",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].delivery",
+          "expected": "7 календарных дней",
+          "actual": "7 календарных дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].description",
+          "expected": "Штуцер ГС-813",
+          "actual": "Штуцер ГС-813",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].quantity",
+          "expected": "9",
+          "actual": "9",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].unit",
+          "expected": "шт.",
+          "actual": "шт.",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].unitPrice",
+          "expected": "211.8",
+          "actual": "211.8",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].lineTotal",
+          "expected": "1906.2",
+          "actual": "1906.2",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].delivery",
+          "expected": "14 календарных дней",
+          "actual": "14 календарных дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].description",
+          "expected": "Прокладка ГС-814",
+          "actual": "Прокладка ГС-814",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].quantity",
+          "expected": "32",
+          "actual": "32",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].unit",
+          "expected": "шт.",
+          "actual": "шт.",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].unitPrice",
+          "expected": "9.75",
+          "actual": "9.75",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].lineTotal",
+          "expected": "312",
+          "actual": "312",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].delivery",
+          "expected": "5 календарных дней",
+          "actual": "5 календарных дней",
+          "correct": true,
+          "expectedMissing": false
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "f03-measures",
+      "status": "needs_review",
+      "error": null,
+      "expectedRows": 3,
+      "actualRows": 3,
+      "matchedRows": 3,
+      "rowPrecision": 1,
+      "rowRecall": 1,
+      "knownCorrect": 29,
+      "knownTotal": 29,
+      "unknownCorrect": 1,
+      "unknownTotal": 1,
+      "supplierCorrect": true,
+      "buyerAsSupplier": false,
+      "critical": [
+        {
+          "path": "supplierName",
+          "expected": "ООО «СИНТЕТИКА Базальтовая нить»",
+          "actual": "ООО «СИНТЕТИКА Базальтовая нить»",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "taxId",
+          "expected": "0000001203",
+          "actual": "0000001203",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "total",
+          "expected": "2881.125",
+          "actual": "2881.125",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "delivery",
+          "expected": "16 рабочих дней",
+          "actual": "16 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "payment",
+          "expected": "Оплата через 14 календарных дней после приёмки",
+          "actual": "Оплата через 14 календарных дней после приёмки",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "deliveryCost",
+          "expected": null,
+          "actual": null,
+          "correct": true,
+          "expectedMissing": true
+        },
+        {
+          "path": "items[0].quantity",
+          "expected": "12.75",
+          "actual": "12.75",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].unitPrice",
+          "expected": "42.8",
+          "actual": "42.8",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].lineTotal",
+          "expected": "545.7",
+          "actual": "545.7",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].delivery",
+          "expected": "9 рабочих дней",
+          "actual": "9 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].quantity",
+          "expected": "1.625",
+          "actual": "1.625",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].unitPrice",
+          "expected": "960",
+          "actual": "960",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].lineTotal",
+          "expected": "1560",
+          "actual": "1560",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].delivery",
+          "expected": "16 рабочих дней",
+          "actual": "16 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].quantity",
+          "expected": "105.5",
+          "actual": "105.5",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].unitPrice",
+          "expected": "7.35",
+          "actual": "7.35",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].lineTotal",
+          "expected": "775.425",
+          "actual": "775.425",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].delivery",
+          "expected": "4 рабочих дня",
+          "actual": "4 рабочих дня",
+          "correct": true,
+          "expectedMissing": false
+        }
+      ],
+      "expectedWarnings": [],
+      "missingWarnings": [],
+      "warnings": [],
+      "checks": [
+        {
+          "path": "supplierName",
+          "expected": "ООО «СИНТЕТИКА Базальтовая нить»",
+          "actual": "ООО «СИНТЕТИКА Базальтовая нить»",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "taxId",
+          "expected": "0000001203",
+          "actual": "0000001203",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "buyerName",
+          "expected": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+          "actual": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "total",
+          "expected": "2881.125",
+          "actual": "2881.125",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "delivery",
+          "expected": "16 рабочих дней",
+          "actual": "16 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "payment",
+          "expected": "Оплата через 14 календарных дней после приёмки",
+          "actual": "Оплата через 14 календарных дней после приёмки",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "vat",
+          "expected": "Без НДС",
+          "actual": "Без НДС",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "deliveryCost",
+          "expected": null,
+          "actual": null,
+          "correct": true,
+          "expectedMissing": true
+        },
+        {
+          "path": "items[0].description",
+          "expected": "Шнур учебный БН-921",
+          "actual": "Шнур учебный БН-921",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].quantity",
+          "expected": "12.75",
+          "actual": "12.75",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].unit",
+          "expected": "м",
+          "actual": "м",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].unitPrice",
+          "expected": "42.8",
+          "actual": "42.8",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].lineTotal",
+          "expected": "545.7",
+          "actual": "545.7",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].delivery",
+          "expected": "9 рабочих дней",
+          "actual": "9 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].description",
+          "expected": "Порошок учебный БН-922",
+          "actual": "Порошок учебный БН-922",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].quantity",
+          "expected": "1.625",
+          "actual": "1.625",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].unit",
+          "expected": "кг",
+          "actual": "кг",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].unitPrice",
+          "expected": "960",
+          "actual": "960",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].lineTotal",
+          "expected": "1560",
+          "actual": "1560",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].delivery",
+          "expected": "16 рабочих дней",
+          "actual": "16 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].description",
+          "expected": "Плёнка учебная БН-923",
+          "actual": "Плёнка учебная БН-923",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].quantity",
+          "expected": "105.5",
+          "actual": "105.5",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].unit",
+          "expected": "м",
+          "actual": "м",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].unitPrice",
+          "expected": "7.35",
+          "actual": "7.35",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].lineTotal",
+          "expected": "775.425",
+          "actual": "775.425",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].delivery",
+          "expected": "4 рабочих дня",
+          "actual": "4 рабочих дня",
+          "correct": true,
+          "expectedMissing": false
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "f04-scan-letter",
+      "status": "needs_review",
+      "error": null,
+      "expectedRows": 3,
+      "actualRows": 3,
+      "matchedRows": 3,
+      "rowPrecision": 1,
+      "rowRecall": 1,
+      "knownCorrect": 29,
+      "knownTotal": 29,
+      "unknownCorrect": 1,
+      "unknownTotal": 1,
+      "supplierCorrect": true,
+      "buyerAsSupplier": false,
+      "critical": [
+        {
+          "path": "supplierName",
+          "expected": "ООО «СИНТЕТИКА Васильковый контур»",
+          "actual": "ООО «СИНТЕТИКА Васильковый контур»",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "taxId",
+          "expected": "0000001204",
+          "actual": "0000001204",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "total",
+          "expected": "25807",
+          "actual": "25807",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "delivery",
+          "expected": "13 рабочих дней",
+          "actual": "13 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "payment",
+          "expected": "Оплата через 14 календарных дней после приёмки",
+          "actual": "Оплата через 14 календарных дней после приёмки",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "deliveryCost",
+          "expected": null,
+          "actual": null,
+          "correct": true,
+          "expectedMissing": true
+        },
+        {
+          "path": "items[0].quantity",
+          "expected": "2",
+          "actual": "2",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].unitPrice",
+          "expected": "8740",
+          "actual": "8740",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].lineTotal",
+          "expected": "17480",
+          "actual": "17480",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].delivery",
+          "expected": "В наличии",
+          "actual": "В наличии",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].quantity",
+          "expected": "5",
+          "actual": "5",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].unitPrice",
+          "expected": "1460.8",
+          "actual": "1460.8",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].lineTotal",
+          "expected": "7304",
+          "actual": "7304",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].delivery",
+          "expected": "13 рабочих дней",
+          "actual": "13 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].quantity",
+          "expected": "11",
+          "actual": "11",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].unitPrice",
+          "expected": "93",
+          "actual": "93",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].lineTotal",
+          "expected": "1023",
+          "actual": "1023",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].delivery",
+          "expected": "8 рабочих дней",
+          "actual": "8 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        }
+      ],
+      "expectedWarnings": [],
+      "missingWarnings": [],
+      "warnings": [
+        "vision_evidence_requires_review"
+      ],
+      "checks": [
+        {
+          "path": "supplierName",
+          "expected": "ООО «СИНТЕТИКА Васильковый контур»",
+          "actual": "ООО «СИНТЕТИКА Васильковый контур»",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "taxId",
+          "expected": "0000001204",
+          "actual": "0000001204",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "buyerName",
+          "expected": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+          "actual": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "total",
+          "expected": "25807",
+          "actual": "25807",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "delivery",
+          "expected": "13 рабочих дней",
+          "actual": "13 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "payment",
+          "expected": "Оплата через 14 календарных дней после приёмки",
+          "actual": "Оплата через 14 календарных дней после приёмки",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "vat",
+          "expected": "Без НДС",
+          "actual": "Без НДС",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "deliveryCost",
+          "expected": null,
+          "actual": null,
+          "correct": true,
+          "expectedMissing": true
+        },
+        {
+          "path": "items[0].description",
+          "expected": "Пульт учебный ВК-431",
+          "actual": "Пульт учебный ВК-431",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].quantity",
+          "expected": "2",
+          "actual": "2",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].unit",
+          "expected": "шт.",
+          "actual": "шт.",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].unitPrice",
+          "expected": "8740",
+          "actual": "8740",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].lineTotal",
+          "expected": "17480",
+          "actual": "17480",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].delivery",
+          "expected": "В наличии",
+          "actual": "В наличии",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].description",
+          "expected": "Модуль учебный ВК-432",
+          "actual": "Модуль учебный ВК-432",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].quantity",
+          "expected": "5",
+          "actual": "5",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].unit",
+          "expected": "шт.",
+          "actual": "шт.",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].unitPrice",
+          "expected": "1460.8",
+          "actual": "1460.8",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].lineTotal",
+          "expected": "7304",
+          "actual": "7304",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].delivery",
+          "expected": "13 рабочих дней",
+          "actual": "13 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].description",
+          "expected": "Держатель учебный ВК-433",
+          "actual": "Держатель учебный ВК-433",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].quantity",
+          "expected": "11",
+          "actual": "11",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].unit",
+          "expected": "шт.",
+          "actual": "шт.",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].unitPrice",
+          "expected": "93",
+          "actual": "93",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].lineTotal",
+          "expected": "1023",
+          "actual": "1023",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].delivery",
+          "expected": "8 рабочих дней",
+          "actual": "8 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "f05-scan-table",
+      "status": "needs_review",
+      "error": null,
+      "expectedRows": 5,
+      "actualRows": 5,
+      "matchedRows": 5,
+      "rowPrecision": 1,
+      "rowRecall": 1,
+      "knownCorrect": 43,
+      "knownTotal": 43,
+      "unknownCorrect": 1,
+      "unknownTotal": 1,
+      "supplierCorrect": true,
+      "buyerAsSupplier": false,
+      "critical": [
+        {
+          "path": "supplierName",
+          "expected": "ООО «СИНТЕТИКА Янтарная сборка»",
+          "actual": "ООО «СИНТЕТИКА Янтарная сборка»",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "taxId",
+          "expected": "0000001205",
+          "actual": "0000001205",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "total",
+          "expected": "10928.1",
+          "actual": "10928.1",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "delivery",
+          "expected": "17 рабочих дней",
+          "actual": "17 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "payment",
+          "expected": "Оплата через 14 календарных дней после приёмки",
+          "actual": "Оплата через 14 календарных дней после приёмки",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "deliveryCost",
+          "expected": null,
+          "actual": null,
+          "correct": true,
+          "expectedMissing": true
+        },
+        {
+          "path": "items[0].quantity",
+          "expected": "18",
+          "actual": "18",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].unitPrice",
+          "expected": "31.2",
+          "actual": "31.2",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].lineTotal",
+          "expected": "561.6",
+          "actual": "561.6",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].delivery",
+          "expected": "2 рабочих дня",
+          "actual": "2 рабочих дня",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].quantity",
+          "expected": "150",
+          "actual": "150",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].unitPrice",
+          "expected": "4.7",
+          "actual": "4.7",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].lineTotal",
+          "expected": "705",
+          "actual": "705",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].delivery",
+          "expected": "3 рабочих дня",
+          "actual": "3 рабочих дня",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].quantity",
+          "expected": "125",
+          "actual": "125",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].unitPrice",
+          "expected": "3.6",
+          "actual": "3.6",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].lineTotal",
+          "expected": "450",
+          "actual": "450",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].delivery",
+          "expected": "5 рабочих дней",
+          "actual": "5 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].quantity",
+          "expected": "8",
+          "actual": "8",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].unitPrice",
+          "expected": "420",
+          "actual": "420",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].lineTotal",
+          "expected": "3360",
+          "actual": "3360",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].delivery",
+          "expected": "12 рабочих дней",
+          "actual": "12 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[4].quantity",
+          "expected": "6",
+          "actual": "6",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[4].unitPrice",
+          "expected": "975.25",
+          "actual": "975.25",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[4].lineTotal",
+          "expected": "5851.5",
+          "actual": "5851.5",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[4].delivery",
+          "expected": "17 рабочих дней",
+          "actual": "17 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        }
+      ],
+      "expectedWarnings": [],
+      "missingWarnings": [],
+      "warnings": [
+        "vision_evidence_requires_review"
+      ],
+      "checks": [
+        {
+          "path": "supplierName",
+          "expected": "ООО «СИНТЕТИКА Янтарная сборка»",
+          "actual": "ООО «СИНТЕТИКА Янтарная сборка»",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "taxId",
+          "expected": "0000001205",
+          "actual": "0000001205",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "buyerName",
+          "expected": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+          "actual": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "total",
+          "expected": "10928.1",
+          "actual": "10928.1",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "delivery",
+          "expected": "17 рабочих дней",
+          "actual": "17 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "payment",
+          "expected": "Оплата через 14 календарных дней после приёмки",
+          "actual": "Оплата через 14 календарных дней после приёмки",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "vat",
+          "expected": "Без НДС",
+          "actual": "Без НДС",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "deliveryCost",
+          "expected": null,
+          "actual": null,
+          "correct": true,
+          "expectedMissing": true
+        },
+        {
+          "path": "items[0].description",
+          "expected": "Кольцо ЯС-541",
+          "actual": "Кольцо ЯС-541",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].quantity",
+          "expected": "18",
+          "actual": "18",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].unit",
+          "expected": "шт.",
+          "actual": "шт.",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].unitPrice",
+          "expected": "31.2",
+          "actual": "31.2",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].lineTotal",
+          "expected": "561.6",
+          "actual": "561.6",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].delivery",
+          "expected": "2 рабочих дня",
+          "actual": "2 рабочих дня",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].description",
+          "expected": "Винт ЯС-542",
+          "actual": "Винт ЯС-542",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].quantity",
+          "expected": "150",
+          "actual": "150",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].unit",
+          "expected": "шт.",
+          "actual": "шт.",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].unitPrice",
+          "expected": "4.7",
+          "actual": "4.7",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].lineTotal",
+          "expected": "705",
+          "actual": "705",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].delivery",
+          "expected": "3 рабочих дня",
+          "actual": "3 рабочих дня",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].description",
+          "expected": "Гайка ЯС-543",
+          "actual": "Гайка ЯС-543",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].quantity",
+          "expected": "125",
+          "actual": "125",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].unit",
+          "expected": "шт.",
+          "actual": "шт.",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].unitPrice",
+          "expected": "3.6",
+          "actual": "3.6",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].lineTotal",
+          "expected": "450",
+          "actual": "450",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].delivery",
+          "expected": "5 рабочих дней",
+          "actual": "5 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].description",
+          "expected": "Опора ЯС-544",
+          "actual": "Опора ЯС-544",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].quantity",
+          "expected": "8",
+          "actual": "8",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].unit",
+          "expected": "шт.",
+          "actual": "шт.",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].unitPrice",
+          "expected": "420",
+          "actual": "420",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].lineTotal",
+          "expected": "3360",
+          "actual": "3360",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].delivery",
+          "expected": "12 рабочих дней",
+          "actual": "12 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[4].description",
+          "expected": "Кронштейн ЯС-545",
+          "actual": "Кронштейн ЯС-545",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[4].quantity",
+          "expected": "6",
+          "actual": "6",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[4].unit",
+          "expected": "шт.",
+          "actual": "шт.",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[4].unitPrice",
+          "expected": "975.25",
+          "actual": "975.25",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[4].lineTotal",
+          "expected": "5851.5",
+          "actual": "5851.5",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[4].currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[4].delivery",
+          "expected": "17 рабочих дней",
+          "actual": "17 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "f06-two-pages",
+      "status": "needs_review",
+      "error": null,
+      "expectedRows": 6,
+      "actualRows": 6,
+      "matchedRows": 6,
+      "rowPrecision": 1,
+      "rowRecall": 1,
+      "knownCorrect": 50,
+      "knownTotal": 50,
+      "unknownCorrect": 1,
+      "unknownTotal": 1,
+      "supplierCorrect": true,
+      "buyerAsSupplier": false,
+      "critical": [
+        {
+          "path": "supplierName",
+          "expected": "ООО «СИНТЕТИКА Лазурный привод»",
+          "actual": "ООО «СИНТЕТИКА Лазурный привод»",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "taxId",
+          "expected": "0000001206",
+          "actual": "0000001206",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "total",
+          "expected": "33500",
+          "actual": "33500",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "delivery",
+          "expected": "22 календарных дня",
+          "actual": "22 календарных дня",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "payment",
+          "expected": "Оплата через 14 календарных дней после приёмки",
+          "actual": "Оплата через 14 календарных дней после приёмки",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "deliveryCost",
+          "expected": null,
+          "actual": null,
+          "correct": true,
+          "expectedMissing": true
+        },
+        {
+          "path": "items[0].quantity",
+          "expected": "4",
+          "actual": "4",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].unitPrice",
+          "expected": "1520",
+          "actual": "1520",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].lineTotal",
+          "expected": "6080",
+          "actual": "6080",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].delivery",
+          "expected": "10 календарных дней",
+          "actual": "10 календарных дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].quantity",
+          "expected": "3",
+          "actual": "3",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].unitPrice",
+          "expected": "2780",
+          "actual": "2780",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].lineTotal",
+          "expected": "8340",
+          "actual": "8340",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].delivery",
+          "expected": "12 календарных дней",
+          "actual": "12 календарных дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].quantity",
+          "expected": "8.5",
+          "actual": "8.5",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].unitPrice",
+          "expected": "340",
+          "actual": "340",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].lineTotal",
+          "expected": "2890",
+          "actual": "2890",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].delivery",
+          "expected": "15 календарных дней",
+          "actual": "15 календарных дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].quantity",
+          "expected": "6",
+          "actual": "6",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].unitPrice",
+          "expected": "890",
+          "actual": "890",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].lineTotal",
+          "expected": "5340",
+          "actual": "5340",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].delivery",
+          "expected": "18 календарных дней",
+          "actual": "18 календарных дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[4].quantity",
+          "expected": "2",
+          "actual": "2",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[4].unitPrice",
+          "expected": "5100",
+          "actual": "5100",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[4].lineTotal",
+          "expected": "10200",
+          "actual": "10200",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[4].delivery",
+          "expected": "22 календарных дня",
+          "actual": "22 календарных дня",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[5].quantity",
+          "expected": "10",
+          "actual": "10",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[5].unitPrice",
+          "expected": "65",
+          "actual": "65",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[5].lineTotal",
+          "expected": "650",
+          "actual": "650",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[5].delivery",
+          "expected": "7 календарных дней",
+          "actual": "7 календарных дней",
+          "correct": true,
+          "expectedMissing": false
+        }
+      ],
+      "expectedWarnings": [],
+      "missingWarnings": [],
+      "warnings": [],
+      "checks": [
+        {
+          "path": "supplierName",
+          "expected": "ООО «СИНТЕТИКА Лазурный привод»",
+          "actual": "ООО «СИНТЕТИКА Лазурный привод»",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "taxId",
+          "expected": "0000001206",
+          "actual": "0000001206",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "buyerName",
+          "expected": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+          "actual": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "total",
+          "expected": "33500",
+          "actual": "33500",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "delivery",
+          "expected": "22 календарных дня",
+          "actual": "22 календарных дня",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "payment",
+          "expected": "Оплата через 14 календарных дней после приёмки",
+          "actual": "Оплата через 14 календарных дней после приёмки",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "vat",
+          "expected": "Без НДС",
+          "actual": "Без НДС",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "deliveryCost",
+          "expected": null,
+          "actual": null,
+          "correct": true,
+          "expectedMissing": true
+        },
+        {
+          "path": "items[0].description",
+          "expected": "Муфта учебная ЛП-651",
+          "actual": "Муфта учебная ЛП-651",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].quantity",
+          "expected": "4",
+          "actual": "4",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].unit",
+          "expected": "шт.",
+          "actual": "шт.",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].unitPrice",
+          "expected": "1520",
+          "actual": "1520",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].lineTotal",
+          "expected": "6080",
+          "actual": "6080",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].delivery",
+          "expected": "10 календарных дней",
+          "actual": "10 календарных дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].description",
+          "expected": "Шкив учебный ЛП-652",
+          "actual": "Шкив учебный ЛП-652",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].quantity",
+          "expected": "3",
+          "actual": "3",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].unit",
+          "expected": "шт.",
+          "actual": "шт.",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].unitPrice",
+          "expected": "2780",
+          "actual": "2780",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].lineTotal",
+          "expected": "8340",
+          "actual": "8340",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].delivery",
+          "expected": "12 календарных дней",
+          "actual": "12 календарных дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].description",
+          "expected": "Цепь учебная ЛП-653",
+          "actual": "Цепь учебная ЛП-653",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].quantity",
+          "expected": "8.5",
+          "actual": "8.5",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].unit",
+          "expected": "м",
+          "actual": "м",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].unitPrice",
+          "expected": "340",
+          "actual": "340",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].lineTotal",
+          "expected": "2890",
+          "actual": "2890",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].delivery",
+          "expected": "15 календарных дней",
+          "actual": "15 календарных дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].description",
+          "expected": "Звёздочка учебная ЛП-654",
+          "actual": "Звёздочка учебная ЛП-654",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].quantity",
+          "expected": "6",
+          "actual": "6",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].unit",
+          "expected": "шт.",
+          "actual": "шт.",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].unitPrice",
+          "expected": "890",
+          "actual": "890",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].lineTotal",
+          "expected": "5340",
+          "actual": "5340",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].delivery",
+          "expected": "18 календарных дней",
+          "actual": "18 календарных дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[4].description",
+          "expected": "Ступица учебная ЛП-655",
+          "actual": "Ступица учебная ЛП-655",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[4].quantity",
+          "expected": "2",
+          "actual": "2",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[4].unit",
+          "expected": "шт.",
+          "actual": "шт.",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[4].unitPrice",
+          "expected": "5100",
+          "actual": "5100",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[4].lineTotal",
+          "expected": "10200",
+          "actual": "10200",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[4].currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[4].delivery",
+          "expected": "22 календарных дня",
+          "actual": "22 календарных дня",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[5].description",
+          "expected": "Шпонка учебная ЛП-656",
+          "actual": "Шпонка учебная ЛП-656",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[5].quantity",
+          "expected": "10",
+          "actual": "10",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[5].unit",
+          "expected": "шт.",
+          "actual": "шт.",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[5].unitPrice",
+          "expected": "65",
+          "actual": "65",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[5].lineTotal",
+          "expected": "650",
+          "actual": "650",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[5].currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[5].delivery",
+          "expected": "7 календарных дней",
+          "actual": "7 календарных дней",
+          "correct": true,
+          "expectedMissing": false
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "f07-party-roles",
+      "status": "needs_review",
+      "error": null,
+      "expectedRows": 2,
+      "actualRows": 2,
+      "matchedRows": 2,
+      "rowPrecision": 1,
+      "rowRecall": 1,
+      "knownCorrect": 22,
+      "knownTotal": 22,
+      "unknownCorrect": 1,
+      "unknownTotal": 1,
+      "supplierCorrect": true,
+      "buyerAsSupplier": false,
+      "critical": [
+        {
+          "path": "supplierName",
+          "expected": "ООО «СИНТЕТИКА Вересковый узел»",
+          "actual": "ООО «СИНТЕТИКА Вересковый узел»",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "taxId",
+          "expected": "0000001207",
+          "actual": "0000001207",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "total",
+          "expected": "34589",
+          "actual": "34589",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "delivery",
+          "expected": "24 рабочих дня",
+          "actual": "24 рабочих дня",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "payment",
+          "expected": "Оплата через 14 календарных дней после приёмки",
+          "actual": "Оплата через 14 календарных дней после приёмки",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "deliveryCost",
+          "expected": null,
+          "actual": null,
+          "correct": true,
+          "expectedMissing": true
+        },
+        {
+          "path": "items[0].quantity",
+          "expected": "2",
+          "actual": "2",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].unitPrice",
+          "expected": "15800",
+          "actual": "15800",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].lineTotal",
+          "expected": "31600",
+          "actual": "31600",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].delivery",
+          "expected": "24 рабочих дня",
+          "actual": "24 рабочих дня",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].quantity",
+          "expected": "14",
+          "actual": "14",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].unitPrice",
+          "expected": "213.5",
+          "actual": "213.5",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].lineTotal",
+          "expected": "2989",
+          "actual": "2989",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].delivery",
+          "expected": "6 рабочих дней",
+          "actual": "6 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        }
+      ],
+      "expectedWarnings": [],
+      "missingWarnings": [],
+      "warnings": [
+        "vision_evidence_requires_review"
+      ],
+      "checks": [
+        {
+          "path": "supplierName",
+          "expected": "ООО «СИНТЕТИКА Вересковый узел»",
+          "actual": "ООО «СИНТЕТИКА Вересковый узел»",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "taxId",
+          "expected": "0000001207",
+          "actual": "0000001207",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "buyerName",
+          "expected": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+          "actual": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "total",
+          "expected": "34589",
+          "actual": "34589",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "delivery",
+          "expected": "24 рабочих дня",
+          "actual": "24 рабочих дня",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "payment",
+          "expected": "Оплата через 14 календарных дней после приёмки",
+          "actual": "Оплата через 14 календарных дней после приёмки",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "vat",
+          "expected": "Без НДС",
+          "actual": "Без НДС",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "deliveryCost",
+          "expected": null,
+          "actual": null,
+          "correct": true,
+          "expectedMissing": true
+        },
+        {
+          "path": "items[0].description",
+          "expected": "Трансформатор ВУ-761",
+          "actual": "Трансформатор ВУ-761",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].quantity",
+          "expected": "2",
+          "actual": "2",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].unit",
+          "expected": "шт.",
+          "actual": "шт.",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].unitPrice",
+          "expected": "15800",
+          "actual": "15800",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].lineTotal",
+          "expected": "31600",
+          "actual": "31600",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].delivery",
+          "expected": "24 рабочих дня",
+          "actual": "24 рабочих дня",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].description",
+          "expected": "Разъём ВУ-762",
+          "actual": "Разъём ВУ-762",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].quantity",
+          "expected": "14",
+          "actual": "14",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].unit",
+          "expected": "шт.",
+          "actual": "шт.",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].unitPrice",
+          "expected": "213.5",
+          "actual": "213.5",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].lineTotal",
+          "expected": "2989",
+          "actual": "2989",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].delivery",
+          "expected": "6 рабочих дней",
+          "actual": "6 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "f08-unquoted",
+      "status": "needs_review",
+      "error": null,
+      "expectedRows": 2,
+      "actualRows": 2,
+      "matchedRows": 2,
+      "rowPrecision": 1,
+      "rowRecall": 1,
+      "knownCorrect": 15,
+      "knownTotal": 15,
+      "unknownCorrect": 8,
+      "unknownTotal": 8,
+      "supplierCorrect": true,
+      "buyerAsSupplier": false,
+      "critical": [
+        {
+          "path": "supplierName",
+          "expected": "ООО «СИНТЕТИКА Рябиновый резерв»",
+          "actual": "ООО «СИНТЕТИКА Рябиновый резерв»",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "taxId",
+          "expected": null,
+          "actual": null,
+          "correct": true,
+          "expectedMissing": true
+        },
+        {
+          "path": "total",
+          "expected": null,
+          "actual": null,
+          "correct": true,
+          "expectedMissing": true
+        },
+        {
+          "path": "currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "delivery",
+          "expected": null,
+          "actual": null,
+          "correct": true,
+          "expectedMissing": true
+        },
+        {
+          "path": "payment",
+          "expected": "Оплата через 14 календарных дней после приёмки",
+          "actual": "Оплата через 14 календарных дней после приёмки",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "deliveryCost",
+          "expected": null,
+          "actual": null,
+          "correct": true,
+          "expectedMissing": true
+        },
+        {
+          "path": "items[0].quantity",
+          "expected": "13",
+          "actual": "13",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].unitPrice",
+          "expected": "165",
+          "actual": "165",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].lineTotal",
+          "expected": "2145",
+          "actual": "2145",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].delivery",
+          "expected": null,
+          "actual": null,
+          "correct": true,
+          "expectedMissing": true
+        },
+        {
+          "path": "items[1].quantity",
+          "expected": "3",
+          "actual": "3",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].unitPrice",
+          "expected": null,
+          "actual": null,
+          "correct": true,
+          "expectedMissing": true
+        },
+        {
+          "path": "items[1].lineTotal",
+          "expected": null,
+          "actual": null,
+          "correct": true,
+          "expectedMissing": true
+        },
+        {
+          "path": "items[1].delivery",
+          "expected": null,
+          "actual": null,
+          "correct": true,
+          "expectedMissing": true
+        }
+      ],
+      "expectedWarnings": [],
+      "missingWarnings": [],
+      "warnings": [
+        "invalid_number",
+        "missing_line_price",
+        "missing_total"
+      ],
+      "checks": [
+        {
+          "path": "supplierName",
+          "expected": "ООО «СИНТЕТИКА Рябиновый резерв»",
+          "actual": "ООО «СИНТЕТИКА Рябиновый резерв»",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "taxId",
+          "expected": null,
+          "actual": null,
+          "correct": true,
+          "expectedMissing": true
+        },
+        {
+          "path": "buyerName",
+          "expected": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+          "actual": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "total",
+          "expected": null,
+          "actual": null,
+          "correct": true,
+          "expectedMissing": true
+        },
+        {
+          "path": "currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "delivery",
+          "expected": null,
+          "actual": null,
+          "correct": true,
+          "expectedMissing": true
+        },
+        {
+          "path": "payment",
+          "expected": "Оплата через 14 календарных дней после приёмки",
+          "actual": "Оплата через 14 календарных дней после приёмки",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "vat",
+          "expected": "Без НДС",
+          "actual": "Без НДС",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "deliveryCost",
+          "expected": null,
+          "actual": null,
+          "correct": true,
+          "expectedMissing": true
+        },
+        {
+          "path": "items[0].description",
+          "expected": "Изолятор РР-871",
+          "actual": "Изолятор РР-871",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].quantity",
+          "expected": "13",
+          "actual": "13",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].unit",
+          "expected": "шт.",
+          "actual": "шт.",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].unitPrice",
+          "expected": "165",
+          "actual": "165",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].lineTotal",
+          "expected": "2145",
+          "actual": "2145",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].delivery",
+          "expected": null,
+          "actual": null,
+          "correct": true,
+          "expectedMissing": true
+        },
+        {
+          "path": "items[1].description",
+          "expected": "Контактор РР-872",
+          "actual": "Контактор РР-872",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].quantity",
+          "expected": "3",
+          "actual": "3",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].unit",
+          "expected": "шт.",
+          "actual": "шт.",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].unitPrice",
+          "expected": null,
+          "actual": null,
+          "correct": true,
+          "expectedMissing": true
+        },
+        {
+          "path": "items[1].lineTotal",
+          "expected": null,
+          "actual": null,
+          "correct": true,
+          "expectedMissing": true
+        },
+        {
+          "path": "items[1].currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].delivery",
+          "expected": null,
+          "actual": null,
+          "correct": true,
+          "expectedMissing": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "f09-euro",
+      "status": "needs_review",
+      "error": null,
+      "expectedRows": 2,
+      "actualRows": 2,
+      "matchedRows": 0,
+      "rowPrecision": 0,
+      "rowRecall": 0,
+      "knownCorrect": 8,
+      "knownTotal": 22,
+      "unknownCorrect": 1,
+      "unknownTotal": 1,
+      "supplierCorrect": true,
+      "buyerAsSupplier": false,
+      "critical": [
+        {
+          "path": "supplierName",
+          "expected": "ООО «СИНТЕТИКА Серебряная ось»",
+          "actual": "ООО «СИНТЕТИКА Серебряная ось»",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "taxId",
+          "expected": "0000001209",
+          "actual": "0000001209",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "total",
+          "expected": "966.6",
+          "actual": "966.6",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "currency",
+          "expected": "EUR",
+          "actual": "EUR",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "delivery",
+          "expected": "28 календарных дней",
+          "actual": "28 календарных дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "payment",
+          "expected": "Оплата через 14 календарных дней после приёмки",
+          "actual": "Оплата через 14 календарных дней после приёмки",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "deliveryCost",
+          "expected": null,
+          "actual": null,
+          "correct": true,
+          "expectedMissing": true
+        },
+        {
+          "path": "items[0].quantity",
+          "expected": "3",
+          "actual": null,
+          "correct": false,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].unitPrice",
+          "expected": "286.4",
+          "actual": null,
+          "correct": false,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].lineTotal",
+          "expected": "859.2",
+          "actual": null,
+          "correct": false,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].delivery",
+          "expected": "28 календарных дней",
+          "actual": null,
+          "correct": false,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].quantity",
+          "expected": "12",
+          "actual": null,
+          "correct": false,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].unitPrice",
+          "expected": "8.95",
+          "actual": null,
+          "correct": false,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].lineTotal",
+          "expected": "107.4",
+          "actual": null,
+          "correct": false,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].delivery",
+          "expected": "10 календарных дней",
+          "actual": null,
+          "correct": false,
+          "expectedMissing": false
+        }
+      ],
+      "expectedWarnings": [],
+      "missingWarnings": [],
+      "warnings": [
+        "vision_evidence_requires_review"
+      ],
+      "checks": [
+        {
+          "path": "supplierName",
+          "expected": "ООО «СИНТЕТИКА Серебряная ось»",
+          "actual": "ООО «СИНТЕТИКА Серебряная ось»",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "taxId",
+          "expected": "0000001209",
+          "actual": "0000001209",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "buyerName",
+          "expected": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+          "actual": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "total",
+          "expected": "966.6",
+          "actual": "966.6",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "currency",
+          "expected": "EUR",
+          "actual": "EUR",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "delivery",
+          "expected": "28 календарных дней",
+          "actual": "28 календарных дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "payment",
+          "expected": "Оплата через 14 календарных дней после приёмки",
+          "actual": "Оплата через 14 календарных дней после приёмки",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "vat",
+          "expected": "Без НДС",
+          "actual": "Без НДС",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "deliveryCost",
+          "expected": null,
+          "actual": null,
+          "correct": true,
+          "expectedMissing": true
+        },
+        {
+          "path": "items[0].description",
+          "expected": "Энкодер СО-981",
+          "actual": null,
+          "correct": false,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].quantity",
+          "expected": "3",
+          "actual": null,
+          "correct": false,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].unit",
+          "expected": "шт.",
+          "actual": null,
+          "correct": false,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].unitPrice",
+          "expected": "286.4",
+          "actual": null,
+          "correct": false,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].lineTotal",
+          "expected": "859.2",
+          "actual": null,
+          "correct": false,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].currency",
+          "expected": "EUR",
+          "actual": null,
+          "correct": false,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].delivery",
+          "expected": "28 календарных дней",
+          "actual": null,
+          "correct": false,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].description",
+          "expected": "Втулка СО-982",
+          "actual": null,
+          "correct": false,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].quantity",
+          "expected": "12",
+          "actual": null,
+          "correct": false,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].unit",
+          "expected": "шт.",
+          "actual": null,
+          "correct": false,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].unitPrice",
+          "expected": "8.95",
+          "actual": null,
+          "correct": false,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].lineTotal",
+          "expected": "107.4",
+          "actual": null,
+          "correct": false,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].currency",
+          "expected": "EUR",
+          "actual": null,
+          "correct": false,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].delivery",
+          "expected": "10 календарных дней",
+          "actual": null,
+          "correct": false,
+          "expectedMissing": false
+        }
+      ],
+      "errors": [
+        {
+          "path": "items[0].description",
+          "expected": "Энкодер СО-981",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[0].quantity",
+          "expected": "3",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[0].unit",
+          "expected": "шт.",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[0].unitPrice",
+          "expected": "286.4",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[0].lineTotal",
+          "expected": "859.2",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[0].currency",
+          "expected": "EUR",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[0].delivery",
+          "expected": "28 календарных дней",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[1].description",
+          "expected": "Втулка СО-982",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[1].quantity",
+          "expected": "12",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[1].unit",
+          "expected": "шт.",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[1].unitPrice",
+          "expected": "8.95",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[1].lineTotal",
+          "expected": "107.4",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[1].currency",
+          "expected": "EUR",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[1].delivery",
+          "expected": "10 календарных дней",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "unmatchedItems[0]",
+          "actual": "Энкодер CO-981",
+          "type": "unmatched_row"
+        },
+        {
+          "path": "unmatchedItems[1]",
+          "actual": "Втулка CO-982",
+          "type": "unmatched_row"
+        }
+      ]
+    },
+    {
+      "id": "f10-conditional",
+      "status": "needs_review",
+      "error": null,
+      "expectedRows": 3,
+      "actualRows": 3,
+      "matchedRows": 3,
+      "rowPrecision": 1,
+      "rowRecall": 1,
+      "knownCorrect": 29,
+      "knownTotal": 29,
+      "unknownCorrect": 1,
+      "unknownTotal": 1,
+      "supplierCorrect": true,
+      "buyerAsSupplier": false,
+      "critical": [
+        {
+          "path": "supplierName",
+          "expected": "ООО «СИНТЕТИКА Малахитовый шаг»",
+          "actual": "ООО «СИНТЕТИКА Малахитовый шаг»",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "taxId",
+          "expected": "0000001210",
+          "actual": "0000001210",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "total",
+          "expected": "4626.5",
+          "actual": "4626.5",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "currency",
+          "expected": "QXZ",
+          "actual": "QXZ",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "delivery",
+          "expected": "DAP, учебная площадка № 7; 8 рабочих дней после оплаты",
+          "actual": "DAP, учебная площадка № 7; 8 рабочих дней после оплаты",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "payment",
+          "expected": "Оплата через 14 календарных дней после приёмки",
+          "actual": "Оплата через 14 календарных дней после приёмки",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "deliveryCost",
+          "expected": null,
+          "actual": null,
+          "correct": true,
+          "expectedMissing": true
+        },
+        {
+          "path": "items[0].quantity",
+          "expected": "5",
+          "actual": "5",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].unitPrice",
+          "expected": "730",
+          "actual": "730",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].lineTotal",
+          "expected": "3650",
+          "actual": "3650",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].delivery",
+          "expected": "После оплаты: 8 рабочих дней",
+          "actual": "После оплаты: 8 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].quantity",
+          "expected": "2.25",
+          "actual": "2.25",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].unitPrice",
+          "expected": "310",
+          "actual": "310",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].lineTotal",
+          "expected": "697.5",
+          "actual": "697.5",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].delivery",
+          "expected": "После оплаты: 6 рабочих дней",
+          "actual": "После оплаты: 6 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].quantity",
+          "expected": "15",
+          "actual": "15",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].unitPrice",
+          "expected": "18.6",
+          "actual": "18.6",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].lineTotal",
+          "expected": "279",
+          "actual": "279",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].delivery",
+          "expected": "После оплаты: 4 рабочих дня",
+          "actual": "После оплаты: 4 рабочих дня",
+          "correct": true,
+          "expectedMissing": false
+        }
+      ],
+      "expectedWarnings": [
+        "unknown_currency"
+      ],
+      "missingWarnings": [],
+      "warnings": [
+        "unknown_currency"
+      ],
+      "checks": [
+        {
+          "path": "supplierName",
+          "expected": "ООО «СИНТЕТИКА Малахитовый шаг»",
+          "actual": "ООО «СИНТЕТИКА Малахитовый шаг»",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "taxId",
+          "expected": "0000001210",
+          "actual": "0000001210",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "buyerName",
+          "expected": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+          "actual": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "total",
+          "expected": "4626.5",
+          "actual": "4626.5",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "currency",
+          "expected": "QXZ",
+          "actual": "QXZ",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "delivery",
+          "expected": "DAP, учебная площадка № 7; 8 рабочих дней после оплаты",
+          "actual": "DAP, учебная площадка № 7; 8 рабочих дней после оплаты",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "payment",
+          "expected": "Оплата через 14 календарных дней после приёмки",
+          "actual": "Оплата через 14 календарных дней после приёмки",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "vat",
+          "expected": "Без НДС",
+          "actual": "Без НДС",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "deliveryCost",
+          "expected": null,
+          "actual": null,
+          "correct": true,
+          "expectedMissing": true
+        },
+        {
+          "path": "items[0].description",
+          "expected": "Фланец МШ-191",
+          "actual": "Фланец МШ-191",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].quantity",
+          "expected": "5",
+          "actual": "5",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].unit",
+          "expected": "шт.",
+          "actual": "шт.",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].unitPrice",
+          "expected": "730",
+          "actual": "730",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].lineTotal",
+          "expected": "3650",
+          "actual": "3650",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].currency",
+          "expected": "QXZ",
+          "actual": "QXZ",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].delivery",
+          "expected": "После оплаты: 8 рабочих дней",
+          "actual": "После оплаты: 8 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].description",
+          "expected": "Уплотнитель МШ-192",
+          "actual": "Уплотнитель МШ-192",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].quantity",
+          "expected": "2.25",
+          "actual": "2.25",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].unit",
+          "expected": "кг",
+          "actual": "кг",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].unitPrice",
+          "expected": "310",
+          "actual": "310",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].lineTotal",
+          "expected": "697.5",
+          "actual": "697.5",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].currency",
+          "expected": "QXZ",
+          "actual": "QXZ",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].delivery",
+          "expected": "После оплаты: 6 рабочих дней",
+          "actual": "После оплаты: 6 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].description",
+          "expected": "Хомут МШ-193",
+          "actual": "Хомут МШ-193",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].quantity",
+          "expected": "15",
+          "actual": "15",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].unit",
+          "expected": "шт.",
+          "actual": "шт.",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].unitPrice",
+          "expected": "18.6",
+          "actual": "18.6",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].lineTotal",
+          "expected": "279",
+          "actual": "279",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].currency",
+          "expected": "QXZ",
+          "actual": "QXZ",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].delivery",
+          "expected": "После оплаты: 4 рабочих дня",
+          "actual": "После оплаты: 4 рабочих дня",
+          "correct": true,
+          "expectedMissing": false
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "f11-tilted",
+      "status": "needs_review",
+      "error": null,
+      "expectedRows": 3,
+      "actualRows": 3,
+      "matchedRows": 3,
+      "rowPrecision": 1,
+      "rowRecall": 1,
+      "knownCorrect": 29,
+      "knownTotal": 29,
+      "unknownCorrect": 1,
+      "unknownTotal": 1,
+      "supplierCorrect": true,
+      "buyerAsSupplier": false,
+      "critical": [
+        {
+          "path": "supplierName",
+          "expected": "ООО «СИНТЕТИКА Сиреневый пакет»",
+          "actual": "ООО «СИНТЕТИКА Сиреневый пакет»",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "taxId",
+          "expected": "0000001211",
+          "actual": "0000001211",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "total",
+          "expected": "15943",
+          "actual": "15943",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "delivery",
+          "expected": "23 календарных дня",
+          "actual": "23 календарных дня",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "payment",
+          "expected": "Оплата через 14 календарных дней после приёмки",
+          "actual": "Оплата через 14 календарных дней после приёмки",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "deliveryCost",
+          "expected": null,
+          "actual": null,
+          "correct": true,
+          "expectedMissing": true
+        },
+        {
+          "path": "items[0].quantity",
+          "expected": "27.5",
+          "actual": "27.5",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].unitPrice",
+          "expected": "61.2",
+          "actual": "61.2",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].lineTotal",
+          "expected": "1683",
+          "actual": "1683",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].delivery",
+          "expected": "12 календарных дней",
+          "actual": "12 календарных дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].quantity",
+          "expected": "3.125",
+          "actual": "3.125",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].unitPrice",
+          "expected": "480",
+          "actual": "480",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].lineTotal",
+          "expected": "1500",
+          "actual": "1500",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].delivery",
+          "expected": "19 календарных дней",
+          "actual": "19 календарных дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].quantity",
+          "expected": "4",
+          "actual": "4",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].unitPrice",
+          "expected": "3190",
+          "actual": "3190",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].lineTotal",
+          "expected": "12760",
+          "actual": "12760",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].delivery",
+          "expected": "23 календарных дня",
+          "actual": "23 календарных дня",
+          "correct": true,
+          "expectedMissing": false
+        }
+      ],
+      "expectedWarnings": [],
+      "missingWarnings": [],
+      "warnings": [
+        "vision_evidence_requires_review"
+      ],
+      "checks": [
+        {
+          "path": "supplierName",
+          "expected": "ООО «СИНТЕТИКА Сиреневый пакет»",
+          "actual": "ООО «СИНТЕТИКА Сиреневый пакет»",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "taxId",
+          "expected": "0000001211",
+          "actual": "0000001211",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "buyerName",
+          "expected": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+          "actual": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "total",
+          "expected": "15943",
+          "actual": "15943",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "delivery",
+          "expected": "23 календарных дня",
+          "actual": "23 календарных дня",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "payment",
+          "expected": "Оплата через 14 календарных дней после приёмки",
+          "actual": "Оплата через 14 календарных дней после приёмки",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "vat",
+          "expected": "Без НДС",
+          "actual": "Без НДС",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "deliveryCost",
+          "expected": null,
+          "actual": null,
+          "correct": true,
+          "expectedMissing": true
+        },
+        {
+          "path": "items[0].description",
+          "expected": "Провод СП-291",
+          "actual": "Провод СП-291",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].quantity",
+          "expected": "27.5",
+          "actual": "27.5",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].unit",
+          "expected": "м",
+          "actual": "м",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].unitPrice",
+          "expected": "61.2",
+          "actual": "61.2",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].lineTotal",
+          "expected": "1683",
+          "actual": "1683",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].delivery",
+          "expected": "12 календарных дней",
+          "actual": "12 календарных дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].description",
+          "expected": "Гранулят СП-292",
+          "actual": "Гранулят СП-292",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].quantity",
+          "expected": "3.125",
+          "actual": "3.125",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].unit",
+          "expected": "кг",
+          "actual": "кг",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].unitPrice",
+          "expected": "480",
+          "actual": "480",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].lineTotal",
+          "expected": "1500",
+          "actual": "1500",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].delivery",
+          "expected": "19 календарных дней",
+          "actual": "19 календарных дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].description",
+          "expected": "Блок СП-293",
+          "actual": "Блок СП-293",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].quantity",
+          "expected": "4",
+          "actual": "4",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].unit",
+          "expected": "шт.",
+          "actual": "шт.",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].unitPrice",
+          "expected": "3190",
+          "actual": "3190",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].lineTotal",
+          "expected": "12760",
+          "actual": "12760",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].delivery",
+          "expected": "23 календарных дня",
+          "actual": "23 календарных дня",
+          "correct": true,
+          "expectedMissing": false
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "f12-dense-table",
+      "status": "needs_review",
+      "error": null,
+      "expectedRows": 6,
+      "actualRows": 6,
+      "matchedRows": 6,
+      "rowPrecision": 1,
+      "rowRecall": 1,
+      "knownCorrect": 50,
+      "knownTotal": 50,
+      "unknownCorrect": 1,
+      "unknownTotal": 1,
+      "supplierCorrect": true,
+      "buyerAsSupplier": false,
+      "critical": [
+        {
+          "path": "supplierName",
+          "expected": "ООО «СИНТЕТИКА Каштановый вектор»",
+          "actual": "ООО «СИНТЕТИКА Каштановый вектор»",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "taxId",
+          "expected": "0000001212",
+          "actual": "0000001212",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "total",
+          "expected": "14407.2",
+          "actual": "14407.2",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "delivery",
+          "expected": "20 рабочих дней",
+          "actual": "20 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "payment",
+          "expected": "Оплата через 14 календарных дней после приёмки",
+          "actual": "Оплата через 14 календарных дней после приёмки",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "deliveryCost",
+          "expected": null,
+          "actual": null,
+          "correct": true,
+          "expectedMissing": true
+        },
+        {
+          "path": "items[0].quantity",
+          "expected": "9",
+          "actual": "9",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].unitPrice",
+          "expected": "515",
+          "actual": "515",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].lineTotal",
+          "expected": "4635",
+          "actual": "4635",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].delivery",
+          "expected": "4 рабочих дня",
+          "actual": "4 рабочих дня",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].quantity",
+          "expected": "9",
+          "actual": "9",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].unitPrice",
+          "expected": "206",
+          "actual": "206",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].lineTotal",
+          "expected": "1854",
+          "actual": "1854",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].delivery",
+          "expected": "9 рабочих дней",
+          "actual": "9 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].quantity",
+          "expected": "18",
+          "actual": "18",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].unitPrice",
+          "expected": "132.5",
+          "actual": "132.5",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].lineTotal",
+          "expected": "2385",
+          "actual": "2385",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].delivery",
+          "expected": "11 рабочих дней",
+          "actual": "11 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].quantity",
+          "expected": "36",
+          "actual": "36",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].unitPrice",
+          "expected": "27.8",
+          "actual": "27.8",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].lineTotal",
+          "expected": "1000.8",
+          "actual": "1000.8",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].delivery",
+          "expected": "14 рабочих дней",
+          "actual": "14 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[4].quantity",
+          "expected": "24",
+          "actual": "24",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[4].unitPrice",
+          "expected": "45.6",
+          "actual": "45.6",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[4].lineTotal",
+          "expected": "1094.4",
+          "actual": "1094.4",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[4].delivery",
+          "expected": "16 рабочих дней",
+          "actual": "16 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[5].quantity",
+          "expected": "9",
+          "actual": "9",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[5].unitPrice",
+          "expected": "382",
+          "actual": "382",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[5].lineTotal",
+          "expected": "3438",
+          "actual": "3438",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[5].delivery",
+          "expected": "20 рабочих дней",
+          "actual": "20 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        }
+      ],
+      "expectedWarnings": [],
+      "missingWarnings": [],
+      "warnings": [
+        "vision_evidence_requires_review"
+      ],
+      "checks": [
+        {
+          "path": "supplierName",
+          "expected": "ООО «СИНТЕТИКА Каштановый вектор»",
+          "actual": "ООО «СИНТЕТИКА Каштановый вектор»",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "taxId",
+          "expected": "0000001212",
+          "actual": "0000001212",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "buyerName",
+          "expected": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+          "actual": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "total",
+          "expected": "14407.2",
+          "actual": "14407.2",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "delivery",
+          "expected": "20 рабочих дней",
+          "actual": "20 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "payment",
+          "expected": "Оплата через 14 календарных дней после приёмки",
+          "actual": "Оплата через 14 календарных дней после приёмки",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "vat",
+          "expected": "Без НДС",
+          "actual": "Без НДС",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "deliveryCost",
+          "expected": null,
+          "actual": null,
+          "correct": true,
+          "expectedMissing": true
+        },
+        {
+          "path": "items[0].description",
+          "expected": "Клапан КВ-391",
+          "actual": "Клапан КВ-391",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].quantity",
+          "expected": "9",
+          "actual": "9",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].unit",
+          "expected": "шт.",
+          "actual": "шт.",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].unitPrice",
+          "expected": "515",
+          "actual": "515",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].lineTotal",
+          "expected": "4635",
+          "actual": "4635",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[0].delivery",
+          "expected": "4 рабочих дня",
+          "actual": "4 рабочих дня",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].description",
+          "expected": "Седло КВ-392",
+          "actual": "Седло КВ-392",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].quantity",
+          "expected": "9",
+          "actual": "9",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].unit",
+          "expected": "шт.",
+          "actual": "шт.",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].unitPrice",
+          "expected": "206",
+          "actual": "206",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].lineTotal",
+          "expected": "1854",
+          "actual": "1854",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].delivery",
+          "expected": "9 рабочих дней",
+          "actual": "9 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].description",
+          "expected": "Шток КВ-393",
+          "actual": "Шток КВ-393",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].quantity",
+          "expected": "18",
+          "actual": "18",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].unit",
+          "expected": "шт.",
+          "actual": "шт.",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].unitPrice",
+          "expected": "132.5",
+          "actual": "132.5",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].lineTotal",
+          "expected": "2385",
+          "actual": "2385",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[2].delivery",
+          "expected": "11 рабочих дней",
+          "actual": "11 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].description",
+          "expected": "Сальник КВ-394",
+          "actual": "Сальник КВ-394",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].quantity",
+          "expected": "36",
+          "actual": "36",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].unit",
+          "expected": "шт.",
+          "actual": "шт.",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].unitPrice",
+          "expected": "27.8",
+          "actual": "27.8",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].lineTotal",
+          "expected": "1000.8",
+          "actual": "1000.8",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[3].delivery",
+          "expected": "14 рабочих дней",
+          "actual": "14 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[4].description",
+          "expected": "Пружина КВ-395",
+          "actual": "Пружина КВ-395",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[4].quantity",
+          "expected": "24",
+          "actual": "24",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[4].unit",
+          "expected": "шт.",
+          "actual": "шт.",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[4].unitPrice",
+          "expected": "45.6",
+          "actual": "45.6",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[4].lineTotal",
+          "expected": "1094.4",
+          "actual": "1094.4",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[4].currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[4].delivery",
+          "expected": "16 рабочих дней",
+          "actual": "16 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[5].description",
+          "expected": "Крышка КВ-396",
+          "actual": "Крышка КВ-396",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[5].quantity",
+          "expected": "9",
+          "actual": "9",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[5].unit",
+          "expected": "шт.",
+          "actual": "шт.",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[5].unitPrice",
+          "expected": "382",
+          "actual": "382",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[5].lineTotal",
+          "expected": "3438",
+          "actual": "3438",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[5].currency",
+          "expected": "RUB",
+          "actual": "RUB",
+          "correct": true,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[5].delivery",
+          "expected": "20 рабочих дней",
+          "actual": "20 рабочих дней",
+          "correct": true,
+          "expectedMissing": false
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

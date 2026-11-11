@@ -1,3 +1,4 @@
+import { bindHeaderCurrencies, type CurrencySource } from './header-currency';
 import {
   numeric,
   printedUnit,
@@ -11,12 +12,13 @@ export { numeric } from './normalization';
 import Ajv from 'ajv';
 import Decimal from 'decimal.js';
 const ExactDecimal = Decimal.clone({ precision: 60 });
-export const schemaVersion = 'document-draft-v3',
+export const schemaVersion = 'document-draft-v4',
   promptVersion = 'untrusted-compact-evidence-v3';
 export interface Evidence {
   sourceDocumentId?: string;
   originalEvidenceSnippet?: string | null;
-  evidenceMethod?: 'source_row_reanchored';
+  evidenceMethod?: 'source_row_reanchored' | 'native_header_currency';
+  currencySource?: CurrencySource;
   rawValue: string | null;
   value: string | null;
   page: number | null;
@@ -60,7 +62,23 @@ const field = {
   required: ['rawValue', 'value', 'page', 'evidenceSnippet', 'confidence'],
   properties: {
     originalEvidenceSnippet: { type: ['string', 'null'], maxLength: 2000 },
-    evidenceMethod: { enum: ['source_row_reanchored'] },
+    evidenceMethod: { enum: ['source_row_reanchored', 'native_header_currency'] },
+    currencySource: {
+      type: 'object',
+      additionalProperties: false,
+      required: ['kind', 'scope', 'code', 'page', 'line', 'excerpt', 'rowPage', 'rowLine'],
+      properties: {
+        kind: { const: 'native_header' },
+        scope: { enum: ['document', 'table'] },
+        code: { type: 'string', pattern: '^[A-Z]{3}$' },
+        page: { type: 'integer', minimum: 1, maximum: 30 },
+        line: { type: 'integer', minimum: 1 },
+        excerpt: { type: 'string', maxLength: 2000 },
+        rowPage: { type: 'integer', minimum: 1, maximum: 30 },
+        rowLine: { type: 'integer', minimum: 1 },
+        sourceDocumentId: { type: 'string', maxLength: 100 },
+      },
+    },
     rawValue: { type: ['string', 'null'], maxLength: 2000 },
     value: { type: ['string', 'null'], maxLength: 2000 },
     page: { type: ['integer', 'null'], minimum: 1, maximum: 30 },
@@ -140,6 +158,7 @@ export function validateDraft(
       name = key.split(':').at(-1)!;
     delete value.originalEvidenceSnippet;
     delete value.evidenceMethod;
+    delete value.currencySource;
     if (value.rawValue === null) {
       value.value = null;
       continue;
@@ -207,6 +226,7 @@ export function validateDraft(
     const unit = printedUnit(item.quantity.rawValue);
     if (unit) item.unit = { ...item.quantity, rawValue: unit, value: unit, confidence: null };
   }
+  for (const warning of bindHeaderCurrencies(draft, pages)) warnings.add(warning);
   let sum = new ExactDecimal(0),
     complete = draft.items.length > 0;
   const currencies = new Set(

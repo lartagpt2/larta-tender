@@ -5,6 +5,7 @@ import { useQuery, useQueryClient } from '@tanstack/vue-query';
 import { api } from './tender-api';
 import TenderSelector from './TenderSelector.vue';
 import DocumentAIPanel from './DocumentAIPanel.vue';
+import { aiLineIssue } from './ai-line-transfer';
 import CommercialFieldsEditor from './CommercialFieldsEditor.vue';
 import {
   emptyFields,
@@ -273,35 +274,30 @@ function useAIField(key: string, value: string, jobId: string) {
   contextConfirmed.value = false;
   aiNotice.value = 'Перенесено только в форму. Проверьте значение и подтвердите вручную.';
 }
-function useAILine(item: Record<string, { value: string | null }>, targetId: string, jobId: string) {
-  const row = items.value.find((i) => i.lotItemId === targetId);
-  if (!row || row.unitPrice !== null) {
-    aiNotice.value = 'Строка уже заполнена или не относится к выбранному лоту.';
+function useAILine(
+  item: Record<string, { value: string | null }>,
+  targetId: string,
+  jobId: string,
+  confirmedMatch = false,
+) {
+  const row = items.value.find((i) => i.lotItemId === targetId),
+    target = required.value.find((i) => i.id === targetId);
+  const issue = aiLineIssue(item, row, target, fields.value.currency, confirmedMatch);
+  if (issue) {
+    aiNotice.value = issue;
     return;
   }
-  if (
-    decimalInput(item.quantity?.value ?? null) !== decimalInput(row.quantity) ||
-    item.unit?.value?.trim().toLowerCase().replace(/\.$/, '') !==
-      row.unit.trim().toLowerCase().replace(/\.$/, '')
-  ) {
-    aiNotice.value = 'Количество или единица не совпадает с ТЗ. Уточните вручную; цена не перенесена.';
-    return;
-  }
-  const target = required.value.find((i) => i.id === targetId);
-  if ((item.description?.value ?? '').trim().toLowerCase() !== target?.name.trim().toLowerCase()) {
-    aiNotice.value =
-      'Описание отличается от ТЗ. Автоматический перенос цены запрещён; сопоставьте предложение и основание вручную.';
-    return;
-  }
-  if (!item.unitPrice?.value) {
-    aiNotice.value = 'Цена не определена.';
-    return;
-  }
-  row.unitPrice = item.unitPrice.value;
+  row!.unitPrice = item.unitPrice.value;
   activeAIJob.value = jobId;
   sourceType.value = 'document';
-  sourceNote.value = `Ручной перенос строки из ИИ-черновика ${jobId}`;
+  sourceNote.value =
+    `Ручной перенос строки из ИИ-черновика ${jobId}; ${confirmedMatch ? 'закупщик подтвердил сопоставление' : 'точное совпадение'}: «${item.description.value}» → «${target!.name}»; исходное написание сохранено`.slice(
+      0,
+      950,
+    );
   contextConfirmed.value = false;
+  aiNotice.value =
+    'Цена перенесена только в форму. Исходный артикул сохранён; требуется подтверждение закупщиком.';
 }
 function useAISupplier(value: string) {
   const doc = documentId.value,

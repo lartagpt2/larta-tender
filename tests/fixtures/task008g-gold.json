@@ -1,0 +1,394 @@
+[
+  {
+    "id": "g01-eur-header",
+    "title": "Нефритовый мост",
+    "kind": "native",
+    "layout": "letter",
+    "pages": 1,
+    "headers": {
+      "supplierName": "ООО «СИНТЕТИКА Нефритовый мост»",
+      "taxId": "0000002301",
+      "buyerName": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+      "total": "7890.1",
+      "currency": "EUR",
+      "delivery": "18 календарных дней",
+      "payment": "Оплата через 14 календарных дней после приёмки",
+      "vat": "Без НДС",
+      "deliveryCost": null
+    },
+    "items": [
+      {
+        "description": "Термостат НМ-1101",
+        "quantity": "4",
+        "unit": "шт.",
+        "unitPrice": "1780.25",
+        "lineTotal": "7121",
+        "currency": "EUR",
+        "delivery": "18 календарных дней"
+      },
+      {
+        "description": "Регулятор НМ-1102",
+        "quantity": "6",
+        "unit": "шт.",
+        "unitPrice": "79.6",
+        "lineTotal": "477.6",
+        "currency": "EUR",
+        "delivery": "9 календарных дней"
+      },
+      {
+        "description": "Экран НМ-1103",
+        "quantity": "2",
+        "unit": "шт.",
+        "unitPrice": "145.75",
+        "lineTotal": "291.5",
+        "currency": "EUR",
+        "delivery": "12 календарных дней"
+      }
+    ],
+    "hideRowCurrency": true
+  },
+  {
+    "id": "g02-usd-table",
+    "title": "Оливковый источник",
+    "kind": "native",
+    "layout": "table",
+    "pages": 1,
+    "headers": {
+      "supplierName": "ООО «СИНТЕТИКА Оливковый источник»",
+      "taxId": "0000002302",
+      "buyerName": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+      "total": "670.95",
+      "currency": "USD",
+      "delivery": "13 рабочих дней",
+      "payment": "Оплата через 14 календарных дней после приёмки",
+      "vat": "Без НДС",
+      "deliveryCost": null
+    },
+    "items": [
+      {
+        "description": "Патрубок ОИ-1201",
+        "quantity": "7",
+        "unit": "шт.",
+        "unitPrice": "68.4",
+        "lineTotal": "478.8",
+        "currency": "USD",
+        "delivery": "13 рабочих дней"
+      },
+      {
+        "description": "Шайба ОИ-1202",
+        "quantity": "45",
+        "unit": "шт.",
+        "unitPrice": "1.28",
+        "lineTotal": "57.6",
+        "currency": "USD",
+        "delivery": "5 рабочих дней"
+      },
+      {
+        "description": "Переходник ОИ-1203",
+        "quantity": "9",
+        "unit": "шт.",
+        "unitPrice": "14.95",
+        "lineTotal": "134.55",
+        "currency": "USD",
+        "delivery": "8 рабочих дней"
+      }
+    ],
+    "hideRowCurrency": true,
+    "hideDocumentCurrency": true,
+    "tableCurrency": "USD"
+  },
+  {
+    "id": "g03-multipage",
+    "title": "Бирюзовый стержень",
+    "kind": "native",
+    "layout": "letter",
+    "pages": 2,
+    "headers": {
+      "supplierName": "ООО «СИНТЕТИКА Бирюзовый стержень»",
+      "taxId": "0000002303",
+      "buyerName": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+      "total": "31230",
+      "currency": "RUB",
+      "delivery": "25 рабочих дней",
+      "payment": "Оплата через 14 календарных дней после приёмки",
+      "vat": "Без НДС",
+      "deliveryCost": null
+    },
+    "items": [
+      {
+        "description": "Секция БС-1301",
+        "quantity": "3",
+        "unit": "шт.",
+        "unitPrice": "4930",
+        "lineTotal": "14790",
+        "currency": "RUB",
+        "delivery": "16 рабочих дней"
+      },
+      {
+        "description": "Рукоятка БС-1302",
+        "quantity": "8",
+        "unit": "шт.",
+        "unitPrice": "352.5",
+        "lineTotal": "2820",
+        "currency": "RUB",
+        "delivery": "6 рабочих дней"
+      },
+      {
+        "description": "Кожух БС-1303",
+        "quantity": "2",
+        "unit": "шт.",
+        "unitPrice": "6810",
+        "lineTotal": "13620",
+        "currency": "RUB",
+        "delivery": "25 рабочих дней"
+      }
+    ],
+    "hideRowCurrency": true
+  },
+  {
+    "id": "g04-conflicting",
+    "title": "Песочный диапазон",
+    "kind": "native",
+    "layout": "letter",
+    "pages": 1,
+    "headers": {
+      "supplierName": "ООО «СИНТЕТИКА Песочный диапазон»",
+      "taxId": "0000002304",
+      "buyerName": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+      "total": "9613",
+      "currency": null,
+      "delivery": "14 рабочих дней",
+      "payment": "Оплата через 14 календарных дней после приёмки",
+      "vat": "Без НДС",
+      "deliveryCost": null
+    },
+    "items": [
+      {
+        "description": "Пластина ПД-1401",
+        "quantity": "12",
+        "unit": "шт.",
+        "unitPrice": "318",
+        "lineTotal": "3816",
+        "currency": null,
+        "delivery": "7 рабочих дней"
+      },
+      {
+        "description": "Пробка ПД-1402",
+        "quantity": "30",
+        "unit": "шт.",
+        "unitPrice": "27.4",
+        "lineTotal": "822",
+        "currency": null,
+        "delivery": "4 рабочих дня"
+      },
+      {
+        "description": "Сетка ПД-1403",
+        "quantity": "5",
+        "unit": "шт.",
+        "unitPrice": "995",
+        "lineTotal": "4975",
+        "currency": null,
+        "delivery": "14 рабочих дней"
+      }
+    ],
+    "hideRowCurrency": true,
+    "globalCurrencies": [
+      "RUB",
+      "EUR"
+    ],
+    "expectedWarnings": [
+      "currency_header_missing_or_ambiguous"
+    ]
+  },
+  {
+    "id": "g05-scan-eur",
+    "title": "Изумрудный виток",
+    "kind": "scan",
+    "layout": "letter",
+    "pages": 1,
+    "headers": {
+      "supplierName": "ООО «СИНТЕТИКА Изумрудный виток»",
+      "taxId": "0000002305",
+      "buyerName": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+      "total": "1333.4",
+      "currency": "EUR",
+      "delivery": "32 календарных дня",
+      "payment": "Оплата через 14 календарных дней после приёмки",
+      "vat": "Без НДС",
+      "deliveryCost": null
+    },
+    "items": [
+      {
+        "description": "Пневмоцилиндр ИВ-1501",
+        "quantity": "2",
+        "unit": "шт.",
+        "unitPrice": "438.75",
+        "lineTotal": "877.5",
+        "currency": "EUR",
+        "delivery": "32 календарных дня"
+      },
+      {
+        "description": "Клапанный блок ИВ-1502",
+        "quantity": "3",
+        "unit": "шт.",
+        "unitPrice": "129.8",
+        "lineTotal": "389.4",
+        "currency": "EUR",
+        "delivery": "21 календарный день"
+      },
+      {
+        "description": "Переходная муфта ИВ-1503",
+        "quantity": "10",
+        "unit": "шт.",
+        "unitPrice": "6.65",
+        "lineTotal": "66.5",
+        "currency": "EUR",
+        "delivery": "11 календарных дней"
+      }
+    ]
+  },
+  {
+    "id": "g06-scan-articles",
+    "title": "Лиловый профиль",
+    "kind": "scan",
+    "layout": "table",
+    "pages": 1,
+    "headers": {
+      "supplierName": "ООО «СИНТЕТИКА Лиловый профиль»",
+      "taxId": "0000002306",
+      "buyerName": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+      "total": "19239.3",
+      "currency": "RUB",
+      "delivery": "12 рабочих дней",
+      "payment": "Оплата через 14 календарных дней после приёмки",
+      "vat": "Без НДС",
+      "deliveryCost": null
+    },
+    "items": [
+      {
+        "description": "Корпус РС-1601",
+        "quantity": "5",
+        "unit": "шт.",
+        "unitPrice": "2460",
+        "lineTotal": "12300",
+        "currency": "RUB",
+        "delivery": "8 рабочих дней"
+      },
+      {
+        "description": "Панель НТ-1602",
+        "quantity": "3",
+        "unit": "шт.",
+        "unitPrice": "1875.6",
+        "lineTotal": "5626.8",
+        "currency": "RUB",
+        "delivery": "12 рабочих дней"
+      },
+      {
+        "description": "Вставка АК-1603",
+        "quantity": "14",
+        "unit": "шт.",
+        "unitPrice": "93.75",
+        "lineTotal": "1312.5",
+        "currency": "RUB",
+        "delivery": "6 рабочих дней"
+      }
+    ]
+  },
+  {
+    "id": "g07-scan-fractions",
+    "title": "Топазовый слой",
+    "kind": "scan",
+    "layout": "letter",
+    "pages": 1,
+    "headers": {
+      "supplierName": "ООО «СИНТЕТИКА Топазовый слой»",
+      "taxId": "0000002307",
+      "buyerName": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+      "total": "1074.95",
+      "currency": "CNY",
+      "delivery": "17 календарных дней",
+      "payment": "Оплата через 14 календарных дней после приёмки",
+      "vat": "Без НДС",
+      "deliveryCost": null
+    },
+    "items": [
+      {
+        "description": "Трос ТС-1701",
+        "quantity": "2.375",
+        "unit": "м",
+        "unitPrice": "153.6",
+        "lineTotal": "364.8",
+        "currency": "CNY",
+        "delivery": "17 календарных дней"
+      },
+      {
+        "description": "Паста ТС-1702",
+        "quantity": "0.875",
+        "unit": "кг",
+        "unitPrice": "720",
+        "lineTotal": "630",
+        "currency": "CNY",
+        "delivery": "9 календарных дней"
+      },
+      {
+        "description": "Шпилька ТС-1703",
+        "quantity": "7",
+        "unit": "шт.",
+        "unitPrice": "11.45",
+        "lineTotal": "80.15",
+        "currency": "CNY",
+        "delivery": "6 календарных дней"
+      }
+    ],
+    "tiltDegrees": 0.6
+  },
+  {
+    "id": "g08-no-currency",
+    "title": "Медовый импульс",
+    "kind": "native",
+    "layout": "letter",
+    "pages": 1,
+    "headers": {
+      "supplierName": "ООО «СИНТЕТИКА Медовый импульс»",
+      "taxId": "0000002308",
+      "buyerName": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+      "total": null,
+      "currency": null,
+      "delivery": "15 рабочих дней",
+      "payment": "Оплата через 14 календарных дней после приёмки",
+      "vat": "Без НДС",
+      "deliveryCost": null
+    },
+    "items": [
+      {
+        "description": "Диафрагма МИ-1801",
+        "quantity": "6",
+        "unit": "шт.",
+        "unitPrice": "834",
+        "lineTotal": "5004",
+        "currency": null,
+        "delivery": "10 рабочих дней"
+      },
+      {
+        "description": "Колпак МИ-1802",
+        "quantity": "4",
+        "unit": "шт.",
+        "unitPrice": "287.5",
+        "lineTotal": "1150",
+        "currency": null,
+        "delivery": "15 рабочих дней"
+      },
+      {
+        "description": "Палец МИ-1803",
+        "quantity": "16",
+        "unit": "шт.",
+        "unitPrice": null,
+        "lineTotal": null,
+        "currency": null,
+        "delivery": "5 рабочих дней"
+      }
+    ],
+    "hideRowCurrency": true,
+    "hideDocumentCurrency": true
+  }
+]

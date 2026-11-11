@@ -1,0 +1,124 @@
+{
+  "at": "2026-11-11T11:22:37.508Z",
+  "primarySha256": "eaa9725c1177abc2cd3581d4d5d735187f55b8ed48798f7db12e144351aad88e",
+  "phase": "exploratory AFTER primary seal",
+  "metric": "diagnostic price+currency for unique proposed TZ target; NOT primary, NOT confirmed matches",
+  "candidateRows": 6,
+  "correctNumericPairsForProposedTargets": 6,
+  "items": [
+    {
+      "caseId": "g06-scan-articles",
+      "index": 0,
+      "original": "Корпус PC-1601",
+      "candidate": {
+        "id": "g06-scan-articles-0",
+        "name": "Корпус РС-1601",
+        "sourceArticle": "PC-1601",
+        "targetArticle": "РС-1601",
+        "reason": "visual_homoglyph"
+      },
+      "actualPrice": "2460",
+      "actualCurrency": "RUB",
+      "expectedPrice": "2460",
+      "expectedCurrency": "RUB",
+      "pairCorrectForProposedTarget": true,
+      "requiresBuyerConfirmation": true,
+      "applied": false
+    },
+    {
+      "caseId": "g06-scan-articles",
+      "index": 1,
+      "original": "Панель HT-1602",
+      "candidate": {
+        "id": "g06-scan-articles-1",
+        "name": "Панель НТ-1602",
+        "sourceArticle": "HT-1602",
+        "targetArticle": "НТ-1602",
+        "reason": "visual_homoglyph"
+      },
+      "actualPrice": "1875.6",
+      "actualCurrency": "RUB",
+      "expectedPrice": "1875.6",
+      "expectedCurrency": "RUB",
+      "pairCorrectForProposedTarget": true,
+      "requiresBuyerConfirmation": true,
+      "applied": false
+    },
+    {
+      "caseId": "g06-scan-articles",
+      "index": 2,
+      "original": "Вставка AK-1603",
+      "candidate": {
+        "id": "g06-scan-articles-2",
+        "name": "Вставка АК-1603",
+        "sourceArticle": "AK-1603",
+        "targetArticle": "АК-1603",
+        "reason": "visual_homoglyph"
+      },
+      "actualPrice": "93.75",
+      "actualCurrency": "RUB",
+      "expectedPrice": "93.75",
+      "expectedCurrency": "RUB",
+      "pairCorrectForProposedTarget": true,
+      "requiresBuyerConfirmation": true,
+      "applied": false
+    },
+    {
+      "caseId": "g07-scan-fractions",
+      "index": 0,
+      "original": "Трос TC-1701",
+      "candidate": {
+        "id": "g07-scan-fractions-0",
+        "name": "Трос ТС-1701",
+        "sourceArticle": "TC-1701",
+        "targetArticle": "ТС-1701",
+        "reason": "visual_homoglyph"
+      },
+      "actualPrice": "153.6",
+      "actualCurrency": "CNY",
+      "expectedPrice": "153.6",
+      "expectedCurrency": "CNY",
+      "pairCorrectForProposedTarget": true,
+      "requiresBuyerConfirmation": true,
+      "applied": false
+    },
+    {
+      "caseId": "g07-scan-fractions",
+      "index": 1,
+      "original": "Паста TC-1702",
+      "candidate": {
+        "id": "g07-scan-fractions-1",
+        "name": "Паста ТС-1702",
+        "sourceArticle": "TC-1702",
+        "targetArticle": "ТС-1702",
+        "reason": "visual_homoglyph"
+      },
+      "actualPrice": "720",
+      "actualCurrency": "CNY",
+      "expectedPrice": "720",
+      "expectedCurrency": "CNY",
+      "pairCorrectForProposedTarget": true,
+      "requiresBuyerConfirmation": true,
+      "applied": false
+    },
+    {
+      "caseId": "g07-scan-fractions",
+      "index": 2,
+      "original": "Шпилька TC-1703",
+      "candidate": {
+        "id": "g07-scan-fractions-2",
+        "name": "Шпилька ТС-1703",
+        "sourceArticle": "TC-1703",
+        "targetArticle": "ТС-1703",
+        "reason": "visual_homoglyph"
+      },
+      "actualPrice": "11.45",
+      "actualCurrency": "CNY",
+      "expectedPrice": "11.45",
+      "expectedCurrency": "CNY",
+      "pairCorrectForProposedTarget": true,
+      "requiresBuyerConfirmation": true,
+      "applied": false
+    }
+  ]
+}

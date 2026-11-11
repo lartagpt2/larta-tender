@@ -421,8 +421,10 @@ export class PgAIRepository extends PgScopeRepository {
           for (const field of [
             ...fieldNames.map((k) => draft[k]),
             ...draft.items.flatMap((item) => Object.values(item)),
-          ])
+          ]) {
             field.sourceDocumentId = job.documentId;
+            if (field.currencySource) field.currencySource.sourceDocumentId = job.documentId;
+          }
           job.warnings = [...job.result.warnings];
           const suppliers = (
             await this.pool.query(

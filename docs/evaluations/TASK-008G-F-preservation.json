@@ -1,0 +1,254 @@
+{
+  "at": "2026-11-11T10:35:18.445Z",
+  "baseCommit": "3a6ca15b88fdc034d2b9f0d83d590cea11f5f36c",
+  "files": [
+    {
+      "path": "tender-platform/docs/evaluations/TASK-008F-analysis.json",
+      "sha256": "bb08b060c5af0ba19c7cef676886656f36ac05e7e3c97ab4297eb112abed90a4"
+    },
+    {
+      "path": "tender-platform/docs/evaluations/TASK-008F-error-diagnostics.json",
+      "sha256": "316650d8a25dd7fd2a8c2fcc7cac1fcbc0e2eae2e13d482a9c50bfa9491151ce"
+    },
+    {
+      "path": "tender-platform/docs/evaluations/TASK-008F-preregistration-addendum.json",
+      "sha256": "2db09b3c0a620e3a9c09222fc750b1958e2390fdc15a90b3dac28eb1acdc1e44"
+    },
+    {
+      "path": "tender-platform/docs/evaluations/TASK-008F-preregistration-addendum.md",
+      "sha256": "4c14eba8926f358fd23c3e7035b18f7a83cbb8fe1bdfabddd406c911da746053"
+    },
+    {
+      "path": "tender-platform/docs/evaluations/TASK-008F-preregistration.json",
+      "sha256": "57a09b480aa78c35490c0e199caf22f9ebaa77ababff27d67026ccc82e04af2d"
+    },
+    {
+      "path": "tender-platform/docs/evaluations/TASK-008F-primary-seal.json",
+      "sha256": "1676c0f052b15ae9de34a08e86e0f0fc2947c6da669ca1efba5582a799296868"
+    },
+    {
+      "path": "tender-platform/docs/evaluations/TASK-008F-primary.json",
+      "sha256": "adb38c64407c1b33b0fc406138154f97345fa865e3ae62c1c2f2d3ef1d2c3224"
+    },
+    {
+      "path": "tender-platform/handoffs/TASK-008F.md",
+      "sha256": "e643219df9762bc0f7e69b6d078978e270b08479a8f6dcfbc56dd8af4bc1129f"
+    },
+    {
+      "path": "tender-platform/scripts/task008f/README.md",
+      "sha256": "25f7b8a16296f41f9c22fbb3b501357503d7565e8f26c101803aac80f88cac9a"
+    },
+    {
+      "path": "tender-platform/scripts/task008f/analyze.mjs",
+      "sha256": "8c092516181c20c7d37ba4844cc39783cf91ece546db642230f261c8c0581a35"
+    },
+    {
+      "path": "tender-platform/scripts/task008f/corpus.mjs",
+      "sha256": "93548b33e10ef6421a874a21521ef0f5abc039aa4cfbc34df3c9798bc841b90b"
+    },
+    {
+      "path": "tender-platform/scripts/task008f/freeze.mjs",
+      "sha256": "a29ac0a47322af29197e784a14e6190b4d28341f77a7da804b1e358f2b6db727"
+    },
+    {
+      "path": "tender-platform/scripts/task008f/metrics.mjs",
+      "sha256": "38aa6114fe391f9a3d5372601bef6466e3641c966f39b35c22875fa134932d0e"
+    },
+    {
+      "path": "tender-platform/scripts/task008f/metrics.test.mjs",
+      "sha256": "c74bf1e228f0de037885c91c843e8a218758d22d5c94cc6212db86bfbfa4b2aa"
+    },
+    {
+      "path": "tender-platform/scripts/task008f/run-v2.mjs",
+      "sha256": "98b05b24b332c556441101f1f2a6d91c019cab9fb8c3bc59d63f043765296b4f"
+    },
+    {
+      "path": "tender-platform/scripts/task008f/run.mjs",
+      "sha256": "d2aea44ff36a5ba377d7a1b5b02d93e030b207157c4552ba68ab5db7875688a0"
+    },
+    {
+      "path": "tender-platform/scripts/task008f/verify.mjs",
+      "sha256": "ae874709ca526b49139f0c280a98c5c42313f8b60c17e710e6645f0ce9448d30"
+    },
+    {
+      "path": "tender-platform/tasks/TASK-008F.md",
+      "sha256": "cd72a9e99851b76abeb5763e13daefcd399df09e2874769f3a7510ecda18e7bb"
+    },
+    {
+      "path": "tender-platform/tests/fixtures/task008f-gold.json",
+      "sha256": "4e0cdecf24692ec730616623c7805608811568177f347e4507cc7a8fd4f4cc97"
+    },
+    {
+      "path": "temp/task008f/corpus/f01-letter.pdf",
+      "sha256": "e3fe2b6f01ec1f6fe7d2881775a37430ec6283ff13373ba8cb501c86de952f04"
+    },
+    {
+      "path": "temp/task008f/corpus/f02-table.pdf",
+      "sha256": "0588d3cc9dfa855d73eb9ae21141cc336faf05ce4c6ab3d650218357b6c9ccef"
+    },
+    {
+      "path": "temp/task008f/corpus/f03-measures.pdf",
+      "sha256": "6c3750a17b01a657ad323fae4d8e29628ce2164c10d64f1ca880f34d63249f82"
+    },
+    {
+      "path": "temp/task008f/corpus/f04-scan-letter.pdf",
+      "sha256": "d0d4dc032141642a234448e8aeb5f75f4e60823f1388a15e5ee48f17f9e39202"
+    },
+    {
+      "path": "temp/task008f/corpus/f05-scan-table.pdf",
+      "sha256": "408bdf7ba45bbc79cdd596358e6c471d21d445578f6bfb7ced21e8e031f7affd"
+    },
+    {
+      "path": "temp/task008f/corpus/f06-two-pages.pdf",
+      "sha256": "d0f86760b19b4cd3ee9cf2e88002b256ae7085d68676f158c3498793028ef782"
+    },
+    {
+      "path": "temp/task008f/corpus/f07-party-roles.pdf",
+      "sha256": "60022a2a48d5575f605edd922caf94474e98d5a512ac678dbacdc13cc8187647"
+    },
+    {
+      "path": "temp/task008f/corpus/f08-unquoted.pdf",
+      "sha256": "d12003aaacfb6003765f69c6fd962d557b65dbbfb4c35783f6f5310295b57b66"
+    },
+    {
+      "path": "temp/task008f/corpus/f09-euro.pdf",
+      "sha256": "aaa2dde1611bada2dd4fa930c83ab86cf0353ac58f129b9629ae5eec0d8d48bd"
+    },
+    {
+      "path": "temp/task008f/corpus/f10-conditional.pdf",
+      "sha256": "55f02799df8643091299a1edfffae8c81a3ca4e3eeb15757cf0b01768a62a26b"
+    },
+    {
+      "path": "temp/task008f/corpus/f11-tilted.pdf",
+      "sha256": "47f62096b7db7d744983ca9063d4ce476461cbaa59d75ccf277513d31f82c0d2"
+    },
+    {
+      "path": "temp/task008f/corpus/f12-dense-table.pdf",
+      "sha256": "bc1eec6739a6d6f8b657692928a7446e2f6f8b391650b64ef455a46889e9e5df"
+    },
+    {
+      "path": "temp/task008f/2026-11-11T10-08-49.320Z-23d34993/f01-letter-job.json",
+      "sha256": "9d69859bf9145374ebf1254f81cd4e2246da3d6c36658bca3e242c4b50287573"
+    },
+    {
+      "path": "temp/task008f/2026-11-11T10-08-49.320Z-23d34993/f02-table-job.json",
+      "sha256": "47a2c2798b9431575d434a63c9a7f6184a3ca60a7ddc963249db72fbf829ab6d"
+    },
+    {
+      "path": "temp/task008f/2026-11-11T10-08-49.320Z-23d34993/f03-measures-job.json",
+      "sha256": "7477651bfb29f91cc263171fbd1c036dd09fb3e67f006de50533221daa553c40"
+    },
+    {
+      "path": "temp/task008f/2026-11-11T10-08-49.320Z-23d34993/f04-scan-letter-job.json",
+      "sha256": "109e5b74a26c2c61dc467c888e09cc613a78f59e4eae08989216717ff8ac3c8e"
+    },
+    {
+      "path": "temp/task008f/2026-11-11T10-08-49.320Z-23d34993/f05-scan-table-job.json",
+      "sha256": "3dc7f1c75d283cea93ed892c64bcd7ee41653c36772ea9a8b99c0af64ec08d98"
+    },
+    {
+      "path": "temp/task008f/2026-11-11T10-08-49.320Z-23d34993/f06-two-pages-job.json",
+      "sha256": "a475c4a19485f7e366ac8dd03e1088d0835ea60e8c0d870a0c218ac878584c4d"
+    },
+    {
+      "path": "temp/task008f/2026-11-11T10-08-49.320Z-23d34993/f07-party-roles-job.json",
+      "sha256": "60e793dd19593247c2619ec22d089e5e6d40855e0238a88af18ed4c86d0ecdd9"
+    },
+    {
+      "path": "temp/task008f/2026-11-11T10-08-49.320Z-23d34993/f08-unquoted-job.json",
+      "sha256": "4351fffc6ca34cc3570b020f2f80787ecb5374cba9d6c91dea4709492ecb2ecd"
+    },
+    {
+      "path": "temp/task008f/2026-11-11T10-08-49.320Z-23d34993/f09-euro-job.json",
+      "sha256": "9ce09c8ce71677965bebf77ee7ba05e3354849f490305d86460b3a5c3b1eee8d"
+    },
+    {
+      "path": "temp/task008f/2026-11-11T10-08-49.320Z-23d34993/f10-conditional-job.json",
+      "sha256": "f1e21d999b60e274dbb1bb49f4b90a459244a9a0e2d1888b956df2d0c31611f6"
+    },
+    {
+      "path": "temp/task008f/2026-11-11T10-08-49.320Z-23d34993/f11-tilted-job.json",
+      "sha256": "caa96100396cff77bc0806b685e52bb25f710be40c0bde26af77749fd4222cd8"
+    },
+    {
+      "path": "temp/task008f/2026-11-11T10-08-49.320Z-23d34993/f12-dense-table-job.json",
+      "sha256": "d65b355064fbb04d0d66bc33cb2a588f810e2727c4b4b84ec86a00e3f6512975"
+    },
+    {
+      "path": "temp/task008f/2026-11-11T10-08-49.320Z-23d34993/jobs/document-ai/5069a8db5fcbfcb5ccf5b35a68fb8fd478b9a2bfe3176681165168480ea1aaf6.json",
+      "sha256": "7b7b8ba34c00715eb9bb2faa056cd4329a5b279918172af33add80e90af2df4b"
+    },
+    {
+      "path": "temp/task008f/2026-11-11T10-08-49.320Z-23d34993/jobs/document-ai/5e697251722f0bcef115041dcf892724a5d01ee908281017e60134b28a0d0b14.json",
+      "sha256": "0029302c5566e0dd03c6f9a28ef1fd2711ae112fe70d405d84c8df972c84d153"
+    },
+    {
+      "path": "temp/task008f/2026-11-11T10-08-49.320Z-23d34993/jobs/document-ai/640514b81cff9b24f5fed56b7a8b4c2138fcd4fa0bada3b43065e840822037d5.json",
+      "sha256": "d5d9bebe2a1bc53768bd4461a394feee1d21f6449869b92eeeaa4e0e6d8fc1cd"
+    },
+    {
+      "path": "temp/task008f/2026-11-11T10-08-49.320Z-23d34993/jobs/document-ai/80c04931c121c6c7c6ff41359e63beaeac1baedfa8060f71f5bd35be0459f8a0.json",
+      "sha256": "766582616cffddae401a7df69ed037212ad293f52d303724edd7b3a37c4515b0"
+    },
+    {
+      "path": "temp/task008f/2026-11-11T10-08-49.320Z-23d34993/jobs/document-ai/93450f172b858cd03a4c183c1c28d619e18a1d0440af7b758905bb803f48654b.json",
+      "sha256": "d0039b96926c8334a16aaa9fde6ea7347d607bd85ee80d268903ebc44acb1446"
+    },
+    {
+      "path": "temp/task008f/2026-11-11T10-08-49.320Z-23d34993/jobs/document-ai/b4b38f1e3c633d82e400ab849b26af298a2d69c52aa26570f54c0c4a189e910f.json",
+      "sha256": "1a09ca2e8f7d832e9ad7a688e74a7fd4f063e036e39328a387d6fee6d10cee7a"
+    },
+    {
+      "path": "temp/task008f/2026-11-11T10-08-49.320Z-23d34993/jobs/document-ai/b6085ef649f63a65466e60b5e781ca4d61ee7a3569e578e103b2113219545655.json",
+      "sha256": "62a1795b6a4e728182733991e2cc9ab19bbca9916664d5a1e4dfbca4b2ff48b3"
+    },
+    {
+      "path": "temp/task008f/2026-11-11T10-08-49.320Z-23d34993/jobs/document-ai/b6e9e99e2f18a07454031253757c23e7bab4645ceb19e7bee04d17d57aa16111.json",
+      "sha256": "dfddb0aa7fee4cb020f30ee6356cc7b0a3c59be60d0d425eff9f0e73e2e789cd"
+    },
+    {
+      "path": "temp/task008f/2026-11-11T10-08-49.320Z-23d34993/jobs/document-ai/d99f8dde6354965a0cf924d43f92242f942fb02fb228da3c0fce0d61ad072ee8.json",
+      "sha256": "53b0100a44c491a944d518d6223ca30c9adf35e54eee9c8d646cd49c28810baf"
+    },
+    {
+      "path": "temp/task008f/2026-11-11T10-08-49.320Z-23d34993/jobs/document-ai/e61ff6878c9c11e24149d853b01f33b65c0f00e8d4bb60a24f396be6c2160878.json",
+      "sha256": "7d00f21e5b0c928fc54ecbcb01d63454fe4c6c81336f67d7bae7c6d410a48614"
+    },
+    {
+      "path": "temp/task008f/2026-11-11T10-08-49.320Z-23d34993/jobs/document-ai/e980faf9ed0ebc5deb86f0762681fa86935e28b55ed5107eb9db9e221c6cf414.json",
+      "sha256": "61d821bb65830725ba14ca7ff5fd0ac500aa31d6d455f9bb1a162eae2d710dba"
+    },
+    {
+      "path": "temp/task008f/2026-11-11T10-08-49.320Z-23d34993/jobs/document-ai/ee7e9d492a1cb7bfc3c3c37f14f3913e604b6859ba7da4d4824a4a4fe1bfa202.json",
+      "sha256": "01e9a0f9c4bedb049a8ad0655785b8f674db51d0699f67fb174c1d09906b92e4"
+    },
+    {
+      "path": "temp/task008f/2026-11-11T10-08-49.320Z-23d34993/jobs/document-ai/f4904dabea272b1e82cde4b5a3ca1b07aff2b6f2f3cefbcaaab681438dadf2d4.json",
+      "sha256": "f06d947511785ecc0e9fe02c187ebe09afb4da1dcdfd304c6281d525c8ff714d"
+    },
+    {
+      "path": "temp/task008f/2026-11-11T10-08-49.320Z-23d34993/prepared.json",
+      "sha256": "9f52a9c2741f20e409c663e6f1703a77e0b4af1cbb0790e5cdd3494ce1397f2e"
+    },
+    {
+      "path": "temp/task008f/2026-11-11T10-08-49.320Z-23d34993/results-checkpoint.json",
+      "sha256": "94e7fd4a0003dc4540ea4d37068c833b81b2a6bc463ca0779ace1699acde4726"
+    },
+    {
+      "path": "temp/task008f/2026-11-11T10-08-49.320Z-23d34993/results.json",
+      "sha256": "b8f7dca4998b4980936ce3e41148a2b1e02134df7fd34d0c76de3d260e1c1767"
+    },
+    {
+      "path": "temp/task008f/2026-11-11T10-08-49.320Z-23d34993/ru-malformed-job.json",
+      "sha256": "ecae9a478a72a31a65d5e995632a4c3ec84f3be4fa007833d59018a2244626ae"
+    },
+    {
+      "path": "temp/task008f/2026-11-11T10-08-49.320Z-23d34993/submission.json",
+      "sha256": "36825be46c571921334722b5af4bcc3e6c8307ea0e3985d37ba1ef89a212b4a2"
+    },
+    {
+      "path": "temp/task008f/2026-11-11T10-08-49.320Z-23d34993/trace.json",
+      "sha256": "be5875aa16a85e1dd8f04374d2ce5e4bd7b12ee3cdff1fd83363a1ca2334c94b"
+    }
+  ]
+}
