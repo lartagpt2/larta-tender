@@ -1,3 +1,12 @@
+import { PgStageRepository } from './stages/stage-repository';
+import {
+  BaselineDto,
+  AccreditationDto,
+  ContactDto,
+  DraftDto,
+  ResponseDto,
+  StageDto,
+} from './stages/stage.dto';
 import { Query } from '@nestjs/common';
 import { PgVerificationRepository } from './comparison/verification-repository';
 import { VerificationDto, CreateComparisonLotDto } from './comparison/verification.dto';
@@ -102,6 +111,7 @@ export interface DataOptions {
   extractionRepository?: TzExtractionRepository;
   offerRepository?: PgOfferRepository;
   verificationRepository?: PgVerificationRepository;
+  stageRepository?: PgStageRepository;
 }
 class DataContext {
   readonly repository?: TenderRepository;
@@ -109,6 +119,7 @@ class DataContext {
   readonly extractions?: TzExtractionRepository;
   readonly offers?: PgOfferRepository;
   readonly verifications?: PgVerificationRepository;
+  readonly stages?: PgStageRepository;
   private pool?: Pool;
   constructor(private readonly options: DataOptions) {
     if (options.enabled && options.environment !== 'production') {
@@ -118,6 +129,7 @@ class DataContext {
           (this.pool = new Pool({ max: 5, connectionTimeoutMillis: 5000, statement_timeout: 10000 })),
         );
       this.scope = options.scopeRepository ?? (this.pool ? new PgScopeRepository(this.pool) : undefined);
+      this.stages = options.stageRepository ?? (this.pool ? new PgStageRepository(this.pool) : undefined);
       this.verifications =
         options.verificationRepository ?? (this.pool ? new PgVerificationRepository(this.pool) : undefined);
       this.offers = options.offerRepository ?? (this.pool ? new PgOfferRepository(this.pool) : undefined);
@@ -550,6 +562,154 @@ class TendersController {
       .header('x-content-type-options', 'nosniff')
       .header('content-disposition', 'attachment; filename="comparison.csv"')
       .send(content);
+  }
+  private stages(): PgStageRepository {
+    if (!this.data.stages) throw new ServiceUnavailableException();
+    return this.data.stages;
+  }
+  @Get(':id/stages')
+  stageContext(
+    @Headers('authorization') h: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+  ) {
+    return this.stages().context(this.data.actor(h), id);
+  }
+  @Post(':id/stages')
+  @ApiBody({ type: StageDto })
+  createStage(
+    @Headers('authorization') h: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Body(
+      new ValidationPipe({
+        expectedType: StageDto,
+        whitelist: true,
+        forbidNonWhitelisted: true,
+        transform: true,
+      }),
+    )
+    body: StageDto,
+  ) {
+    return this.stages().create(this.data.actor(h), id, body);
+  }
+  @Post(':id/stages/baseline')
+  @ApiBody({ type: BaselineDto })
+  fixBaseline(
+    @Headers('authorization') h: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Body(
+      new ValidationPipe({
+        expectedType: BaselineDto,
+        whitelist: true,
+        forbidNonWhitelisted: true,
+        transform: true,
+      }),
+    )
+    input: BaselineDto,
+  ) {
+    return this.stages().baseline(this.data.actor(h), id, input);
+  }
+  @Post(':id/stages/:stageId/responses')
+  @ApiBody({ type: ResponseDto })
+  stageResponse(
+    @Headers('authorization') h: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Param('stageId', new ParseUUIDPipe()) stageId: string,
+    @Body(
+      new ValidationPipe({
+        expectedType: ResponseDto,
+        whitelist: true,
+        forbidNonWhitelisted: true,
+        transform: true,
+      }),
+    )
+    body: ResponseDto,
+  ) {
+    return this.stages().respond(this.data.actor(h), id, stageId, body);
+  }
+  @Post(':id/contacts/confirm')
+  @ApiBody({ type: ContactDto })
+  confirmContact(
+    @Headers('authorization') h: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Body(
+      new ValidationPipe({
+        expectedType: ContactDto,
+        whitelist: true,
+        forbidNonWhitelisted: true,
+        transform: true,
+      }),
+    )
+    body: ContactDto,
+  ) {
+    return this.stages().confirmContact(this.data.actor(h), id, body);
+  }
+  @Post(':id/stages/:stageId/drafts')
+  @ApiBody({ type: DraftDto })
+  saveStageDraft(
+    @Headers('authorization') h: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Param('stageId', new ParseUUIDPipe()) stageId: string,
+    @Body(
+      new ValidationPipe({
+        expectedType: DraftDto,
+        whitelist: true,
+        forbidNonWhitelisted: true,
+        transform: true,
+      }),
+    )
+    body: DraftDto,
+  ) {
+    return this.stages().draft(this.data.actor(h), id, stageId, body);
+  }
+  @Post(':id/accreditations')
+  @ApiBody({ type: AccreditationDto })
+  recordAccreditation(
+    @Headers('authorization') h: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Body(
+      new ValidationPipe({
+        expectedType: AccreditationDto,
+        whitelist: true,
+        forbidNonWhitelisted: true,
+        transform: true,
+      }),
+    )
+    body: AccreditationDto,
+  ) {
+    return this.stages().accreditation(this.data.actor(h), id, body);
+  }
+  @Post(':id/accreditations/files')
+  @ApiConsumes('multipart/form-data')
+  async uploadAccreditation(
+    @Headers('authorization') h: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Headers('idempotency-key') key: string,
+    @Req() request: FastifyRequest,
+  ) {
+    const actor = this.data.actor(h);
+    if (!isUUID(key)) throw new BadRequestException();
+    await this.stages().assertWrite(actor, id);
+    const parts = request.parts();
+    let file: { name: string; mime: string; content: Buffer } | undefined;
+    try {
+      for await (const part of parts) {
+        if (part.type !== 'file' || part.fieldname !== 'file' || file) throw new BadRequestException();
+        const content = await part.toBuffer();
+        if (part.file.truncated) throw new PayloadTooLargeException();
+        file = {
+          name: part.filename,
+          mime: specificationType(part.filename, part.mimetype, content),
+          content,
+        };
+      }
+    } catch (e) {
+      const code = (e as { code?: string }).code;
+      if (code === 'FST_REQ_FILE_TOO_LARGE') throw new PayloadTooLargeException();
+      if (code?.startsWith('FST_')) throw new BadRequestException();
+      throw e;
+    }
+    if (!file) throw new BadRequestException();
+    return this.stages().upload(actor, id, key, await this.store().put(file.content), file.name, file.mime);
   }
   @Get(':id/lots')
   @ApiOkResponse({ type: LotDto, isArray: true })
