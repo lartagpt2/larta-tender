@@ -1,0 +1,68 @@
+{
+  "at": "2026-11-11T09:35:00.281Z",
+  "downloaded": 12,
+  "unchanged": 12,
+  "confirmedOffers": 0,
+  "results": [
+    {
+      "group": "results",
+      "id": "ru-simple",
+      "originalUnchanged": true
+    },
+    {
+      "group": "results",
+      "id": "ru-multipage",
+      "originalUnchanged": true
+    },
+    {
+      "group": "results",
+      "id": "ru-decimal",
+      "originalUnchanged": true
+    },
+    {
+      "group": "results",
+      "id": "ru-scan",
+      "originalUnchanged": true
+    },
+    {
+      "group": "results",
+      "id": "ru-malformed",
+      "originalUnchanged": true
+    },
+    {
+      "group": "results",
+      "id": "ru-scan-dense",
+      "originalUnchanged": true
+    },
+    {
+      "group": "results",
+      "id": "ru-missing",
+      "originalUnchanged": true
+    },
+    {
+      "group": "results",
+      "id": "ru-roles",
+      "originalUnchanged": true
+    },
+    {
+      "group": "results",
+      "id": "ru-inconsistent",
+      "originalUnchanged": true
+    },
+    {
+      "group": "holdout",
+      "id": "ru-logistics",
+      "originalUnchanged": true
+    },
+    {
+      "group": "holdout",
+      "id": "ru-malformed",
+      "originalUnchanged": true
+    },
+    {
+      "group": "holdout",
+      "id": "ru-table-scan",
+      "originalUnchanged": true
+    }
+  ]
+}

@@ -252,6 +252,11 @@ function useAIField(key: string, value: string, jobId: string) {
     aiNotice.value = 'Это поле доступно для ручной проверки в исходном документе.';
     return;
   }
+  if (target === 'currency' && !['RUB', 'USD', 'EUR', 'CNY'].includes(value)) {
+    aiNotice.value =
+      'Неизвестная валюта сохранена в ИИ-черновике. Уточните код вручную перед подтверждением; пересчёт не выполняется.';
+    return;
+  }
   const current = fields.value as unknown as Record<string, string | null>;
   if (current[target] !== null && current[target] !== '' && current[target] !== 'unknown') {
     aiNotice.value = 'Поле уже заполнено. ИИ не перезаписывает ручные или подтверждённые значения.';
