@@ -1,0 +1,14 @@
+{
+  "frozenAt": "2026-11-11T10:08:47.753Z",
+  "reason": "Upload 13 files exceeded API maximum 10, before any AI job or inference",
+  "priorRun": "2026-11-11T10-07-07.227Z-0b8d7338",
+  "priorRunFiles": [
+    "prepared.json"
+  ],
+  "priorModelCalls": 0,
+  "runner": "scripts/task008f/run-v2.mjs",
+  "runnerSha256": "98b05b24b332c556441101f1f2a6d91c019cab9fb8c3bc59d63f043765296b4f",
+  "originalManifestSha256": "57a09b480aa78c35490c0e199caf22f9ebaa77ababff27d67026ccc82e04af2d",
+  "noteSha256": "4c14eba8926f358fd23c3e7035b18f7a83cbb8fe1bdfabddd406c911da746053",
+  "corpusScorerAndProductionUnchanged": true
+}

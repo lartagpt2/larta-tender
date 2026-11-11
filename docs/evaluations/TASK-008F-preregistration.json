@@ -1,0 +1,508 @@
+{
+  "version": "task008f-preregistered-v1",
+  "frozenAt": "2026-11-11T10:06:36.573Z",
+  "baselineCommit": "93b8e914e943089b765174b23636f0d3e795767d",
+  "model": "qwen3-vl:8b-instruct",
+  "digest": "0533d74300e4f9bc367d675d4e64ffd073d50ff16a2b4096cc2e8a1cf8c96319",
+  "promptVersion": "untrusted-compact-evidence-v3",
+  "schemaVersion": "document-draft-v3",
+  "runsPerDocument": 1,
+  "realDocumentsAllowed": false,
+  "productionChangesAllowed": false,
+  "documents": [
+    {
+      "id": "f01-letter",
+      "path": "temp/task008f/corpus/f01-letter.pdf",
+      "sha256": "e3fe2b6f01ec1f6fe7d2881775a37430ec6283ff13373ba8cb501c86de952f04"
+    },
+    {
+      "id": "f02-table",
+      "path": "temp/task008f/corpus/f02-table.pdf",
+      "sha256": "0588d3cc9dfa855d73eb9ae21141cc336faf05ce4c6ab3d650218357b6c9ccef"
+    },
+    {
+      "id": "f03-measures",
+      "path": "temp/task008f/corpus/f03-measures.pdf",
+      "sha256": "6c3750a17b01a657ad323fae4d8e29628ce2164c10d64f1ca880f34d63249f82"
+    },
+    {
+      "id": "f04-scan-letter",
+      "path": "temp/task008f/corpus/f04-scan-letter.pdf",
+      "sha256": "d0d4dc032141642a234448e8aeb5f75f4e60823f1388a15e5ee48f17f9e39202"
+    },
+    {
+      "id": "f05-scan-table",
+      "path": "temp/task008f/corpus/f05-scan-table.pdf",
+      "sha256": "408bdf7ba45bbc79cdd596358e6c471d21d445578f6bfb7ced21e8e031f7affd"
+    },
+    {
+      "id": "f06-two-pages",
+      "path": "temp/task008f/corpus/f06-two-pages.pdf",
+      "sha256": "d0f86760b19b4cd3ee9cf2e88002b256ae7085d68676f158c3498793028ef782"
+    },
+    {
+      "id": "f07-party-roles",
+      "path": "temp/task008f/corpus/f07-party-roles.pdf",
+      "sha256": "60022a2a48d5575f605edd922caf94474e98d5a512ac678dbacdc13cc8187647"
+    },
+    {
+      "id": "f08-unquoted",
+      "path": "temp/task008f/corpus/f08-unquoted.pdf",
+      "sha256": "d12003aaacfb6003765f69c6fd962d557b65dbbfb4c35783f6f5310295b57b66"
+    },
+    {
+      "id": "f09-euro",
+      "path": "temp/task008f/corpus/f09-euro.pdf",
+      "sha256": "aaa2dde1611bada2dd4fa930c83ab86cf0353ac58f129b9629ae5eec0d8d48bd"
+    },
+    {
+      "id": "f10-conditional",
+      "path": "temp/task008f/corpus/f10-conditional.pdf",
+      "sha256": "55f02799df8643091299a1edfffae8c81a3ca4e3eeb15757cf0b01768a62a26b"
+    },
+    {
+      "id": "f11-tilted",
+      "path": "temp/task008f/corpus/f11-tilted.pdf",
+      "sha256": "47f62096b7db7d744983ca9063d4ce476461cbaa59d75ccf277513d31f82c0d2"
+    },
+    {
+      "id": "f12-dense-table",
+      "path": "temp/task008f/corpus/f12-dense-table.pdf",
+      "sha256": "bc1eec6739a6d6f8b657692928a7446e2f6f8b391650b64ef455a46889e9e5df"
+    }
+  ],
+  "files": [
+    {
+      "path": "tender-platform/apps/api/dist/document-ai/ai-repository.js",
+      "sha256": "56aca0dbef8d4135012f9fd0f048d388b053d44942513592451b5debce042413"
+    },
+    {
+      "path": "tender-platform/apps/api/dist/document-ai/ai.dto.js",
+      "sha256": "73743d4642ad3ead8acad3e80b9133de69801c93d05069f105d73f14d89ce3d5"
+    },
+    {
+      "path": "tender-platform/apps/api/dist/document-ai/contracts.js",
+      "sha256": "748ec38988893d1e8139c8da413d632685ce941a853cad3d8f1f371dc3d9faa5"
+    },
+    {
+      "path": "tender-platform/apps/api/dist/document-ai/job-store.js",
+      "sha256": "ff989429fd2c129748990d0d863770b384da49c82c78b1b3aa09c18d41f2357c"
+    },
+    {
+      "path": "tender-platform/apps/api/dist/document-ai/normalization.js",
+      "sha256": "9f76e8b238f430f05217d3bafebd23054f7b3b62dba2f8ea3df808fe99eb4411"
+    },
+    {
+      "path": "tender-platform/apps/api/dist/document-ai/ollama.js",
+      "sha256": "316d3b2014ff03c2333dc8af7922b84355822610cd5bd2458b23be974fcd0f86"
+    },
+    {
+      "path": "tender-platform/apps/api/dist/document-ai/pages.js",
+      "sha256": "51d2e72f9a1208e9f404fb151a785199ad0d15e3bbc85d106194a1c69b5974a3"
+    },
+    {
+      "path": "tender-platform/apps/api/package.json",
+      "sha256": "ae88c0d4b6d2effc00aa0ad37367735fdedda90012d2e4f34cfdbfd4f2a904c6"
+    },
+    {
+      "path": "tender-platform/apps/api/src/app.module.ts",
+      "sha256": "7f347ac300648f6a044ee84dd498c5d6a62b550b82431eedb59c800b71aa5007"
+    },
+    {
+      "path": "tender-platform/apps/api/src/application.ts",
+      "sha256": "98f6c8137f1760e5b13a4bc89a93958187a0fd00f4592518858ce9b27d4c9e66"
+    },
+    {
+      "path": "tender-platform/apps/api/src/comparison/calculation.spec.ts",
+      "sha256": "c994ec183fe2b847981429c477ec191eebbdc074822c0057031bc9e503ab9686"
+    },
+    {
+      "path": "tender-platform/apps/api/src/comparison/calculation.ts",
+      "sha256": "b557b01946681c9ce3a8be750d3221570a1b62dfbe98df516e1d51756313eab2"
+    },
+    {
+      "path": "tender-platform/apps/api/src/comparison/verification-repository.ts",
+      "sha256": "f2989e90aa70a5969a9729b39595a85bf94f3541fe6d337e37eb3a90d2af772c"
+    },
+    {
+      "path": "tender-platform/apps/api/src/comparison/verification.dto.spec.ts",
+      "sha256": "205a18394f4f4a9a8061687c3dcabb757282ecff16bba3a43ec0301c3c34a96d"
+    },
+    {
+      "path": "tender-platform/apps/api/src/comparison/verification.dto.ts",
+      "sha256": "8a42ab38c5b79ede9fc4c0cfffeca2b340af6810c0ad7ca60127f962e640eb22"
+    },
+    {
+      "path": "tender-platform/apps/api/src/data/migration-guard.spec.ts",
+      "sha256": "2d207437a6b7f06ddf5dc0e286911cbd2a6a898e45d501fb9ee03a1135499872"
+    },
+    {
+      "path": "tender-platform/apps/api/src/data/models.ts",
+      "sha256": "15b1d00394d14e09ec3821ef4d4406d8f582796cb53f4632458abf4575099214"
+    },
+    {
+      "path": "tender-platform/apps/api/src/data/offer-repository.ts",
+      "sha256": "c667d56d057117502d45e2a39177d5e3e13db5b9ae2eb471f95794dd86f0b180"
+    },
+    {
+      "path": "tender-platform/apps/api/src/data/repository.spec.ts",
+      "sha256": "f1b002109598c0e0aaa1ce7413f42d3c64fd24fa9fdfad27815ec409cc8bdb9d"
+    },
+    {
+      "path": "tender-platform/apps/api/src/data/repository.ts",
+      "sha256": "e2bb14d5e3d5eac9da6c1a1c3e76ce3f61d9a8b25f3caa9769d41ce61bec062c"
+    },
+    {
+      "path": "tender-platform/apps/api/src/data/scope-repository.ts",
+      "sha256": "da0812d0d0fd9d1d28e02c6616de72e0e5dde202d6ab6534473292fa2d68ef56"
+    },
+    {
+      "path": "tender-platform/apps/api/src/document-ai/ai-repository.ts",
+      "sha256": "cc8892fb55c43b4c21a55bf13f03bb52bfb12b57ad9ba6827e1757c5b684e0ca"
+    },
+    {
+      "path": "tender-platform/apps/api/src/document-ai/ai.dto.ts",
+      "sha256": "140c88c950475eb5c0023b8debfa44cc104e4bd01a8eb2a890526b41409b5199"
+    },
+    {
+      "path": "tender-platform/apps/api/src/document-ai/contracts.spec.ts",
+      "sha256": "bb8cab5881df4b28f11d6854d5a0161c5ee7a4fb0d019283cec2379e2a483f2d"
+    },
+    {
+      "path": "tender-platform/apps/api/src/document-ai/contracts.ts",
+      "sha256": "eb96e1827d91a2c596a565f46f5c1904d654fab77fa4b43444f0ad5a116d1434"
+    },
+    {
+      "path": "tender-platform/apps/api/src/document-ai/job-store.spec.ts",
+      "sha256": "0c4298e9e28b94d2050932df0cf10313c10d6beac580bb941ba93f20425f03fb"
+    },
+    {
+      "path": "tender-platform/apps/api/src/document-ai/job-store.ts",
+      "sha256": "0d03e6b89d04df6e1e7323e8edaf29cdccbd70010b5bcb807dab87705167a846"
+    },
+    {
+      "path": "tender-platform/apps/api/src/document-ai/normalization.spec.ts",
+      "sha256": "a3459bf3248d40c9c7074f299b24c791d44b34574ae07ff3165cee76200ccd1f"
+    },
+    {
+      "path": "tender-platform/apps/api/src/document-ai/normalization.ts",
+      "sha256": "551524889625f17cec9d826eb9fc294031a8769f4910e65ab4394691635dd814"
+    },
+    {
+      "path": "tender-platform/apps/api/src/document-ai/ollama.spec.ts",
+      "sha256": "76509f3b1bd4f4c3479ea00165df454ff870c414a8a8719cfd308dd1ee2e546d"
+    },
+    {
+      "path": "tender-platform/apps/api/src/document-ai/ollama.ts",
+      "sha256": "5becb8c06491922a0441f1dbbefe07e0bef380fe873dfe4e141b650c0d775031"
+    },
+    {
+      "path": "tender-platform/apps/api/src/document-ai/pages.spec.ts",
+      "sha256": "dadba97498d52b46cef8f6c8fdca610509b75fdad399e3d280382cbe2a36739f"
+    },
+    {
+      "path": "tender-platform/apps/api/src/document-ai/pages.ts",
+      "sha256": "c777388c40af65eeb62431c61fd4d89de39dc40bfb1d43514e777681cbc1afe1"
+    },
+    {
+      "path": "tender-platform/apps/api/src/extraction/extraction-repository.ts",
+      "sha256": "ceaf63dcb8f566b175f6f61049e0f2fb264045e787dd1caa01856ddf8c6c5890"
+    },
+    {
+      "path": "tender-platform/apps/api/src/extraction/extraction.dto.ts",
+      "sha256": "43ca91ff4945a056d033e94c6c64374eb353b5e9cec03e54372f21a3eb2b6f30"
+    },
+    {
+      "path": "tender-platform/apps/api/src/extraction/pdf-text.service.ts",
+      "sha256": "58344a03eae2d6c0d2300dfb79eb99acd53f44af2bf718c8a2ade0ba53a7303a"
+    },
+    {
+      "path": "tender-platform/apps/api/src/extraction/tz-list-parser.spec.ts",
+      "sha256": "071725b71b697c81cbcd8231e246366790875d71ef4bdcdfdbfbf3fad7ab9085"
+    },
+    {
+      "path": "tender-platform/apps/api/src/extraction/tz-list-parser.ts",
+      "sha256": "252b4225b112baa12f19b096cd13ca0f50e308fc547e301dc1d112145a77712d"
+    },
+    {
+      "path": "tender-platform/apps/api/src/health.spec.ts",
+      "sha256": "b95026652574973462154231b417b07e46a1b405130d44fc56c4132917630ddc"
+    },
+    {
+      "path": "tender-platform/apps/api/src/http-error.filter.spec.ts",
+      "sha256": "fc05b21f87919b714c0c8f4e06027d0fff6956a69145de3746df488ab849a52f"
+    },
+    {
+      "path": "tender-platform/apps/api/src/http-error.filter.ts",
+      "sha256": "525cb7e9b159a13ac1315bb80f7b61bdc00303ee727b4cc976f01fcc9b294b0f"
+    },
+    {
+      "path": "tender-platform/apps/api/src/main.ts",
+      "sha256": "4d61efa42312077bdef4933fec5dc026ec76e40cbc6cf3f1668af52b12e88cb7"
+    },
+    {
+      "path": "tender-platform/apps/api/src/offer-files.spec.ts",
+      "sha256": "a4bbbf8258d6a2c266b2672ee598187fd6ff97dbb0804699cadf6ae5deb16f8f"
+    },
+    {
+      "path": "tender-platform/apps/api/src/offer-files.ts",
+      "sha256": "511ed93af483208a0445470dfeaeccf9d1effbab2567eca7b3799165fe9df267"
+    },
+    {
+      "path": "tender-platform/apps/api/src/offer.dto.spec.ts",
+      "sha256": "c28abcffa8269430376b05337d87aecddb429e1638a9c6d984adea427dc9bcf3"
+    },
+    {
+      "path": "tender-platform/apps/api/src/offer.dto.ts",
+      "sha256": "bbebd4729d83d12acbd8ea561f0983cca30b6154c04b9bede12836b05ac8784e"
+    },
+    {
+      "path": "tender-platform/apps/api/src/scope.dto.ts",
+      "sha256": "f9a199c933638a403c64fa58cfd8c2c6222d6fed4ebfce5ed880b22f9c65dda3"
+    },
+    {
+      "path": "tender-platform/apps/api/src/specification-file.spec.ts",
+      "sha256": "2867ea9b121f407bed7bd1a186f400fe3f99ab6d86fec85114cdd19afe51562e"
+    },
+    {
+      "path": "tender-platform/apps/api/src/specification-file.ts",
+      "sha256": "0ef6976771f771f0a6384d2a762136b00ec4067200590d1242951037894cb499"
+    },
+    {
+      "path": "tender-platform/apps/api/src/stages/stage-calculation.spec.ts",
+      "sha256": "18b6bbeb46425994be65325ed69e262832f81f5bf2622a13b3cc4d143b642065"
+    },
+    {
+      "path": "tender-platform/apps/api/src/stages/stage-calculation.ts",
+      "sha256": "d6c6a6c0ada3a3d15cc7501b0e43a7a7e1832a293140058d620e94b6ad3df8dd"
+    },
+    {
+      "path": "tender-platform/apps/api/src/stages/stage-repository.ts",
+      "sha256": "3e721770471853fdf3fe3c568b95012e57fd48cd2876acbf5cccaf028c0d21a7"
+    },
+    {
+      "path": "tender-platform/apps/api/src/stages/stage.dto.ts",
+      "sha256": "60d1bf38ef34232d348f832114ff5946681bfe086200bf9a4cecdcb28dc252c1"
+    },
+    {
+      "path": "tender-platform/apps/api/src/storage/file-store.spec.ts",
+      "sha256": "460b058db18636a377c69c9c0e59f93033ec133b5134d1131b405271ce6c9a93"
+    },
+    {
+      "path": "tender-platform/apps/api/src/storage/file-store.ts",
+      "sha256": "a6a99c610d79a1ed3bc36a6f4ba0c7b4fdf104f7301019e604ef257e314894e8"
+    },
+    {
+      "path": "tender-platform/apps/api/src/tenders.module.ts",
+      "sha256": "42596a97095fd095c5afd212f25fe3768787762c68fc8cff4a5a10a43cfa1c08"
+    },
+    {
+      "path": "tender-platform/apps/api/src/tenders.spec.ts",
+      "sha256": "26061fb6b5e590aa65ac7f1a68c49ae446e70deb4773bd35cead4164dd69f76d"
+    },
+    {
+      "path": "tender-platform/apps/api/tsconfig.json",
+      "sha256": "e6d146c2e9c38532efb7fe00ce59356996643e38b31970dcc292c9199b147147"
+    },
+    {
+      "path": "tender-platform/apps/web/index.html",
+      "sha256": "61f9834380bd7ccd31661d8c94e638f53109ad5655c93d299aef0a5cddf376f3"
+    },
+    {
+      "path": "tender-platform/apps/web/package.json",
+      "sha256": "f9dee7ba5a8f15d12e428431b7e3991f40f6f3416041526100b27d1251f02e34"
+    },
+    {
+      "path": "tender-platform/apps/web/src/App.vue",
+      "sha256": "b0681e12f5bceeeefa936b20cf73e7f6b3cc2413b56dc198c268d2149ae77272"
+    },
+    {
+      "path": "tender-platform/apps/web/src/CommercialFieldsEditor.vue",
+      "sha256": "bccd68a0b2ac3950cbea0b58a8c25cbad32389bc62f515d81af416e1dd83d88c"
+    },
+    {
+      "path": "tender-platform/apps/web/src/DocumentAIPanel.vue",
+      "sha256": "b190db3e51d1d533957407252d02e832c7ea515852210ca5bc770bf75baf864e"
+    },
+    {
+      "path": "tender-platform/apps/web/src/DocumentsPage.vue",
+      "sha256": "c265508568ffa8fd278e3372259c34204ea29dc4a0ac3579dd268927e6a6dca6"
+    },
+    {
+      "path": "tender-platform/apps/web/src/OfferComparison.vue",
+      "sha256": "57daf2da67fa6aaa28d0c89f287c5280e1e36bc13a89e98ceb0b17fc255abf05"
+    },
+    {
+      "path": "tender-platform/apps/web/src/OfferRegistry.vue",
+      "sha256": "571b0cdb7c7931d587b2980d3cb1e9d1d5670911728909f12749067b680e2ca4"
+    },
+    {
+      "path": "tender-platform/apps/web/src/OfferReview.vue",
+      "sha256": "3fb4d9ec60a1d170535f881695d016ec6651bb1cccc29a769c88ba4b09705d81"
+    },
+    {
+      "path": "tender-platform/apps/web/src/PdfDraftPanel.vue",
+      "sha256": "54020a107edb2b538202a97680c1d3eff40dca5be976748d8312aae587467763"
+    },
+    {
+      "path": "tender-platform/apps/web/src/ScopeItemsEditor.vue",
+      "sha256": "fcd6811cad1a11e6551fd1e68359b24d897c08ea0e56845e724c381c6bd4189f"
+    },
+    {
+      "path": "tender-platform/apps/web/src/TenderCreate.vue",
+      "sha256": "9773934d8e6f7b8d5910111c823e1aef282974a88f36066c3f93e77093abd140"
+    },
+    {
+      "path": "tender-platform/apps/web/src/TenderDetail.vue",
+      "sha256": "ee1a78a78e690a14ae5b18c261434482b60009b48a5bd988eeec1609760d437b"
+    },
+    {
+      "path": "tender-platform/apps/web/src/TenderList.vue",
+      "sha256": "942435d0efcd54cfe770fbdd19fe6ab4435a1a89456a8b4f0d5994e45692a1a3"
+    },
+    {
+      "path": "tender-platform/apps/web/src/TenderSelector.vue",
+      "sha256": "fb5778b3573a0f1d01f04b01f281d35435cb0b34a5ad2762d74a4341c7ce9616"
+    },
+    {
+      "path": "tender-platform/apps/web/src/TenderStages.vue",
+      "sha256": "4cfe47be0bd3a5a30fc38e3766dbed3f69b1e3cc3c352fad15847194c85ad024"
+    },
+    {
+      "path": "tender-platform/apps/web/src/WorkspacePage.vue",
+      "sha256": "05fb43e60578f004bc7d09381b9f2389bad5b47a271ed3f66a6393f8bcb631b8"
+    },
+    {
+      "path": "tender-platform/apps/web/src/main.ts",
+      "sha256": "f53c31c3bbbe83fc821aa9b78f6ecc23c371e4f89ea15e18c7423e0f0829063b"
+    },
+    {
+      "path": "tender-platform/apps/web/src/money.spec.ts",
+      "sha256": "e88756e34e761d261d556db360a0d51b9d247c23bed0216838dc7127f94d97da"
+    },
+    {
+      "path": "tender-platform/apps/web/src/navigation.spec.ts",
+      "sha256": "a60ecbd16a2d22e62a79f35e9d59ce2fdac85570320cd9c40a74da028a35ffa7"
+    },
+    {
+      "path": "tender-platform/apps/web/src/navigation.ts",
+      "sha256": "1e083dfa198e25cade6b19ec5906840fbd388f4c28b078a14d795fa4812a5574"
+    },
+    {
+      "path": "tender-platform/apps/web/src/router.ts",
+      "sha256": "e13b62aa14f5a15822d3050a8b3b5ab0129800fcd45edb2dbdc10a4ea67d50c0"
+    },
+    {
+      "path": "tender-platform/apps/web/src/stages-api.ts",
+      "sha256": "c7039934f84299ad853f9b1c74aefd4ec710368b352b7a71f3c3b220bf64d628"
+    },
+    {
+      "path": "tender-platform/apps/web/src/style.css",
+      "sha256": "2de5eee8536ea2c006365fef2ceb23b8405c80c46dcabb41c0fb9462994abbfe"
+    },
+    {
+      "path": "tender-platform/apps/web/src/tender-api.spec.ts",
+      "sha256": "bcc69ddfd0f8b54fc2c3444e2405fd11871be1b2123723cf7f596df03aad08c0"
+    },
+    {
+      "path": "tender-platform/apps/web/src/tender-api.ts",
+      "sha256": "425875257e33662e95f7739b419b8ef40834991aa3507265cbe0a7ce88cb6bb6"
+    },
+    {
+      "path": "tender-platform/apps/web/src/verification-api.spec.ts",
+      "sha256": "2ccc329f72a8aa53021df864b1dc285facd11e3e58283111f066aede05273412"
+    },
+    {
+      "path": "tender-platform/apps/web/src/verification-api.ts",
+      "sha256": "031e607c05f05cfbeed27a56d42cc186a866c27f729be6c494db004082c08ca0"
+    },
+    {
+      "path": "tender-platform/apps/web/tsconfig.json",
+      "sha256": "92c12759e0f8100c60d921026dc504b0f5630dcef9b309eb0ebdad2fb76589cc"
+    },
+    {
+      "path": "tender-platform/apps/web/vite.config.ts",
+      "sha256": "b76e51a87e8a49451a60a178d0189f19dce61c52b1a37f14ad71de31179effaf"
+    },
+    {
+      "path": "tender-platform/docs/evaluations/TASK-008-GATE-D-summary.json",
+      "sha256": "887d133cf78dd20b75371ee5612b843b0aea16edee61dfef3d7958151451eabf"
+    },
+    {
+      "path": "tender-platform/infra/migrations/001_initial.sql",
+      "sha256": "053d98a74502db2bf246a6e7ea3e0ece04b00e89b566dc3b20bc3ab53860b323"
+    },
+    {
+      "path": "tender-platform/infra/migrations/002_domain_foundation.sql",
+      "sha256": "896f8133b5f09da8e6fadc650c71d81165c115a6e6ad095df1279619f93e8764"
+    },
+    {
+      "path": "tender-platform/package-lock.json",
+      "sha256": "bf77058e07beccf00f26cd03212f221b21dec3bb0f2d1af296cebc83729b0c2d"
+    },
+    {
+      "path": "tender-platform/package.json",
+      "sha256": "1c823944e89fc3e82d4b7ba44550060db4647bc4774d4ff50e42b1a630b1bd5e"
+    },
+    {
+      "path": "tender-platform/packages/shared/package.json",
+      "sha256": "7aa29c382e791f5ad699bcf4ca868a36c99306d27f58a1e6ddccadff3615382f"
+    },
+    {
+      "path": "tender-platform/packages/shared/src/index.ts",
+      "sha256": "4d8906829ab8de6e70e37e71df03e3f2f3e612edacbf2dbea82bd2cdcddfc959"
+    },
+    {
+      "path": "tender-platform/packages/shared/tsconfig.json",
+      "sha256": "f6b8eda5f3c1e86223e76c9412a0e36fd654aae75cd1ba995c6d991fc0e48d15"
+    },
+    {
+      "path": "tender-platform/scripts/document-ai-pages-worker.mjs",
+      "sha256": "3bd89e78619a0ba33cde4a4a403f7fd12d3e7fabca96e6f5c7243e786747f8c1"
+    },
+    {
+      "path": "tender-platform/scripts/task008-gate-d/corpus.mjs",
+      "sha256": "eb1e6ea73b0e0f2c69bbcbf2c90df2a183e1d0763ff4040549c8ebeaa7623c2a"
+    },
+    {
+      "path": "tender-platform/scripts/task008-gate-d/io.mjs",
+      "sha256": "5f9e22f9c221e1075f4fd26e5465136803a42d3d9c7be2b9b71c3c4bf5a65156"
+    },
+    {
+      "path": "tender-platform/scripts/task008-gate-d/scoring.mjs",
+      "sha256": "a9ef9586ee6c8fcb851b4898f5dc3e364444ddf4babc6cf0ccbc0f9837a68737"
+    },
+    {
+      "path": "tender-platform/scripts/task008f/corpus.mjs",
+      "sha256": "93548b33e10ef6421a874a21521ef0f5abc039aa4cfbc34df3c9798bc841b90b"
+    },
+    {
+      "path": "tender-platform/scripts/task008f/freeze.mjs",
+      "sha256": "a29ac0a47322af29197e784a14e6190b4d28341f77a7da804b1e358f2b6db727"
+    },
+    {
+      "path": "tender-platform/scripts/task008f/metrics.mjs",
+      "sha256": "38aa6114fe391f9a3d5372601bef6466e3641c966f39b35c22875fa134932d0e"
+    },
+    {
+      "path": "tender-platform/scripts/task008f/metrics.test.mjs",
+      "sha256": "c74bf1e228f0de037885c91c843e8a218758d22d5c94cc6212db86bfbfa4b2aa"
+    },
+    {
+      "path": "tender-platform/scripts/task008f/run.mjs",
+      "sha256": "d2aea44ff36a5ba377d7a1b5b02d93e030b207157c4552ba68ab5db7875688a0"
+    },
+    {
+      "path": "tender-platform/tasks/TASK-008F.md",
+      "sha256": "cd72a9e99851b76abeb5763e13daefcd399df09e2874769f3a7510ecda18e7bb"
+    },
+    {
+      "path": "tender-platform/tests/fixtures/task008-gate-d-gold.json",
+      "sha256": "690b69975a9b4a2f513575c4441ddd70bc6b8e80b354774a06d8326629b437d9"
+    },
+    {
+      "path": "tender-platform/tests/fixtures/task008f-gold.json",
+      "sha256": "4e0cdecf24692ec730616623c7805608811568177f347e4507cc7a8fd4f4cc97"
+    }
+  ]
+}

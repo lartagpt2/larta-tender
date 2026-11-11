@@ -1,0 +1,625 @@
+[
+  {
+    "id": "f01-letter",
+    "title": "Кедровый маршрут",
+    "kind": "native",
+    "layout": "letter",
+    "pages": 1,
+    "headers": {
+      "supplierName": "ООО «СИНТЕТИКА Кедровый маршрут»",
+      "taxId": "0000001201",
+      "buyerName": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+      "total": "7609.5",
+      "currency": "RUB",
+      "delivery": "11 рабочих дней",
+      "payment": "Оплата через 14 календарных дней после приёмки",
+      "vat": "Без НДС",
+      "deliveryCost": null
+    },
+    "items": [
+      {
+        "description": "Реле учебное КМ-701",
+        "quantity": "7",
+        "unit": "шт.",
+        "unitPrice": "438.5",
+        "lineTotal": "3069.5",
+        "currency": "RUB",
+        "delivery": "6 рабочих дней"
+      },
+      {
+        "description": "Клемма учебная КМ-702",
+        "quantity": "24",
+        "unit": "шт.",
+        "unitPrice": "17.25",
+        "lineTotal": "414",
+        "currency": "RUB",
+        "delivery": "3 рабочих дня"
+      },
+      {
+        "description": "Корпус учебный КМ-703",
+        "quantity": "2",
+        "unit": "шт.",
+        "unitPrice": "2063",
+        "lineTotal": "4126",
+        "currency": "RUB",
+        "delivery": "11 рабочих дней"
+      }
+    ]
+  },
+  {
+    "id": "f02-table",
+    "title": "Гранатовый сектор",
+    "kind": "native",
+    "layout": "table",
+    "pages": 1,
+    "headers": {
+      "supplierName": "ООО «СИНТЕТИКА Гранатовый сектор»",
+      "taxId": "0000001202",
+      "buyerName": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+      "total": "41802.6",
+      "currency": "RUB",
+      "delivery": "Не позднее 18.02.2027",
+      "payment": "Оплата через 14 календарных дней после приёмки",
+      "vat": "Без НДС",
+      "deliveryCost": null
+    },
+    "items": [
+      {
+        "description": "Преобразователь ГС-811",
+        "quantity": "3",
+        "unit": "шт.",
+        "unitPrice": "12750",
+        "lineTotal": "38250",
+        "currency": "RUB",
+        "delivery": "21 календарный день"
+      },
+      {
+        "description": "Скоба ГС-812",
+        "quantity": "16",
+        "unit": "шт.",
+        "unitPrice": "83.4",
+        "lineTotal": "1334.4",
+        "currency": "RUB",
+        "delivery": "7 календарных дней"
+      },
+      {
+        "description": "Штуцер ГС-813",
+        "quantity": "9",
+        "unit": "шт.",
+        "unitPrice": "211.8",
+        "lineTotal": "1906.2",
+        "currency": "RUB",
+        "delivery": "14 календарных дней"
+      },
+      {
+        "description": "Прокладка ГС-814",
+        "quantity": "32",
+        "unit": "шт.",
+        "unitPrice": "9.75",
+        "lineTotal": "312",
+        "currency": "RUB",
+        "delivery": "5 календарных дней"
+      }
+    ]
+  },
+  {
+    "id": "f03-measures",
+    "title": "Базальтовая нить",
+    "kind": "native",
+    "layout": "letter",
+    "pages": 1,
+    "headers": {
+      "supplierName": "ООО «СИНТЕТИКА Базальтовая нить»",
+      "taxId": "0000001203",
+      "buyerName": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+      "total": "2881.125",
+      "currency": "RUB",
+      "delivery": "16 рабочих дней",
+      "payment": "Оплата через 14 календарных дней после приёмки",
+      "vat": "Без НДС",
+      "deliveryCost": null
+    },
+    "items": [
+      {
+        "description": "Шнур учебный БН-921",
+        "quantity": "12.75",
+        "unit": "м",
+        "unitPrice": "42.8",
+        "lineTotal": "545.7",
+        "currency": "RUB",
+        "delivery": "9 рабочих дней"
+      },
+      {
+        "description": "Порошок учебный БН-922",
+        "quantity": "1.625",
+        "unit": "кг",
+        "unitPrice": "960",
+        "lineTotal": "1560",
+        "currency": "RUB",
+        "delivery": "16 рабочих дней"
+      },
+      {
+        "description": "Плёнка учебная БН-923",
+        "quantity": "105.5",
+        "unit": "м",
+        "unitPrice": "7.35",
+        "lineTotal": "775.425",
+        "currency": "RUB",
+        "delivery": "4 рабочих дня"
+      }
+    ]
+  },
+  {
+    "id": "f04-scan-letter",
+    "title": "Васильковый контур",
+    "kind": "scan",
+    "layout": "letter",
+    "pages": 1,
+    "headers": {
+      "supplierName": "ООО «СИНТЕТИКА Васильковый контур»",
+      "taxId": "0000001204",
+      "buyerName": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+      "total": "25807",
+      "currency": "RUB",
+      "delivery": "13 рабочих дней",
+      "payment": "Оплата через 14 календарных дней после приёмки",
+      "vat": "Без НДС",
+      "deliveryCost": null
+    },
+    "items": [
+      {
+        "description": "Пульт учебный ВК-431",
+        "quantity": "2",
+        "unit": "шт.",
+        "unitPrice": "8740",
+        "lineTotal": "17480",
+        "currency": "RUB",
+        "delivery": "В наличии"
+      },
+      {
+        "description": "Модуль учебный ВК-432",
+        "quantity": "5",
+        "unit": "шт.",
+        "unitPrice": "1460.8",
+        "lineTotal": "7304",
+        "currency": "RUB",
+        "delivery": "13 рабочих дней"
+      },
+      {
+        "description": "Держатель учебный ВК-433",
+        "quantity": "11",
+        "unit": "шт.",
+        "unitPrice": "93",
+        "lineTotal": "1023",
+        "currency": "RUB",
+        "delivery": "8 рабочих дней"
+      }
+    ]
+  },
+  {
+    "id": "f05-scan-table",
+    "title": "Янтарная сборка",
+    "kind": "scan",
+    "layout": "table",
+    "pages": 1,
+    "headers": {
+      "supplierName": "ООО «СИНТЕТИКА Янтарная сборка»",
+      "taxId": "0000001205",
+      "buyerName": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+      "total": "10928.1",
+      "currency": "RUB",
+      "delivery": "17 рабочих дней",
+      "payment": "Оплата через 14 календарных дней после приёмки",
+      "vat": "Без НДС",
+      "deliveryCost": null
+    },
+    "items": [
+      {
+        "description": "Кольцо ЯС-541",
+        "quantity": "18",
+        "unit": "шт.",
+        "unitPrice": "31.2",
+        "lineTotal": "561.6",
+        "currency": "RUB",
+        "delivery": "2 рабочих дня"
+      },
+      {
+        "description": "Винт ЯС-542",
+        "quantity": "150",
+        "unit": "шт.",
+        "unitPrice": "4.7",
+        "lineTotal": "705",
+        "currency": "RUB",
+        "delivery": "3 рабочих дня"
+      },
+      {
+        "description": "Гайка ЯС-543",
+        "quantity": "125",
+        "unit": "шт.",
+        "unitPrice": "3.6",
+        "lineTotal": "450",
+        "currency": "RUB",
+        "delivery": "5 рабочих дней"
+      },
+      {
+        "description": "Опора ЯС-544",
+        "quantity": "8",
+        "unit": "шт.",
+        "unitPrice": "420",
+        "lineTotal": "3360",
+        "currency": "RUB",
+        "delivery": "12 рабочих дней"
+      },
+      {
+        "description": "Кронштейн ЯС-545",
+        "quantity": "6",
+        "unit": "шт.",
+        "unitPrice": "975.25",
+        "lineTotal": "5851.5",
+        "currency": "RUB",
+        "delivery": "17 рабочих дней"
+      }
+    ]
+  },
+  {
+    "id": "f06-two-pages",
+    "title": "Лазурный привод",
+    "kind": "native",
+    "layout": "letter",
+    "pages": 2,
+    "headers": {
+      "supplierName": "ООО «СИНТЕТИКА Лазурный привод»",
+      "taxId": "0000001206",
+      "buyerName": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+      "total": "33500",
+      "currency": "RUB",
+      "delivery": "22 календарных дня",
+      "payment": "Оплата через 14 календарных дней после приёмки",
+      "vat": "Без НДС",
+      "deliveryCost": null
+    },
+    "items": [
+      {
+        "description": "Муфта учебная ЛП-651",
+        "quantity": "4",
+        "unit": "шт.",
+        "unitPrice": "1520",
+        "lineTotal": "6080",
+        "currency": "RUB",
+        "delivery": "10 календарных дней"
+      },
+      {
+        "description": "Шкив учебный ЛП-652",
+        "quantity": "3",
+        "unit": "шт.",
+        "unitPrice": "2780",
+        "lineTotal": "8340",
+        "currency": "RUB",
+        "delivery": "12 календарных дней"
+      },
+      {
+        "description": "Цепь учебная ЛП-653",
+        "quantity": "8.5",
+        "unit": "м",
+        "unitPrice": "340",
+        "lineTotal": "2890",
+        "currency": "RUB",
+        "delivery": "15 календарных дней"
+      },
+      {
+        "description": "Звёздочка учебная ЛП-654",
+        "quantity": "6",
+        "unit": "шт.",
+        "unitPrice": "890",
+        "lineTotal": "5340",
+        "currency": "RUB",
+        "delivery": "18 календарных дней"
+      },
+      {
+        "description": "Ступица учебная ЛП-655",
+        "quantity": "2",
+        "unit": "шт.",
+        "unitPrice": "5100",
+        "lineTotal": "10200",
+        "currency": "RUB",
+        "delivery": "22 календарных дня"
+      },
+      {
+        "description": "Шпонка учебная ЛП-656",
+        "quantity": "10",
+        "unit": "шт.",
+        "unitPrice": "65",
+        "lineTotal": "650",
+        "currency": "RUB",
+        "delivery": "7 календарных дней"
+      }
+    ]
+  },
+  {
+    "id": "f07-party-roles",
+    "title": "Вересковый узел",
+    "kind": "scan",
+    "layout": "letter",
+    "pages": 1,
+    "headers": {
+      "supplierName": "ООО «СИНТЕТИКА Вересковый узел»",
+      "taxId": "0000001207",
+      "buyerName": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+      "total": "34589",
+      "currency": "RUB",
+      "delivery": "24 рабочих дня",
+      "payment": "Оплата через 14 календарных дней после приёмки",
+      "vat": "Без НДС",
+      "deliveryCost": null
+    },
+    "items": [
+      {
+        "description": "Трансформатор ВУ-761",
+        "quantity": "2",
+        "unit": "шт.",
+        "unitPrice": "15800",
+        "lineTotal": "31600",
+        "currency": "RUB",
+        "delivery": "24 рабочих дня"
+      },
+      {
+        "description": "Разъём ВУ-762",
+        "quantity": "14",
+        "unit": "шт.",
+        "unitPrice": "213.5",
+        "lineTotal": "2989",
+        "currency": "RUB",
+        "delivery": "6 рабочих дней"
+      }
+    ],
+    "buyerFirst": true
+  },
+  {
+    "id": "f08-unquoted",
+    "title": "Рябиновый резерв",
+    "kind": "native",
+    "layout": "letter",
+    "pages": 1,
+    "headers": {
+      "supplierName": "ООО «СИНТЕТИКА Рябиновый резерв»",
+      "taxId": null,
+      "buyerName": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+      "total": null,
+      "currency": "RUB",
+      "delivery": null,
+      "payment": "Оплата через 14 календарных дней после приёмки",
+      "vat": "Без НДС",
+      "deliveryCost": null
+    },
+    "items": [
+      {
+        "description": "Изолятор РР-871",
+        "quantity": "13",
+        "unit": "шт.",
+        "unitPrice": "165",
+        "lineTotal": "2145",
+        "currency": "RUB",
+        "delivery": null
+      },
+      {
+        "description": "Контактор РР-872",
+        "quantity": "3",
+        "unit": "шт.",
+        "unitPrice": null,
+        "lineTotal": null,
+        "currency": "RUB",
+        "delivery": null
+      }
+    ]
+  },
+  {
+    "id": "f09-euro",
+    "title": "Серебряная ось",
+    "kind": "scan",
+    "layout": "letter",
+    "pages": 1,
+    "headers": {
+      "supplierName": "ООО «СИНТЕТИКА Серебряная ось»",
+      "taxId": "0000001209",
+      "buyerName": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+      "total": "966.6",
+      "currency": "EUR",
+      "delivery": "28 календарных дней",
+      "payment": "Оплата через 14 календарных дней после приёмки",
+      "vat": "Без НДС",
+      "deliveryCost": null
+    },
+    "items": [
+      {
+        "description": "Энкодер СО-981",
+        "quantity": "3",
+        "unit": "шт.",
+        "unitPrice": "286.4",
+        "lineTotal": "859.2",
+        "currency": "EUR",
+        "delivery": "28 календарных дней"
+      },
+      {
+        "description": "Втулка СО-982",
+        "quantity": "12",
+        "unit": "шт.",
+        "unitPrice": "8.95",
+        "lineTotal": "107.4",
+        "currency": "EUR",
+        "delivery": "10 календарных дней"
+      }
+    ]
+  },
+  {
+    "id": "f10-conditional",
+    "title": "Малахитовый шаг",
+    "kind": "native",
+    "layout": "letter",
+    "pages": 1,
+    "headers": {
+      "supplierName": "ООО «СИНТЕТИКА Малахитовый шаг»",
+      "taxId": "0000001210",
+      "buyerName": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+      "total": "4626.5",
+      "currency": "QXZ",
+      "delivery": "DAP, учебная площадка № 7; 8 рабочих дней после оплаты",
+      "payment": "Оплата через 14 календарных дней после приёмки",
+      "vat": "Без НДС",
+      "deliveryCost": null
+    },
+    "items": [
+      {
+        "description": "Фланец МШ-191",
+        "quantity": "5",
+        "unit": "шт.",
+        "unitPrice": "730",
+        "lineTotal": "3650",
+        "currency": "QXZ",
+        "delivery": "После оплаты: 8 рабочих дней"
+      },
+      {
+        "description": "Уплотнитель МШ-192",
+        "quantity": "2.25",
+        "unit": "кг",
+        "unitPrice": "310",
+        "lineTotal": "697.5",
+        "currency": "QXZ",
+        "delivery": "После оплаты: 6 рабочих дней"
+      },
+      {
+        "description": "Хомут МШ-193",
+        "quantity": "15",
+        "unit": "шт.",
+        "unitPrice": "18.6",
+        "lineTotal": "279",
+        "currency": "QXZ",
+        "delivery": "После оплаты: 4 рабочих дня"
+      }
+    ],
+    "expectedWarnings": [
+      "unknown_currency"
+    ]
+  },
+  {
+    "id": "f11-tilted",
+    "title": "Сиреневый пакет",
+    "kind": "scan",
+    "layout": "letter",
+    "pages": 1,
+    "headers": {
+      "supplierName": "ООО «СИНТЕТИКА Сиреневый пакет»",
+      "taxId": "0000001211",
+      "buyerName": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+      "total": "15943",
+      "currency": "RUB",
+      "delivery": "23 календарных дня",
+      "payment": "Оплата через 14 календарных дней после приёмки",
+      "vat": "Без НДС",
+      "deliveryCost": null
+    },
+    "items": [
+      {
+        "description": "Провод СП-291",
+        "quantity": "27.5",
+        "unit": "м",
+        "unitPrice": "61.2",
+        "lineTotal": "1683",
+        "currency": "RUB",
+        "delivery": "12 календарных дней"
+      },
+      {
+        "description": "Гранулят СП-292",
+        "quantity": "3.125",
+        "unit": "кг",
+        "unitPrice": "480",
+        "lineTotal": "1500",
+        "currency": "RUB",
+        "delivery": "19 календарных дней"
+      },
+      {
+        "description": "Блок СП-293",
+        "quantity": "4",
+        "unit": "шт.",
+        "unitPrice": "3190",
+        "lineTotal": "12760",
+        "currency": "RUB",
+        "delivery": "23 календарных дня"
+      }
+    ],
+    "tiltDegrees": 0.8
+  },
+  {
+    "id": "f12-dense-table",
+    "title": "Каштановый вектор",
+    "kind": "scan",
+    "layout": "table",
+    "pages": 1,
+    "headers": {
+      "supplierName": "ООО «СИНТЕТИКА Каштановый вектор»",
+      "taxId": "0000001212",
+      "buyerName": "ООО «СИНТЕТИКА Заказчик Север-Учебный»",
+      "total": "14407.2",
+      "currency": "RUB",
+      "delivery": "20 рабочих дней",
+      "payment": "Оплата через 14 календарных дней после приёмки",
+      "vat": "Без НДС",
+      "deliveryCost": null
+    },
+    "items": [
+      {
+        "description": "Клапан КВ-391",
+        "quantity": "9",
+        "unit": "шт.",
+        "unitPrice": "515",
+        "lineTotal": "4635",
+        "currency": "RUB",
+        "delivery": "4 рабочих дня"
+      },
+      {
+        "description": "Седло КВ-392",
+        "quantity": "9",
+        "unit": "шт.",
+        "unitPrice": "206",
+        "lineTotal": "1854",
+        "currency": "RUB",
+        "delivery": "9 рабочих дней"
+      },
+      {
+        "description": "Шток КВ-393",
+        "quantity": "18",
+        "unit": "шт.",
+        "unitPrice": "132.5",
+        "lineTotal": "2385",
+        "currency": "RUB",
+        "delivery": "11 рабочих дней"
+      },
+      {
+        "description": "Сальник КВ-394",
+        "quantity": "36",
+        "unit": "шт.",
+        "unitPrice": "27.8",
+        "lineTotal": "1000.8",
+        "currency": "RUB",
+        "delivery": "14 рабочих дней"
+      },
+      {
+        "description": "Пружина КВ-395",
+        "quantity": "24",
+        "unit": "шт.",
+        "unitPrice": "45.6",
+        "lineTotal": "1094.4",
+        "currency": "RUB",
+        "delivery": "16 рабочих дней"
+      },
+      {
+        "description": "Крышка КВ-396",
+        "quantity": "9",
+        "unit": "шт.",
+        "unitPrice": "382",
+        "lineTotal": "3438",
+        "currency": "RUB",
+        "delivery": "20 рабочих дней"
+      }
+    ]
+  }
+]

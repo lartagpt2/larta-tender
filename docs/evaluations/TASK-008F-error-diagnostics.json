@@ -1,0 +1,88 @@
+{
+  "at": "2026-11-11T10:17:07.974Z",
+  "phase": "exploratory diagnosis AFTER primary seal, no rescoring",
+  "primarySha256": "adb38c64407c1b33b0fc406138154f97345fa865e3ae62c1c2f2d3ef1d2c3224",
+  "scannedHomoglyphs": [
+    {
+      "positionalComparisonOnly": true,
+      "notUsedForPrimaryAlignment": true,
+      "expected": {
+        "description": "Энкодер СО-981",
+        "quantity": "3",
+        "unit": "шт.",
+        "unitPrice": "286.4",
+        "lineTotal": "859.2",
+        "currency": "EUR",
+        "delivery": "28 календарных дней"
+      },
+      "actual": {
+        "description": "Энкодер CO-981",
+        "sku": null,
+        "quantity": "3",
+        "unit": "шт.",
+        "unitPrice": "286.4",
+        "lineTotal": "859.2",
+        "currency": "EUR",
+        "delivery": "28 календарных дней",
+        "technicalRequirements": null
+      },
+      "expectedArticleCodepoints": [
+        "U+421",
+        "U+41E",
+        "U+2D",
+        "U+39",
+        "U+38",
+        "U+31"
+      ],
+      "actualArticleCodepoints": [
+        "U+43",
+        "U+4F",
+        "U+2D",
+        "U+39",
+        "U+38",
+        "U+31"
+      ]
+    },
+    {
+      "positionalComparisonOnly": true,
+      "notUsedForPrimaryAlignment": true,
+      "expected": {
+        "description": "Втулка СО-982",
+        "quantity": "12",
+        "unit": "шт.",
+        "unitPrice": "8.95",
+        "lineTotal": "107.4",
+        "currency": "EUR",
+        "delivery": "10 календарных дней"
+      },
+      "actual": {
+        "description": "Втулка CO-982",
+        "sku": null,
+        "quantity": "12",
+        "unit": "шт.",
+        "unitPrice": "8.95",
+        "lineTotal": "107.4",
+        "currency": "EUR",
+        "delivery": "10 календарных дней",
+        "technicalRequirements": null
+      },
+      "expectedArticleCodepoints": [
+        "U+421",
+        "U+41E",
+        "U+2D",
+        "U+39",
+        "U+38",
+        "U+32"
+      ],
+      "actualArticleCodepoints": [
+        "U+43",
+        "U+4F",
+        "U+2D",
+        "U+39",
+        "U+38",
+        "U+32"
+      ]
+    }
+  ],
+  "interpretation": "Cyrillic ?? vs Latin CO are visually ambiguous in this raster font; numerical fields are present and correct by positional diagnostic. Strict preregistered row matching and primary metrics stay unchanged."
+}
