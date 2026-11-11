@@ -2,12 +2,25 @@
 import { computed, ref, watch } from 'vue';
 import { useQuery } from '@tanstack/vue-query';
 import { api } from './tender-api';
+import { suggestArticles } from '@tender/shared';
 interface Field {
   rawValue: string | null;
   value: string | null;
   page: number | null;
   evidenceSnippet: string | null;
   confidence: null;
+  sourceDocumentId?: string;
+  currencySource?: {
+    kind: 'native_header';
+    scope: 'document' | 'table';
+    code: string;
+    page: number;
+    line: number;
+    excerpt: string;
+    rowPage: number;
+    rowLine: number;
+    sourceDocumentId?: string;
+  };
 }
 interface Draft {
   items: Record<string, Field>[];
@@ -49,7 +62,7 @@ const emit = defineEmits<{
   ready: [jobId: string];
   restore: [snapshot: Record<string, unknown>, jobId: string];
   'use-field': [key: string, value: string, jobId: string];
-  'use-line': [item: Record<string, Field>, lotItemId: string, jobId: string];
+  'use-line': [item: Record<string, Field>, lotItemId: string, jobId: string, confirmedMatch: boolean];
   'use-supplier': [id: string];
   'use-scope': [items: Record<string, Field>[]];
 }>();
@@ -92,7 +105,25 @@ const edits = ref<Record<string, string | null>>({}),
   busy = ref(false),
   error = ref(''),
   message = ref(''),
-  mapping = ref<Record<number, string>>({});
+  mapping = ref<Record<number, string>>({}),
+  confirmedMapping = ref<Record<number, boolean>>({});
+const suggestions = computed(
+  () =>
+    selected.value?.result?.draft.items.map((item) =>
+      suggestArticles(
+        item.description?.rawValue ?? item.description?.value ?? null,
+        item.sku?.rawValue ?? item.sku?.value ?? null,
+        props.requiredItems ?? [],
+      ),
+    ) ?? [],
+);
+function chooseCandidate(index: number, id: string) {
+  mapping.value[index] = id;
+  confirmedMapping.value[index] = false;
+}
+function candidateSelected(index: number) {
+  return suggestions.value[index]?.candidates.some((c) => c.id === mapping.value[index]) ?? false;
+}
 const labels: Record<string, string> = {
   description: 'Наименование',
   sku: 'Артикул',
@@ -120,6 +151,11 @@ const labels: Record<string, string> = {
   remarks: 'Замечания',
 };
 const warningsText: Record<string, string> = {
+  currency_from_verified_header:
+    'Валюта строки связана с проверенным заголовком; данные остаются черновиком.',
+  currency_header_missing_or_ambiguous: 'Общая валюта не определена однозначно; проверьте строку вручную.',
+  currency_header_unverifiable:
+    'Заголовок валюты нельзя проверить по текстовому слою; требуется ручная проверка.',
   tax_id_invalid_format:
     'ИНН прочитан в неверном формате. Сверьте с оригиналом; нули не добавляются автоматически.',
   tax_id_wrong_role: 'В источнике указан ИНН покупателя. Сверьте реквизиты поставщика вручную.',
@@ -171,10 +207,18 @@ const fields = computed(
       Field,
     ][],
 );
+watch(
+  () => JSON.stringify(props.requiredItems ?? []),
+  () => {
+    mapping.value = {};
+    confirmedMapping.value = {};
+  },
+);
 watch(context, () => {
   chosen.value = '';
   edits.value = {};
   mapping.value = {};
+  confirmedMapping.value = {};
   error.value = '';
   message.value = '';
 });
@@ -184,6 +228,7 @@ watch(
     edits.value = { ...selected.value?.reviews.at(-1)?.fields };
     note.value = '';
     mapping.value = {};
+    confirmedMapping.value = {};
   },
 );
 watch(
@@ -381,22 +426,70 @@ function value(key: string, field: Field) {
             <summary>Фрагмент позиции</summary>
             {{ item.description?.evidenceSnippet }}
           </details>
+          <details v-if="item.currency?.currencySource" class="currency-source">
+            <summary>Валюта из заголовка — источник</summary>
+            <p>
+              Документ {{ item.currency.currencySource.sourceDocumentId ?? selected.documentId }} · стр.
+              {{ item.currency.currencySource.page }}, строка {{ item.currency.currencySource.line }}
+            </p>
+            <p>{{ item.currency.currencySource.excerpt }}</p>
+            <p>
+              Привязка: стр. {{ item.currency.currencySource.rowPage }}, строка
+              {{ item.currency.currencySource.rowLine }}. Не подтверждено.
+            </p>
+          </details>
+          <div v-if="suggestions[index]?.ambiguous.length" class="article-suggestions">
+            <p>
+              В артикуле есть визуально похожие кириллические/латинские символы. Исходное написание
+              сохраняется.
+            </p>
+            <p v-for="token in suggestions[index].ambiguous" :key="token.original">
+              Исходный артикул: <code>{{ token.original }}</code> ·
+              {{ token.characters.map((c) => `${c.character} ${c.codepoint}`).join(', ') }}
+            </p>
+            <p v-if="!suggestions[index].candidates.length">
+              Похожих артикулов в ТЗ текущего лота не найдено.
+            </p>
+            <div
+              v-for="candidate in suggestions[index].candidates"
+              :key="candidate.id + candidate.sourceArticle + candidate.targetArticle"
+            >
+              <p>
+                Возможное совпадение с ТЗ: {{ candidate.name }} · <code>{{ candidate.sourceArticle }}</code> →
+                <code>{{ candidate.targetArticle }}</code>
+              </p>
+              <button type="button" class="secondary-action" @click="chooseCandidate(index, candidate.id)">
+                Выбрать кандидата ТЗ: {{ candidate.name }}
+              </button>
+            </div>
+            <p v-if="suggestions[index].truncated">
+              Показаны первые 20 вариантов; проверьте остальные позиции ТЗ вручную.
+            </p>
+          </div>
           <template v-if="kind === 'offer'"
             ><label
               >Сопоставить с позицией ТЗ<select
                 v-model="mapping[index]"
                 :aria-label="`Позиция ТЗ для строки ИИ ${index + 1}`"
+                @change="confirmedMapping[index] = false"
               >
                 <option value="">Выбрать вручную</option>
                 <option v-for="r in requiredItems ?? []" :key="r.id" :value="r.id">
                   {{ r.name }} · {{ r.quantity }} {{ r.unit }}
                 </option>
               </select></label
+            ><label v-if="candidateSelected(index)">
+              <input
+                v-model="confirmedMapping[index]"
+                type="checkbox"
+                :aria-label="`Подтверждаю сопоставление артикула строки ${index + 1}`"
+              />
+              Подтверждаю сопоставление выбранной позиции ТЗ; исходное написание не заменяется </label
             ><button
               type="button"
               class="secondary-action"
-              :disabled="!mapping[index]"
-              @click="emit('use-line', item, mapping[index], selected.id)"
+              :disabled="!mapping[index] || (candidateSelected(index) && !confirmedMapping[index])"
+              @click="emit('use-line', item, mapping[index], selected.id, confirmedMapping[index] === true)"
             >
               Ввести цену в пустую строку
             </button></template

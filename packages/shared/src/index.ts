@@ -74,3 +74,5 @@ export function offerTotal(price: string | null, extra: string | null): string |
     return null;
   }
 }
+
+export { suggestArticles, type ArticleCandidate } from './article-matching';

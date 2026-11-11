@@ -7,6 +7,7 @@ export default defineConfig(({ mode }) => {
   const local = loadEnv(mode, resolve(__dirname, '../..'), '');
   return {
     plugins: [vue()],
+    resolve: { alias: { '@tender/shared': resolve(__dirname, '../../packages/shared/src/index.ts') } },
     server: {
       host: '127.0.0.1',
       port: 5173,
