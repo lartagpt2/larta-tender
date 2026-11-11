@@ -106,6 +106,25 @@ describe('verified header currency, never confirmation or defaults', () => {
       validateDraft(d, [{ page: 1, text: heading + '\nИтого: 100\n' + text }]).draft.items[0].currency.value,
     ).toBeNull();
   });
+  it('does not inherit a previous table heading across a new unpriced currency heading', () => {
+    const { d, text } = quote(null);
+    expect(
+      validateDraft(d, [
+        {
+          page: 1,
+          text: 'Наименование | Цена, RUB | Сумма, RUB\nДругие товары\nНаименование | Цена | Сумма\n' + text,
+        },
+      ]).draft.items[0].currency.value,
+    ).toBeNull();
+  });
+  it('stops local currency at a new table or section even without a total', () => {
+    const { d, text } = quote(null);
+    for (const boundary of ['Таблица 2', 'Раздел: запчасти'])
+      expect(
+        validateDraft(d, [{ page: 1, text: 'Цена, RUB | Сумма, RUB\n' + boundary + '\n' + text }]).draft
+          .items[0].currency.value,
+      ).toBeNull();
+  });
   it('never borrows a previous document header', () => {
     const a = quote(),
       b = quote(null);

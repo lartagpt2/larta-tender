@@ -4,8 +4,8 @@ import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { createHash } from 'node:crypto';
 import prep from '../../apps/api/dist/document-ai/pages.js';
-import { repo, checked } from '../task008-gate-d/io.mjs';
-import { cases, integrity, frozenFixtures, exclusiveJson, preserveF } from './baseline.mjs';
+import { repo, workspace, checked } from '../task008-gate-d/io.mjs';
+import { cases, exclusiveJson, preserveF } from './baseline.mjs';
 import { score, aggregate } from '../task008-gate-d/scoring.mjs';
 import { criticalMetrics } from '../task008f/metrics.mjs';
 import { priceCurrency } from './metrics.mjs';
@@ -14,10 +14,29 @@ const sha = async (p) =>
   createHash('sha256')
     .update(await readFile(await checked(p)))
     .digest('hex');
-await integrity();
+const registry = await read(resolve(repo, 'docs/evaluations/TASK-008G-preregistration.json'));
+const hardening = await read(resolve(repo, 'docs/evaluations/TASK-008G-postseal-hardening.json'));
+for (const f of registry.files) {
+  assert.equal(
+    await sha(resolve(workspace, hardening.snapshotRoot, f.path)),
+    f.sha256,
+    'frozen primary source ' + f.path,
+  );
+  const change = hardening.changes.find((c) => c.path === f.path);
+  if (change) assert.equal(change.primarySha256, f.sha256);
+  assert.equal(
+    await sha(resolve(workspace, f.path)),
+    change?.finalSha256 ?? f.sha256,
+    'current source ' + f.path,
+  );
+}
+for (const d of registry.documents) assert.equal(await sha(resolve(workspace, d.path)), d.sha256);
+assert.deepEqual(await read(resolve(repo, 'tests/fixtures/task008g-gold.json')), cases);
+await preserveF();
 const p = await read(resolve(repo, 'docs/evaluations/TASK-008G-primary.json'));
 const seal = await read(resolve(repo, 'docs/evaluations/TASK-008G-primary-seal.json'));
 assert.equal(await sha(resolve(repo, 'docs/evaluations/TASK-008G-primary.json')), seal.sha256);
+assert.equal(hardening.primarySha256, seal.sha256);
 assert.equal(
   await sha(resolve(repo, 'docs/evaluations/TASK-008G-preregistration.json')),
   p.preregistrationSha256,
@@ -25,7 +44,9 @@ assert.equal(
 const scores = [],
   details = [];
 let provenances = 0;
-for (const c of await frozenFixtures()) {
+for (const gold of cases) {
+  const entry = registry.documents.find((d) => d.id === gold.id),
+    c = { ...gold, ...entry, path: resolve(workspace, entry.path) };
   const job = await read(resolve(seal.out, c.id + '-job.json')),
     r = p.results.find((r) => r.id === c.id);
   const s = score(c, job);

@@ -92,7 +92,11 @@ export function bindHeaderCurrencies(draft: AIDraft, pages: { page: number; text
           h.line <= rowLine + 1 &&
           !page.lines
             .slice(h.line, rowLine)
-            .some((s) => /^\s*(?:Итого|Всего|Total|Подытог)(?:\s|:|$)/iu.test(s)),
+            .some(
+              (s) =>
+                /^\s*(?:Итого|Всего|Total|Подытог|Таблица|Раздел)(?:\s|:|$)/iu.test(s) ||
+                (!/\d/.test(s) && /(?:Цена|Сумма|Unit price|Amount)/iu.test(s)),
+            ),
       )
       .sort((a, b) => b.line - a.line);
     const candidates = global.length ? global : table.slice(0, 1);

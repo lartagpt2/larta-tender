@@ -1,0 +1,243 @@
+{
+  "at": "2026-11-11T11:30:18.060Z",
+  "reason": "Final code review: stop local table currency at another price/amount heading, table or section, including headers without currency",
+  "primarySha256": "eaa9725c1177abc2cd3581d4d5d735187f55b8ed48798f7db12e144351aad88e",
+  "primaryMetricsUnchanged": true,
+  "snapshotRoot": "temp/task008g/frozen-production",
+  "frozenFilesVerified": 106,
+  "changes": [
+    {
+      "path": "tender-platform/apps/api/dist/document-ai/header-currency.js",
+      "primarySha256": "65723bc9a00878527578141dd82b384b9f94b292efdc04356a045ae1ba4d059c",
+      "finalSha256": "501970c6f54067020f0b002a10feebcc6f6b42e7c5415f8957eb82b6a5ae820d"
+    },
+    {
+      "path": "tender-platform/apps/api/src/document-ai/header-currency.spec.ts",
+      "primarySha256": "8bc0743360e863d35174c8fcc5af999c469a485a69c1be5e3645a72ae87e37af",
+      "finalSha256": "02b299ffbf3df83075951b3f885892078d432e57888d7e7130b0a3ac508d1543"
+    },
+    {
+      "path": "tender-platform/apps/api/src/document-ai/header-currency.ts",
+      "primarySha256": "247886653f7c47faa2ceb6cd611a372619cb01f32b2dfc561b8ba8fbbd72b605",
+      "finalSha256": "f3a20f64b62d4acc5bb78a09d7a7c17c48b6a2bb76442fd47e31b2c7ea3b2ec8"
+    }
+  ],
+  "noNewInference": true,
+  "replayedJobs": 8,
+  "replayedDraftsIdentical": true,
+  "replayedSummary": {
+    "documents": 8,
+    "completed": 8,
+    "exactRowCounts": 8,
+    "supplierCorrect": 8,
+    "buyerAsSupplier": 0,
+    "knownCorrect": 179,
+    "knownTotal": 221,
+    "knownAccuracy": 0.8099547511312217,
+    "nullCorrect": 19,
+    "nullTotal": 19,
+    "nonNullWhenMissing": 0,
+    "criticalCorrect": 128,
+    "criticalTotal": 152,
+    "byField": {
+      "supplierName": {
+        "correct": 8,
+        "total": 8,
+        "knownCorrect": 8,
+        "knownTotal": 8,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "taxId": {
+        "correct": 8,
+        "total": 8,
+        "knownCorrect": 8,
+        "knownTotal": 8,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "buyerName": {
+        "correct": 8,
+        "total": 8,
+        "knownCorrect": 8,
+        "knownTotal": 8,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "total": {
+        "correct": 8,
+        "total": 8,
+        "knownCorrect": 7,
+        "knownTotal": 7,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "currency": {
+        "correct": 8,
+        "total": 8,
+        "knownCorrect": 6,
+        "knownTotal": 6,
+        "missingCorrect": 2,
+        "missingTotal": 2
+      },
+      "delivery": {
+        "correct": 8,
+        "total": 8,
+        "knownCorrect": 8,
+        "knownTotal": 8,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "payment": {
+        "correct": 8,
+        "total": 8,
+        "knownCorrect": 8,
+        "knownTotal": 8,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "vat": {
+        "correct": 8,
+        "total": 8,
+        "knownCorrect": 8,
+        "knownTotal": 8,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "deliveryCost": {
+        "correct": 8,
+        "total": 8,
+        "knownCorrect": 0,
+        "knownTotal": 0,
+        "missingCorrect": 8,
+        "missingTotal": 8
+      },
+      "items.description": {
+        "correct": 18,
+        "total": 24,
+        "knownCorrect": 18,
+        "knownTotal": 24,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "items.quantity": {
+        "correct": 18,
+        "total": 24,
+        "knownCorrect": 18,
+        "knownTotal": 24,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "items.unit": {
+        "correct": 18,
+        "total": 24,
+        "knownCorrect": 18,
+        "knownTotal": 24,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "items.unitPrice": {
+        "correct": 18,
+        "total": 24,
+        "knownCorrect": 17,
+        "knownTotal": 23,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "items.lineTotal": {
+        "correct": 18,
+        "total": 24,
+        "knownCorrect": 17,
+        "knownTotal": 23,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "items.currency": {
+        "correct": 18,
+        "total": 24,
+        "knownCorrect": 12,
+        "knownTotal": 18,
+        "missingCorrect": 6,
+        "missingTotal": 6
+      },
+      "items.delivery": {
+        "correct": 18,
+        "total": 24,
+        "knownCorrect": 18,
+        "knownTotal": 24,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      }
+    }
+  },
+  "replayedPriceCurrency": {
+    "knownPairs": {
+      "correct": 12,
+      "total": 18,
+      "accuracy": 0.6666666666666666,
+      "errors": [
+        {
+          "id": "g06-scan-articles",
+          "index": 0,
+          "description": "Корпус РС-1601",
+          "price": "2460",
+          "currency": "RUB",
+          "correct": false
+        },
+        {
+          "id": "g06-scan-articles",
+          "index": 1,
+          "description": "Панель НТ-1602",
+          "price": "1875.6",
+          "currency": "RUB",
+          "correct": false
+        },
+        {
+          "id": "g06-scan-articles",
+          "index": 2,
+          "description": "Вставка АК-1603",
+          "price": "93.75",
+          "currency": "RUB",
+          "correct": false
+        },
+        {
+          "id": "g07-scan-fractions",
+          "index": 0,
+          "description": "Трос ТС-1701",
+          "price": "153.6",
+          "currency": "CNY",
+          "correct": false
+        },
+        {
+          "id": "g07-scan-fractions",
+          "index": 1,
+          "description": "Паста ТС-1702",
+          "price": "720",
+          "currency": "CNY",
+          "correct": false
+        },
+        {
+          "id": "g07-scan-fractions",
+          "index": 2,
+          "description": "Шпилька ТС-1703",
+          "price": "11.45",
+          "currency": "CNY",
+          "correct": false
+        }
+      ]
+    },
+    "pricedUnknownCurrency": {
+      "correct": 5,
+      "total": 5,
+      "accuracy": 1,
+      "errors": []
+    },
+    "unpriced": {
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1,
+      "errors": []
+    }
+  },
+  "preservedFFiles": 62
+}
