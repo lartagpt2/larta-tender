@@ -77,6 +77,16 @@ export class PgAIRepository extends PgScopeRepository {
   private timer?: NodeJS.Timeout;
   private running?: Promise<void>;
   private closed = false;
+  private enqueuedAt = 0;
+  private enqueueTail: Promise<void> = Promise.resolve();
+  private enqueue<T>(work: () => Promise<T>): Promise<T> {
+    const next = this.enqueueTail.then(work);
+    this.enqueueTail = next.then(
+      () => undefined,
+      () => undefined,
+    );
+    return next;
+  }
   constructor(
     pool: Pool,
     private readonly options: AIOptions,
@@ -231,40 +241,43 @@ export class PgAIRepository extends PgScopeRepository {
       throw new ConflictException();
     }
     try {
-      const existing = await this.store.read(jobId);
-      if (existing) return existing;
-      const at = new Date().toISOString();
-      const job: AIJob = {
-        id: jobId,
-        tenderId: id,
-        documentId: input.documentId,
-        receiptId: input.receiptId ?? null,
-        supplierId: input.supplierId ?? null,
-        lotId: input.lotId ?? null,
-        stageId,
-        kind: input.kind,
-        sourceSha: document.blob_sha256,
-        createdBy: actor,
-        createdAt: at,
-        updatedAt: at,
-        status: 'pending',
-        revision: 1,
-        attempts: 0,
-        name: document.original_name,
-        error: null,
-        configuration: {
-          model: this.options.model ?? 'qwen3-vl:8b-instruct',
-          digest: this.options.digest ?? null,
-        },
-        parserVersion: 'document-pages-v2',
-        schemaVersion,
-        promptVersion,
-        warnings: [],
-        events: [{ status: 'pending', at, actorId: actor }],
-        reviews: [],
-      };
-      await this.store.write(job);
-      return job;
+      return await this.enqueue(async () => {
+        const existing = await this.store.read(jobId);
+        if (existing) return existing;
+        this.enqueuedAt = Math.max(Date.now(), this.enqueuedAt + 1);
+        const at = new Date(this.enqueuedAt).toISOString();
+        const job: AIJob = {
+          id: jobId,
+          tenderId: id,
+          documentId: input.documentId,
+          receiptId: input.receiptId ?? null,
+          supplierId: input.supplierId ?? null,
+          lotId: input.lotId ?? null,
+          stageId,
+          kind: input.kind,
+          sourceSha: document.blob_sha256,
+          createdBy: actor,
+          createdAt: at,
+          updatedAt: at,
+          status: 'pending',
+          revision: 1,
+          attempts: 0,
+          name: document.original_name,
+          error: null,
+          configuration: {
+            model: this.options.model ?? 'qwen3-vl:8b-instruct',
+            digest: this.options.digest ?? null,
+          },
+          parserVersion: 'document-pages-v2',
+          schemaVersion,
+          promptVersion,
+          warnings: [],
+          events: [{ status: 'pending', at, actorId: actor }],
+          reviews: [],
+        };
+        await this.store.write(job);
+        return job;
+      });
     } finally {
       await release();
       this.kick();
@@ -326,11 +339,10 @@ export class PgAIRepository extends PgScopeRepository {
     }
   }
   private async pump() {
-    for await (const pending of this.store.scan()) {
+    for (const pending of await this.store.pending()) {
       if (this.closed) return;
-      if (!['pending', 'running'].includes(pending.status)) continue;
       const release = await this.store.claim(pending.id);
-      if (!release) continue;
+      if (!release) return;
       try {
         const job = await this.store.read(pending.id);
         if (!job || !['pending', 'running'].includes(job.status)) continue;

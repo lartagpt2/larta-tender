@@ -1,0 +1,1545 @@
+{
+  "at": "2026-11-11T09:42:59.449Z",
+  "baselineCommit": "098b1c8aa97eb3327d690efd084bdada1a59415d",
+  "model": "qwen3-vl:8b-instruct",
+  "digest": "0533d74300e4f9bc367d675d4e64ffd073d50ff16a2b4096cc2e8a1cf8c96319",
+  "method": "Same unchanged PDF bytes, corpus, gold and scoring. Baseline / deterministic revalidation of old rawValue / fresh inference with prompt-v3 and normalization. Results remain needs_review.",
+  "integrity": {
+    "verified": true,
+    "files": 14,
+    "originalPdfCount": 10,
+    "hashes": [
+      {
+        "path": "temp/task008-gate-d/2026-11-11T08-52-24.950Z-391ed343/ru-simple.pdf",
+        "sha256": "7dd9481aaaa0674140e7fde2cd6c8b32ba4a6c569d96fb87fa65db0e5a55dec8"
+      },
+      {
+        "path": "temp/task008-gate-d/2026-11-11T08-52-24.950Z-391ed343/ru-multipage.pdf",
+        "sha256": "5a2bebe46f45c10cf4638e62cd3cb746dfa45eaeb5e9a9085f907e647b45fae4"
+      },
+      {
+        "path": "temp/task008-gate-d/2026-11-11T08-52-24.950Z-391ed343/ru-decimal.pdf",
+        "sha256": "0c5ca024c49bfc610d3bbcfce49df01af125ac81c1bd412d67cb6e1cc2ab8f49"
+      },
+      {
+        "path": "temp/task008-gate-d/2026-11-11T08-52-24.950Z-391ed343/ru-scan.pdf",
+        "sha256": "f8610a148c34daadbbcfd5f280551ad03ac7e7685b48b1586db31953122037e5"
+      },
+      {
+        "path": "temp/task008-gate-d/2026-11-11T08-52-24.950Z-391ed343/ru-scan-dense.pdf",
+        "sha256": "0c1b385a13aa0a2a612db2512ebb52f7bda93beae05694120faa5f28e5c1dc58"
+      },
+      {
+        "path": "temp/task008-gate-d/2026-11-11T08-52-24.950Z-391ed343/ru-missing.pdf",
+        "sha256": "8297287a591135a3ae70ba403971930dea42cb07b32e5b99e4808af2bc29be93"
+      },
+      {
+        "path": "temp/task008-gate-d/2026-11-11T08-52-24.950Z-391ed343/ru-roles.pdf",
+        "sha256": "108c15231e58bcb35a3fc085478996e3bfae50d0ebaeaa2ef6d7ead32dec70aa"
+      },
+      {
+        "path": "temp/task008-gate-d/2026-11-11T08-52-24.950Z-391ed343/ru-inconsistent.pdf",
+        "sha256": "86c066b69d8b4d34411e54f5399a9b410833cf83d5e96d55dca03ae1a432f77b"
+      },
+      {
+        "path": "temp/task008-gate-d/2026-11-11T08-58-11.327Z-08fb101e/ru-logistics.pdf",
+        "sha256": "e24f71286ed4a97847bd2600001b30ba9839de53de91bac203be9bc4aca03b2f"
+      },
+      {
+        "path": "temp/task008-gate-d/2026-11-11T08-58-11.327Z-08fb101e/ru-table-scan.pdf",
+        "sha256": "87bf78677e7e4e05f3e1cce1d8a1bc1f134e297341e90b8cb0741a048594a302"
+      },
+      {
+        "path": "tender-platform/tests/fixtures/task008-gate-d-gold.json",
+        "sha256": "690b69975a9b4a2f513575c4441ddd70bc6b8e80b354774a06d8326629b437d9"
+      },
+      {
+        "path": "tender-platform/scripts/task008-gate-d/corpus.mjs",
+        "sha256": "eb1e6ea73b0e0f2c69bbcbf2c90df2a183e1d0763ff4040549c8ebeaa7623c2a"
+      },
+      {
+        "path": "tender-platform/scripts/task008-gate-d/scoring.mjs",
+        "sha256": "a9ef9586ee6c8fcb851b4898f5dc3e364444ddf4babc6cf0ccbc0f9837a68737"
+      },
+      {
+        "path": "tender-platform/docs/evaluations/TASK-008-GATE-D-summary.json",
+        "sha256": "887d133cf78dd20b75371ee5612b843b0aea16edee61dfef3d7958151451eabf"
+      }
+    ]
+  },
+  "before": {
+    "documents": 10,
+    "completed": 10,
+    "exactRowCounts": 10,
+    "supplierCorrect": 9,
+    "buyerAsSupplier": 0,
+    "knownCorrect": 365,
+    "knownTotal": 395,
+    "knownAccuracy": 0.9240506329113924,
+    "nullCorrect": 17,
+    "nullTotal": 17,
+    "nonNullWhenMissing": 0,
+    "criticalCorrect": 232,
+    "criticalTotal": 254,
+    "byField": {
+      "supplierName": {
+        "correct": 10,
+        "total": 10,
+        "knownCorrect": 10,
+        "knownTotal": 10,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "taxId": {
+        "correct": 9,
+        "total": 10,
+        "knownCorrect": 8,
+        "knownTotal": 9,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "buyerName": {
+        "correct": 10,
+        "total": 10,
+        "knownCorrect": 10,
+        "knownTotal": 10,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "total": {
+        "correct": 9,
+        "total": 10,
+        "knownCorrect": 8,
+        "knownTotal": 9,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "currency": {
+        "correct": 9,
+        "total": 10,
+        "knownCorrect": 9,
+        "knownTotal": 10,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "delivery": {
+        "correct": 8,
+        "total": 10,
+        "knownCorrect": 7,
+        "knownTotal": 9,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "payment": {
+        "correct": 8,
+        "total": 10,
+        "knownCorrect": 7,
+        "knownTotal": 9,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "vat": {
+        "correct": 8,
+        "total": 10,
+        "knownCorrect": 7,
+        "knownTotal": 9,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "deliveryCost": {
+        "correct": 10,
+        "total": 10,
+        "knownCorrect": 2,
+        "knownTotal": 2,
+        "missingCorrect": 8,
+        "missingTotal": 8
+      },
+      "items.description": {
+        "correct": 44,
+        "total": 46,
+        "knownCorrect": 44,
+        "knownTotal": 46,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "items.quantity": {
+        "correct": 41,
+        "total": 46,
+        "knownCorrect": 41,
+        "knownTotal": 46,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "items.unit": {
+        "correct": 44,
+        "total": 46,
+        "knownCorrect": 44,
+        "knownTotal": 46,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "items.unitPrice": {
+        "correct": 42,
+        "total": 46,
+        "knownCorrect": 41,
+        "knownTotal": 45,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "items.lineTotal": {
+        "correct": 42,
+        "total": 46,
+        "knownCorrect": 41,
+        "knownTotal": 45,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "items.currency": {
+        "correct": 44,
+        "total": 46,
+        "knownCorrect": 44,
+        "knownTotal": 46,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "items.delivery": {
+        "correct": 44,
+        "total": 46,
+        "knownCorrect": 42,
+        "knownTotal": 44,
+        "missingCorrect": 2,
+        "missingTotal": 2
+      }
+    }
+  },
+  "oldOutputsRevalidated": {
+    "documents": 10,
+    "completed": 10,
+    "exactRowCounts": 10,
+    "supplierCorrect": 9,
+    "buyerAsSupplier": 0,
+    "knownCorrect": 391,
+    "knownTotal": 395,
+    "knownAccuracy": 0.9898734177215189,
+    "nullCorrect": 17,
+    "nullTotal": 17,
+    "nonNullWhenMissing": 0,
+    "criticalCorrect": 250,
+    "criticalTotal": 254,
+    "byField": {
+      "supplierName": {
+        "correct": 10,
+        "total": 10,
+        "knownCorrect": 10,
+        "knownTotal": 10,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "taxId": {
+        "correct": 9,
+        "total": 10,
+        "knownCorrect": 8,
+        "knownTotal": 9,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "buyerName": {
+        "correct": 10,
+        "total": 10,
+        "knownCorrect": 10,
+        "knownTotal": 10,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "total": {
+        "correct": 10,
+        "total": 10,
+        "knownCorrect": 9,
+        "knownTotal": 9,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "currency": {
+        "correct": 9,
+        "total": 10,
+        "knownCorrect": 9,
+        "knownTotal": 10,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "delivery": {
+        "correct": 10,
+        "total": 10,
+        "knownCorrect": 9,
+        "knownTotal": 9,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "payment": {
+        "correct": 10,
+        "total": 10,
+        "knownCorrect": 9,
+        "knownTotal": 9,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "vat": {
+        "correct": 10,
+        "total": 10,
+        "knownCorrect": 9,
+        "knownTotal": 9,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "deliveryCost": {
+        "correct": 10,
+        "total": 10,
+        "knownCorrect": 2,
+        "knownTotal": 2,
+        "missingCorrect": 8,
+        "missingTotal": 8
+      },
+      "items.description": {
+        "correct": 46,
+        "total": 46,
+        "knownCorrect": 46,
+        "knownTotal": 46,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "items.quantity": {
+        "correct": 46,
+        "total": 46,
+        "knownCorrect": 46,
+        "knownTotal": 46,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "items.unit": {
+        "correct": 46,
+        "total": 46,
+        "knownCorrect": 46,
+        "knownTotal": 46,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "items.unitPrice": {
+        "correct": 46,
+        "total": 46,
+        "knownCorrect": 45,
+        "knownTotal": 45,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "items.lineTotal": {
+        "correct": 46,
+        "total": 46,
+        "knownCorrect": 45,
+        "knownTotal": 45,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "items.currency": {
+        "correct": 46,
+        "total": 46,
+        "knownCorrect": 46,
+        "knownTotal": 46,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "items.delivery": {
+        "correct": 44,
+        "total": 46,
+        "knownCorrect": 42,
+        "knownTotal": 44,
+        "missingCorrect": 2,
+        "missingTotal": 2
+      }
+    }
+  },
+  "after": {
+    "documents": 10,
+    "completed": 10,
+    "exactRowCounts": 10,
+    "supplierCorrect": 10,
+    "buyerAsSupplier": 0,
+    "knownCorrect": 394,
+    "knownTotal": 395,
+    "knownAccuracy": 0.9974683544303797,
+    "nullCorrect": 17,
+    "nullTotal": 17,
+    "nonNullWhenMissing": 0,
+    "criticalCorrect": 253,
+    "criticalTotal": 254,
+    "byField": {
+      "supplierName": {
+        "correct": 10,
+        "total": 10,
+        "knownCorrect": 10,
+        "knownTotal": 10,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "taxId": {
+        "correct": 10,
+        "total": 10,
+        "knownCorrect": 9,
+        "knownTotal": 9,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "buyerName": {
+        "correct": 10,
+        "total": 10,
+        "knownCorrect": 10,
+        "knownTotal": 10,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "total": {
+        "correct": 10,
+        "total": 10,
+        "knownCorrect": 9,
+        "knownTotal": 9,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "currency": {
+        "correct": 9,
+        "total": 10,
+        "knownCorrect": 9,
+        "knownTotal": 10,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "delivery": {
+        "correct": 10,
+        "total": 10,
+        "knownCorrect": 9,
+        "knownTotal": 9,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "payment": {
+        "correct": 10,
+        "total": 10,
+        "knownCorrect": 9,
+        "knownTotal": 9,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "vat": {
+        "correct": 10,
+        "total": 10,
+        "knownCorrect": 9,
+        "knownTotal": 9,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "deliveryCost": {
+        "correct": 10,
+        "total": 10,
+        "knownCorrect": 2,
+        "knownTotal": 2,
+        "missingCorrect": 8,
+        "missingTotal": 8
+      },
+      "items.description": {
+        "correct": 46,
+        "total": 46,
+        "knownCorrect": 46,
+        "knownTotal": 46,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "items.quantity": {
+        "correct": 46,
+        "total": 46,
+        "knownCorrect": 46,
+        "knownTotal": 46,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "items.unit": {
+        "correct": 46,
+        "total": 46,
+        "knownCorrect": 46,
+        "knownTotal": 46,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "items.unitPrice": {
+        "correct": 46,
+        "total": 46,
+        "knownCorrect": 45,
+        "knownTotal": 45,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "items.lineTotal": {
+        "correct": 46,
+        "total": 46,
+        "knownCorrect": 45,
+        "knownTotal": 45,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "items.currency": {
+        "correct": 46,
+        "total": 46,
+        "knownCorrect": 46,
+        "knownTotal": 46,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "items.delivery": {
+        "correct": 46,
+        "total": 46,
+        "knownCorrect": 44,
+        "knownTotal": 44,
+        "missingCorrect": 2,
+        "missingTotal": 2
+      }
+    }
+  },
+  "afterRawValue": {
+    "documents": 10,
+    "completed": 10,
+    "exactRowCounts": 10,
+    "supplierCorrect": 10,
+    "buyerAsSupplier": 0,
+    "knownCorrect": 388,
+    "knownTotal": 395,
+    "knownAccuracy": 0.9822784810126582,
+    "nullCorrect": 15,
+    "nullTotal": 17,
+    "nonNullWhenMissing": 2,
+    "criticalCorrect": 247,
+    "criticalTotal": 254,
+    "byField": {
+      "supplierName": {
+        "correct": 10,
+        "total": 10,
+        "knownCorrect": 10,
+        "knownTotal": 10,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "taxId": {
+        "correct": 10,
+        "total": 10,
+        "knownCorrect": 9,
+        "knownTotal": 9,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "buyerName": {
+        "correct": 10,
+        "total": 10,
+        "knownCorrect": 10,
+        "knownTotal": 10,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "total": {
+        "correct": 10,
+        "total": 10,
+        "knownCorrect": 9,
+        "knownTotal": 9,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "currency": {
+        "correct": 9,
+        "total": 10,
+        "knownCorrect": 9,
+        "knownTotal": 10,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "delivery": {
+        "correct": 8,
+        "total": 10,
+        "knownCorrect": 7,
+        "knownTotal": 9,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "payment": {
+        "correct": 8,
+        "total": 10,
+        "knownCorrect": 7,
+        "knownTotal": 9,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "vat": {
+        "correct": 8,
+        "total": 10,
+        "knownCorrect": 7,
+        "knownTotal": 9,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "deliveryCost": {
+        "correct": 10,
+        "total": 10,
+        "knownCorrect": 2,
+        "knownTotal": 2,
+        "missingCorrect": 8,
+        "missingTotal": 8
+      },
+      "items.description": {
+        "correct": 46,
+        "total": 46,
+        "knownCorrect": 46,
+        "knownTotal": 46,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "items.quantity": {
+        "correct": 46,
+        "total": 46,
+        "knownCorrect": 46,
+        "knownTotal": 46,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "items.unit": {
+        "correct": 46,
+        "total": 46,
+        "knownCorrect": 46,
+        "knownTotal": 46,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "items.unitPrice": {
+        "correct": 45,
+        "total": 46,
+        "knownCorrect": 45,
+        "knownTotal": 45,
+        "missingCorrect": 0,
+        "missingTotal": 1
+      },
+      "items.lineTotal": {
+        "correct": 45,
+        "total": 46,
+        "knownCorrect": 45,
+        "knownTotal": 45,
+        "missingCorrect": 0,
+        "missingTotal": 1
+      },
+      "items.currency": {
+        "correct": 46,
+        "total": 46,
+        "knownCorrect": 46,
+        "knownTotal": 46,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "items.delivery": {
+        "correct": 46,
+        "total": 46,
+        "knownCorrect": 44,
+        "knownTotal": 44,
+        "missingCorrect": 2,
+        "missingTotal": 2
+      }
+    }
+  },
+  "improvementPercentagePoints": 7.341772151898729,
+  "latency": {
+    "before": {
+      "documents": 10,
+      "minMs": 17849,
+      "maxMs": 76341,
+      "p50Ms": 31975,
+      "p95Ms": 76341
+    },
+    "after": {
+      "documents": 10,
+      "minMs": 18119,
+      "maxMs": 75885,
+      "p50Ms": 32743,
+      "p95Ms": 75885
+    }
+  },
+  "queue": {
+    "beforeFIFO": false,
+    "afterFIFO": true,
+    "before": [
+      {
+        "runId": "2026-11-11T08-52-24.950Z-391ed343",
+        "submitted": 9,
+        "validDocuments": 8,
+        "expectedMalformed": 1,
+        "maxActive": 1,
+        "peakRunning": 1,
+        "peakPending": 8,
+        "wallMs": 293441,
+        "processingP50Ms": 31975,
+        "processingP95Ms": 58994,
+        "allTerminal": true,
+        "idempotency": true,
+        "persistedReload": true,
+        "confirmedOffers": 0,
+        "stageResponses": 0,
+        "order": [
+          "ru-simple",
+          "ru-multipage",
+          "ru-scan-dense",
+          "ru-inconsistent",
+          "ru-decimal",
+          "ru-scan",
+          "ru-roles",
+          "ru-missing"
+        ],
+        "trace": [
+          {
+            "id": "ru-simple",
+            "start": "2026-11-11T08:52:29.948Z",
+            "end": "2026-11-11T08:53:00.013Z",
+            "durationMs": 30065
+          },
+          {
+            "id": "ru-multipage",
+            "start": "2026-11-11T08:53:01.647Z",
+            "end": "2026-11-11T08:53:58.513Z",
+            "durationMs": 56866
+          },
+          {
+            "id": "ru-scan-dense",
+            "start": "2026-11-11T08:53:59.164Z",
+            "end": "2026-11-11T08:54:57.526Z",
+            "durationMs": 58362
+          },
+          {
+            "id": "ru-inconsistent",
+            "start": "2026-11-11T08:54:58.195Z",
+            "end": "2026-11-11T08:55:22.560Z",
+            "durationMs": 24365
+          },
+          {
+            "id": "ru-decimal",
+            "start": "2026-11-11T08:55:22.924Z",
+            "end": "2026-11-11T08:55:54.566Z",
+            "durationMs": 31642
+          },
+          {
+            "id": "ru-scan",
+            "start": "2026-11-11T08:55:54.933Z",
+            "end": "2026-11-11T08:56:29.387Z",
+            "durationMs": 34454
+          },
+          {
+            "id": "ru-roles",
+            "start": "2026-11-11T08:56:29.771Z",
+            "end": "2026-11-11T08:57:04.680Z",
+            "durationMs": 34909
+          },
+          {
+            "id": "ru-missing",
+            "start": "2026-11-11T08:57:05.382Z",
+            "end": "2026-11-11T08:57:22.631Z",
+            "durationMs": 17249
+          }
+        ]
+      },
+      {
+        "runId": "2026-11-11T08-58-11.327Z-08fb101e",
+        "submitted": 3,
+        "validDocuments": 2,
+        "expectedMalformed": 1,
+        "maxActive": 1,
+        "peakRunning": 1,
+        "peakPending": 2,
+        "wallMs": 107989,
+        "processingP50Ms": 28948,
+        "processingP95Ms": 76341,
+        "allTerminal": true,
+        "idempotency": true,
+        "persistedReload": true,
+        "confirmedOffers": 0,
+        "stageResponses": 0,
+        "order": ["ru-logistics", "ru-table-scan"],
+        "trace": [
+          {
+            "id": "ru-logistics",
+            "start": "2026-11-11T08:58:17.571Z",
+            "end": "2026-11-11T08:58:45.861Z",
+            "durationMs": 28290
+          },
+          {
+            "id": "ru-table-scan",
+            "start": "2026-11-11T08:58:48.076Z",
+            "end": "2026-11-11T09:00:03.157Z",
+            "durationMs": 75081
+          }
+        ]
+      }
+    ],
+    "after": [
+      {
+        "runId": "2026-11-11T09-25-53.958Z-12d339aa",
+        "submitted": 9,
+        "validDocuments": 8,
+        "expectedMalformed": 1,
+        "maxActive": 1,
+        "peakRunning": 1,
+        "peakPending": 8,
+        "wallMs": 297171,
+        "processingP50Ms": 32743,
+        "processingP95Ms": 59827,
+        "allTerminal": true,
+        "fifo": true,
+        "submissionOrder": [
+          "ru-simple",
+          "ru-multipage",
+          "ru-decimal",
+          "ru-scan",
+          "ru-malformed",
+          "ru-scan-dense",
+          "ru-missing",
+          "ru-roles",
+          "ru-inconsistent"
+        ],
+        "processingOrder": [
+          "ru-simple",
+          "ru-multipage",
+          "ru-decimal",
+          "ru-scan",
+          "ru-malformed",
+          "ru-scan-dense",
+          "ru-missing",
+          "ru-roles",
+          "ru-inconsistent"
+        ],
+        "idempotency": true,
+        "persistedReload": true,
+        "confirmedOffers": 0,
+        "stageResponses": 0,
+        "order": [
+          "ru-simple",
+          "ru-multipage",
+          "ru-decimal",
+          "ru-scan",
+          "ru-scan-dense",
+          "ru-missing",
+          "ru-roles",
+          "ru-inconsistent"
+        ],
+        "trace": [
+          {
+            "id": "ru-simple",
+            "start": "2026-11-11T09:25:58.092Z",
+            "end": "2026-11-11T09:26:28.286Z",
+            "durationMs": 30194
+          },
+          {
+            "id": "ru-multipage",
+            "start": "2026-11-11T09:26:29.466Z",
+            "end": "2026-11-11T09:27:26.524Z",
+            "durationMs": 57058
+          },
+          {
+            "id": "ru-decimal",
+            "start": "2026-11-11T09:27:27.300Z",
+            "end": "2026-11-11T09:27:59.304Z",
+            "durationMs": 32004
+          },
+          {
+            "id": "ru-scan",
+            "start": "2026-11-11T09:28:00.409Z",
+            "end": "2026-11-11T09:28:35.125Z",
+            "durationMs": 34716
+          },
+          {
+            "id": "ru-scan-dense",
+            "start": "2026-11-11T09:28:36.875Z",
+            "end": "2026-11-11T09:29:35.546Z",
+            "durationMs": 58671
+          },
+          {
+            "id": "ru-missing",
+            "start": "2026-11-11T09:29:35.853Z",
+            "end": "2026-11-11T09:29:53.695Z",
+            "durationMs": 17842
+          },
+          {
+            "id": "ru-roles",
+            "start": "2026-11-11T09:29:53.971Z",
+            "end": "2026-11-11T09:30:29.015Z",
+            "durationMs": 35044
+          },
+          {
+            "id": "ru-inconsistent",
+            "start": "2026-11-11T09:30:29.220Z",
+            "end": "2026-11-11T09:30:53.449Z",
+            "durationMs": 24229
+          }
+        ]
+      },
+      {
+        "runId": "2026-11-11T09-32-27.411Z-3987ea42",
+        "submitted": 3,
+        "validDocuments": 2,
+        "expectedMalformed": 1,
+        "maxActive": 1,
+        "peakRunning": 1,
+        "peakPending": 2,
+        "wallMs": 107020,
+        "processingP50Ms": 28009,
+        "processingP95Ms": 75885,
+        "allTerminal": true,
+        "fifo": true,
+        "submissionOrder": ["ru-logistics", "ru-malformed", "ru-table-scan"],
+        "processingOrder": ["ru-logistics", "ru-malformed", "ru-table-scan"],
+        "idempotency": true,
+        "persistedReload": true,
+        "confirmedOffers": 0,
+        "stageResponses": 0,
+        "order": ["ru-logistics", "ru-table-scan"],
+        "trace": [
+          {
+            "id": "ru-logistics",
+            "start": "2026-11-11T09:32:28.700Z",
+            "end": "2026-11-11T09:32:56.500Z",
+            "durationMs": 27800
+          },
+          {
+            "id": "ru-table-scan",
+            "start": "2026-11-11T09:32:59.420Z",
+            "end": "2026-11-11T09:34:14.623Z",
+            "durationMs": 75203
+          }
+        ]
+      }
+    ],
+    "originals": {
+      "at": "2026-11-11T09:35:00.281Z",
+      "downloaded": 12,
+      "unchanged": 12,
+      "confirmedOffers": 0,
+      "results": [
+        {
+          "group": "results",
+          "id": "ru-simple",
+          "originalUnchanged": true
+        },
+        {
+          "group": "results",
+          "id": "ru-multipage",
+          "originalUnchanged": true
+        },
+        {
+          "group": "results",
+          "id": "ru-decimal",
+          "originalUnchanged": true
+        },
+        {
+          "group": "results",
+          "id": "ru-scan",
+          "originalUnchanged": true
+        },
+        {
+          "group": "results",
+          "id": "ru-malformed",
+          "originalUnchanged": true
+        },
+        {
+          "group": "results",
+          "id": "ru-scan-dense",
+          "originalUnchanged": true
+        },
+        {
+          "group": "results",
+          "id": "ru-missing",
+          "originalUnchanged": true
+        },
+        {
+          "group": "results",
+          "id": "ru-roles",
+          "originalUnchanged": true
+        },
+        {
+          "group": "results",
+          "id": "ru-inconsistent",
+          "originalUnchanged": true
+        },
+        {
+          "group": "holdout",
+          "id": "ru-logistics",
+          "originalUnchanged": true
+        },
+        {
+          "group": "holdout",
+          "id": "ru-malformed",
+          "originalUnchanged": true
+        },
+        {
+          "group": "holdout",
+          "id": "ru-table-scan",
+          "originalUnchanged": true
+        }
+      ]
+    }
+  },
+  "cases": [
+    {
+      "id": "ru-simple",
+      "sourceSha": "7dd9481aaaa0674140e7fde2cd6c8b32ba4a6c569d96fb87fa65db0e5a55dec8",
+      "before": {
+        "correct": 29,
+        "total": 29,
+        "processingMs": 30360,
+        "queueWaitMs": 16
+      },
+      "revalidated": {
+        "correct": 29,
+        "total": 29,
+        "remainingErrors": []
+      },
+      "after": {
+        "id": "ru-simple",
+        "status": "needs_review",
+        "error": null,
+        "expectedRows": 3,
+        "actualRows": 3,
+        "matchedRows": 3,
+        "rowPrecision": 1,
+        "rowRecall": 1,
+        "knownCorrect": 29,
+        "knownTotal": 29,
+        "unknownCorrect": 1,
+        "unknownTotal": 1,
+        "supplierCorrect": true,
+        "buyerAsSupplier": false,
+        "expectedWarnings": [],
+        "missingWarnings": [],
+        "warnings": ["supplier_unresolved_or_ambiguous"],
+        "errors": [],
+        "kind": "native",
+        "pages": 1,
+        "sourceSha": "7dd9481aaaa0674140e7fde2cd6c8b32ba4a6c569d96fb87fa65db0e5a55dec8",
+        "model": "qwen3-vl:8b-instruct",
+        "digest": "0533d74300e4f9bc367d675d4e64ffd073d50ff16a2b4096cc2e8a1cf8c96319",
+        "createdAt": "2026-11-11T09:25:57.231Z",
+        "startAt": "2026-11-11T09:25:57.298Z",
+        "endAt": "2026-11-11T09:26:28.294Z",
+        "queueWaitMs": 67,
+        "processingMs": 30996,
+        "inferenceMs": 30194,
+        "totalMs": 31063,
+        "attempts": 1,
+        "rawCorrect": 29,
+        "rawTotal": 29
+      },
+      "remainingErrors": []
+    },
+    {
+      "id": "ru-multipage",
+      "sourceSha": "5a2bebe46f45c10cf4638e62cd3cb746dfa45eaeb5e9a9085f907e647b45fae4",
+      "before": {
+        "correct": 57,
+        "total": 71,
+        "processingMs": 57169,
+        "queueWaitMs": 31681
+      },
+      "revalidated": {
+        "correct": 69,
+        "total": 71,
+        "remainingErrors": [
+          {
+            "path": "items[0].delivery",
+            "expected": "2 рабочих дней",
+            "actual": null,
+            "type": "missing"
+          },
+          {
+            "path": "items[1].delivery",
+            "expected": "4 рабочих дней",
+            "actual": null,
+            "type": "missing"
+          }
+        ]
+      },
+      "after": {
+        "id": "ru-multipage",
+        "status": "needs_review",
+        "error": null,
+        "expectedRows": 9,
+        "actualRows": 9,
+        "matchedRows": 9,
+        "rowPrecision": 1,
+        "rowRecall": 1,
+        "knownCorrect": 71,
+        "knownTotal": 71,
+        "unknownCorrect": 1,
+        "unknownTotal": 1,
+        "supplierCorrect": true,
+        "buyerAsSupplier": false,
+        "expectedWarnings": [],
+        "missingWarnings": [],
+        "warnings": ["supplier_unresolved_or_ambiguous"],
+        "errors": [],
+        "kind": "native",
+        "pages": 3,
+        "sourceSha": "5a2bebe46f45c10cf4638e62cd3cb746dfa45eaeb5e9a9085f907e647b45fae4",
+        "model": "qwen3-vl:8b-instruct",
+        "digest": "0533d74300e4f9bc367d675d4e64ffd073d50ff16a2b4096cc2e8a1cf8c96319",
+        "createdAt": "2026-11-11T09:25:57.314Z",
+        "startAt": "2026-11-11T09:26:28.890Z",
+        "endAt": "2026-11-11T09:27:26.539Z",
+        "queueWaitMs": 31576,
+        "processingMs": 57649,
+        "inferenceMs": 57055,
+        "totalMs": 89225,
+        "attempts": 1,
+        "rawCorrect": 71,
+        "rawTotal": 71
+      },
+      "remainingErrors": []
+    },
+    {
+      "id": "ru-decimal",
+      "sourceSha": "0c5ca024c49bfc610d3bbcfce49df01af125ac81c1bd412d67cb6e1cc2ab8f49",
+      "before": {
+        "correct": 27,
+        "total": 30,
+        "processingMs": 31975,
+        "queueWaitMs": 172906
+      },
+      "revalidated": {
+        "correct": 30,
+        "total": 30,
+        "remainingErrors": []
+      },
+      "after": {
+        "id": "ru-decimal",
+        "status": "needs_review",
+        "error": null,
+        "expectedRows": 3,
+        "actualRows": 3,
+        "matchedRows": 3,
+        "rowPrecision": 1,
+        "rowRecall": 1,
+        "knownCorrect": 30,
+        "knownTotal": 30,
+        "unknownCorrect": 0,
+        "unknownTotal": 0,
+        "supplierCorrect": true,
+        "buyerAsSupplier": false,
+        "expectedWarnings": [],
+        "missingWarnings": [],
+        "warnings": ["supplier_unresolved_or_ambiguous"],
+        "errors": [],
+        "kind": "native",
+        "pages": 1,
+        "sourceSha": "0c5ca024c49bfc610d3bbcfce49df01af125ac81c1bd412d67cb6e1cc2ab8f49",
+        "model": "qwen3-vl:8b-instruct",
+        "digest": "0533d74300e4f9bc367d675d4e64ffd073d50ff16a2b4096cc2e8a1cf8c96319",
+        "createdAt": "2026-11-11T09:25:57.404Z",
+        "startAt": "2026-11-11T09:27:26.578Z",
+        "endAt": "2026-11-11T09:27:59.321Z",
+        "queueWaitMs": 89174,
+        "processingMs": 32743,
+        "inferenceMs": 32004,
+        "totalMs": 121917,
+        "attempts": 1,
+        "rawCorrect": 30,
+        "rawTotal": 30
+      },
+      "remainingErrors": []
+    },
+    {
+      "id": "ru-scan",
+      "sourceSha": "f8610a148c34daadbbcfd5f280551ad03ac7e7685b48b1586db31953122037e5",
+      "before": {
+        "correct": 29,
+        "total": 29,
+        "processingMs": 34799,
+        "queueWaitMs": 204876
+      },
+      "revalidated": {
+        "correct": 29,
+        "total": 29,
+        "remainingErrors": []
+      },
+      "after": {
+        "id": "ru-scan",
+        "status": "needs_review",
+        "error": null,
+        "expectedRows": 3,
+        "actualRows": 3,
+        "matchedRows": 3,
+        "rowPrecision": 1,
+        "rowRecall": 1,
+        "knownCorrect": 29,
+        "knownTotal": 29,
+        "unknownCorrect": 1,
+        "unknownTotal": 1,
+        "supplierCorrect": true,
+        "buyerAsSupplier": false,
+        "expectedWarnings": [],
+        "missingWarnings": [],
+        "warnings": ["vision_evidence_requires_review", "supplier_unresolved_or_ambiguous"],
+        "errors": [],
+        "kind": "scan",
+        "pages": 1,
+        "sourceSha": "f8610a148c34daadbbcfd5f280551ad03ac7e7685b48b1586db31953122037e5",
+        "model": "qwen3-vl:8b-instruct",
+        "digest": "0533d74300e4f9bc367d675d4e64ffd073d50ff16a2b4096cc2e8a1cf8c96319",
+        "createdAt": "2026-11-11T09:25:57.517Z",
+        "startAt": "2026-11-11T09:27:59.367Z",
+        "endAt": "2026-11-11T09:28:35.134Z",
+        "queueWaitMs": 121850,
+        "processingMs": 35767,
+        "inferenceMs": 34716,
+        "totalMs": 157617,
+        "attempts": 1,
+        "rawCorrect": 29,
+        "rawTotal": 29
+      },
+      "remainingErrors": []
+    },
+    {
+      "id": "ru-scan-dense",
+      "sourceSha": "0c1b385a13aa0a2a612db2512ebb52f7bda93beae05694120faa5f28e5c1dc58",
+      "before": {
+        "correct": 53,
+        "total": 57,
+        "processingMs": 58994,
+        "queueWaitMs": 88796
+      },
+      "revalidated": {
+        "correct": 56,
+        "total": 57,
+        "remainingErrors": [
+          {
+            "path": "taxId",
+            "expected": "0000000005",
+            "actual": null,
+            "type": "missing"
+          }
+        ]
+      },
+      "after": {
+        "id": "ru-scan-dense",
+        "status": "needs_review",
+        "error": null,
+        "expectedRows": 7,
+        "actualRows": 7,
+        "matchedRows": 7,
+        "rowPrecision": 1,
+        "rowRecall": 1,
+        "knownCorrect": 57,
+        "knownTotal": 57,
+        "unknownCorrect": 1,
+        "unknownTotal": 1,
+        "supplierCorrect": true,
+        "buyerAsSupplier": false,
+        "expectedWarnings": [],
+        "missingWarnings": [],
+        "warnings": ["vision_evidence_requires_review", "supplier_unresolved_or_ambiguous"],
+        "errors": [],
+        "kind": "scan",
+        "pages": 2,
+        "sourceSha": "0c1b385a13aa0a2a612db2512ebb52f7bda93beae05694120faa5f28e5c1dc58",
+        "model": "qwen3-vl:8b-instruct",
+        "digest": "0533d74300e4f9bc367d675d4e64ffd073d50ff16a2b4096cc2e8a1cf8c96319",
+        "createdAt": "2026-11-11T09:25:57.705Z",
+        "startAt": "2026-11-11T09:28:35.732Z",
+        "endAt": "2026-11-11T09:29:35.559Z",
+        "queueWaitMs": 158027,
+        "processingMs": 59827,
+        "inferenceMs": 58669,
+        "totalMs": 217854,
+        "attempts": 1,
+        "rawCorrect": 54,
+        "rawTotal": 57
+      },
+      "remainingErrors": []
+    },
+    {
+      "id": "ru-missing",
+      "sourceSha": "8297287a591135a3ae70ba403971930dea42cb07b32e5b99e4808af2bc29be93",
+      "before": {
+        "correct": 12,
+        "total": 13,
+        "processingMs": 17849,
+        "queueWaitMs": 275030
+      },
+      "revalidated": {
+        "correct": 12,
+        "total": 13,
+        "remainingErrors": [
+          {
+            "path": "currency",
+            "expected": "RUB",
+            "actual": null,
+            "type": "missing"
+          }
+        ]
+      },
+      "after": {
+        "id": "ru-missing",
+        "status": "needs_review",
+        "error": null,
+        "expectedRows": 2,
+        "actualRows": 2,
+        "matchedRows": 2,
+        "rowPrecision": 1,
+        "rowRecall": 1,
+        "knownCorrect": 12,
+        "knownTotal": 13,
+        "unknownCorrect": 10,
+        "unknownTotal": 10,
+        "supplierCorrect": true,
+        "buyerAsSupplier": false,
+        "expectedWarnings": [],
+        "missingWarnings": [],
+        "warnings": ["missing_line_price", "missing_total", "supplier_unresolved_or_ambiguous"],
+        "errors": [
+          {
+            "path": "currency",
+            "expected": "RUB",
+            "actual": null,
+            "type": "missing"
+          }
+        ],
+        "kind": "native",
+        "pages": 1,
+        "sourceSha": "8297287a591135a3ae70ba403971930dea42cb07b32e5b99e4808af2bc29be93",
+        "model": "qwen3-vl:8b-instruct",
+        "digest": "0533d74300e4f9bc367d675d4e64ffd073d50ff16a2b4096cc2e8a1cf8c96319",
+        "createdAt": "2026-11-11T09:25:57.816Z",
+        "startAt": "2026-11-11T09:29:35.584Z",
+        "endAt": "2026-11-11T09:29:53.703Z",
+        "queueWaitMs": 217768,
+        "processingMs": 18119,
+        "inferenceMs": 17842,
+        "totalMs": 235887,
+        "attempts": 1,
+        "rawCorrect": 12,
+        "rawTotal": 13
+      },
+      "remainingErrors": [
+        {
+          "path": "currency",
+          "expected": "RUB",
+          "actual": null,
+          "type": "missing"
+        }
+      ]
+    },
+    {
+      "id": "ru-roles",
+      "sourceSha": "108c15231e58bcb35a3fc085478996e3bfae50d0ebaeaa2ef6d7ead32dec70aa",
+      "before": {
+        "correct": 29,
+        "total": 29,
+        "processingMs": 35297,
+        "queueWaitMs": 239630
+      },
+      "revalidated": {
+        "correct": 29,
+        "total": 29,
+        "remainingErrors": []
+      },
+      "after": {
+        "id": "ru-roles",
+        "status": "needs_review",
+        "error": null,
+        "expectedRows": 3,
+        "actualRows": 3,
+        "matchedRows": 3,
+        "rowPrecision": 1,
+        "rowRecall": 1,
+        "knownCorrect": 29,
+        "knownTotal": 29,
+        "unknownCorrect": 1,
+        "unknownTotal": 1,
+        "supplierCorrect": true,
+        "buyerAsSupplier": false,
+        "expectedWarnings": [],
+        "missingWarnings": [],
+        "warnings": ["supplier_unresolved_or_ambiguous"],
+        "errors": [],
+        "kind": "native",
+        "pages": 1,
+        "sourceSha": "108c15231e58bcb35a3fc085478996e3bfae50d0ebaeaa2ef6d7ead32dec70aa",
+        "model": "qwen3-vl:8b-instruct",
+        "digest": "0533d74300e4f9bc367d675d4e64ffd073d50ff16a2b4096cc2e8a1cf8c96319",
+        "createdAt": "2026-11-11T09:25:57.868Z",
+        "startAt": "2026-11-11T09:29:53.728Z",
+        "endAt": "2026-11-11T09:30:29.022Z",
+        "queueWaitMs": 235860,
+        "processingMs": 35294,
+        "inferenceMs": 35044,
+        "totalMs": 271154,
+        "attempts": 1,
+        "rawCorrect": 29,
+        "rawTotal": 29
+      },
+      "remainingErrors": []
+    },
+    {
+      "id": "ru-inconsistent",
+      "sourceSha": "86c066b69d8b4d34411e54f5399a9b410833cf83d5e96d55dca03ae1a432f77b",
+      "before": {
+        "correct": 17,
+        "total": 22,
+        "processingMs": 24727,
+        "queueWaitMs": 148032
+      },
+      "revalidated": {
+        "correct": 22,
+        "total": 22,
+        "remainingErrors": []
+      },
+      "after": {
+        "id": "ru-inconsistent",
+        "status": "needs_review",
+        "error": null,
+        "expectedRows": 2,
+        "actualRows": 2,
+        "matchedRows": 2,
+        "rowPrecision": 1,
+        "rowRecall": 1,
+        "knownCorrect": 22,
+        "knownTotal": 22,
+        "unknownCorrect": 1,
+        "unknownTotal": 1,
+        "supplierCorrect": true,
+        "buyerAsSupplier": false,
+        "expectedWarnings": ["line_arithmetic_mismatch", "total_arithmetic_mismatch", "unknown_currency"],
+        "missingWarnings": [],
+        "warnings": [
+          "unknown_currency",
+          "line_arithmetic_mismatch",
+          "total_arithmetic_mismatch",
+          "supplier_unresolved_or_ambiguous"
+        ],
+        "errors": [],
+        "kind": "native",
+        "pages": 1,
+        "sourceSha": "86c066b69d8b4d34411e54f5399a9b410833cf83d5e96d55dca03ae1a432f77b",
+        "model": "qwen3-vl:8b-instruct",
+        "digest": "0533d74300e4f9bc367d675d4e64ffd073d50ff16a2b4096cc2e8a1cf8c96319",
+        "createdAt": "2026-11-11T09:25:57.928Z",
+        "startAt": "2026-11-11T09:30:29.041Z",
+        "endAt": "2026-11-11T09:30:53.462Z",
+        "queueWaitMs": 271113,
+        "processingMs": 24421,
+        "inferenceMs": 24229,
+        "totalMs": 295534,
+        "attempts": 1,
+        "rawCorrect": 22,
+        "rawTotal": 22
+      },
+      "remainingErrors": []
+    },
+    {
+      "id": "ru-logistics",
+      "sourceSha": "e24f71286ed4a97847bd2600001b30ba9839de53de91bac203be9bc4aca03b2f",
+      "before": {
+        "correct": 23,
+        "total": 23,
+        "processingMs": 28948,
+        "queueWaitMs": 41
+      },
+      "revalidated": {
+        "correct": 23,
+        "total": 23,
+        "remainingErrors": []
+      },
+      "after": {
+        "id": "ru-logistics",
+        "status": "needs_review",
+        "error": null,
+        "expectedRows": 2,
+        "actualRows": 2,
+        "matchedRows": 2,
+        "rowPrecision": 1,
+        "rowRecall": 1,
+        "knownCorrect": 23,
+        "knownTotal": 23,
+        "unknownCorrect": 0,
+        "unknownTotal": 0,
+        "supplierCorrect": true,
+        "buyerAsSupplier": false,
+        "expectedWarnings": [],
+        "missingWarnings": [],
+        "warnings": ["evidence_source_reanchored", "supplier_unresolved_or_ambiguous"],
+        "errors": [],
+        "kind": "native",
+        "pages": 1,
+        "sourceSha": "e24f71286ed4a97847bd2600001b30ba9839de53de91bac203be9bc4aca03b2f",
+        "model": "qwen3-vl:8b-instruct",
+        "digest": "0533d74300e4f9bc367d675d4e64ffd073d50ff16a2b4096cc2e8a1cf8c96319",
+        "createdAt": "2026-11-11T09:32:28.463Z",
+        "startAt": "2026-11-11T09:32:28.496Z",
+        "endAt": "2026-11-11T09:32:56.505Z",
+        "queueWaitMs": 33,
+        "processingMs": 28009,
+        "inferenceMs": 27799,
+        "totalMs": 28042,
+        "attempts": 1,
+        "rawCorrect": 23,
+        "rawTotal": 23
+      },
+      "remainingErrors": []
+    },
+    {
+      "id": "ru-table-scan",
+      "sourceSha": "87bf78677e7e4e05f3e1cce1d8a1bc1f134e297341e90b8cb0741a048594a302",
+      "before": {
+        "correct": 89,
+        "total": 92,
+        "processingMs": 76341,
+        "queueWaitMs": 29877
+      },
+      "revalidated": {
+        "correct": 92,
+        "total": 92,
+        "remainingErrors": []
+      },
+      "after": {
+        "id": "ru-table-scan",
+        "status": "needs_review",
+        "error": null,
+        "expectedRows": 12,
+        "actualRows": 12,
+        "matchedRows": 12,
+        "rowPrecision": 1,
+        "rowRecall": 1,
+        "knownCorrect": 92,
+        "knownTotal": 92,
+        "unknownCorrect": 1,
+        "unknownTotal": 1,
+        "supplierCorrect": true,
+        "buyerAsSupplier": false,
+        "expectedWarnings": [],
+        "missingWarnings": [],
+        "warnings": ["vision_evidence_requires_review", "supplier_unresolved_or_ambiguous"],
+        "errors": [],
+        "kind": "scan",
+        "pages": 2,
+        "sourceSha": "87bf78677e7e4e05f3e1cce1d8a1bc1f134e297341e90b8cb0741a048594a302",
+        "model": "qwen3-vl:8b-instruct",
+        "digest": "0533d74300e4f9bc367d675d4e64ffd073d50ff16a2b4096cc2e8a1cf8c96319",
+        "createdAt": "2026-11-11T09:32:28.528Z",
+        "startAt": "2026-11-11T09:32:58.743Z",
+        "endAt": "2026-11-11T09:34:14.628Z",
+        "queueWaitMs": 30215,
+        "processingMs": 75885,
+        "inferenceMs": 75202,
+        "totalMs": 106100,
+        "attempts": 1,
+        "rawCorrect": 89,
+        "rawTotal": 92
+      },
+      "remainingErrors": []
+    }
+  ]
+}

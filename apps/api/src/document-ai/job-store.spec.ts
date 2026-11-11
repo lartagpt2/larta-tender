@@ -58,3 +58,23 @@ describe('persistent scoped local job store', () => {
     expect(() => new JobStore('C:/outside', 'C:/Users/oalimova/ai_project')).toThrow();
   });
 });
+
+it('orders pending work by immutable enqueue time rather than hash, preserving restart order', async () => {
+  const root = resolve(workspace, 'temp/task008-tests', randomUUID()),
+    store = new JobStore<{ id: string; status: string; createdAt: string; updatedAt?: string }>(
+      root,
+      workspace,
+    );
+  await store.write({
+    id: 'f'.repeat(64),
+    status: 'pending',
+    createdAt: '2026-11-11T10:00:00.000Z',
+    updatedAt: '2026-11-11T20:00:00.000Z',
+  });
+  await store.write({ id: 'a'.repeat(64), status: 'pending', createdAt: '2026-11-11T10:00:00.002Z' });
+  await store.write({ id: 'b'.repeat(64), status: 'failed', createdAt: '2026-11-11T09:00:00.000Z' });
+  await store.write({ id: 'c'.repeat(64), status: 'running', createdAt: '2026-11-11T10:00:00.001Z' });
+  expect((await store.pending()).map((j) => j.id[0])).toEqual(['f', 'c', 'a']);
+  const restarted = new JobStore<{ id: string }>(root, workspace);
+  expect((await restarted.pending()).map((j) => j.id[0])).toEqual(['f', 'c', 'a']);
+});

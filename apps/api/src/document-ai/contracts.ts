@@ -1,10 +1,22 @@
+import {
+  numeric,
+  printedUnit,
+  normalizedText,
+  absent,
+  fold,
+  containsRaw,
+  rowEvidence,
+} from './normalization';
+export { numeric } from './normalization';
 import Ajv from 'ajv';
 import Decimal from 'decimal.js';
 const ExactDecimal = Decimal.clone({ precision: 60 });
-export const schemaVersion = 'document-draft-v2',
-  promptVersion = 'untrusted-compact-evidence-v2';
+export const schemaVersion = 'document-draft-v3',
+  promptVersion = 'untrusted-compact-evidence-v3';
 export interface Evidence {
   sourceDocumentId?: string;
+  originalEvidenceSnippet?: string | null;
+  evidenceMethod?: 'source_row_reanchored';
   rawValue: string | null;
   value: string | null;
   page: number | null;
@@ -47,6 +59,8 @@ const field = {
   additionalProperties: false,
   required: ['rawValue', 'value', 'page', 'evidenceSnippet', 'confidence'],
   properties: {
+    originalEvidenceSnippet: { type: ['string', 'null'], maxLength: 2000 },
+    evidenceMethod: { enum: ['source_row_reanchored'] },
     rawValue: { type: ['string', 'null'], maxLength: 2000 },
     value: { type: ['string', 'null'], maxLength: 2000 },
     page: { type: ['integer', 'null'], minimum: 1, maximum: 30 },
@@ -109,18 +123,6 @@ export function emptyField(): Evidence {
 export function emptyDraft(): AIDraft {
   return { ...Object.fromEntries(fieldNames.map((k) => [k, emptyField()])), items: [] } as unknown as AIDraft;
 }
-export function numeric(raw: string | null): string | null {
-  if (raw === null) return null;
-  const match = raw
-    .trim()
-    .match(
-      /^(?:(?:Qty|Quantity|Количество|UnitPrice|Unit price|Цена|Amount|Сумма|Grand total|Total|Итого)\s*:?\s*)?((?:\d{1,3}(?:[ \u00a0]\d{3})+|\d+)(?:[.,]\d{1,6})?)\s*(?:RUB|USD|EUR|CNY|руб\.?|₽|pcs|pieces|шт\.?)?$/i,
-    );
-  if (!match) return null;
-  const value = match[1].replace(/[\s\u00a0]/g, '').replace(',', '.');
-  if (!/^(?:0|[1-9]\d{0,13})(?:\.\d{1,6})?$/.test(value)) return null;
-  return new ExactDecimal(value).toFixed();
-}
 export function validateDraft(
   input: unknown,
   pages: { page: number; text: string }[],
@@ -134,58 +136,86 @@ export function validateDraft(
     ...draft.items.flatMap((item, i) => itemNames.map((k) => [`${i}:${k}`, item[k]] as const)),
   ];
   for (const [key, value] of entries) {
-    const source = pages.find((p) => p.page === value.page);
-    if (value.value === null) continue;
+    const source = pages.find((p) => p.page === value.page),
+      name = key.split(':').at(-1)!;
+    delete value.originalEvidenceSnippet;
+    delete value.evidenceMethod;
+    if (value.rawValue === null) {
+      value.value = null;
+      continue;
+    }
+    if (absent(value.rawValue)) {
+      value.value = null;
+      continue;
+    }
     if (!source || !value.rawValue || !value.evidenceSnippet) {
       value.value = null;
       warnings.add('missing_evidence');
       continue;
     }
+    const native = !vision || !!source.text.trim();
     if (
-      (!vision || !!source.text.trim()) &&
-      !source.text.replace(/\s+/g, ' ').includes(value.evidenceSnippet.replace(/\s+/g, ' '))
+      native &&
+      (!fold(source.text).includes(fold(value.evidenceSnippet)) ||
+        !containsRaw(value.evidenceSnippet, value.rawValue))
     ) {
+      const index = key.includes(':') ? Number(key.split(':')[0]) : -1;
+      const replacement = index >= 0 ? rowEvidence(draft, index, name, value, source.text) : null;
+      if (replacement) {
+        value.originalEvidenceSnippet = value.evidenceSnippet;
+        value.evidenceSnippet = replacement;
+        value.evidenceMethod = 'source_row_reanchored';
+        warnings.add('evidence_source_reanchored');
+      } else {
+        value.value = null;
+        warnings.add(
+          fold(source.text).includes(fold(value.evidenceSnippet))
+            ? 'raw_value_not_in_evidence'
+            : 'unverified_evidence',
+        );
+        continue;
+      }
+    }
+    value.value = normalizedText(name, value.rawValue);
+    if (!value.value) {
       value.value = null;
-      warnings.add('unverified_evidence');
       continue;
     }
-    if (
-      (!vision || !!source.text.trim()) &&
-      !value.evidenceSnippet.replace(/\s+/g, ' ').includes(value.rawValue.replace(/\s+/g, ' '))
-    ) {
-      value.value = null;
-      warnings.add('raw_value_not_in_evidence');
-      continue;
+    if (name === 'taxId') {
+      if (/(?:ИНН\s+покупателя|buyer\s+tax)/i.test(value.evidenceSnippet ?? '')) {
+        value.value = null;
+        warnings.add('tax_id_wrong_role');
+        continue;
+      }
+      // Never parse an identifier as a number, guess omitted zeros or repair a checksum.
+      if (/^\d+$/.test(value.value) && !/^\d{10}(?:\d{2})?$/.test(value.value)) {
+        value.value = null;
+        warnings.add('tax_id_invalid_format');
+      } else if (!/^\d{10}(?:\d{2})?$/.test(value.value)) warnings.add('tax_id_requires_review');
     }
-    const name = key.split(':').at(-1)!;
-    if (
-      [
-        'supplierName',
-        'buyerName',
-        'consignee',
-        'taxId',
-        'kpp',
-        'email',
-        'address',
-        'documentNumber',
-      ].includes(name)
-    )
-      value.value = value.rawValue.trim();
     if (['quantity', 'unitPrice', 'lineTotal', 'total', 'deliveryCost'].includes(name)) {
-      value.value = numeric(value.rawValue);
+      value.value = numeric(value.rawValue, name === 'quantity' ? 'quantity' : 'money');
       if (value.value === null) warnings.add('invalid_number');
     }
-    if (name === 'currency' && !['RUB', 'USD', 'EUR', 'CNY'].includes(value.value ?? ''))
-      warnings.add('unknown_currency');
+    if (name === 'currency') {
+      value.value = value.value?.toUpperCase() ?? null;
+      if (!['RUB', 'USD', 'EUR', 'CNY'].includes(value.value ?? '')) warnings.add('unknown_currency');
+    }
   }
-  // A unit printed literally inside the quantity is deterministic evidence, not a guessed unit.
   for (const item of draft.items) {
     if (item.unit.value !== null || item.quantity.value === null) continue;
-    const unit = item.quantity.rawValue?.match(/\s(pcs|pieces|шт\.?)$/i)?.[1];
+    const unit = printedUnit(item.quantity.rawValue);
     if (unit) item.unit = { ...item.quantity, rawValue: unit, value: unit, confidence: null };
   }
   let sum = new ExactDecimal(0),
     complete = draft.items.length > 0;
+  const currencies = new Set(
+    [draft.currency.value, ...draft.items.map((i) => i.currency.value)].filter(Boolean),
+  );
+  if (currencies.size > 1) {
+    warnings.add('mixed_currency');
+    complete = false;
+  }
   for (const item of draft.items) {
     const { quantity: q, unitPrice: p, lineTotal: t } = item;
     if (q.value === null || p.value === null) {
@@ -197,8 +227,10 @@ export function validateDraft(
     const amount = new ExactDecimal(q.value).mul(p.value);
     sum = sum.add(amount);
     if (t.value !== null && !amount.eq(t.value)) warnings.add('line_arithmetic_mismatch');
-    if (item.currency.value && draft.currency.value && item.currency.value !== draft.currency.value)
+    if (item.currency.value && draft.currency.value && item.currency.value !== draft.currency.value) {
       warnings.add('mixed_currency');
+      complete = false;
+    }
   }
   if (complete && draft.total.value !== null && !sum.eq(draft.total.value))
     warnings.add('total_arithmetic_mismatch');

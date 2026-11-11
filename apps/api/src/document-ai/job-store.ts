@@ -79,6 +79,17 @@ export class JobStore<T extends { id: string }> {
       if (value) yield value;
     }
   }
+  async pending(): Promise<{ id: string; createdAt: string }[]> {
+    const jobs: { id: string; createdAt: string }[] = [];
+    for await (const value of this.scan()) {
+      const job = value as T & { status?: string; createdAt?: string };
+      if (!['pending', 'running'].includes(job.status ?? '')) continue;
+      if (!job.createdAt || !Number.isFinite(Date.parse(job.createdAt)))
+        throw new Error('ai_queue_timestamp_invalid');
+      jobs.push({ id: job.id, createdAt: job.createdAt });
+    }
+    return jobs.sort((a, b) => a.createdAt.localeCompare(b.createdAt) || a.id.localeCompare(b.id));
+  }
   async list(): Promise<T[]> {
     const values: T[] = [];
     for await (const value of this.scan()) values.push(value);

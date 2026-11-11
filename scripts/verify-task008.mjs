@@ -444,6 +444,50 @@ else {
     assert.equal(brokenDraft.status, 'failed');
     assert.equal(brokenDraft.error, 'document_parse_failed');
     assert.equal((await req(owner, 'GET', base + `/offers/${brokenDoc}/original`)).statusCode, 200);
+    phase = 'FIFO under concurrent creates with an intentionally delayed first disk write';
+    const firstReceipts = new Set(
+      (await req(owner, 'GET', base + '/verification'))
+        .json()
+        .documents.find((d) => d.id === doc)
+        .receipts.map((r) => r.id),
+    );
+    for (let n = 0; n < 3; n++) await upload(native);
+    const freshReceipts = (await req(owner, 'GET', base + '/verification'))
+      .json()
+      .documents.find((d) => d.id === doc)
+      .receipts.filter((r) => !firstReceipts.has(r.id));
+    assert.equal(freshReceipts.length, 3);
+    const originalWrite = stores.JobStore.prototype.write;
+    let delayed = false;
+    stores.JobStore.prototype.write = async function (value) {
+      if (!delayed && value.status === 'pending') {
+        delayed = true;
+        await delay(200);
+      }
+      return originalWrite.call(this, value);
+    };
+    try {
+      const responses = await Promise.all(
+        freshReceipts.map((r) => req(owner, 'POST', base + '/document-ai', { ...input, receiptId: r.id })),
+      );
+      assert.ok(responses.every((r) => r.statusCode === 201));
+      const completed = await Promise.all(responses.map((r) => finished(r.json().id)));
+      const submitted = [...completed]
+        .sort((a, b) => a.createdAt.localeCompare(b.createdAt) || a.id.localeCompare(b.id))
+        .map((j) => j.id);
+      const processed = [...completed]
+        .sort((a, b) =>
+          a.events
+            .find((e) => e.status === 'running')
+            .at.localeCompare(b.events.find((e) => e.status === 'running').at),
+        )
+        .map((j) => j.id);
+      assert.deepEqual(processed, submitted, 'A slow pending write must not let a newer job start first');
+      assert.ok(completed.every((j) => j.status === 'needs_review'));
+      assert.equal(delayed, true);
+    } finally {
+      stores.JobStore.prototype.write = originalWrite;
+    }
     phase = 'restart recovery';
     await aiRepo.close();
     const state = new stores.JobStore(runRoot, workspace);
@@ -463,7 +507,7 @@ else {
     assert.equal(prepared.length, 2);
     assert.ok(prepared[0].text.includes(gold.buyerName));
     console.log(
-      'PASS TASK008: mock/native/vision, seven rows on two pages, supplier vs buyer, evidence/digest, per-receipt drafts, draft save/restart/idempotency, explicit manual confirmation only, immutable initial/stage price, failure/retry, synthetic SHA policy, RBAC and 409. No migrations.',
+      'PASS TASK008: mock/native/vision, seven rows on two pages, supplier vs buyer, evidence/digest, per-receipt drafts, draft save/restart/idempotency, explicit manual confirmation only, immutable initial/stage price, failure/retry, concurrent-create FIFO with slow writes, synthetic SHA policy, RBAC and 409. No migrations.',
     );
   } catch (error) {
     console.error('TASK008 failed during ' + phase + ' (' + (error.code ?? error.name) + ')');
