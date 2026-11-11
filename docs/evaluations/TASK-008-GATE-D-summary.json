@@ -1,0 +1,1125 @@
+{
+  "version": "gate-d-ru-combined-v1",
+  "at": "2026-11-11T09:03:13.466Z",
+  "baseCommit": "5e7c279550a118a39ab7f737bae1b4fc7112584d",
+  "model": "qwen3-vl:8b-instruct",
+  "digest": "0533d74300e4f9bc367d675d4e64ffd073d50ff16a2b4096cc2e8a1cf8c96319",
+  "method": "Exact normalized spelling of accepted draft fields; nulls scored separately. Secondary rawValue metric normalizes only literal numeric labels/unit/currency. No semantic judge or post-hoc gold changes.",
+  "groups": [
+    {
+      "runId": "2026-11-11T08-52-24.950Z-391ed343",
+      "cloud": {
+        "disabled": true,
+        "source": "env"
+      },
+      "queue": {
+        "submitted": 9,
+        "validDocuments": 8,
+        "expectedMalformed": 1,
+        "maxActive": 1,
+        "peakRunning": 1,
+        "peakPending": 8,
+        "wallMs": 293441,
+        "processingP50Ms": 31975,
+        "processingP95Ms": 58994,
+        "allTerminal": true,
+        "idempotency": true,
+        "persistedReload": true,
+        "confirmedOffers": 0,
+        "stageResponses": 0,
+        "order": [
+          "ru-simple",
+          "ru-multipage",
+          "ru-scan-dense",
+          "ru-inconsistent",
+          "ru-decimal",
+          "ru-scan",
+          "ru-roles",
+          "ru-missing"
+        ],
+        "trace": [
+          {
+            "id": "ru-simple",
+            "start": "2026-11-11T08:52:29.948Z",
+            "end": "2026-11-11T08:53:00.013Z",
+            "durationMs": 30065
+          },
+          {
+            "id": "ru-multipage",
+            "start": "2026-11-11T08:53:01.647Z",
+            "end": "2026-11-11T08:53:58.513Z",
+            "durationMs": 56866
+          },
+          {
+            "id": "ru-scan-dense",
+            "start": "2026-11-11T08:53:59.164Z",
+            "end": "2026-11-11T08:54:57.526Z",
+            "durationMs": 58362
+          },
+          {
+            "id": "ru-inconsistent",
+            "start": "2026-11-11T08:54:58.195Z",
+            "end": "2026-11-11T08:55:22.560Z",
+            "durationMs": 24365
+          },
+          {
+            "id": "ru-decimal",
+            "start": "2026-11-11T08:55:22.924Z",
+            "end": "2026-11-11T08:55:54.566Z",
+            "durationMs": 31642
+          },
+          {
+            "id": "ru-scan",
+            "start": "2026-11-11T08:55:54.933Z",
+            "end": "2026-11-11T08:56:29.387Z",
+            "durationMs": 34454
+          },
+          {
+            "id": "ru-roles",
+            "start": "2026-11-11T08:56:29.771Z",
+            "end": "2026-11-11T08:57:04.680Z",
+            "durationMs": 34909
+          },
+          {
+            "id": "ru-missing",
+            "start": "2026-11-11T08:57:05.382Z",
+            "end": "2026-11-11T08:57:22.631Z",
+            "durationMs": 17249
+          }
+        ]
+      }
+    },
+    {
+      "runId": "2026-11-11T08-58-11.327Z-08fb101e",
+      "cloud": {
+        "disabled": true,
+        "source": "env"
+      },
+      "queue": {
+        "submitted": 3,
+        "validDocuments": 2,
+        "expectedMalformed": 1,
+        "maxActive": 1,
+        "peakRunning": 1,
+        "peakPending": 2,
+        "wallMs": 107989,
+        "processingP50Ms": 28948,
+        "processingP95Ms": 76341,
+        "allTerminal": true,
+        "idempotency": true,
+        "persistedReload": true,
+        "confirmedOffers": 0,
+        "stageResponses": 0,
+        "order": ["ru-logistics", "ru-table-scan"],
+        "trace": [
+          {
+            "id": "ru-logistics",
+            "start": "2026-11-11T08:58:17.571Z",
+            "end": "2026-11-11T08:58:45.861Z",
+            "durationMs": 28290
+          },
+          {
+            "id": "ru-table-scan",
+            "start": "2026-11-11T08:58:48.076Z",
+            "end": "2026-11-11T09:00:03.157Z",
+            "durationMs": 75081
+          }
+        ]
+      }
+    }
+  ],
+  "accepted": {
+    "documents": 10,
+    "completed": 10,
+    "exactRowCounts": 10,
+    "supplierCorrect": 9,
+    "buyerAsSupplier": 0,
+    "knownCorrect": 365,
+    "knownTotal": 395,
+    "knownAccuracy": 0.9240506329113924,
+    "nullCorrect": 17,
+    "nullTotal": 17,
+    "nonNullWhenMissing": 0,
+    "criticalCorrect": 232,
+    "criticalTotal": 254,
+    "byField": {
+      "supplierName": {
+        "correct": 10,
+        "total": 10,
+        "knownCorrect": 10,
+        "knownTotal": 10,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "taxId": {
+        "correct": 9,
+        "total": 10,
+        "knownCorrect": 8,
+        "knownTotal": 9,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "buyerName": {
+        "correct": 10,
+        "total": 10,
+        "knownCorrect": 10,
+        "knownTotal": 10,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "total": {
+        "correct": 9,
+        "total": 10,
+        "knownCorrect": 8,
+        "knownTotal": 9,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "currency": {
+        "correct": 9,
+        "total": 10,
+        "knownCorrect": 9,
+        "knownTotal": 10,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "delivery": {
+        "correct": 8,
+        "total": 10,
+        "knownCorrect": 7,
+        "knownTotal": 9,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "payment": {
+        "correct": 8,
+        "total": 10,
+        "knownCorrect": 7,
+        "knownTotal": 9,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "vat": {
+        "correct": 8,
+        "total": 10,
+        "knownCorrect": 7,
+        "knownTotal": 9,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "deliveryCost": {
+        "correct": 10,
+        "total": 10,
+        "knownCorrect": 2,
+        "knownTotal": 2,
+        "missingCorrect": 8,
+        "missingTotal": 8
+      },
+      "items.description": {
+        "correct": 44,
+        "total": 46,
+        "knownCorrect": 44,
+        "knownTotal": 46,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "items.quantity": {
+        "correct": 41,
+        "total": 46,
+        "knownCorrect": 41,
+        "knownTotal": 46,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "items.unit": {
+        "correct": 44,
+        "total": 46,
+        "knownCorrect": 44,
+        "knownTotal": 46,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "items.unitPrice": {
+        "correct": 42,
+        "total": 46,
+        "knownCorrect": 41,
+        "knownTotal": 45,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "items.lineTotal": {
+        "correct": 42,
+        "total": 46,
+        "knownCorrect": 41,
+        "knownTotal": 45,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "items.currency": {
+        "correct": 44,
+        "total": 46,
+        "knownCorrect": 44,
+        "knownTotal": 46,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "items.delivery": {
+        "correct": 44,
+        "total": 46,
+        "knownCorrect": 42,
+        "knownTotal": 44,
+        "missingCorrect": 2,
+        "missingTotal": 2
+      }
+    }
+  },
+  "rawValue": {
+    "documents": 10,
+    "completed": 10,
+    "exactRowCounts": 10,
+    "supplierCorrect": 9,
+    "buyerAsSupplier": 0,
+    "knownCorrect": 383,
+    "knownTotal": 395,
+    "knownAccuracy": 0.9696202531645569,
+    "nullCorrect": 15,
+    "nullTotal": 17,
+    "nonNullWhenMissing": 2,
+    "criticalCorrect": 244,
+    "criticalTotal": 254,
+    "byField": {
+      "supplierName": {
+        "correct": 10,
+        "total": 10,
+        "knownCorrect": 10,
+        "knownTotal": 10,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "taxId": {
+        "correct": 9,
+        "total": 10,
+        "knownCorrect": 8,
+        "knownTotal": 9,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "buyerName": {
+        "correct": 10,
+        "total": 10,
+        "knownCorrect": 10,
+        "knownTotal": 10,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "total": {
+        "correct": 10,
+        "total": 10,
+        "knownCorrect": 9,
+        "knownTotal": 9,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "currency": {
+        "correct": 9,
+        "total": 10,
+        "knownCorrect": 9,
+        "knownTotal": 10,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "delivery": {
+        "correct": 8,
+        "total": 10,
+        "knownCorrect": 7,
+        "knownTotal": 9,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "payment": {
+        "correct": 8,
+        "total": 10,
+        "knownCorrect": 7,
+        "knownTotal": 9,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "vat": {
+        "correct": 8,
+        "total": 10,
+        "knownCorrect": 7,
+        "knownTotal": 9,
+        "missingCorrect": 1,
+        "missingTotal": 1
+      },
+      "deliveryCost": {
+        "correct": 10,
+        "total": 10,
+        "knownCorrect": 2,
+        "knownTotal": 2,
+        "missingCorrect": 8,
+        "missingTotal": 8
+      },
+      "items.description": {
+        "correct": 46,
+        "total": 46,
+        "knownCorrect": 46,
+        "knownTotal": 46,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "items.quantity": {
+        "correct": 46,
+        "total": 46,
+        "knownCorrect": 46,
+        "knownTotal": 46,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "items.unit": {
+        "correct": 44,
+        "total": 46,
+        "knownCorrect": 44,
+        "knownTotal": 46,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "items.unitPrice": {
+        "correct": 45,
+        "total": 46,
+        "knownCorrect": 45,
+        "knownTotal": 45,
+        "missingCorrect": 0,
+        "missingTotal": 1
+      },
+      "items.lineTotal": {
+        "correct": 45,
+        "total": 46,
+        "knownCorrect": 45,
+        "knownTotal": 45,
+        "missingCorrect": 0,
+        "missingTotal": 1
+      },
+      "items.currency": {
+        "correct": 46,
+        "total": 46,
+        "knownCorrect": 46,
+        "knownTotal": 46,
+        "missingCorrect": 0,
+        "missingTotal": 0
+      },
+      "items.delivery": {
+        "correct": 44,
+        "total": 46,
+        "knownCorrect": 42,
+        "knownTotal": 44,
+        "missingCorrect": 2,
+        "missingTotal": 2
+      }
+    }
+  },
+  "latency": {
+    "documents": 10,
+    "minMs": 17849,
+    "maxMs": 76341,
+    "p50Ms": 31975,
+    "p95Ms": 76341
+  },
+  "cases": [
+    {
+      "id": "ru-simple",
+      "status": "needs_review",
+      "error": null,
+      "expectedRows": 3,
+      "actualRows": 3,
+      "matchedRows": 3,
+      "rowPrecision": 1,
+      "rowRecall": 1,
+      "knownCorrect": 29,
+      "knownTotal": 29,
+      "unknownCorrect": 1,
+      "unknownTotal": 1,
+      "supplierCorrect": true,
+      "buyerAsSupplier": false,
+      "expectedWarnings": [],
+      "missingWarnings": [],
+      "warnings": ["supplier_unresolved_or_ambiguous"],
+      "errors": [],
+      "kind": "native",
+      "pages": 1,
+      "sourceSha": "7dd9481aaaa0674140e7fde2cd6c8b32ba4a6c569d96fb87fa65db0e5a55dec8",
+      "model": "qwen3-vl:8b-instruct",
+      "digest": "0533d74300e4f9bc367d675d4e64ffd073d50ff16a2b4096cc2e8a1cf8c96319",
+      "createdAt": "2026-11-11T08:52:29.648Z",
+      "startAt": "2026-11-11T08:52:29.664Z",
+      "endAt": "2026-11-11T08:53:00.024Z",
+      "queueWaitMs": 16,
+      "processingMs": 30360,
+      "inferenceMs": 30064,
+      "totalMs": 30376,
+      "attempts": 1,
+      "rawValue": {
+        "knownCorrect": 29,
+        "knownTotal": 29,
+        "unknownCorrect": 1,
+        "unknownTotal": 1,
+        "errors": []
+      }
+    },
+    {
+      "id": "ru-multipage",
+      "status": "needs_review",
+      "error": null,
+      "expectedRows": 9,
+      "actualRows": 9,
+      "matchedRows": 7,
+      "rowPrecision": 0.7777777777777778,
+      "rowRecall": 0.7777777777777778,
+      "knownCorrect": 57,
+      "knownTotal": 71,
+      "unknownCorrect": 1,
+      "unknownTotal": 1,
+      "supplierCorrect": true,
+      "buyerAsSupplier": false,
+      "expectedWarnings": [],
+      "missingWarnings": [],
+      "warnings": ["unverified_evidence", "missing_line_price", "supplier_unresolved_or_ambiguous"],
+      "errors": [
+        {
+          "path": "items[0].description",
+          "expected": "Клапан учебный СИНТ-1",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[0].quantity",
+          "expected": "1",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[0].unit",
+          "expected": "шт.",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[0].unitPrice",
+          "expected": "100",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[0].lineTotal",
+          "expected": "100",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[0].currency",
+          "expected": "RUB",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[0].delivery",
+          "expected": "2 рабочих дней",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[1].description",
+          "expected": "Клапан учебный СИНТ-2",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[1].quantity",
+          "expected": "2",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[1].unit",
+          "expected": "шт.",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[1].unitPrice",
+          "expected": "200",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[1].lineTotal",
+          "expected": "400",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[1].currency",
+          "expected": "RUB",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[1].delivery",
+          "expected": "4 рабочих дней",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "unmatchedItems[0]",
+          "actual": null,
+          "type": "unmatched_row"
+        },
+        {
+          "path": "unmatchedItems[1]",
+          "actual": null,
+          "type": "unmatched_row"
+        }
+      ],
+      "kind": "native",
+      "pages": 3,
+      "sourceSha": "5a2bebe46f45c10cf4638e62cd3cb746dfa45eaeb5e9a9085f907e647b45fae4",
+      "model": "qwen3-vl:8b-instruct",
+      "digest": "0533d74300e4f9bc367d675d4e64ffd073d50ff16a2b4096cc2e8a1cf8c96319",
+      "createdAt": "2026-11-11T08:52:29.668Z",
+      "startAt": "2026-11-11T08:53:01.349Z",
+      "endAt": "2026-11-11T08:53:58.518Z",
+      "queueWaitMs": 31681,
+      "processingMs": 57169,
+      "inferenceMs": 56867,
+      "totalMs": 88850,
+      "attempts": 1,
+      "rawValue": {
+        "knownCorrect": 67,
+        "knownTotal": 71,
+        "unknownCorrect": 1,
+        "unknownTotal": 1,
+        "errors": [
+          {
+            "path": "items[0].unit",
+            "expected": "шт.",
+            "actual": null,
+            "type": "missing"
+          },
+          {
+            "path": "items[0].delivery",
+            "expected": "2 рабочих дней",
+            "actual": "2 рабочих дня",
+            "type": "mismatch"
+          },
+          {
+            "path": "items[1].unit",
+            "expected": "шт.",
+            "actual": null,
+            "type": "missing"
+          },
+          {
+            "path": "items[1].delivery",
+            "expected": "4 рабочих дней",
+            "actual": "4 рабочих дня",
+            "type": "mismatch"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ru-decimal",
+      "status": "needs_review",
+      "error": null,
+      "expectedRows": 3,
+      "actualRows": 3,
+      "matchedRows": 3,
+      "rowPrecision": 1,
+      "rowRecall": 1,
+      "knownCorrect": 27,
+      "knownTotal": 30,
+      "unknownCorrect": 0,
+      "unknownTotal": 0,
+      "supplierCorrect": true,
+      "buyerAsSupplier": false,
+      "expectedWarnings": [],
+      "missingWarnings": [],
+      "warnings": ["invalid_number", "missing_line_price", "supplier_unresolved_or_ambiguous"],
+      "errors": [
+        {
+          "path": "items[0].quantity",
+          "expected": "2.5",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[1].quantity",
+          "expected": "3",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[2].quantity",
+          "expected": "0.75",
+          "actual": null,
+          "type": "missing"
+        }
+      ],
+      "kind": "native",
+      "pages": 1,
+      "sourceSha": "0c5ca024c49bfc610d3bbcfce49df01af125ac81c1bd412d67cb6e1cc2ab8f49",
+      "model": "qwen3-vl:8b-instruct",
+      "digest": "0533d74300e4f9bc367d675d4e64ffd073d50ff16a2b4096cc2e8a1cf8c96319",
+      "createdAt": "2026-11-11T08:52:29.691Z",
+      "startAt": "2026-11-11T08:55:22.597Z",
+      "endAt": "2026-11-11T08:55:54.572Z",
+      "queueWaitMs": 172906,
+      "processingMs": 31975,
+      "inferenceMs": 31642,
+      "totalMs": 204881,
+      "attempts": 1,
+      "rawValue": {
+        "knownCorrect": 30,
+        "knownTotal": 30,
+        "unknownCorrect": 0,
+        "unknownTotal": 0,
+        "errors": []
+      }
+    },
+    {
+      "id": "ru-scan",
+      "status": "needs_review",
+      "error": null,
+      "expectedRows": 3,
+      "actualRows": 3,
+      "matchedRows": 3,
+      "rowPrecision": 1,
+      "rowRecall": 1,
+      "knownCorrect": 29,
+      "knownTotal": 29,
+      "unknownCorrect": 1,
+      "unknownTotal": 1,
+      "supplierCorrect": true,
+      "buyerAsSupplier": false,
+      "expectedWarnings": [],
+      "missingWarnings": [],
+      "warnings": ["vision_evidence_requires_review", "supplier_unresolved_or_ambiguous"],
+      "errors": [],
+      "kind": "scan",
+      "pages": 1,
+      "sourceSha": "f8610a148c34daadbbcfd5f280551ad03ac7e7685b48b1586db31953122037e5",
+      "model": "qwen3-vl:8b-instruct",
+      "digest": "0533d74300e4f9bc367d675d4e64ffd073d50ff16a2b4096cc2e8a1cf8c96319",
+      "createdAt": "2026-11-11T08:52:29.717Z",
+      "startAt": "2026-11-11T08:55:54.593Z",
+      "endAt": "2026-11-11T08:56:29.392Z",
+      "queueWaitMs": 204876,
+      "processingMs": 34799,
+      "inferenceMs": 34454,
+      "totalMs": 239675,
+      "attempts": 1,
+      "rawValue": {
+        "knownCorrect": 29,
+        "knownTotal": 29,
+        "unknownCorrect": 1,
+        "unknownTotal": 1,
+        "errors": []
+      }
+    },
+    {
+      "id": "ru-scan-dense",
+      "status": "needs_review",
+      "error": null,
+      "expectedRows": 7,
+      "actualRows": 7,
+      "matchedRows": 7,
+      "rowPrecision": 1,
+      "rowRecall": 1,
+      "knownCorrect": 53,
+      "knownTotal": 57,
+      "unknownCorrect": 1,
+      "unknownTotal": 1,
+      "supplierCorrect": false,
+      "buyerAsSupplier": false,
+      "expectedWarnings": [],
+      "missingWarnings": [],
+      "warnings": ["vision_evidence_requires_review", "supplier_unresolved_or_ambiguous"],
+      "errors": [
+        {
+          "path": "taxId",
+          "expected": "0000000005",
+          "actual": "000000005",
+          "type": "mismatch"
+        },
+        {
+          "path": "delivery",
+          "expected": "От 1 до 7 рабочих дней",
+          "actual": "Общий срок поставки: От 1 до 7 рабочих дней",
+          "type": "mismatch"
+        },
+        {
+          "path": "payment",
+          "expected": "50% аванс, 50% после поставки",
+          "actual": "Условия оплаты: 50% аванс, 50% после поставки",
+          "type": "mismatch"
+        },
+        {
+          "path": "vat",
+          "expected": "НДС включён",
+          "actual": "НДС: НДС включён",
+          "type": "mismatch"
+        }
+      ],
+      "kind": "scan",
+      "pages": 2,
+      "sourceSha": "0c1b385a13aa0a2a612db2512ebb52f7bda93beae05694120faa5f28e5c1dc58",
+      "model": "qwen3-vl:8b-instruct",
+      "digest": "0533d74300e4f9bc367d675d4e64ffd073d50ff16a2b4096cc2e8a1cf8c96319",
+      "createdAt": "2026-11-11T08:52:29.740Z",
+      "startAt": "2026-11-11T08:53:58.536Z",
+      "endAt": "2026-11-11T08:54:57.530Z",
+      "queueWaitMs": 88796,
+      "processingMs": 58994,
+      "inferenceMs": 58362,
+      "totalMs": 147790,
+      "attempts": 1,
+      "rawValue": {
+        "knownCorrect": 53,
+        "knownTotal": 57,
+        "unknownCorrect": 1,
+        "unknownTotal": 1,
+        "errors": [
+          {
+            "path": "taxId",
+            "expected": "0000000005",
+            "actual": "000000005",
+            "type": "mismatch"
+          },
+          {
+            "path": "delivery",
+            "expected": "От 1 до 7 рабочих дней",
+            "actual": "Общий срок поставки: От 1 до 7 рабочих дней",
+            "type": "mismatch"
+          },
+          {
+            "path": "payment",
+            "expected": "50% аванс, 50% после поставки",
+            "actual": "Условия оплаты: 50% аванс, 50% после поставки",
+            "type": "mismatch"
+          },
+          {
+            "path": "vat",
+            "expected": "НДС включён",
+            "actual": "НДС: НДС включён",
+            "type": "mismatch"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ru-missing",
+      "status": "needs_review",
+      "error": null,
+      "expectedRows": 2,
+      "actualRows": 2,
+      "matchedRows": 2,
+      "rowPrecision": 1,
+      "rowRecall": 1,
+      "knownCorrect": 12,
+      "knownTotal": 13,
+      "unknownCorrect": 10,
+      "unknownTotal": 10,
+      "supplierCorrect": true,
+      "buyerAsSupplier": false,
+      "expectedWarnings": [],
+      "missingWarnings": [],
+      "warnings": [
+        "invalid_number",
+        "missing_line_price",
+        "missing_total",
+        "supplier_unresolved_or_ambiguous"
+      ],
+      "errors": [
+        {
+          "path": "currency",
+          "expected": "RUB",
+          "actual": null,
+          "type": "missing"
+        }
+      ],
+      "kind": "native",
+      "pages": 1,
+      "sourceSha": "8297287a591135a3ae70ba403971930dea42cb07b32e5b99e4808af2bc29be93",
+      "model": "qwen3-vl:8b-instruct",
+      "digest": "0533d74300e4f9bc367d675d4e64ffd073d50ff16a2b4096cc2e8a1cf8c96319",
+      "createdAt": "2026-11-11T08:52:29.766Z",
+      "startAt": "2026-11-11T08:57:04.796Z",
+      "endAt": "2026-11-11T08:57:22.645Z",
+      "queueWaitMs": 275030,
+      "processingMs": 17849,
+      "inferenceMs": 17249,
+      "totalMs": 292879,
+      "attempts": 1,
+      "rawValue": {
+        "knownCorrect": 12,
+        "knownTotal": 13,
+        "unknownCorrect": 8,
+        "unknownTotal": 10,
+        "errors": [
+          {
+            "path": "currency",
+            "expected": "RUB",
+            "actual": null,
+            "type": "missing"
+          },
+          {
+            "path": "items[1].unitPrice",
+            "expected": null,
+            "actual": "не указано RUB",
+            "type": "unexpected_non_null"
+          },
+          {
+            "path": "items[1].lineTotal",
+            "expected": null,
+            "actual": "не указано RUB",
+            "type": "unexpected_non_null"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ru-roles",
+      "status": "needs_review",
+      "error": null,
+      "expectedRows": 3,
+      "actualRows": 3,
+      "matchedRows": 3,
+      "rowPrecision": 1,
+      "rowRecall": 1,
+      "knownCorrect": 29,
+      "knownTotal": 29,
+      "unknownCorrect": 1,
+      "unknownTotal": 1,
+      "supplierCorrect": true,
+      "buyerAsSupplier": false,
+      "expectedWarnings": [],
+      "missingWarnings": [],
+      "warnings": ["supplier_unresolved_or_ambiguous"],
+      "errors": [],
+      "kind": "native",
+      "pages": 1,
+      "sourceSha": "108c15231e58bcb35a3fc085478996e3bfae50d0ebaeaa2ef6d7ead32dec70aa",
+      "model": "qwen3-vl:8b-instruct",
+      "digest": "0533d74300e4f9bc367d675d4e64ffd073d50ff16a2b4096cc2e8a1cf8c96319",
+      "createdAt": "2026-11-11T08:52:29.787Z",
+      "startAt": "2026-11-11T08:56:29.417Z",
+      "endAt": "2026-11-11T08:57:04.714Z",
+      "queueWaitMs": 239630,
+      "processingMs": 35297,
+      "inferenceMs": 34908,
+      "totalMs": 274927,
+      "attempts": 1,
+      "rawValue": {
+        "knownCorrect": 29,
+        "knownTotal": 29,
+        "unknownCorrect": 1,
+        "unknownTotal": 1,
+        "errors": []
+      }
+    },
+    {
+      "id": "ru-inconsistent",
+      "status": "needs_review",
+      "error": null,
+      "expectedRows": 2,
+      "actualRows": 2,
+      "matchedRows": 2,
+      "rowPrecision": 1,
+      "rowRecall": 1,
+      "knownCorrect": 17,
+      "knownTotal": 22,
+      "unknownCorrect": 1,
+      "unknownTotal": 1,
+      "supplierCorrect": true,
+      "buyerAsSupplier": false,
+      "expectedWarnings": ["line_arithmetic_mismatch", "total_arithmetic_mismatch", "unknown_currency"],
+      "missingWarnings": ["line_arithmetic_mismatch", "total_arithmetic_mismatch"],
+      "warnings": [
+        "invalid_number",
+        "unknown_currency",
+        "missing_line_price",
+        "missing_total",
+        "supplier_unresolved_or_ambiguous"
+      ],
+      "errors": [
+        {
+          "path": "total",
+          "expected": "1500",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[0].unitPrice",
+          "expected": "500",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[0].lineTotal",
+          "expected": "900",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[1].unitPrice",
+          "expected": "100",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[1].lineTotal",
+          "expected": "300",
+          "actual": null,
+          "type": "missing"
+        }
+      ],
+      "kind": "native",
+      "pages": 1,
+      "sourceSha": "86c066b69d8b4d34411e54f5399a9b410833cf83d5e96d55dca03ae1a432f77b",
+      "model": "qwen3-vl:8b-instruct",
+      "digest": "0533d74300e4f9bc367d675d4e64ffd073d50ff16a2b4096cc2e8a1cf8c96319",
+      "createdAt": "2026-11-11T08:52:29.809Z",
+      "startAt": "2026-11-11T08:54:57.841Z",
+      "endAt": "2026-11-11T08:55:22.568Z",
+      "queueWaitMs": 148032,
+      "processingMs": 24727,
+      "inferenceMs": 24365,
+      "totalMs": 172759,
+      "attempts": 1,
+      "rawValue": {
+        "knownCorrect": 22,
+        "knownTotal": 22,
+        "unknownCorrect": 1,
+        "unknownTotal": 1,
+        "errors": []
+      }
+    },
+    {
+      "id": "ru-logistics",
+      "status": "needs_review",
+      "error": null,
+      "expectedRows": 2,
+      "actualRows": 2,
+      "matchedRows": 2,
+      "rowPrecision": 1,
+      "rowRecall": 1,
+      "knownCorrect": 23,
+      "knownTotal": 23,
+      "unknownCorrect": 0,
+      "unknownTotal": 0,
+      "supplierCorrect": true,
+      "buyerAsSupplier": false,
+      "expectedWarnings": [],
+      "missingWarnings": [],
+      "warnings": ["supplier_unresolved_or_ambiguous"],
+      "errors": [],
+      "kind": "native",
+      "pages": 1,
+      "sourceSha": "e24f71286ed4a97847bd2600001b30ba9839de53de91bac203be9bc4aca03b2f",
+      "model": "qwen3-vl:8b-instruct",
+      "digest": "0533d74300e4f9bc367d675d4e64ffd073d50ff16a2b4096cc2e8a1cf8c96319",
+      "createdAt": "2026-11-11T08:58:16.896Z",
+      "startAt": "2026-11-11T08:58:16.937Z",
+      "endAt": "2026-11-11T08:58:45.885Z",
+      "queueWaitMs": 41,
+      "processingMs": 28948,
+      "inferenceMs": 28290,
+      "totalMs": 28989,
+      "attempts": 1,
+      "rawValue": {
+        "knownCorrect": 23,
+        "knownTotal": 23,
+        "unknownCorrect": 0,
+        "unknownTotal": 0,
+        "errors": []
+      }
+    },
+    {
+      "id": "ru-table-scan",
+      "status": "needs_review",
+      "error": null,
+      "expectedRows": 12,
+      "actualRows": 12,
+      "matchedRows": 12,
+      "rowPrecision": 1,
+      "rowRecall": 1,
+      "knownCorrect": 89,
+      "knownTotal": 92,
+      "unknownCorrect": 1,
+      "unknownTotal": 1,
+      "supplierCorrect": true,
+      "buyerAsSupplier": false,
+      "expectedWarnings": [],
+      "missingWarnings": [],
+      "warnings": ["vision_evidence_requires_review", "supplier_unresolved_or_ambiguous"],
+      "errors": [
+        {
+          "path": "delivery",
+          "expected": "От 6 до 17 календарных дней",
+          "actual": "Общий срок поставки: От 6 до 17 календарных дней",
+          "type": "mismatch"
+        },
+        {
+          "path": "payment",
+          "expected": "Оплата в течение 30 дней после поставки",
+          "actual": "Условия оплаты: Оплата в течение 30 дней после поставки",
+          "type": "mismatch"
+        },
+        {
+          "path": "vat",
+          "expected": "НДС включён",
+          "actual": "НДС: НДС включён",
+          "type": "mismatch"
+        }
+      ],
+      "kind": "scan",
+      "pages": 2,
+      "sourceSha": "87bf78677e7e4e05f3e1cce1d8a1bc1f134e297341e90b8cb0741a048594a302",
+      "model": "qwen3-vl:8b-instruct",
+      "digest": "0533d74300e4f9bc367d675d4e64ffd073d50ff16a2b4096cc2e8a1cf8c96319",
+      "createdAt": "2026-11-11T08:58:16.953Z",
+      "startAt": "2026-11-11T08:58:46.830Z",
+      "endAt": "2026-11-11T09:00:03.171Z",
+      "queueWaitMs": 29877,
+      "processingMs": 76341,
+      "inferenceMs": 75081,
+      "totalMs": 106218,
+      "attempts": 1,
+      "rawValue": {
+        "knownCorrect": 89,
+        "knownTotal": 92,
+        "unknownCorrect": 1,
+        "unknownTotal": 1,
+        "errors": [
+          {
+            "path": "delivery",
+            "expected": "От 6 до 17 календарных дней",
+            "actual": "Общий срок поставки: От 6 до 17 календарных дней",
+            "type": "mismatch"
+          },
+          {
+            "path": "payment",
+            "expected": "Оплата в течение 30 дней после поставки",
+            "actual": "Условия оплаты: Оплата в течение 30 дней после поставки",
+            "type": "mismatch"
+          },
+          {
+            "path": "vat",
+            "expected": "НДС включён",
+            "actual": "НДС: НДС включён",
+            "type": "mismatch"
+          }
+        ]
+      }
+    }
+  ]
+}

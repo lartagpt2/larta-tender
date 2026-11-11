@@ -1,0 +1,616 @@
+{
+  "version": "ru-synthetic-v1",
+  "cases": [
+    {
+      "id": "ru-simple",
+      "title": "Простой текстовый PDF",
+      "kind": "native",
+      "pages": 1,
+      "headers": {
+        "supplierName": "ООО «СИНТЕТИКА Альфа»",
+        "taxId": "0000000001",
+        "buyerName": "ООО «СИНТЕТИКА Покупатель»",
+        "total": "5600",
+        "currency": "RUB",
+        "delivery": "15 рабочих дней",
+        "payment": "100% после поставки",
+        "vat": "НДС включён",
+        "deliveryCost": null
+      },
+      "items": [
+        {
+          "description": "Ремень приводной СИНТ-01",
+          "quantity": "2",
+          "unit": "шт.",
+          "unitPrice": "1200",
+          "lineTotal": "2400",
+          "currency": "RUB",
+          "delivery": "5 рабочих дней"
+        },
+        {
+          "description": "Подшипник СИНТ-02",
+          "quantity": "4",
+          "unit": "шт.",
+          "unitPrice": "350",
+          "lineTotal": "1400",
+          "currency": "RUB",
+          "delivery": "10 рабочих дней"
+        },
+        {
+          "description": "Насос учебный СИНТ-03",
+          "quantity": "1",
+          "unit": "шт.",
+          "unitPrice": "1800",
+          "lineTotal": "1800",
+          "currency": "RUB",
+          "delivery": "15 рабочих дней"
+        }
+      ]
+    },
+    {
+      "id": "ru-multipage",
+      "title": "Три страницы, девять позиций и разные сроки",
+      "kind": "native",
+      "pages": 3,
+      "headers": {
+        "supplierName": "ООО «СИНТЕТИКА Многостраничный»",
+        "taxId": "0000000002",
+        "buyerName": "ООО «СИНТЕТИКА Покупатель»",
+        "total": "28500",
+        "currency": "RUB",
+        "delivery": "От 2 до 18 рабочих дней",
+        "payment": "30% аванс, 70% после поставки",
+        "vat": "НДС включён",
+        "deliveryCost": null
+      },
+      "items": [
+        {
+          "description": "Клапан учебный СИНТ-1",
+          "quantity": "1",
+          "unit": "шт.",
+          "unitPrice": "100",
+          "lineTotal": "100",
+          "currency": "RUB",
+          "delivery": "2 рабочих дней"
+        },
+        {
+          "description": "Клапан учебный СИНТ-2",
+          "quantity": "2",
+          "unit": "шт.",
+          "unitPrice": "200",
+          "lineTotal": "400",
+          "currency": "RUB",
+          "delivery": "4 рабочих дней"
+        },
+        {
+          "description": "Клапан учебный СИНТ-3",
+          "quantity": "3",
+          "unit": "шт.",
+          "unitPrice": "300",
+          "lineTotal": "900",
+          "currency": "RUB",
+          "delivery": "6 рабочих дней"
+        },
+        {
+          "description": "Клапан учебный СИНТ-4",
+          "quantity": "4",
+          "unit": "шт.",
+          "unitPrice": "400",
+          "lineTotal": "1600",
+          "currency": "RUB",
+          "delivery": "8 рабочих дней"
+        },
+        {
+          "description": "Клапан учебный СИНТ-5",
+          "quantity": "5",
+          "unit": "шт.",
+          "unitPrice": "500",
+          "lineTotal": "2500",
+          "currency": "RUB",
+          "delivery": "10 рабочих дней"
+        },
+        {
+          "description": "Клапан учебный СИНТ-6",
+          "quantity": "6",
+          "unit": "шт.",
+          "unitPrice": "600",
+          "lineTotal": "3600",
+          "currency": "RUB",
+          "delivery": "12 рабочих дней"
+        },
+        {
+          "description": "Клапан учебный СИНТ-7",
+          "quantity": "7",
+          "unit": "шт.",
+          "unitPrice": "700",
+          "lineTotal": "4900",
+          "currency": "RUB",
+          "delivery": "14 рабочих дней"
+        },
+        {
+          "description": "Клапан учебный СИНТ-8",
+          "quantity": "8",
+          "unit": "шт.",
+          "unitPrice": "800",
+          "lineTotal": "6400",
+          "currency": "RUB",
+          "delivery": "16 рабочих дней"
+        },
+        {
+          "description": "Клапан учебный СИНТ-9",
+          "quantity": "9",
+          "unit": "шт.",
+          "unitPrice": "900",
+          "lineTotal": "8100",
+          "currency": "RUB",
+          "delivery": "18 рабочих дней"
+        }
+      ]
+    },
+    {
+      "id": "ru-decimal",
+      "title": "Дробные количества, пробелы и запятые, отдельная доставка",
+      "kind": "native",
+      "pages": 1,
+      "headers": {
+        "supplierName": "ООО «СИНТЕТИКА Дробь»",
+        "taxId": "0000000003",
+        "buyerName": "ООО «СИНТЕТИКА Покупатель»",
+        "total": "3986.1",
+        "currency": "RUB",
+        "delivery": "В течение 12 календарных дней",
+        "payment": "Отсрочка платежа 20 календарных дней",
+        "vat": "НДС включён",
+        "deliveryCost": "1500"
+      },
+      "items": [
+        {
+          "description": "Кабель учебный СИНТ-А",
+          "quantity": "2.5",
+          "unit": "м",
+          "unitPrice": "1234.56",
+          "lineTotal": "3086.4",
+          "currency": "RUB",
+          "delivery": "12 календарных дней"
+        },
+        {
+          "description": "Лента учебная СИНТ-Б",
+          "quantity": "3",
+          "unit": "м",
+          "unitPrice": "99.9",
+          "lineTotal": "299.7",
+          "currency": "RUB",
+          "delivery": "8 календарных дней"
+        },
+        {
+          "description": "Смазка учебная СИНТ-В",
+          "quantity": "0.75",
+          "unit": "кг",
+          "unitPrice": "800",
+          "lineTotal": "600",
+          "currency": "RUB",
+          "delivery": "4 календарных дня"
+        }
+      ]
+    },
+    {
+      "id": "ru-scan",
+      "title": "Чёткий скан русскоязычного КП",
+      "kind": "scan",
+      "pages": 1,
+      "headers": {
+        "supplierName": "ООО «СИНТЕТИКА Растр»",
+        "taxId": "0000000004",
+        "buyerName": "ООО «СИНТЕТИКА Покупатель»",
+        "total": "5600",
+        "currency": "RUB",
+        "delivery": "15 рабочих дней",
+        "payment": "100% после поставки",
+        "vat": "НДС включён",
+        "deliveryCost": null
+      },
+      "items": [
+        {
+          "description": "Ремень приводной СИНТ-01",
+          "quantity": "2",
+          "unit": "шт.",
+          "unitPrice": "1200",
+          "lineTotal": "2400",
+          "currency": "RUB",
+          "delivery": "5 рабочих дней"
+        },
+        {
+          "description": "Подшипник СИНТ-02",
+          "quantity": "4",
+          "unit": "шт.",
+          "unitPrice": "350",
+          "lineTotal": "1400",
+          "currency": "RUB",
+          "delivery": "10 рабочих дней"
+        },
+        {
+          "description": "Насос учебный СИНТ-03",
+          "quantity": "1",
+          "unit": "шт.",
+          "unitPrice": "1800",
+          "lineTotal": "1800",
+          "currency": "RUB",
+          "delivery": "15 рабочих дней"
+        }
+      ]
+    },
+    {
+      "id": "ru-scan-dense",
+      "title": "Плотный двухстраничный скан, семь позиций",
+      "kind": "scan",
+      "pages": 2,
+      "dense": true,
+      "headers": {
+        "supplierName": "ООО «СИНТЕТИКА Плотный скан»",
+        "taxId": "0000000005",
+        "buyerName": "ООО «СИНТЕТИКА Покупатель»",
+        "total": "1400",
+        "currency": "RUB",
+        "delivery": "От 1 до 7 рабочих дней",
+        "payment": "50% аванс, 50% после поставки",
+        "vat": "НДС включён",
+        "deliveryCost": null
+      },
+      "items": [
+        {
+          "description": "Втулка учебная СИНТ-1",
+          "quantity": "1",
+          "unit": "шт.",
+          "unitPrice": "10",
+          "lineTotal": "10",
+          "currency": "RUB",
+          "delivery": "1 рабочих дней"
+        },
+        {
+          "description": "Втулка учебная СИНТ-2",
+          "quantity": "2",
+          "unit": "шт.",
+          "unitPrice": "20",
+          "lineTotal": "40",
+          "currency": "RUB",
+          "delivery": "2 рабочих дней"
+        },
+        {
+          "description": "Втулка учебная СИНТ-3",
+          "quantity": "3",
+          "unit": "шт.",
+          "unitPrice": "30",
+          "lineTotal": "90",
+          "currency": "RUB",
+          "delivery": "3 рабочих дней"
+        },
+        {
+          "description": "Втулка учебная СИНТ-4",
+          "quantity": "4",
+          "unit": "шт.",
+          "unitPrice": "40",
+          "lineTotal": "160",
+          "currency": "RUB",
+          "delivery": "4 рабочих дней"
+        },
+        {
+          "description": "Втулка учебная СИНТ-5",
+          "quantity": "5",
+          "unit": "шт.",
+          "unitPrice": "50",
+          "lineTotal": "250",
+          "currency": "RUB",
+          "delivery": "5 рабочих дней"
+        },
+        {
+          "description": "Втулка учебная СИНТ-6",
+          "quantity": "6",
+          "unit": "шт.",
+          "unitPrice": "60",
+          "lineTotal": "360",
+          "currency": "RUB",
+          "delivery": "6 рабочих дней"
+        },
+        {
+          "description": "Втулка учебная СИНТ-7",
+          "quantity": "7",
+          "unit": "шт.",
+          "unitPrice": "70",
+          "lineTotal": "490",
+          "currency": "RUB",
+          "delivery": "7 рабочих дней"
+        }
+      ]
+    },
+    {
+      "id": "ru-missing",
+      "title": "Нет ИНН продавца, цены второй строки и общего итога",
+      "kind": "native",
+      "pages": 1,
+      "headers": {
+        "supplierName": "ООО «СИНТЕТИКА Без реквизитов»",
+        "taxId": null,
+        "buyerName": "ООО «СИНТЕТИКА Покупатель»",
+        "total": null,
+        "currency": "RUB",
+        "delivery": null,
+        "payment": null,
+        "vat": null,
+        "deliveryCost": null
+      },
+      "items": [
+        {
+          "description": "Манометр учебный СИНТ-А",
+          "quantity": "1",
+          "unit": "шт.",
+          "unitPrice": "550",
+          "lineTotal": "550",
+          "currency": "RUB",
+          "delivery": null
+        },
+        {
+          "description": "Термометр учебный СИНТ-Б",
+          "quantity": "2",
+          "unit": "шт.",
+          "unitPrice": null,
+          "lineTotal": null,
+          "currency": "RUB",
+          "delivery": null
+        }
+      ]
+    },
+    {
+      "id": "ru-roles",
+      "title": "Покупатель вверху, продавец ниже, ложная инструкция",
+      "kind": "native",
+      "pages": 1,
+      "buyerFirst": true,
+      "injection": true,
+      "headers": {
+        "supplierName": "ООО «СИНТЕТИКА Продавец»",
+        "taxId": "0000000007",
+        "buyerName": "ООО «СИНТЕТИКА Покупатель»",
+        "total": "5600",
+        "currency": "RUB",
+        "delivery": "Не позднее 25.12.2026",
+        "payment": "Без аванса, оплата через 10 дней",
+        "vat": "НДС включён",
+        "deliveryCost": null
+      },
+      "items": [
+        {
+          "description": "Ремень приводной СИНТ-01",
+          "quantity": "2",
+          "unit": "шт.",
+          "unitPrice": "1200",
+          "lineTotal": "2400",
+          "currency": "RUB",
+          "delivery": "5 рабочих дней"
+        },
+        {
+          "description": "Подшипник СИНТ-02",
+          "quantity": "4",
+          "unit": "шт.",
+          "unitPrice": "350",
+          "lineTotal": "1400",
+          "currency": "RUB",
+          "delivery": "10 рабочих дней"
+        },
+        {
+          "description": "Насос учебный СИНТ-03",
+          "quantity": "1",
+          "unit": "шт.",
+          "unitPrice": "1800",
+          "lineTotal": "1800",
+          "currency": "RUB",
+          "delivery": "15 рабочих дней"
+        }
+      ]
+    },
+    {
+      "id": "ru-inconsistent",
+      "title": "Ошибочная арифметика исходного КП, неизвестная валюта",
+      "kind": "native",
+      "pages": 1,
+      "headers": {
+        "supplierName": "ООО «СИНТЕТИКА Ошибка»",
+        "taxId": "0000000008",
+        "buyerName": "ООО «СИНТЕТИКА Покупатель»",
+        "total": "1500",
+        "currency": "ZZZ",
+        "delivery": "По согласованию",
+        "payment": "100% предоплата",
+        "vat": "НДС включён",
+        "deliveryCost": null
+      },
+      "items": [
+        {
+          "description": "Датчик учебный СИНТ-А",
+          "quantity": "2",
+          "unit": "шт.",
+          "unitPrice": "500",
+          "lineTotal": "900",
+          "currency": "ZZZ",
+          "delivery": "7 рабочих дней"
+        },
+        {
+          "description": "Датчик учебный СИНТ-Б",
+          "quantity": "3",
+          "unit": "шт.",
+          "unitPrice": "100",
+          "lineTotal": "300",
+          "currency": "ZZZ",
+          "delivery": "9 рабочих дней"
+        }
+      ],
+      "expectedWarnings": ["line_arithmetic_mismatch", "total_arithmetic_mismatch", "unknown_currency"]
+    },
+    {
+      "id": "ru-logistics",
+      "holdout": true,
+      "title": "DAP, разгрузка и явная бесплатная доставка",
+      "kind": "native",
+      "pages": 1,
+      "headers": {
+        "supplierName": "ООО «СИНТЕТИКА Логистика»",
+        "taxId": "0000000009",
+        "buyerName": "ООО «СИНТЕТИКА Покупатель»",
+        "total": "13000",
+        "currency": "RUB",
+        "delivery": "DAP, учебный склад № 2; разгрузка силами поставщика; 20 рабочих дней",
+        "payment": "40% аванс, 60% через 15 дней после поставки",
+        "vat": "НДС включён",
+        "deliveryCost": "0"
+      },
+      "items": [
+        {
+          "description": "Компрессор учебный ЛОГ-А",
+          "quantity": "1",
+          "unit": "шт.",
+          "unitPrice": "12000",
+          "lineTotal": "12000",
+          "currency": "RUB",
+          "delivery": "20 рабочих дней"
+        },
+        {
+          "description": "Фитинг учебный ЛОГ-Б",
+          "quantity": "2",
+          "unit": "шт.",
+          "unitPrice": "500",
+          "lineTotal": "1000",
+          "currency": "RUB",
+          "delivery": "10 рабочих дней"
+        }
+      ]
+    },
+    {
+      "id": "ru-table-scan",
+      "holdout": true,
+      "title": "Табличный скан: 12 строк на двух страницах",
+      "kind": "scan",
+      "layout": "table",
+      "pages": 2,
+      "headers": {
+        "supplierName": "ООО «СИНТЕТИКА Таблица»",
+        "taxId": "0000000010",
+        "buyerName": "ООО «СИНТЕТИКА Покупатель»",
+        "total": "7800",
+        "currency": "RUB",
+        "delivery": "От 6 до 17 календарных дней",
+        "payment": "Оплата в течение 30 дней после поставки",
+        "vat": "НДС включён",
+        "deliveryCost": null
+      },
+      "items": [
+        {
+          "description": "Фильтр учебный ТАБЛ-1",
+          "quantity": "1",
+          "unit": "шт.",
+          "unitPrice": "100",
+          "lineTotal": "100",
+          "currency": "RUB",
+          "delivery": "6 календарных дней"
+        },
+        {
+          "description": "Фильтр учебный ТАБЛ-2",
+          "quantity": "1",
+          "unit": "шт.",
+          "unitPrice": "200",
+          "lineTotal": "200",
+          "currency": "RUB",
+          "delivery": "7 календарных дней"
+        },
+        {
+          "description": "Фильтр учебный ТАБЛ-3",
+          "quantity": "1",
+          "unit": "шт.",
+          "unitPrice": "300",
+          "lineTotal": "300",
+          "currency": "RUB",
+          "delivery": "8 календарных дней"
+        },
+        {
+          "description": "Фильтр учебный ТАБЛ-4",
+          "quantity": "1",
+          "unit": "шт.",
+          "unitPrice": "400",
+          "lineTotal": "400",
+          "currency": "RUB",
+          "delivery": "9 календарных дней"
+        },
+        {
+          "description": "Фильтр учебный ТАБЛ-5",
+          "quantity": "1",
+          "unit": "шт.",
+          "unitPrice": "500",
+          "lineTotal": "500",
+          "currency": "RUB",
+          "delivery": "10 календарных дней"
+        },
+        {
+          "description": "Фильтр учебный ТАБЛ-6",
+          "quantity": "1",
+          "unit": "шт.",
+          "unitPrice": "600",
+          "lineTotal": "600",
+          "currency": "RUB",
+          "delivery": "11 календарных дней"
+        },
+        {
+          "description": "Фильтр учебный ТАБЛ-7",
+          "quantity": "1",
+          "unit": "шт.",
+          "unitPrice": "700",
+          "lineTotal": "700",
+          "currency": "RUB",
+          "delivery": "12 календарных дней"
+        },
+        {
+          "description": "Фильтр учебный ТАБЛ-8",
+          "quantity": "1",
+          "unit": "шт.",
+          "unitPrice": "800",
+          "lineTotal": "800",
+          "currency": "RUB",
+          "delivery": "13 календарных дней"
+        },
+        {
+          "description": "Фильтр учебный ТАБЛ-9",
+          "quantity": "1",
+          "unit": "шт.",
+          "unitPrice": "900",
+          "lineTotal": "900",
+          "currency": "RUB",
+          "delivery": "14 календарных дней"
+        },
+        {
+          "description": "Фильтр учебный ТАБЛ-10",
+          "quantity": "1",
+          "unit": "шт.",
+          "unitPrice": "1000",
+          "lineTotal": "1000",
+          "currency": "RUB",
+          "delivery": "15 календарных дней"
+        },
+        {
+          "description": "Фильтр учебный ТАБЛ-11",
+          "quantity": "1",
+          "unit": "шт.",
+          "unitPrice": "1100",
+          "lineTotal": "1100",
+          "currency": "RUB",
+          "delivery": "16 календарных дней"
+        },
+        {
+          "description": "Фильтр учебный ТАБЛ-12",
+          "quantity": "1",
+          "unit": "шт.",
+          "unitPrice": "1200",
+          "lineTotal": "1200",
+          "currency": "RUB",
+          "delivery": "17 календарных дней"
+        }
+      ]
+    }
+  ]
+}
