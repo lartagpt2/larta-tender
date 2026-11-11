@@ -1,0 +1,1019 @@
+{
+  "at": "2026-11-11T11:20:55.295Z",
+  "primarySha256": "eaa9725c1177abc2cd3581d4d5d735187f55b8ed48798f7db12e144351aad88e",
+  "primaryUnchanged": true,
+  "preservedFFiles": 62,
+  "sourceProvenancesVerified": 9,
+  "priceCurrency": {
+    "knownPairs": {
+      "correct": 12,
+      "total": 18,
+      "accuracy": 0.6666666666666666,
+      "errors": [
+        {
+          "id": "g06-scan-articles",
+          "index": 0,
+          "description": "Корпус РС-1601",
+          "price": "2460",
+          "currency": "RUB",
+          "correct": false
+        },
+        {
+          "id": "g06-scan-articles",
+          "index": 1,
+          "description": "Панель НТ-1602",
+          "price": "1875.6",
+          "currency": "RUB",
+          "correct": false
+        },
+        {
+          "id": "g06-scan-articles",
+          "index": 2,
+          "description": "Вставка АК-1603",
+          "price": "93.75",
+          "currency": "RUB",
+          "correct": false
+        },
+        {
+          "id": "g07-scan-fractions",
+          "index": 0,
+          "description": "Трос ТС-1701",
+          "price": "153.6",
+          "currency": "CNY",
+          "correct": false
+        },
+        {
+          "id": "g07-scan-fractions",
+          "index": 1,
+          "description": "Паста ТС-1702",
+          "price": "720",
+          "currency": "CNY",
+          "correct": false
+        },
+        {
+          "id": "g07-scan-fractions",
+          "index": 2,
+          "description": "Шпилька ТС-1703",
+          "price": "11.45",
+          "currency": "CNY",
+          "correct": false
+        }
+      ]
+    },
+    "pricedUnknownCurrency": {
+      "correct": 5,
+      "total": 5,
+      "accuracy": 1,
+      "errors": []
+    },
+    "unpriced": {
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1,
+      "errors": []
+    }
+  },
+  "processingMs": {
+    "min": 29120,
+    "p50": 31512,
+    "p95": 38649,
+    "max": 38649
+  },
+  "queueWaitMs": {
+    "min": 103,
+    "p50": 93482,
+    "p95": 236773,
+    "max": 236773
+  },
+  "articleSuggestions": [
+    {
+      "caseId": "g06-scan-articles",
+      "index": 0,
+      "originals": [
+        "PC-1601"
+      ],
+      "ambiguous": [
+        {
+          "original": "PC-1601",
+          "characters": [
+            {
+              "index": 0,
+              "character": "P",
+              "codepoint": "U+0050"
+            },
+            {
+              "index": 1,
+              "character": "C",
+              "codepoint": "U+0043"
+            }
+          ],
+          "mixedScripts": false
+        }
+      ],
+      "candidates": [
+        {
+          "id": "g06-scan-articles-0",
+          "name": "Корпус РС-1601",
+          "sourceArticle": "PC-1601",
+          "targetArticle": "РС-1601",
+          "reason": "visual_homoglyph"
+        }
+      ],
+      "truncated": false,
+      "automaticallyApplied": false
+    },
+    {
+      "caseId": "g06-scan-articles",
+      "index": 1,
+      "originals": [
+        "HT-1602"
+      ],
+      "ambiguous": [
+        {
+          "original": "HT-1602",
+          "characters": [
+            {
+              "index": 0,
+              "character": "H",
+              "codepoint": "U+0048"
+            },
+            {
+              "index": 1,
+              "character": "T",
+              "codepoint": "U+0054"
+            }
+          ],
+          "mixedScripts": false
+        }
+      ],
+      "candidates": [
+        {
+          "id": "g06-scan-articles-1",
+          "name": "Панель НТ-1602",
+          "sourceArticle": "HT-1602",
+          "targetArticle": "НТ-1602",
+          "reason": "visual_homoglyph"
+        }
+      ],
+      "truncated": false,
+      "automaticallyApplied": false
+    },
+    {
+      "caseId": "g06-scan-articles",
+      "index": 2,
+      "originals": [
+        "AK-1603"
+      ],
+      "ambiguous": [
+        {
+          "original": "AK-1603",
+          "characters": [
+            {
+              "index": 0,
+              "character": "A",
+              "codepoint": "U+0041"
+            },
+            {
+              "index": 1,
+              "character": "K",
+              "codepoint": "U+004B"
+            }
+          ],
+          "mixedScripts": false
+        }
+      ],
+      "candidates": [
+        {
+          "id": "g06-scan-articles-2",
+          "name": "Вставка АК-1603",
+          "sourceArticle": "AK-1603",
+          "targetArticle": "АК-1603",
+          "reason": "visual_homoglyph"
+        }
+      ],
+      "truncated": false,
+      "automaticallyApplied": false
+    },
+    {
+      "caseId": "g07-scan-fractions",
+      "index": 0,
+      "originals": [
+        "TC-1701"
+      ],
+      "ambiguous": [
+        {
+          "original": "TC-1701",
+          "characters": [
+            {
+              "index": 0,
+              "character": "T",
+              "codepoint": "U+0054"
+            },
+            {
+              "index": 1,
+              "character": "C",
+              "codepoint": "U+0043"
+            }
+          ],
+          "mixedScripts": false
+        }
+      ],
+      "candidates": [
+        {
+          "id": "g07-scan-fractions-0",
+          "name": "Трос ТС-1701",
+          "sourceArticle": "TC-1701",
+          "targetArticle": "ТС-1701",
+          "reason": "visual_homoglyph"
+        }
+      ],
+      "truncated": false,
+      "automaticallyApplied": false
+    },
+    {
+      "caseId": "g07-scan-fractions",
+      "index": 1,
+      "originals": [
+        "TC-1702"
+      ],
+      "ambiguous": [
+        {
+          "original": "TC-1702",
+          "characters": [
+            {
+              "index": 0,
+              "character": "T",
+              "codepoint": "U+0054"
+            },
+            {
+              "index": 1,
+              "character": "C",
+              "codepoint": "U+0043"
+            }
+          ],
+          "mixedScripts": false
+        }
+      ],
+      "candidates": [
+        {
+          "id": "g07-scan-fractions-1",
+          "name": "Паста ТС-1702",
+          "sourceArticle": "TC-1702",
+          "targetArticle": "ТС-1702",
+          "reason": "visual_homoglyph"
+        }
+      ],
+      "truncated": false,
+      "automaticallyApplied": false
+    },
+    {
+      "caseId": "g07-scan-fractions",
+      "index": 2,
+      "originals": [
+        "TC-1703"
+      ],
+      "ambiguous": [
+        {
+          "original": "TC-1703",
+          "characters": [
+            {
+              "index": 0,
+              "character": "T",
+              "codepoint": "U+0054"
+            },
+            {
+              "index": 1,
+              "character": "C",
+              "codepoint": "U+0043"
+            }
+          ],
+          "mixedScripts": false
+        }
+      ],
+      "candidates": [
+        {
+          "id": "g07-scan-fractions-2",
+          "name": "Шпилька ТС-1703",
+          "sourceArticle": "TC-1703",
+          "targetArticle": "ТС-1703",
+          "reason": "visual_homoglyph"
+        }
+      ],
+      "truncated": false,
+      "automaticallyApplied": false
+    }
+  ],
+  "details": [
+    {
+      "id": "g01-eur-header",
+      "kind": "native",
+      "status": "needs_review",
+      "knownCorrect": 29,
+      "knownTotal": 29,
+      "rowCounts": [
+        3,
+        3
+      ],
+      "processingMs": 31333,
+      "queueWaitMs": 103,
+      "warnings": [
+        "raw_value_not_in_evidence",
+        "currency_from_verified_header",
+        "supplier_unresolved_or_ambiguous"
+      ],
+      "errors": [],
+      "rows": [
+        {
+          "description": "Термостат НМ-1101",
+          "original": "Термостат НМ-1101",
+          "price": "1780.25",
+          "currency": "EUR",
+          "provenance": {
+            "kind": "native_header",
+            "scope": "document",
+            "code": "EUR",
+            "page": 1,
+            "line": 17,
+            "excerpt": "Валюта предложения: EUR",
+            "rowPage": 1,
+            "rowLine": 7,
+            "sourceDocumentId": "bcec281a-d022-4e50-9dd4-4650fc31abb2"
+          }
+        },
+        {
+          "description": "Регулятор НМ-1102",
+          "original": "Регулятор НМ-1102",
+          "price": "79.6",
+          "currency": "EUR",
+          "provenance": {
+            "kind": "native_header",
+            "scope": "document",
+            "code": "EUR",
+            "page": 1,
+            "line": 17,
+            "excerpt": "Валюта предложения: EUR",
+            "rowPage": 1,
+            "rowLine": 10,
+            "sourceDocumentId": "bcec281a-d022-4e50-9dd4-4650fc31abb2"
+          }
+        },
+        {
+          "description": "Экран НМ-1103",
+          "original": "Экран НМ-1103",
+          "price": "145.75",
+          "currency": "EUR",
+          "provenance": {
+            "kind": "native_header",
+            "scope": "document",
+            "code": "EUR",
+            "page": 1,
+            "line": 17,
+            "excerpt": "Валюта предложения: EUR",
+            "rowPage": 1,
+            "rowLine": 13,
+            "sourceDocumentId": "bcec281a-d022-4e50-9dd4-4650fc31abb2"
+          }
+        }
+      ]
+    },
+    {
+      "id": "g02-usd-table",
+      "kind": "native",
+      "status": "needs_review",
+      "knownCorrect": 29,
+      "knownTotal": 29,
+      "rowCounts": [
+        3,
+        3
+      ],
+      "processingMs": 29759,
+      "queueWaitMs": 31572,
+      "warnings": [
+        "raw_value_not_in_evidence",
+        "currency_from_verified_header",
+        "supplier_unresolved_or_ambiguous"
+      ],
+      "errors": [],
+      "rows": [
+        {
+          "description": "Патрубок ОИ-1201",
+          "original": "Патрубок ОИ-1201",
+          "price": "68.4",
+          "currency": "USD",
+          "provenance": {
+            "kind": "native_header",
+            "scope": "table",
+            "code": "USD",
+            "page": 1,
+            "line": 7,
+            "excerpt": "Наименование Кол-во Ед. Цена, USD Сумма, USD Срок",
+            "rowPage": 1,
+            "rowLine": 8,
+            "sourceDocumentId": "ee4232aa-5cb1-42ae-a430-110e09003ec1"
+          }
+        },
+        {
+          "description": "Шайба ОИ-1202",
+          "original": "Шайба ОИ-1202",
+          "price": "1.28",
+          "currency": "USD",
+          "provenance": {
+            "kind": "native_header",
+            "scope": "table",
+            "code": "USD",
+            "page": 1,
+            "line": 7,
+            "excerpt": "Наименование Кол-во Ед. Цена, USD Сумма, USD Срок",
+            "rowPage": 1,
+            "rowLine": 9,
+            "sourceDocumentId": "ee4232aa-5cb1-42ae-a430-110e09003ec1"
+          }
+        },
+        {
+          "description": "Переходник ОИ-1203",
+          "original": "Переходник ОИ-1203",
+          "price": "14.95",
+          "currency": "USD",
+          "provenance": {
+            "kind": "native_header",
+            "scope": "table",
+            "code": "USD",
+            "page": 1,
+            "line": 7,
+            "excerpt": "Наименование Кол-во Ед. Цена, USD Сумма, USD Срок",
+            "rowPage": 1,
+            "rowLine": 10,
+            "sourceDocumentId": "ee4232aa-5cb1-42ae-a430-110e09003ec1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "g03-multipage",
+      "kind": "native",
+      "status": "needs_review",
+      "knownCorrect": 29,
+      "knownTotal": 29,
+      "rowCounts": [
+        3,
+        3
+      ],
+      "processingMs": 32263,
+      "queueWaitMs": 61273,
+      "warnings": [
+        "raw_value_not_in_evidence",
+        "currency_from_verified_header",
+        "supplier_unresolved_or_ambiguous"
+      ],
+      "errors": [],
+      "rows": [
+        {
+          "description": "Секция БС-1301",
+          "original": "Секция БС-1301",
+          "price": "4930",
+          "currency": "RUB",
+          "provenance": {
+            "kind": "native_header",
+            "scope": "document",
+            "code": "RUB",
+            "page": 2,
+            "line": 11,
+            "excerpt": "Валюта предложения: RUB",
+            "rowPage": 1,
+            "rowLine": 7,
+            "sourceDocumentId": "59088e9b-4534-4641-95a5-c4f18dc8aeee"
+          }
+        },
+        {
+          "description": "Рукоятка БС-1302",
+          "original": "Рукоятка БС-1302",
+          "price": "352.5",
+          "currency": "RUB",
+          "provenance": {
+            "kind": "native_header",
+            "scope": "document",
+            "code": "RUB",
+            "page": 2,
+            "line": 11,
+            "excerpt": "Валюта предложения: RUB",
+            "rowPage": 1,
+            "rowLine": 10,
+            "sourceDocumentId": "59088e9b-4534-4641-95a5-c4f18dc8aeee"
+          }
+        },
+        {
+          "description": "Кожух БС-1303",
+          "original": "Кожух БС-1303",
+          "price": "6810",
+          "currency": "RUB",
+          "provenance": {
+            "kind": "native_header",
+            "scope": "document",
+            "code": "RUB",
+            "page": 2,
+            "line": 11,
+            "excerpt": "Валюта предложения: RUB",
+            "rowPage": 2,
+            "rowLine": 7,
+            "sourceDocumentId": "59088e9b-4534-4641-95a5-c4f18dc8aeee"
+          }
+        }
+      ]
+    },
+    {
+      "id": "g04-conflicting",
+      "kind": "native",
+      "status": "needs_review",
+      "knownCorrect": 25,
+      "knownTotal": 25,
+      "rowCounts": [
+        3,
+        3
+      ],
+      "processingMs": 31512,
+      "queueWaitMs": 93482,
+      "warnings": [
+        "raw_value_not_in_evidence",
+        "currency_header_missing_or_ambiguous",
+        "supplier_unresolved_or_ambiguous"
+      ],
+      "errors": [],
+      "rows": [
+        {
+          "description": "Пластина ПД-1401",
+          "original": "Пластина ПД-1401",
+          "price": "318",
+          "currency": null,
+          "provenance": null
+        },
+        {
+          "description": "Пробка ПД-1402",
+          "original": "Пробка ПД-1402",
+          "price": "27.4",
+          "currency": null,
+          "provenance": null
+        },
+        {
+          "description": "Сетка ПД-1403",
+          "original": "Сетка ПД-1403",
+          "price": "995",
+          "currency": null,
+          "provenance": null
+        }
+      ]
+    },
+    {
+      "id": "g05-scan-eur",
+      "kind": "scan",
+      "status": "needs_review",
+      "knownCorrect": 29,
+      "knownTotal": 29,
+      "rowCounts": [
+        3,
+        3
+      ],
+      "processingMs": 38649,
+      "queueWaitMs": 125550,
+      "warnings": [
+        "vision_evidence_requires_review",
+        "supplier_unresolved_or_ambiguous"
+      ],
+      "errors": [],
+      "rows": [
+        {
+          "description": "Пневмоцилиндр ИВ-1501",
+          "original": "Пневмоцилиндр ИВ-1501",
+          "price": "438.75",
+          "currency": "EUR",
+          "provenance": null
+        },
+        {
+          "description": "Клапанный блок ИВ-1502",
+          "original": "Клапанный блок ИВ-1502",
+          "price": "129.8",
+          "currency": "EUR",
+          "provenance": null
+        },
+        {
+          "description": "Переходная муфта ИВ-1503",
+          "original": "Переходная муфта ИВ-1503",
+          "price": "6.65",
+          "currency": "EUR",
+          "provenance": null
+        }
+      ]
+    },
+    {
+      "id": "g06-scan-articles",
+      "kind": "scan",
+      "status": "needs_review",
+      "knownCorrect": 8,
+      "knownTotal": 29,
+      "rowCounts": [
+        3,
+        3
+      ],
+      "processingMs": 34752,
+      "queueWaitMs": 164111,
+      "warnings": [
+        "vision_evidence_requires_review",
+        "supplier_unresolved_or_ambiguous"
+      ],
+      "errors": [
+        {
+          "path": "items[0].description",
+          "expected": "Корпус РС-1601",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[0].quantity",
+          "expected": "5",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[0].unit",
+          "expected": "шт.",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[0].unitPrice",
+          "expected": "2460",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[0].lineTotal",
+          "expected": "12300",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[0].currency",
+          "expected": "RUB",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[0].delivery",
+          "expected": "8 рабочих дней",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[1].description",
+          "expected": "Панель НТ-1602",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[1].quantity",
+          "expected": "3",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[1].unit",
+          "expected": "шт.",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[1].unitPrice",
+          "expected": "1875.6",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[1].lineTotal",
+          "expected": "5626.8",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[1].currency",
+          "expected": "RUB",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[1].delivery",
+          "expected": "12 рабочих дней",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[2].description",
+          "expected": "Вставка АК-1603",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[2].quantity",
+          "expected": "14",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[2].unit",
+          "expected": "шт.",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[2].unitPrice",
+          "expected": "93.75",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[2].lineTotal",
+          "expected": "1312.5",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[2].currency",
+          "expected": "RUB",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[2].delivery",
+          "expected": "6 рабочих дней",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "unmatchedItems[0]",
+          "actual": "Корпус PC-1601",
+          "type": "unmatched_row"
+        },
+        {
+          "path": "unmatchedItems[1]",
+          "actual": "Панель HT-1602",
+          "type": "unmatched_row"
+        },
+        {
+          "path": "unmatchedItems[2]",
+          "actual": "Вставка AK-1603",
+          "type": "unmatched_row"
+        }
+      ],
+      "rows": [
+        {
+          "description": "Корпус PC-1601",
+          "original": "Корпус PC-1601",
+          "price": "2460",
+          "currency": "RUB",
+          "provenance": null
+        },
+        {
+          "description": "Панель HT-1602",
+          "original": "Панель HT-1602",
+          "price": "1875.6",
+          "currency": "RUB",
+          "provenance": null
+        },
+        {
+          "description": "Вставка AK-1603",
+          "original": "Вставка AK-1603",
+          "price": "93.75",
+          "currency": "RUB",
+          "provenance": null
+        }
+      ]
+    },
+    {
+      "id": "g07-scan-fractions",
+      "kind": "scan",
+      "status": "needs_review",
+      "knownCorrect": 8,
+      "knownTotal": 29,
+      "rowCounts": [
+        3,
+        3
+      ],
+      "processingMs": 38014,
+      "queueWaitMs": 198805,
+      "warnings": [
+        "vision_evidence_requires_review",
+        "supplier_unresolved_or_ambiguous"
+      ],
+      "errors": [
+        {
+          "path": "items[0].description",
+          "expected": "Трос ТС-1701",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[0].quantity",
+          "expected": "2.375",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[0].unit",
+          "expected": "м",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[0].unitPrice",
+          "expected": "153.6",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[0].lineTotal",
+          "expected": "364.8",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[0].currency",
+          "expected": "CNY",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[0].delivery",
+          "expected": "17 календарных дней",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[1].description",
+          "expected": "Паста ТС-1702",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[1].quantity",
+          "expected": "0.875",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[1].unit",
+          "expected": "кг",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[1].unitPrice",
+          "expected": "720",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[1].lineTotal",
+          "expected": "630",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[1].currency",
+          "expected": "CNY",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[1].delivery",
+          "expected": "9 календарных дней",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[2].description",
+          "expected": "Шпилька ТС-1703",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[2].quantity",
+          "expected": "7",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[2].unit",
+          "expected": "шт.",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[2].unitPrice",
+          "expected": "11.45",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[2].lineTotal",
+          "expected": "80.15",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[2].currency",
+          "expected": "CNY",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "items[2].delivery",
+          "expected": "6 календарных дней",
+          "actual": null,
+          "type": "missing"
+        },
+        {
+          "path": "unmatchedItems[0]",
+          "actual": "Трос TC-1701",
+          "type": "unmatched_row"
+        },
+        {
+          "path": "unmatchedItems[1]",
+          "actual": "Паста TC-1702",
+          "type": "unmatched_row"
+        },
+        {
+          "path": "unmatchedItems[2]",
+          "actual": "Шпилька TC-1703",
+          "type": "unmatched_row"
+        }
+      ],
+      "rows": [
+        {
+          "description": "Трос TC-1701",
+          "original": "Трос TC-1701",
+          "price": "153.6",
+          "currency": "CNY",
+          "provenance": null
+        },
+        {
+          "description": "Паста TC-1702",
+          "original": "Паста TC-1702",
+          "price": "720",
+          "currency": "CNY",
+          "provenance": null
+        },
+        {
+          "description": "Шпилька TC-1703",
+          "original": "Шпилька TC-1703",
+          "price": "11.45",
+          "currency": "CNY",
+          "provenance": null
+        }
+      ]
+    },
+    {
+      "id": "g08-no-currency",
+      "kind": "native",
+      "status": "needs_review",
+      "knownCorrect": 22,
+      "knownTotal": 22,
+      "rowCounts": [
+        3,
+        3
+      ],
+      "processingMs": 29120,
+      "queueWaitMs": 236773,
+      "warnings": [
+        "unverified_evidence",
+        "currency_header_missing_or_ambiguous",
+        "missing_line_price",
+        "missing_total",
+        "supplier_unresolved_or_ambiguous"
+      ],
+      "errors": [],
+      "rows": [
+        {
+          "description": "Диафрагма МИ-1801",
+          "original": "Диафрагма МИ-1801",
+          "price": "834",
+          "currency": null,
+          "provenance": null
+        },
+        {
+          "description": "Колпак МИ-1802",
+          "original": "Колпак МИ-1802",
+          "price": "287.5",
+          "currency": null,
+          "provenance": null
+        },
+        {
+          "description": "Палец МИ-1803",
+          "original": "Палец МИ-1803",
+          "price": null,
+          "currency": null,
+          "provenance": null
+        }
+      ]
+    }
+  ],
+  "realDocumentsAllowed": false,
+  "autoConfirmations": 0
+}
