@@ -2,7 +2,32 @@
 import { computed, ref, watch } from 'vue';
 import { useQuery, useQueryClient } from '@tanstack/vue-query';
 import { api } from './tender-api';
+import { RouterLink } from 'vue-router';
 const props = defineProps<{ tenderId: string }>();
+const aiJobs = useQuery({
+  queryKey: computed(() => ['document-ai', props.tenderId]),
+  queryFn: () =>
+    api<{
+      enabled: boolean;
+      jobs: {
+        id: string;
+        documentId: string;
+        receiptId: string | null;
+        supplierId: string | null;
+        lotId: string | null;
+        status: string;
+      }[];
+    }>(`/tenders/${props.tenderId}/document-ai`),
+  refetchInterval: (q) =>
+    q.state.data?.jobs.some((j) => ['pending', 'running'].includes(j.status)) ? 2000 : false,
+});
+const aiStatus: Record<string, string> = {
+  pending: 'Ожидает распознавания',
+  running: 'Обрабатывается',
+  needs_review: 'ИИ-черновик готов — не подтверждён',
+  failed: 'Ошибка распознавания',
+  unsupported: 'Неподдерживаемый формат',
+};
 interface Doc {
   id: string;
   name: string;
@@ -266,8 +291,14 @@ async function save() {
           <div>
             <a :href="`/api/tenders/${tenderId}/offers/${doc.id}/original`">{{ doc.name }}</a>
             <p>
-              {{ doc.parentId ? 'Приложение · ' : '' }}{{ doc.stage ?? 'Этап не назначен' }} · Ожидает
-              обработки
+              {{ doc.parentId ? 'Приложение · ' : '' }}{{ doc.stage ?? 'Этап не назначен' }} ·
+              {{
+                aiJobs.data.value?.jobs.some((j) => j.documentId === doc.id)
+                  ? 'Последнее задание ИИ: ' +
+                    aiStatus[aiJobs.data.value.jobs.find((j) => j.documentId === doc.id)!.status] +
+                    ' (контекст — в истории поступлений)'
+                  : 'Ожидает обработки'
+              }}
             </p>
             <p>
               Заявленный From (личность не проверена): {{ doc.email ?? 'Не указан' }} ·
@@ -293,6 +324,31 @@ async function save() {
                     {{ receipt.supplierName ?? 'Поставщик при поступлении не определён' }}
                   </p>
                   <p>{{ receipt.originalName }} · From: {{ receipt.senderEmail ?? 'Не указан' }}</p>
+                  <p
+                    v-for="job in aiJobs.data.value?.jobs.filter(
+                      (j) => j.documentId === doc.id && j.receiptId === receipt.id,
+                    ) ?? []"
+                    :key="job.id"
+                  >
+                    {{ aiStatus[job.status] }} · {{ job.supplierId ?? 'Поставщик не определён'
+                    }}<RouterLink
+                      :to="{
+                        path: '/review',
+                        query: {
+                          tenderId,
+                          documentId: doc.id,
+                          receiptId: receipt.id,
+                          ...(job.supplierId ? { supplierId: job.supplierId } : {}),
+                          ...(job.lotId ? { lotId: job.lotId } : {}),
+                        },
+                      }"
+                      >Проверить данные</RouterLink
+                    >
+                  </p>
+                  <RouterLink
+                    :to="{ path: '/review', query: { tenderId, documentId: doc.id, receiptId: receipt.id } }"
+                    >Открыть проверку поступления</RouterLink
+                  >
                   <p v-if="receipt.legacy">
                     Известное первоначальное поступление; история ранних повторов недоступна.
                   </p>

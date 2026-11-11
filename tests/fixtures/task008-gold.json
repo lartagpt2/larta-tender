@@ -1,0 +1,73 @@
+{
+  "currency": "RUB",
+  "supplierName": "Synthetic Supplier Alpha",
+  "buyerName": "Synthetic Buyer Beta",
+  "total": "1400",
+  "email": "quote@example.invalid",
+  "items": [
+    {
+      "name": "Synthetic equipment 1",
+      "delivery": "1 days",
+      "lineTotal": "10",
+      "quantity": "1",
+      "unitPrice": "10",
+      "unit": "pcs",
+      "page": 1
+    },
+    {
+      "name": "Synthetic equipment 2",
+      "delivery": "2 days",
+      "lineTotal": "40",
+      "quantity": "2",
+      "unitPrice": "20",
+      "unit": "pcs",
+      "page": 1
+    },
+    {
+      "name": "Synthetic equipment 3",
+      "delivery": "3 days",
+      "lineTotal": "90",
+      "quantity": "3",
+      "unitPrice": "30",
+      "unit": "pcs",
+      "page": 1
+    },
+    {
+      "name": "Synthetic equipment 4",
+      "delivery": "4 days",
+      "lineTotal": "160",
+      "quantity": "4",
+      "unitPrice": "40",
+      "unit": "pcs",
+      "page": 1
+    },
+    {
+      "name": "Synthetic equipment 5",
+      "delivery": "5 days",
+      "lineTotal": "250",
+      "quantity": "5",
+      "unitPrice": "50",
+      "unit": "pcs",
+      "page": 2
+    },
+    {
+      "name": "Synthetic equipment 6",
+      "delivery": "6 days",
+      "lineTotal": "360",
+      "quantity": "6",
+      "unitPrice": "60",
+      "unit": "pcs",
+      "page": 2
+    },
+    {
+      "name": "Synthetic equipment 7",
+      "delivery": "7 days",
+      "lineTotal": "490",
+      "quantity": "7",
+      "unitPrice": "70",
+      "unit": "pcs",
+      "page": 2
+    }
+  ],
+  "taxId": "0000000000"
+}

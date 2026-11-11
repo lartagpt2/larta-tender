@@ -1,3 +1,5 @@
+import { PgAIRepository, aiOptions } from './document-ai/ai-repository';
+import { CreateAIDto, ReviewAIDto } from './document-ai/ai.dto';
 import { PgStageRepository } from './stages/stage-repository';
 import {
   BaselineDto,
@@ -112,6 +114,7 @@ export interface DataOptions {
   offerRepository?: PgOfferRepository;
   verificationRepository?: PgVerificationRepository;
   stageRepository?: PgStageRepository;
+  aiRepository?: PgAIRepository;
 }
 class DataContext {
   readonly repository?: TenderRepository;
@@ -120,6 +123,7 @@ class DataContext {
   readonly offers?: PgOfferRepository;
   readonly verifications?: PgVerificationRepository;
   readonly stages?: PgStageRepository;
+  readonly ai?: PgAIRepository;
   private pool?: Pool;
   constructor(private readonly options: DataOptions) {
     if (options.enabled && options.environment !== 'production') {
@@ -129,6 +133,9 @@ class DataContext {
           (this.pool = new Pool({ max: 5, connectionTimeoutMillis: 5000, statement_timeout: 10000 })),
         );
       this.scope = options.scopeRepository ?? (this.pool ? new PgScopeRepository(this.pool) : undefined);
+      const aiConfig = aiOptions();
+      this.ai =
+        options.aiRepository ?? (this.pool && aiConfig ? new PgAIRepository(this.pool, aiConfig) : undefined);
       this.stages = options.stageRepository ?? (this.pool ? new PgStageRepository(this.pool) : undefined);
       this.verifications =
         options.verificationRepository ?? (this.pool ? new PgVerificationRepository(this.pool) : undefined);
@@ -153,7 +160,11 @@ class DataContext {
       throw new UnauthorizedException();
     return actorId;
   }
+  async onModuleInit() {
+    await this.ai?.start();
+  }
   async onModuleDestroy(): Promise<void> {
+    await this.ai?.close();
     await this.pool?.end();
   }
 }
@@ -710,6 +721,57 @@ class TendersController {
     }
     if (!file) throw new BadRequestException();
     return this.stages().upload(actor, id, key, await this.store().put(file.content), file.name, file.mime);
+  }
+  private ai(): PgAIRepository {
+    if (!this.data.ai) throw new ServiceUnavailableException();
+    return this.data.ai;
+  }
+  @Get(':id/document-ai')
+  aiList(@Headers('authorization') h: string | undefined, @Param('id', new ParseUUIDPipe()) id: string) {
+    return this.ai().list(this.data.actor(h), id);
+  }
+  @Get(':id/document-ai/:jobId')
+  aiGet(
+    @Headers('authorization') h: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Param('jobId') jobId: string,
+  ) {
+    return this.ai().get(this.data.actor(h), id, jobId);
+  }
+  @Post(':id/document-ai')
+  @ApiBody({ type: CreateAIDto })
+  aiCreate(
+    @Headers('authorization') h: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Body(
+      new ValidationPipe({
+        expectedType: CreateAIDto,
+        whitelist: true,
+        forbidNonWhitelisted: true,
+        transform: true,
+      }),
+    )
+    input: CreateAIDto,
+  ) {
+    return this.ai().create(this.data.actor(h), id, input);
+  }
+  @Post(':id/document-ai/:jobId/review')
+  @ApiBody({ type: ReviewAIDto })
+  aiReview(
+    @Headers('authorization') h: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Param('jobId') jobId: string,
+    @Body(
+      new ValidationPipe({
+        expectedType: ReviewAIDto,
+        whitelist: true,
+        forbidNonWhitelisted: true,
+        transform: true,
+      }),
+    )
+    input: ReviewAIDto,
+  ) {
+    return this.ai().review(this.data.actor(h), id, jobId, input);
   }
   @Get(':id/lots')
   @ApiOkResponse({ type: LotDto, isArray: true })

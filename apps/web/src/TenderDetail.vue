@@ -4,6 +4,7 @@ import { RouterLink, useRoute } from 'vue-router';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/vue-query';
 import { z } from 'zod';
 import PdfDraftPanel from './PdfDraftPanel.vue';
+import DocumentAIPanel from './DocumentAIPanel.vue';
 import OfferRegistry from './OfferRegistry.vue';
 import ScopeItemsEditor from './ScopeItemsEditor.vue';
 import {
@@ -104,6 +105,31 @@ function saveItems() {
 }
 function chooseMode(event: Event) {
   patch.mutate({ selectionMode: (event.target as HTMLSelectElement).value });
+}
+function useAIScope(rows: Record<string, { value: string | null }>[]) {
+  if (!editing.value) edit();
+  let skipped = 0;
+  for (const row of rows) {
+    const name = row.description?.value,
+      quantity = row.quantity?.value,
+      unit = row.unit?.value;
+    if (
+      !name ||
+      !quantity ||
+      !unit ||
+      editItems.value.some((i) => i.name.trim().toLowerCase() === name.trim().toLowerCase())
+    ) {
+      skipped++;
+      continue;
+    }
+    editItems.value.push({
+      name,
+      quantity,
+      unit,
+      technicalRequirements: row.technicalRequirements?.value ?? '',
+    });
+  }
+  editError.value = `Позиции добавлены только в редактор. Проверьте и сохраните вручную.${skipped ? ' Пропуски/возможные дубли: ' + skipped : ''}`;
 }
 </script>
 <template>
@@ -234,6 +260,13 @@ function chooseMode(event: Event) {
         </li>
       </ul>
       <template v-for="doc in documents.data.value" :key="`draft-${doc.id}`">
+        <DocumentAIPanel
+          v-show="!scope.specificationSkipped || reopened"
+          :tender-id="id"
+          :document-id="doc.id"
+          kind="specification"
+          @use-scope="useAIScope"
+        />
         <PdfDraftPanel
           v-if="/\.pdf$/i.test(doc.name)"
           v-show="!scope.specificationSkipped || reopened"
