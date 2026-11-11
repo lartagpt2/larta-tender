@@ -21,6 +21,7 @@
     "test:api": "jest --runInBand",
     "test:web": "vitest run --config apps/web/vite.config.ts",
     "test:e2e": "playwright test",
+    "test:e2e:ai": "playwright test --config playwright.task008.config.ts",
     "check": "npm run typecheck \u0026\u0026 npm run lint \u0026\u0026 npm test \u0026\u0026 npm run build"
   },
   "dependencies": {

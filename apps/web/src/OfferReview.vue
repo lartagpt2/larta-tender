@@ -4,6 +4,7 @@ import { useRoute, RouterLink } from 'vue-router';
 import { useQuery, useQueryClient } from '@tanstack/vue-query';
 import { api } from './tender-api';
 import TenderSelector from './TenderSelector.vue';
+import DocumentAIPanel from './DocumentAIPanel.vue';
 import CommercialFieldsEditor from './CommercialFieldsEditor.vue';
 import {
   emptyFields,
@@ -63,6 +64,7 @@ function load() {
   error.value = '';
   saved.value = '';
   contextConfirmed.value = false;
+  activeAIJob.value = '';
   sourceNote.value = '';
   sourceType.value = 'document';
   newQuestion.value = '';
@@ -87,6 +89,25 @@ watch(query.data, () => {
   if (!query.data.value.lots.some((l) => l.id === lotId.value))
     lotId.value = query.data.value.lots[0]?.id ?? '';
   load();
+  if (typeof route.query.documentId === 'string' && typeof route.query.receiptId === 'string') {
+    const doc = query.data.value.documents.find((d) => d.id === route.query.documentId);
+    if (doc?.receipts.some((r) => r.id === route.query.receiptId)) {
+      if (
+        typeof route.query.supplierId === 'string' &&
+        query.data.value.suppliers.some((s) => s.id === route.query.supplierId)
+      )
+        supplierId.value = route.query.supplierId;
+      if (
+        typeof route.query.lotId === 'string' &&
+        query.data.value.lots.some((l) => l.id === route.query.lotId)
+      )
+        lotId.value = route.query.lotId;
+      queueMicrotask(() => {
+        documentId.value = doc.id;
+        receiptId.value = String(route.query.receiptId);
+      });
+    }
+  }
 });
 watch(id, () => {
   supplierId.value = '';
@@ -154,38 +175,56 @@ async function save(intent: 'draft' | 'confirm') {
   }
   busy.value = true;
   try {
-    const result = await api<{ status: string; warnings: { message: string }[] }>(
-      `/tenders/${id.value}/verification`,
-      {
-        method: 'POST',
-        body: JSON.stringify({
-          supplierId: supplierId.value,
-          lotId: lotId.value,
-          documentId: documentId.value,
-          receiptId: receiptId.value,
-          expectedVersion: expectedVersion.value,
-          contextConfirmed: true,
-          intent,
-          fields: current,
-          ...(!expectedVersion.value ? { original: normalizedFields(original.value) } : {}),
-          items: items.value.map((i) => ({
-            ...i,
-            quantity: decimalInput(i.quantity) ?? '',
-            unitPrice: decimalInput(i.unitPrice),
-          })),
-          costs: costs.value.map((c) => ({
-            ...c,
-            amount: decimalInput(c.amount),
-            currency: c.currency || null,
-          })),
-          costsEnabled: costsEnabled.value,
-          sourceType: sourceType.value,
-          sourceNote: sourceNote.value.trim(),
-          newQuestions: newQuestion.value.trim() ? [newQuestion.value.trim()] : [],
-          resolveQuestionIds: resolveIds.value,
-        }),
-      },
-    );
+    const saveBody = async (path: string, options: { method: string; body: string }) => {
+      if (intent === 'draft' && activeAIJob.value) {
+        const job = await api<{ revision: number }>(`/tenders/${id.value}/document-ai/${activeAIJob.value}`);
+        await api(`/tenders/${id.value}/document-ai/${activeAIJob.value}/review`, {
+          method: 'POST',
+          body: JSON.stringify({
+            revision: job.revision,
+            fields: {},
+            note: sourceNote.value,
+            verification: JSON.parse(options.body as string),
+          }),
+        });
+        await client.invalidateQueries({ queryKey: ['document-ai-job', id.value, activeAIJob.value] });
+        return { status: 'ai_draft', warnings: [] };
+      }
+      return api<{ status: string; warnings: { message: string }[] }>(path, options);
+    };
+    const result = await saveBody(`/tenders/${id.value}/verification`, {
+      method: 'POST',
+      body: JSON.stringify({
+        supplierId: supplierId.value,
+        lotId: lotId.value,
+        documentId: documentId.value,
+        receiptId: receiptId.value,
+        expectedVersion: expectedVersion.value,
+        contextConfirmed: true,
+        intent,
+        fields: current,
+        ...(!expectedVersion.value ? { original: normalizedFields(original.value) } : {}),
+        items: items.value.map((i) => ({
+          ...i,
+          quantity: decimalInput(i.quantity) ?? '',
+          unitPrice: decimalInput(i.unitPrice),
+        })),
+        costs: costs.value.map((c) => ({
+          ...c,
+          amount: decimalInput(c.amount),
+          currency: c.currency || null,
+        })),
+        costsEnabled: costsEnabled.value,
+        sourceType: sourceType.value,
+        sourceNote: sourceNote.value.trim(),
+        newQuestions: newQuestion.value.trim() ? [newQuestion.value.trim()] : [],
+        resolveQuestionIds: resolveIds.value,
+      }),
+    });
+    if (result.status === 'ai_draft') {
+      saved.value = 'ИИ-черновик сохранён. Сравнение не изменено.';
+      return;
+    }
     await Promise.all([
       client.invalidateQueries({ queryKey: ['verification', id.value] }),
       client.invalidateQueries({ queryKey: ['comparison', id.value] }),
@@ -198,6 +237,100 @@ async function save(intent: 'draft' | 'confirm') {
     busy.value = false;
   }
 }
+const aiNotice = ref(''),
+  activeAIJob = ref('');
+function useAIField(key: string, value: string, jobId: string) {
+  const map: Record<string, string> = {
+    total: 'amount',
+    currency: 'currency',
+    vat: 'vatMode',
+    payment: 'paymentTerms',
+    delivery: 'deliveryTerms',
+  };
+  const target = map[key];
+  if (!target) {
+    aiNotice.value = 'Это поле доступно для ручной проверки в исходном документе.';
+    return;
+  }
+  const current = fields.value as unknown as Record<string, string | null>;
+  if (current[target] !== null && current[target] !== '' && current[target] !== 'unknown') {
+    aiNotice.value = 'Поле уже заполнено. ИИ не перезаписывает ручные или подтверждённые значения.';
+    return;
+  }
+  if (target === 'vatMode' && !['included', 'excluded', 'unknown'].includes(value)) {
+    aiNotice.value = 'Проверьте формат НДС вручную.';
+    return;
+  }
+  current[target] = value;
+  activeAIJob.value = jobId;
+  sourceType.value = 'document';
+  sourceNote.value = `Ручной перенос из ИИ-черновика ${jobId}; требует подтверждения закупщиком`;
+  contextConfirmed.value = false;
+  aiNotice.value = 'Перенесено только в форму. Проверьте значение и подтвердите вручную.';
+}
+function useAILine(item: Record<string, { value: string | null }>, targetId: string, jobId: string) {
+  const row = items.value.find((i) => i.lotItemId === targetId);
+  if (!row || row.unitPrice !== null) {
+    aiNotice.value = 'Строка уже заполнена или не относится к выбранному лоту.';
+    return;
+  }
+  if (
+    decimalInput(item.quantity?.value ?? null) !== decimalInput(row.quantity) ||
+    item.unit?.value?.trim().toLowerCase().replace(/\.$/, '') !==
+      row.unit.trim().toLowerCase().replace(/\.$/, '')
+  ) {
+    aiNotice.value = 'Количество или единица не совпадает с ТЗ. Уточните вручную; цена не перенесена.';
+    return;
+  }
+  const target = required.value.find((i) => i.id === targetId);
+  if ((item.description?.value ?? '').trim().toLowerCase() !== target?.name.trim().toLowerCase()) {
+    aiNotice.value =
+      'Описание отличается от ТЗ. Автоматический перенос цены запрещён; сопоставьте предложение и основание вручную.';
+    return;
+  }
+  if (!item.unitPrice?.value) {
+    aiNotice.value = 'Цена не определена.';
+    return;
+  }
+  row.unitPrice = item.unitPrice.value;
+  activeAIJob.value = jobId;
+  sourceType.value = 'document';
+  sourceNote.value = `Ручной перенос строки из ИИ-черновика ${jobId}`;
+  contextConfirmed.value = false;
+}
+function useAISupplier(value: string) {
+  const doc = documentId.value,
+    receipt = receiptId.value;
+  supplierId.value = value;
+  queueMicrotask(() => {
+    documentId.value = doc;
+    receiptId.value = receipt;
+    contextConfirmed.value = false;
+  });
+}
+function restoreAI(snapshot: Record<string, unknown>, jobId: string) {
+  if (
+    snapshot.documentId !== documentId.value ||
+    snapshot.receiptId !== receiptId.value ||
+    snapshot.supplierId !== supplierId.value ||
+    snapshot.lotId !== lotId.value ||
+    snapshot.expectedVersion !== expectedVersion.value
+  ) {
+    aiNotice.value =
+      'Контекст или версия изменились. Сверьте сохранённый черновик с актуальными данными вручную.';
+    return;
+  }
+  fields.value = clone(snapshot.fields as typeof fields.value);
+  items.value = clone(snapshot.items as VerifiedItem[]);
+  costs.value = clone(snapshot.costs as VerifiedCost[]);
+  costsEnabled.value = !!snapshot.costsEnabled;
+  if (!expectedVersion.value) original.value = clone(snapshot.original as typeof original.value);
+  sourceType.value = String(snapshot.sourceType);
+  sourceNote.value = String(snapshot.sourceNote);
+  activeAIJob.value = jobId;
+  contextConfirmed.value = false;
+  aiNotice.value = 'Восстановлена только форма черновика; бизнес-данные не изменены.';
+}
 </script>
 <template>
   <section class="page-heading">
@@ -209,6 +342,46 @@ async function save(intent: 'draft' | 'confirm') {
     <RouterLink v-if="id" :to="`/comparison?tenderId=${id}`" class="secondary-action">К сравнению</RouterLink>
   </section>
   <TenderSelector :tender-id="id" />
+  <section v-if="query.data.value" class="content-card purchase-card">
+    <h2>Выбрать поступление для распознавания</h2>
+    <p>
+      Поставщика можно определить после получения ИИ-черновика. Значения не попадут в сравнение автоматически.
+    </p>
+    <label
+      >Документ для локального ИИ<select
+        v-model="documentId"
+        aria-label="Документ для локального ИИ"
+        @change="changeDocument"
+      >
+        <option value="">Выберите оригинал</option>
+        <option v-for="d in query.data.value.documents" :key="d.id" :value="d.id">{{ d.name }}</option>
+      </select></label
+    >
+    <label
+      >Поступление для локального ИИ<select v-model="receiptId" aria-label="Поступление для локального ИИ">
+        <option value="">Выберите независимое поступление</option>
+        <option v-for="r in document?.receipts ?? []" :key="r.id" :value="r.id">
+          {{ r.receivedAt }} · {{ r.stage ?? 'Без этапа' }} · {{ r.supplierName ?? 'Поставщик не определён' }}
+        </option>
+      </select></label
+    >
+    <p v-if="aiNotice" role="status">{{ aiNotice }}</p>
+    <DocumentAIPanel
+      v-if="documentId && receiptId"
+      :tender-id="id"
+      :document-id="documentId"
+      :receipt-id="receiptId"
+      :supplier-id="supplierId || undefined"
+      :lot-id="lotId || undefined"
+      kind="offer"
+      :required-items="required"
+      @ready="activeAIJob = $event"
+      @restore="restoreAI"
+      @use-field="useAIField"
+      @use-line="useAILine"
+      @use-supplier="useAISupplier"
+    />
+  </section>
   <p v-if="!id">Выберите тендер для проверки КП.</p>
   <p v-else-if="query.isPending.value">Загружаем данные…</p>
   <p v-else-if="query.isError.value" role="alert">{{ query.error.value?.message }}</p>
@@ -287,7 +460,7 @@ async function save(intent: 'draft' | 'confirm') {
           />
           <p>
             Исходные значения ниже переносятся вручную из документа. Они фиксируются при первом сохранении;
-            автоматического распознавания нет.
+            перенос из ИИ-черновика выполняется только по вашему действию.
           </p>
           <CommercialFieldsEditor
             v-model="original"
