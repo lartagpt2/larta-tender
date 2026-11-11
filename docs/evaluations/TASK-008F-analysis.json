@@ -1,0 +1,1277 @@
+{
+  "at": "2026-11-11T10:16:13.716Z",
+  "primarySha256": "adb38c64407c1b33b0fc406138154f97345fa865e3ae62c1c2f2d3ef1d2c3224",
+  "unchangedInputs": true,
+  "inferencePasses": 1,
+  "documents": 12,
+  "priceAndCurrency": {
+    "correct": 35,
+    "total": 41
+  },
+  "processingMs": {
+    "min": 23152,
+    "p50": 33622,
+    "p95": 47540,
+    "max": 47540,
+    "mean": 35106.5
+  },
+  "queueWaitMs": {
+    "min": 65,
+    "p50": 177659,
+    "p95": 380988,
+    "max": 380988,
+    "mean": 193019.5
+  },
+  "criticalFields": {
+    "fields": {
+      "supplier": {
+        "correct": 12,
+        "total": 12,
+        "accuracy": 1,
+        "absentCorrect": 0,
+        "absentTotal": 0,
+        "errors": []
+      },
+      "taxId": {
+        "correct": 11,
+        "total": 11,
+        "accuracy": 1,
+        "absentCorrect": 1,
+        "absentTotal": 1,
+        "errors": []
+      },
+      "nomenclature": {
+        "correct": 40,
+        "total": 42,
+        "accuracy": 0.9523809523809523,
+        "absentCorrect": 0,
+        "absentTotal": 0,
+        "errors": [
+          {
+            "path": "items[0].description",
+            "expected": "Энкодер СО-981",
+            "actual": null,
+            "correct": false,
+            "expectedMissing": false
+          },
+          {
+            "path": "items[1].description",
+            "expected": "Втулка СО-982",
+            "actual": null,
+            "correct": false,
+            "expectedMissing": false
+          }
+        ]
+      },
+      "quantity": {
+        "correct": 40,
+        "total": 42,
+        "accuracy": 0.9523809523809523,
+        "absentCorrect": 0,
+        "absentTotal": 0,
+        "errors": [
+          {
+            "path": "items[0].quantity",
+            "expected": "3",
+            "actual": null,
+            "correct": false,
+            "expectedMissing": false
+          },
+          {
+            "path": "items[1].quantity",
+            "expected": "12",
+            "actual": null,
+            "correct": false,
+            "expectedMissing": false
+          }
+        ]
+      },
+      "unitPrice": {
+        "correct": 39,
+        "total": 41,
+        "accuracy": 0.9512195121951219,
+        "absentCorrect": 1,
+        "absentTotal": 1,
+        "errors": [
+          {
+            "path": "items[0].unitPrice",
+            "expected": "286.4",
+            "actual": null,
+            "correct": false,
+            "expectedMissing": false
+          },
+          {
+            "path": "items[1].unitPrice",
+            "expected": "8.95",
+            "actual": null,
+            "correct": false,
+            "expectedMissing": false
+          }
+        ]
+      },
+      "delivery": {
+        "correct": 49,
+        "total": 51,
+        "accuracy": 0.9607843137254902,
+        "absentCorrect": 3,
+        "absentTotal": 3,
+        "errors": [
+          {
+            "path": "items[0].delivery",
+            "expected": "28 календарных дней",
+            "actual": null,
+            "correct": false,
+            "expectedMissing": false
+          },
+          {
+            "path": "items[1].delivery",
+            "expected": "10 календарных дней",
+            "actual": null,
+            "correct": false,
+            "expectedMissing": false
+          }
+        ]
+      }
+    },
+    "deliveryHeader": {
+      "correct": 11,
+      "total": 11,
+      "accuracy": 1,
+      "absentCorrect": 1,
+      "absentTotal": 1,
+      "errors": []
+    },
+    "deliveryItems": {
+      "correct": 38,
+      "total": 40,
+      "accuracy": 0.95,
+      "absentCorrect": 2,
+      "absentTotal": 2,
+      "errors": [
+        {
+          "path": "items[0].delivery",
+          "expected": "28 календарных дней",
+          "actual": null,
+          "correct": false,
+          "expectedMissing": false
+        },
+        {
+          "path": "items[1].delivery",
+          "expected": "10 календарных дней",
+          "actual": null,
+          "correct": false,
+          "expectedMissing": false
+        }
+      ]
+    },
+    "rowPrecision": 0.9523809523809523,
+    "rowRecall": 0.9523809523809523,
+    "matchedRows": 40,
+    "actualRows": 42,
+    "expectedRows": 42,
+    "documentsAllCriticalCorrect": 11,
+    "aggregate": {
+      "documents": 12,
+      "completed": 12,
+      "exactRowCounts": 12,
+      "supplierCorrect": 12,
+      "buyerAsSupplier": 0,
+      "knownCorrect": 365,
+      "knownTotal": 383,
+      "knownAccuracy": 0.9530026109660574,
+      "nullCorrect": 19,
+      "nullTotal": 19,
+      "nonNullWhenMissing": 0,
+      "criticalCorrect": 244,
+      "criticalTotal": 252,
+      "byField": {
+        "supplierName": {
+          "correct": 12,
+          "total": 12,
+          "knownCorrect": 12,
+          "knownTotal": 12,
+          "missingCorrect": 0,
+          "missingTotal": 0
+        },
+        "taxId": {
+          "correct": 12,
+          "total": 12,
+          "knownCorrect": 11,
+          "knownTotal": 11,
+          "missingCorrect": 1,
+          "missingTotal": 1
+        },
+        "buyerName": {
+          "correct": 12,
+          "total": 12,
+          "knownCorrect": 12,
+          "knownTotal": 12,
+          "missingCorrect": 0,
+          "missingTotal": 0
+        },
+        "total": {
+          "correct": 12,
+          "total": 12,
+          "knownCorrect": 11,
+          "knownTotal": 11,
+          "missingCorrect": 1,
+          "missingTotal": 1
+        },
+        "currency": {
+          "correct": 12,
+          "total": 12,
+          "knownCorrect": 12,
+          "knownTotal": 12,
+          "missingCorrect": 0,
+          "missingTotal": 0
+        },
+        "delivery": {
+          "correct": 12,
+          "total": 12,
+          "knownCorrect": 11,
+          "knownTotal": 11,
+          "missingCorrect": 1,
+          "missingTotal": 1
+        },
+        "payment": {
+          "correct": 12,
+          "total": 12,
+          "knownCorrect": 12,
+          "knownTotal": 12,
+          "missingCorrect": 0,
+          "missingTotal": 0
+        },
+        "vat": {
+          "correct": 12,
+          "total": 12,
+          "knownCorrect": 12,
+          "knownTotal": 12,
+          "missingCorrect": 0,
+          "missingTotal": 0
+        },
+        "deliveryCost": {
+          "correct": 12,
+          "total": 12,
+          "knownCorrect": 0,
+          "knownTotal": 0,
+          "missingCorrect": 12,
+          "missingTotal": 12
+        },
+        "items.description": {
+          "correct": 40,
+          "total": 42,
+          "knownCorrect": 40,
+          "knownTotal": 42,
+          "missingCorrect": 0,
+          "missingTotal": 0
+        },
+        "items.quantity": {
+          "correct": 40,
+          "total": 42,
+          "knownCorrect": 40,
+          "knownTotal": 42,
+          "missingCorrect": 0,
+          "missingTotal": 0
+        },
+        "items.unit": {
+          "correct": 40,
+          "total": 42,
+          "knownCorrect": 40,
+          "knownTotal": 42,
+          "missingCorrect": 0,
+          "missingTotal": 0
+        },
+        "items.unitPrice": {
+          "correct": 40,
+          "total": 42,
+          "knownCorrect": 39,
+          "knownTotal": 41,
+          "missingCorrect": 1,
+          "missingTotal": 1
+        },
+        "items.lineTotal": {
+          "correct": 40,
+          "total": 42,
+          "knownCorrect": 39,
+          "knownTotal": 41,
+          "missingCorrect": 1,
+          "missingTotal": 1
+        },
+        "items.currency": {
+          "correct": 36,
+          "total": 42,
+          "knownCorrect": 36,
+          "knownTotal": 42,
+          "missingCorrect": 0,
+          "missingTotal": 0
+        },
+        "items.delivery": {
+          "correct": 40,
+          "total": 42,
+          "knownCorrect": 38,
+          "knownTotal": 40,
+          "missingCorrect": 2,
+          "missingTotal": 2
+        }
+      }
+    }
+  },
+  "subgroup": {
+    "native": {
+      "fields": {
+        "supplier": {
+          "correct": 6,
+          "total": 6,
+          "accuracy": 1,
+          "absentCorrect": 0,
+          "absentTotal": 0,
+          "errors": []
+        },
+        "taxId": {
+          "correct": 5,
+          "total": 5,
+          "accuracy": 1,
+          "absentCorrect": 1,
+          "absentTotal": 1,
+          "errors": []
+        },
+        "nomenclature": {
+          "correct": 21,
+          "total": 21,
+          "accuracy": 1,
+          "absentCorrect": 0,
+          "absentTotal": 0,
+          "errors": []
+        },
+        "quantity": {
+          "correct": 21,
+          "total": 21,
+          "accuracy": 1,
+          "absentCorrect": 0,
+          "absentTotal": 0,
+          "errors": []
+        },
+        "unitPrice": {
+          "correct": 20,
+          "total": 20,
+          "accuracy": 1,
+          "absentCorrect": 1,
+          "absentTotal": 1,
+          "errors": []
+        },
+        "delivery": {
+          "correct": 24,
+          "total": 24,
+          "accuracy": 1,
+          "absentCorrect": 3,
+          "absentTotal": 3,
+          "errors": []
+        }
+      },
+      "deliveryHeader": {
+        "correct": 5,
+        "total": 5,
+        "accuracy": 1,
+        "absentCorrect": 1,
+        "absentTotal": 1,
+        "errors": []
+      },
+      "deliveryItems": {
+        "correct": 19,
+        "total": 19,
+        "accuracy": 1,
+        "absentCorrect": 2,
+        "absentTotal": 2,
+        "errors": []
+      },
+      "rowPrecision": 1,
+      "rowRecall": 1,
+      "matchedRows": 21,
+      "actualRows": 21,
+      "expectedRows": 21,
+      "documentsAllCriticalCorrect": 6,
+      "aggregate": {
+        "documents": 6,
+        "completed": 6,
+        "exactRowCounts": 6,
+        "supplierCorrect": 6,
+        "buyerAsSupplier": 0,
+        "knownCorrect": 184,
+        "knownTotal": 188,
+        "knownAccuracy": 0.9787234042553191,
+        "nullCorrect": 13,
+        "nullTotal": 13,
+        "nonNullWhenMissing": 0,
+        "criticalCorrect": 126,
+        "criticalTotal": 126,
+        "byField": {
+          "supplierName": {
+            "correct": 6,
+            "total": 6,
+            "knownCorrect": 6,
+            "knownTotal": 6,
+            "missingCorrect": 0,
+            "missingTotal": 0
+          },
+          "taxId": {
+            "correct": 6,
+            "total": 6,
+            "knownCorrect": 5,
+            "knownTotal": 5,
+            "missingCorrect": 1,
+            "missingTotal": 1
+          },
+          "buyerName": {
+            "correct": 6,
+            "total": 6,
+            "knownCorrect": 6,
+            "knownTotal": 6,
+            "missingCorrect": 0,
+            "missingTotal": 0
+          },
+          "total": {
+            "correct": 6,
+            "total": 6,
+            "knownCorrect": 5,
+            "knownTotal": 5,
+            "missingCorrect": 1,
+            "missingTotal": 1
+          },
+          "currency": {
+            "correct": 6,
+            "total": 6,
+            "knownCorrect": 6,
+            "knownTotal": 6,
+            "missingCorrect": 0,
+            "missingTotal": 0
+          },
+          "delivery": {
+            "correct": 6,
+            "total": 6,
+            "knownCorrect": 5,
+            "knownTotal": 5,
+            "missingCorrect": 1,
+            "missingTotal": 1
+          },
+          "payment": {
+            "correct": 6,
+            "total": 6,
+            "knownCorrect": 6,
+            "knownTotal": 6,
+            "missingCorrect": 0,
+            "missingTotal": 0
+          },
+          "vat": {
+            "correct": 6,
+            "total": 6,
+            "knownCorrect": 6,
+            "knownTotal": 6,
+            "missingCorrect": 0,
+            "missingTotal": 0
+          },
+          "deliveryCost": {
+            "correct": 6,
+            "total": 6,
+            "knownCorrect": 0,
+            "knownTotal": 0,
+            "missingCorrect": 6,
+            "missingTotal": 6
+          },
+          "items.description": {
+            "correct": 21,
+            "total": 21,
+            "knownCorrect": 21,
+            "knownTotal": 21,
+            "missingCorrect": 0,
+            "missingTotal": 0
+          },
+          "items.quantity": {
+            "correct": 21,
+            "total": 21,
+            "knownCorrect": 21,
+            "knownTotal": 21,
+            "missingCorrect": 0,
+            "missingTotal": 0
+          },
+          "items.unit": {
+            "correct": 21,
+            "total": 21,
+            "knownCorrect": 21,
+            "knownTotal": 21,
+            "missingCorrect": 0,
+            "missingTotal": 0
+          },
+          "items.unitPrice": {
+            "correct": 21,
+            "total": 21,
+            "knownCorrect": 20,
+            "knownTotal": 20,
+            "missingCorrect": 1,
+            "missingTotal": 1
+          },
+          "items.lineTotal": {
+            "correct": 21,
+            "total": 21,
+            "knownCorrect": 20,
+            "knownTotal": 20,
+            "missingCorrect": 1,
+            "missingTotal": 1
+          },
+          "items.currency": {
+            "correct": 17,
+            "total": 21,
+            "knownCorrect": 17,
+            "knownTotal": 21,
+            "missingCorrect": 0,
+            "missingTotal": 0
+          },
+          "items.delivery": {
+            "correct": 21,
+            "total": 21,
+            "knownCorrect": 19,
+            "knownTotal": 19,
+            "missingCorrect": 2,
+            "missingTotal": 2
+          }
+        }
+      }
+    },
+    "scan": {
+      "fields": {
+        "supplier": {
+          "correct": 6,
+          "total": 6,
+          "accuracy": 1,
+          "absentCorrect": 0,
+          "absentTotal": 0,
+          "errors": []
+        },
+        "taxId": {
+          "correct": 6,
+          "total": 6,
+          "accuracy": 1,
+          "absentCorrect": 0,
+          "absentTotal": 0,
+          "errors": []
+        },
+        "nomenclature": {
+          "correct": 19,
+          "total": 21,
+          "accuracy": 0.9047619047619048,
+          "absentCorrect": 0,
+          "absentTotal": 0,
+          "errors": [
+            {
+              "path": "items[0].description",
+              "expected": "Энкодер СО-981",
+              "actual": null,
+              "correct": false,
+              "expectedMissing": false
+            },
+            {
+              "path": "items[1].description",
+              "expected": "Втулка СО-982",
+              "actual": null,
+              "correct": false,
+              "expectedMissing": false
+            }
+          ]
+        },
+        "quantity": {
+          "correct": 19,
+          "total": 21,
+          "accuracy": 0.9047619047619048,
+          "absentCorrect": 0,
+          "absentTotal": 0,
+          "errors": [
+            {
+              "path": "items[0].quantity",
+              "expected": "3",
+              "actual": null,
+              "correct": false,
+              "expectedMissing": false
+            },
+            {
+              "path": "items[1].quantity",
+              "expected": "12",
+              "actual": null,
+              "correct": false,
+              "expectedMissing": false
+            }
+          ]
+        },
+        "unitPrice": {
+          "correct": 19,
+          "total": 21,
+          "accuracy": 0.9047619047619048,
+          "absentCorrect": 0,
+          "absentTotal": 0,
+          "errors": [
+            {
+              "path": "items[0].unitPrice",
+              "expected": "286.4",
+              "actual": null,
+              "correct": false,
+              "expectedMissing": false
+            },
+            {
+              "path": "items[1].unitPrice",
+              "expected": "8.95",
+              "actual": null,
+              "correct": false,
+              "expectedMissing": false
+            }
+          ]
+        },
+        "delivery": {
+          "correct": 25,
+          "total": 27,
+          "accuracy": 0.9259259259259259,
+          "absentCorrect": 0,
+          "absentTotal": 0,
+          "errors": [
+            {
+              "path": "items[0].delivery",
+              "expected": "28 календарных дней",
+              "actual": null,
+              "correct": false,
+              "expectedMissing": false
+            },
+            {
+              "path": "items[1].delivery",
+              "expected": "10 календарных дней",
+              "actual": null,
+              "correct": false,
+              "expectedMissing": false
+            }
+          ]
+        }
+      },
+      "deliveryHeader": {
+        "correct": 6,
+        "total": 6,
+        "accuracy": 1,
+        "absentCorrect": 0,
+        "absentTotal": 0,
+        "errors": []
+      },
+      "deliveryItems": {
+        "correct": 19,
+        "total": 21,
+        "accuracy": 0.9047619047619048,
+        "absentCorrect": 0,
+        "absentTotal": 0,
+        "errors": [
+          {
+            "path": "items[0].delivery",
+            "expected": "28 календарных дней",
+            "actual": null,
+            "correct": false,
+            "expectedMissing": false
+          },
+          {
+            "path": "items[1].delivery",
+            "expected": "10 календарных дней",
+            "actual": null,
+            "correct": false,
+            "expectedMissing": false
+          }
+        ]
+      },
+      "rowPrecision": 0.9047619047619048,
+      "rowRecall": 0.9047619047619048,
+      "matchedRows": 19,
+      "actualRows": 21,
+      "expectedRows": 21,
+      "documentsAllCriticalCorrect": 5,
+      "aggregate": {
+        "documents": 6,
+        "completed": 6,
+        "exactRowCounts": 6,
+        "supplierCorrect": 6,
+        "buyerAsSupplier": 0,
+        "knownCorrect": 181,
+        "knownTotal": 195,
+        "knownAccuracy": 0.9282051282051282,
+        "nullCorrect": 6,
+        "nullTotal": 6,
+        "nonNullWhenMissing": 0,
+        "criticalCorrect": 118,
+        "criticalTotal": 126,
+        "byField": {
+          "supplierName": {
+            "correct": 6,
+            "total": 6,
+            "knownCorrect": 6,
+            "knownTotal": 6,
+            "missingCorrect": 0,
+            "missingTotal": 0
+          },
+          "taxId": {
+            "correct": 6,
+            "total": 6,
+            "knownCorrect": 6,
+            "knownTotal": 6,
+            "missingCorrect": 0,
+            "missingTotal": 0
+          },
+          "buyerName": {
+            "correct": 6,
+            "total": 6,
+            "knownCorrect": 6,
+            "knownTotal": 6,
+            "missingCorrect": 0,
+            "missingTotal": 0
+          },
+          "total": {
+            "correct": 6,
+            "total": 6,
+            "knownCorrect": 6,
+            "knownTotal": 6,
+            "missingCorrect": 0,
+            "missingTotal": 0
+          },
+          "currency": {
+            "correct": 6,
+            "total": 6,
+            "knownCorrect": 6,
+            "knownTotal": 6,
+            "missingCorrect": 0,
+            "missingTotal": 0
+          },
+          "delivery": {
+            "correct": 6,
+            "total": 6,
+            "knownCorrect": 6,
+            "knownTotal": 6,
+            "missingCorrect": 0,
+            "missingTotal": 0
+          },
+          "payment": {
+            "correct": 6,
+            "total": 6,
+            "knownCorrect": 6,
+            "knownTotal": 6,
+            "missingCorrect": 0,
+            "missingTotal": 0
+          },
+          "vat": {
+            "correct": 6,
+            "total": 6,
+            "knownCorrect": 6,
+            "knownTotal": 6,
+            "missingCorrect": 0,
+            "missingTotal": 0
+          },
+          "deliveryCost": {
+            "correct": 6,
+            "total": 6,
+            "knownCorrect": 0,
+            "knownTotal": 0,
+            "missingCorrect": 6,
+            "missingTotal": 6
+          },
+          "items.description": {
+            "correct": 19,
+            "total": 21,
+            "knownCorrect": 19,
+            "knownTotal": 21,
+            "missingCorrect": 0,
+            "missingTotal": 0
+          },
+          "items.quantity": {
+            "correct": 19,
+            "total": 21,
+            "knownCorrect": 19,
+            "knownTotal": 21,
+            "missingCorrect": 0,
+            "missingTotal": 0
+          },
+          "items.unit": {
+            "correct": 19,
+            "total": 21,
+            "knownCorrect": 19,
+            "knownTotal": 21,
+            "missingCorrect": 0,
+            "missingTotal": 0
+          },
+          "items.unitPrice": {
+            "correct": 19,
+            "total": 21,
+            "knownCorrect": 19,
+            "knownTotal": 21,
+            "missingCorrect": 0,
+            "missingTotal": 0
+          },
+          "items.lineTotal": {
+            "correct": 19,
+            "total": 21,
+            "knownCorrect": 19,
+            "knownTotal": 21,
+            "missingCorrect": 0,
+            "missingTotal": 0
+          },
+          "items.currency": {
+            "correct": 19,
+            "total": 21,
+            "knownCorrect": 19,
+            "knownTotal": 21,
+            "missingCorrect": 0,
+            "missingTotal": 0
+          },
+          "items.delivery": {
+            "correct": 19,
+            "total": 21,
+            "knownCorrect": 19,
+            "knownTotal": 21,
+            "missingCorrect": 0,
+            "missingTotal": 0
+          }
+        }
+      }
+    }
+  },
+  "proposedPilotThresholdPassed": false,
+  "realDocumentsAuthorized": false,
+  "details": [
+    {
+      "id": "f01-letter",
+      "kind": "native",
+      "status": "needs_review",
+      "knownCorrect": 29,
+      "knownTotal": 29,
+      "rawKnownCorrect": 29,
+      "rawKnownTotal": 29,
+      "actualRows": 3,
+      "matchedRows": 3,
+      "expectedRows": 3,
+      "processingMs": 32536,
+      "queueWaitMs": 65,
+      "warnings": [
+        "supplier_unresolved_or_ambiguous"
+      ],
+      "errors": [],
+      "missingWarnings": []
+    },
+    {
+      "id": "f02-table",
+      "kind": "native",
+      "status": "needs_review",
+      "knownCorrect": 32,
+      "knownTotal": 36,
+      "rawKnownCorrect": 36,
+      "rawKnownTotal": 36,
+      "actualRows": 4,
+      "matchedRows": 4,
+      "expectedRows": 4,
+      "processingMs": 33622,
+      "queueWaitMs": 33816,
+      "warnings": [
+        "raw_value_not_in_evidence",
+        "supplier_unresolved_or_ambiguous"
+      ],
+      "errors": [
+        {
+          "path": "items[0].currency",
+          "expected": "RUB",
+          "actual": null,
+          "type": "missing",
+          "rawValue": "RUB",
+          "page": 1,
+          "evidenceSnippet": "Преобразователь ГС-811 3 шт. 12 750 38 250 21 календарный день",
+          "evidenceMethod": null
+        },
+        {
+          "path": "items[1].currency",
+          "expected": "RUB",
+          "actual": null,
+          "type": "missing",
+          "rawValue": "RUB",
+          "page": 1,
+          "evidenceSnippet": "Скоба ГС-812 16 шт. 83,4 1 334,4 7 календарных дней",
+          "evidenceMethod": null
+        },
+        {
+          "path": "items[2].currency",
+          "expected": "RUB",
+          "actual": null,
+          "type": "missing",
+          "rawValue": "RUB",
+          "page": 1,
+          "evidenceSnippet": "Штуцер ГС-813 9 шт. 211,8 1 906,2 14 календарных дней",
+          "evidenceMethod": null
+        },
+        {
+          "path": "items[3].currency",
+          "expected": "RUB",
+          "actual": null,
+          "type": "missing",
+          "rawValue": "RUB",
+          "page": 1,
+          "evidenceSnippet": "Прокладка ГС-814 32 шт. 9,75 312 5 календарных дней",
+          "evidenceMethod": null
+        }
+      ],
+      "missingWarnings": []
+    },
+    {
+      "id": "f03-measures",
+      "kind": "native",
+      "status": "needs_review",
+      "knownCorrect": 29,
+      "knownTotal": 29,
+      "rawKnownCorrect": 29,
+      "rawKnownTotal": 29,
+      "actualRows": 3,
+      "matchedRows": 3,
+      "expectedRows": 3,
+      "processingMs": 32199,
+      "queueWaitMs": 67413,
+      "warnings": [
+        "supplier_unresolved_or_ambiguous"
+      ],
+      "errors": [],
+      "missingWarnings": []
+    },
+    {
+      "id": "f04-scan-letter",
+      "kind": "scan",
+      "status": "needs_review",
+      "knownCorrect": 29,
+      "knownTotal": 29,
+      "rawKnownCorrect": 29,
+      "rawKnownTotal": 29,
+      "actualRows": 3,
+      "matchedRows": 3,
+      "expectedRows": 3,
+      "processingMs": 34774,
+      "queueWaitMs": 99596,
+      "warnings": [
+        "vision_evidence_requires_review",
+        "supplier_unresolved_or_ambiguous"
+      ],
+      "errors": [],
+      "missingWarnings": []
+    },
+    {
+      "id": "f05-scan-table",
+      "kind": "scan",
+      "status": "needs_review",
+      "knownCorrect": 43,
+      "knownTotal": 43,
+      "rawKnownCorrect": 43,
+      "rawKnownTotal": 43,
+      "actualRows": 5,
+      "matchedRows": 5,
+      "expectedRows": 5,
+      "processingMs": 43326,
+      "queueWaitMs": 134356,
+      "warnings": [
+        "vision_evidence_requires_review",
+        "supplier_unresolved_or_ambiguous"
+      ],
+      "errors": [],
+      "missingWarnings": []
+    },
+    {
+      "id": "f06-two-pages",
+      "kind": "native",
+      "status": "needs_review",
+      "knownCorrect": 50,
+      "knownTotal": 50,
+      "rawKnownCorrect": 50,
+      "rawKnownTotal": 50,
+      "actualRows": 6,
+      "matchedRows": 6,
+      "expectedRows": 6,
+      "processingMs": 47540,
+      "queueWaitMs": 177659,
+      "warnings": [
+        "supplier_unresolved_or_ambiguous"
+      ],
+      "errors": [],
+      "missingWarnings": []
+    },
+    {
+      "id": "f07-party-roles",
+      "kind": "scan",
+      "status": "needs_review",
+      "knownCorrect": 22,
+      "knownTotal": 22,
+      "rawKnownCorrect": 22,
+      "rawKnownTotal": 22,
+      "actualRows": 2,
+      "matchedRows": 2,
+      "expectedRows": 2,
+      "processingMs": 32627,
+      "queueWaitMs": 225414,
+      "warnings": [
+        "vision_evidence_requires_review",
+        "supplier_unresolved_or_ambiguous"
+      ],
+      "errors": [],
+      "missingWarnings": []
+    },
+    {
+      "id": "f08-unquoted",
+      "kind": "native",
+      "status": "needs_review",
+      "knownCorrect": 15,
+      "knownTotal": 15,
+      "rawKnownCorrect": 15,
+      "rawKnownTotal": 15,
+      "actualRows": 2,
+      "matchedRows": 2,
+      "expectedRows": 2,
+      "processingMs": 23152,
+      "queueWaitMs": 258012,
+      "warnings": [
+        "invalid_number",
+        "missing_line_price",
+        "missing_total",
+        "supplier_unresolved_or_ambiguous"
+      ],
+      "errors": [],
+      "missingWarnings": []
+    },
+    {
+      "id": "f09-euro",
+      "kind": "scan",
+      "status": "needs_review",
+      "knownCorrect": 8,
+      "knownTotal": 22,
+      "rawKnownCorrect": 8,
+      "rawKnownTotal": 22,
+      "actualRows": 2,
+      "matchedRows": 0,
+      "expectedRows": 2,
+      "processingMs": 30889,
+      "queueWaitMs": 281156,
+      "warnings": [
+        "vision_evidence_requires_review",
+        "supplier_unresolved_or_ambiguous"
+      ],
+      "errors": [
+        {
+          "path": "items[0].description",
+          "expected": "Энкодер СО-981",
+          "actual": null,
+          "type": "missing",
+          "rawValue": null,
+          "page": null,
+          "evidenceSnippet": null,
+          "evidenceMethod": null
+        },
+        {
+          "path": "items[0].quantity",
+          "expected": "3",
+          "actual": null,
+          "type": "missing",
+          "rawValue": null,
+          "page": null,
+          "evidenceSnippet": null,
+          "evidenceMethod": null
+        },
+        {
+          "path": "items[0].unit",
+          "expected": "шт.",
+          "actual": null,
+          "type": "missing",
+          "rawValue": null,
+          "page": null,
+          "evidenceSnippet": null,
+          "evidenceMethod": null
+        },
+        {
+          "path": "items[0].unitPrice",
+          "expected": "286.4",
+          "actual": null,
+          "type": "missing",
+          "rawValue": null,
+          "page": null,
+          "evidenceSnippet": null,
+          "evidenceMethod": null
+        },
+        {
+          "path": "items[0].lineTotal",
+          "expected": "859.2",
+          "actual": null,
+          "type": "missing",
+          "rawValue": null,
+          "page": null,
+          "evidenceSnippet": null,
+          "evidenceMethod": null
+        },
+        {
+          "path": "items[0].currency",
+          "expected": "EUR",
+          "actual": null,
+          "type": "missing",
+          "rawValue": null,
+          "page": null,
+          "evidenceSnippet": null,
+          "evidenceMethod": null
+        },
+        {
+          "path": "items[0].delivery",
+          "expected": "28 календарных дней",
+          "actual": null,
+          "type": "missing",
+          "rawValue": null,
+          "page": null,
+          "evidenceSnippet": null,
+          "evidenceMethod": null
+        },
+        {
+          "path": "items[1].description",
+          "expected": "Втулка СО-982",
+          "actual": null,
+          "type": "missing",
+          "rawValue": null,
+          "page": null,
+          "evidenceSnippet": null,
+          "evidenceMethod": null
+        },
+        {
+          "path": "items[1].quantity",
+          "expected": "12",
+          "actual": null,
+          "type": "missing",
+          "rawValue": null,
+          "page": null,
+          "evidenceSnippet": null,
+          "evidenceMethod": null
+        },
+        {
+          "path": "items[1].unit",
+          "expected": "шт.",
+          "actual": null,
+          "type": "missing",
+          "rawValue": null,
+          "page": null,
+          "evidenceSnippet": null,
+          "evidenceMethod": null
+        },
+        {
+          "path": "items[1].unitPrice",
+          "expected": "8.95",
+          "actual": null,
+          "type": "missing",
+          "rawValue": null,
+          "page": null,
+          "evidenceSnippet": null,
+          "evidenceMethod": null
+        },
+        {
+          "path": "items[1].lineTotal",
+          "expected": "107.4",
+          "actual": null,
+          "type": "missing",
+          "rawValue": null,
+          "page": null,
+          "evidenceSnippet": null,
+          "evidenceMethod": null
+        },
+        {
+          "path": "items[1].currency",
+          "expected": "EUR",
+          "actual": null,
+          "type": "missing",
+          "rawValue": null,
+          "page": null,
+          "evidenceSnippet": null,
+          "evidenceMethod": null
+        },
+        {
+          "path": "items[1].delivery",
+          "expected": "10 календарных дней",
+          "actual": null,
+          "type": "missing",
+          "rawValue": null,
+          "page": null,
+          "evidenceSnippet": null,
+          "evidenceMethod": null
+        },
+        {
+          "path": "unmatchedItems[0]",
+          "actual": "Энкодер CO-981",
+          "type": "unmatched_row",
+          "rawValue": null,
+          "page": null,
+          "evidenceSnippet": null,
+          "evidenceMethod": null
+        },
+        {
+          "path": "unmatchedItems[1]",
+          "actual": "Втулка CO-982",
+          "type": "unmatched_row",
+          "rawValue": null,
+          "page": null,
+          "evidenceSnippet": null,
+          "evidenceMethod": null
+        }
+      ],
+      "missingWarnings": []
+    },
+    {
+      "id": "f10-conditional",
+      "kind": "native",
+      "status": "needs_review",
+      "knownCorrect": 29,
+      "knownTotal": 29,
+      "rawKnownCorrect": 29,
+      "rawKnownTotal": 29,
+      "actualRows": 3,
+      "matchedRows": 3,
+      "expectedRows": 3,
+      "processingMs": 33734,
+      "queueWaitMs": 312034,
+      "warnings": [
+        "unknown_currency",
+        "supplier_unresolved_or_ambiguous"
+      ],
+      "errors": [],
+      "missingWarnings": []
+    },
+    {
+      "id": "f11-tilted",
+      "kind": "scan",
+      "status": "needs_review",
+      "knownCorrect": 29,
+      "knownTotal": 29,
+      "rawKnownCorrect": 29,
+      "rawKnownTotal": 29,
+      "actualRows": 3,
+      "matchedRows": 3,
+      "expectedRows": 3,
+      "processingMs": 35285,
+      "queueWaitMs": 345725,
+      "warnings": [
+        "vision_evidence_requires_review",
+        "supplier_unresolved_or_ambiguous"
+      ],
+      "errors": [],
+      "missingWarnings": []
+    },
+    {
+      "id": "f12-dense-table",
+      "kind": "scan",
+      "status": "needs_review",
+      "knownCorrect": 50,
+      "knownTotal": 50,
+      "rawKnownCorrect": 50,
+      "rawKnownTotal": 50,
+      "actualRows": 6,
+      "matchedRows": 6,
+      "expectedRows": 6,
+      "processingMs": 41594,
+      "queueWaitMs": 380988,
+      "warnings": [
+        "vision_evidence_requires_review",
+        "supplier_unresolved_or_ambiguous"
+      ],
+      "errors": [],
+      "missingWarnings": []
+    }
+  ]
+}
