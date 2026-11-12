@@ -1,0 +1,86 @@
+{
+  "at": "2026-11-12T06:49:27.510Z",
+  "database": "larta_test_task009a_1794466160392",
+  "newDatabaseOnly": true,
+  "existingDatabaseChanged": false,
+  "migrationHashes": {
+    "001_initial.sql": "053d98a74502db2bf246a6e7ea3e0ece04b00e89b566dc3b20bc3ab53860b323",
+    "002_domain_foundation.sql": "896f8133b5f09da8e6fadc650c71d81165c115a6e6ad095df1279619f93e8764",
+    "003_tender_lifecycle.sql": "6556a331f3f55a968c8eb851d95b1dd0e171fcea2b15b12e7f91bc2ced1874d5"
+  },
+  "results": [
+    {
+      "name": "001/002/003 applied only to newly created synthetic DB",
+      "result": "PASS"
+    },
+    {
+      "name": "visibility, reviewer and distinct trash capability checks",
+      "result": "PASS"
+    },
+    {
+      "name": "exact title, exact ID and nonblank reason required",
+      "result": "PASS"
+    },
+    {
+      "name": "new child invalidates preview; shared binary detected",
+      "result": "PASS"
+    },
+    {
+      "name": "archive: active list exclusion, archived filter, original readable, writes denied",
+      "result": "PASS"
+    },
+    {
+      "name": "restore archived tender; repeated restore rejected",
+      "result": "PASS"
+    },
+    {
+      "name": "completed OCR/review changes require reclassification independently of SQL counters",
+      "result": "PASS"
+    },
+    {
+      "name": "initial price/version, OCR fields and original binary unchanged after archive/trash/restore",
+      "result": "PASS"
+    },
+    {
+      "name": "classification, content-change invalidation, reversible trash; shared blob/documents retained",
+      "result": "PASS"
+    },
+    {
+      "name": "working classification protected from trash and synthetic reclassification",
+      "result": "PASS"
+    },
+    {
+      "name": "filesystem and SQL OCR jobs block archive/trash; changed OCR invalidates preview",
+      "result": "PASS"
+    },
+    {
+      "name": "all Gate D/E/F/G, demo and legacy holds enforced in API and PostgreSQL",
+      "result": "PASS"
+    },
+    {
+      "name": "concurrent child write serializes on parent and causes stale-preview conflict",
+      "result": "PASS"
+    },
+    {
+      "name": "audit additions also invalidate preview",
+      "result": "PASS"
+    },
+    {
+      "name": "OCR filesystem fence serializes with lifecycle, invalidates preview and rejects writes to archived tenders",
+      "result": "PASS"
+    },
+    {
+      "name": "stable server pagination, search, ACL totals",
+      "result": "PASS"
+    },
+    {
+      "name": "real HTTP routes, authentication, whitelist, pagination DTO validation",
+      "result": "PASS"
+    },
+    {
+      "name": "all direct tenant dependencies guarded; immutable lifecycle audit retained",
+      "result": "PASS"
+    }
+  ],
+  "workspace": "C:\\Users\\oalimova\\ai_project"
+}

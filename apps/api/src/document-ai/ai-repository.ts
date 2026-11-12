@@ -275,7 +275,7 @@ export class PgAIRepository extends PgScopeRepository {
           events: [{ status: 'pending', at, actorId: actor }],
           reviews: [],
         };
-        await this.store.write(job);
+        await this.activeFence(job.tenderId, () => this.store.write(job));
         return job;
       });
     } finally {
@@ -332,7 +332,7 @@ export class PgAIRepository extends PgScopeRepository {
         at,
         revision: job.revision,
       });
-      await this.store.write(job);
+      await this.activeFence(job.tenderId, () => this.store.write(job));
       return job;
     } finally {
       await release();
@@ -351,7 +351,7 @@ export class PgAIRepository extends PgScopeRepository {
           job.updatedAt = new Date().toISOString();
           job.revision++;
           job.events.push({ status, at: job.updatedAt, actorId: job.createdBy });
-          await this.store.write(job);
+          await this.activeFence(job.tenderId, () => this.store.write(job));
         };
         job.attempts++;
         await mark('running');
