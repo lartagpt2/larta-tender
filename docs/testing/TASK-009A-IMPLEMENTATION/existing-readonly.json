@@ -1,0 +1,18 @@
+{
+  "at": "2026-11-12T06:54:04.145Z",
+  "transactionReadOnly": "on",
+  "db": "larta_test_task003",
+  "lifecycle_table": null,
+  "tenders": 210,
+  "documents": 542,
+  "blobs": 112,
+  "testDatabases": [
+    "larta_test_task009a_1794465465205",
+    "larta_test_task009a_1794465497913",
+    "larta_test_task009a_1794465716361",
+    "larta_test_task009a_1794465910556",
+    "larta_test_task009a_1794466160392"
+  ],
+  "testDatabasesRetained": true,
+  "existingMigrationApplied": false
+}

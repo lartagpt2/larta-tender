@@ -6,7 +6,14 @@ export class HttpErrorFilter implements ExceptionFilter {
     const context = host.switchToHttp();
     const reply = context.getResponse<FastifyReply>();
     const request = context.getRequest<FastifyRequest>();
-    const status = exception instanceof HttpException ? exception.getStatus() : 500;
+    const code =
+      exception && typeof exception === 'object' && 'code' in exception ? exception.code : undefined;
+    const status =
+      exception instanceof HttpException
+        ? exception.getStatus()
+        : ['LT409', '40001', '40P01'].includes(String(code))
+          ? 409
+          : 500;
     const messages: Record<number, string> = {
       400: 'Некорректный запрос',
       401: 'Требуется вход',

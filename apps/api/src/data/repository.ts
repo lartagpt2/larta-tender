@@ -37,7 +37,7 @@ export class PgTenderRepository implements TenderRepository {
   async list(actor: string): Promise<Tender[]> {
     return (
       await this.pool.query<Tender>(
-        `SELECT t.id,t.title,t.revision FROM tender_app.tender t WHERE ${visible} ORDER BY t.updated_at DESC,t.id LIMIT 100`,
+        `SELECT t.id,t.title,t.revision FROM tender_app.tender t WHERE (${visible}) ${process.env.TENDER_LIFECYCLE_ENABLED === 'true' ? "AND NOT EXISTS(SELECT 1 FROM tender_app.tender_lifecycle lc WHERE lc.tender_id=t.id AND lc.state<>'active')" : ''} ORDER BY t.updated_at DESC,t.id LIMIT 100`,
         [actor],
       )
     ).rows;

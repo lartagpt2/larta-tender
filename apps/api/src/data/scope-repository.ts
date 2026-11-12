@@ -46,8 +46,36 @@ export class PgScopeRepository {
       if (!m.rows[0]) throw new NotFoundException();
       if (!['buyer', 'manager'].includes(m.rows[0].role)) throw new ForbiddenException();
     }
+    await this.assertActive(c, id);
     if (revision !== undefined && row.revision !== revision) throw new ConflictException();
     return row;
+  }
+  protected async assertActive(c: PoolClient, id: string): Promise<boolean> {
+    const installed = (
+      await c.query("SELECT to_regclass('tender_app.tender_lifecycle') IS NOT NULL AS installed")
+    ).rows[0].installed;
+    if (!installed) {
+      if (process.env.TENDER_LIFECYCLE_ENABLED === 'true') throw new ConflictException();
+      return false;
+    }
+    const state =
+      (await c.query('SELECT state FROM tender_app.tender_lifecycle WHERE tender_id=$1', [id])).rows[0]
+        ?.state ?? 'active';
+    if (state !== 'active') throw new ConflictException();
+    return true;
+  }
+  protected async activeFence<T>(id: string, work: () => Promise<T>): Promise<T> {
+    return transaction(this.pool, async (c) => {
+      await c.query('SELECT id FROM tender_app.tender WHERE id=$1 FOR UPDATE', [id]);
+      const installed = await this.assertActive(c, id);
+      const result = await work();
+      if (installed)
+        await c.query(
+          'UPDATE tender_app.tender SET content_revision=content_revision+1,dependency_revision=dependency_revision+1 WHERE id=$1',
+          [id],
+        );
+      return result;
+    });
   }
   async assertWrite(actor: string, id: string): Promise<void> {
     await transaction(this.pool, async (c) => {

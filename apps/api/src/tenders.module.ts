@@ -1,3 +1,6 @@
+import { PgLifecycleRepository } from './lifecycle/lifecycle-repository';
+import { LifecycleActionDto, LifecyclePageDto } from './lifecycle/lifecycle.dto';
+import { ocrInventory } from './lifecycle/ocr-inventory';
 import { PgAIRepository, aiOptions } from './document-ai/ai-repository';
 import { CreateAIDto, ReviewAIDto } from './document-ai/ai.dto';
 import { PgStageRepository } from './stages/stage-repository';
@@ -115,6 +118,8 @@ export interface DataOptions {
   verificationRepository?: PgVerificationRepository;
   stageRepository?: PgStageRepository;
   aiRepository?: PgAIRepository;
+  lifecycleRepository?: PgLifecycleRepository;
+  lifecycleEnabled?: boolean;
 }
 class DataContext {
   readonly repository?: TenderRepository;
@@ -124,6 +129,7 @@ class DataContext {
   readonly verifications?: PgVerificationRepository;
   readonly stages?: PgStageRepository;
   readonly ai?: PgAIRepository;
+  readonly lifecycle?: PgLifecycleRepository;
   private pool?: Pool;
   constructor(private readonly options: DataOptions) {
     if (options.enabled && options.environment !== 'production') {
@@ -133,6 +139,27 @@ class DataContext {
           (this.pool = new Pool({ max: 5, connectionTimeoutMillis: 5000, statement_timeout: 10000 })),
         );
       this.scope = options.scopeRepository ?? (this.pool ? new PgScopeRepository(this.pool) : undefined);
+      if (options.lifecycleEnabled ?? process.env.TENDER_LIFECYCLE_ENABLED === 'true') {
+        const workspace = resolve(__dirname, '../../../..');
+        const roots = [
+          'storage-task004',
+          'task008',
+          'task008-e2e',
+          'task008-gate-d',
+          'task008-integration',
+          'task008-tests',
+          'task008e',
+          'task008f',
+          'task008g',
+          'storage',
+        ].map((p) => resolve(workspace, 'temp', p));
+        if (process.env.STORAGE_ROOT) roots.push(process.env.STORAGE_ROOT);
+        this.lifecycle =
+          options.lifecycleRepository ??
+          (this.pool
+            ? new PgLifecycleRepository(this.pool, (id) => ocrInventory(workspace, roots, id))
+            : undefined);
+      }
       const aiConfig = aiOptions();
       this.ai =
         options.aiRepository ?? (this.pool && aiConfig ? new PgAIRepository(this.pool, aiConfig) : undefined);
@@ -208,6 +235,53 @@ class TendersController {
     }
     if (body.items?.length) throw new BadRequestException();
     return this.data.repository!.create(actor, body.title.trim());
+  }
+  @Get('lifecycle/config')
+  lifecycleConfig(@Headers('authorization') h?: string) {
+    this.data.actor(h);
+    return { enabled: !!this.data.lifecycle };
+  }
+  private lifecycle() {
+    if (!this.data.lifecycle) throw new ServiceUnavailableException();
+    return this.data.lifecycle;
+  }
+  @Get('lifecycle/page')
+  lifecyclePage(
+    @Headers('authorization') h: string | undefined,
+    @Query(
+      new ValidationPipe({
+        expectedType: LifecyclePageDto,
+        transform: true,
+        whitelist: true,
+        forbidNonWhitelisted: true,
+      }),
+    )
+    input: LifecyclePageDto,
+  ) {
+    return this.lifecycle().page(this.data.actor(h), input);
+  }
+  @Get(':id/lifecycle')
+  lifecyclePreview(
+    @Headers('authorization') h: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+  ) {
+    return this.lifecycle().preview(this.data.actor(h), id);
+  }
+  @Post(':id/lifecycle')
+  lifecycleAction(
+    @Headers('authorization') h: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Body(
+      new ValidationPipe({
+        expectedType: LifecycleActionDto,
+        transform: true,
+        whitelist: true,
+        forbidNonWhitelisted: true,
+      }),
+    )
+    input: LifecycleActionDto,
+  ) {
+    return this.lifecycle().act(this.data.actor(h), id, input);
   }
   @Get(':id')
   @ApiOkResponse({ type: TenderDto })
