@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue';
+import { computed, nextTick, ref, watch } from 'vue';
 import { RouterLink } from 'vue-router';
 import { useQuery } from '@tanstack/vue-query';
 import { api, type Tender } from './tender-api';
 import TenderLifecycle from './TenderLifecycle.vue';
+import TenderArchiveAction from './TenderArchiveAction.vue';
 import { loadLifecyclePage, type LifecycleState } from './lifecycle-api';
+const notice = ref('');
+const heading = ref<HTMLElement>();
 const search = ref(''),
   state = ref<LifecycleState>('active'),
   page = ref(1),
@@ -26,6 +29,33 @@ const query = useQuery({
       ? loadLifecyclePage(state.value, page.value, search.value)
       : { items: await api<Tender[]>('/tenders'), total: 0, page: 1, pageSize: 100 },
 });
+const counts = useQuery({
+  queryKey: ['tenders', 'lifecycle-counts'],
+  enabled,
+  queryFn: async () => {
+    const entries = await Promise.all(
+      (['active', 'archived', 'trash'] as const).map(async (value) => {
+        const result = await api<{ total: number }>(
+          `/tenders/lifecycle/page?state=${value}&page=1&pageSize=1`,
+          { signal: AbortSignal.timeout(15000) },
+        );
+        return [value, result.total] as const;
+      }),
+    );
+    return Object.fromEntries(entries) as Record<LifecycleState, number>;
+  },
+});
+watch(
+  () => query.data.value?.total,
+  (total) => {
+    if (enabled.value && total !== undefined)
+      page.value = Math.min(page.value, Math.max(1, Math.ceil(total / 25)));
+  },
+);
+function archived(title: string) {
+  notice.value = `Тендер «${title}» перемещён в архив. Документы и история сохранены.`;
+  void nextTick(() => heading.value?.focus());
+}
 const tenders = computed(() =>
   enabled.value
     ? (query.data.value?.items ?? [])
@@ -45,9 +75,15 @@ const tenders = computed(() =>
   </section>
   <section class="content-card purchase-card">
     <div class="card-heading">
-      <h2>Все тендеры</h2>
+      <h2 ref="heading" tabindex="-1">Все тендеры</h2>
       <span v-if="enabled" class="subtle-tag">Всего: {{ query.data.value?.total ?? 0 }}</span>
     </div>
+    <p v-if="notice" role="status">{{ notice }}</p>
+    <p v-if="enabled && counts.isError.value" role="status">Счётчики временно недоступны.</p>
+    <p v-else-if="enabled" aria-label="Количество тендеров по состояниям">
+      Активные: {{ counts.data.value?.active ?? '…' }} · Архив: {{ counts.data.value?.archived ?? '…' }} ·
+      Корзина: {{ counts.data.value?.trash ?? '…' }}
+    </p>
     <label v-if="enabled"
       >Состояние<select v-model="state">
         <option value="active">Активные</option>
@@ -86,8 +122,12 @@ const tenders = computed(() =>
         <RouterLink :to="`/tenders/${tender.id}`"
           ><strong>{{ tender.title }}</strong
           ><span>Открыть закупку →</span></RouterLink
-        ><button
-          v-if="enabled"
+        ><TenderArchiveAction
+          v-if="enabled && state === 'active'"
+          :tender="tender"
+          @archived="archived"
+        /><button
+          v-if="enabled && state !== 'active'"
           class="secondary-action"
           @click="selected = selected === tender.id ? '' : tender.id"
         >

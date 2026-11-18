@@ -7,7 +7,7 @@ CREATE TABLE tender_app.tender_lifecycle (
  classification text NOT NULL DEFAULT 'unclassified' CHECK(classification IN ('unclassified','synthetic','working')),
  classified_content_revision bigint, classified_ocr_hash char(64), evidence text, classified_by uuid REFERENCES tender_app.app_user(id), classified_at timestamptz,
  changed_at timestamptz NOT NULL DEFAULT now(),
- CHECK(classification <> 'synthetic' OR (length(trim(evidence)) >= 10 AND classified_by IS NOT NULL AND classified_at IS NOT NULL AND classified_content_revision IS NOT NULL AND classified_ocr_hash ~ '^[a-f0-9]{64}$')),
+ CHECK(classification <> 'synthetic' OR (evidence IS NOT NULL AND length(trim(evidence)) >= 10 AND classified_by IS NOT NULL AND classified_at IS NOT NULL AND classified_content_revision IS NOT NULL AND classified_ocr_hash IS NOT NULL AND classified_ocr_hash ~ '^[a-f0-9]{64}$')),
  CHECK(state <> 'trash' OR classification = 'synthetic'),
  CHECK(tender_id NOT IN (
  'f768e259-c0fe-4819-a62b-28d5630025c6','3c936af9-7b49-41cd-8b12-6b8c3b9a38fc',

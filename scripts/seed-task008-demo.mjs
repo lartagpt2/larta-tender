@@ -1,3 +1,7 @@
+function historicalRunnerDisabled() {
+  throw new Error('TASK-014: historical portal writer disabled; use isolated verify-task008 or test:e2e:ai.');
+}
+historicalRunnerDisabled();
 // Creates only new synthetic fixtures in the approved test DB; never confirms quote values.
 import { config } from 'dotenv';
 import { resolve } from 'node:path';

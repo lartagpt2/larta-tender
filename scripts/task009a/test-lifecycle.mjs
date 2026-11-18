@@ -1,9 +1,8 @@
 // Creates a BRAND NEW disposable synthetic test database. Never upgrades an existing DB.
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import { randomUUID, createHash } from 'node:crypto';
-import { config } from 'dotenv';
+import { randomUUID } from 'node:crypto';
+import { createDisposableDatabase } from '../testing/disposable-database.mjs';
 import pg from 'pg';
 import { createRequire } from 'node:module';
 const require = createRequire(import.meta.url);
@@ -15,26 +14,26 @@ const { PgTenderRepository } = require('../../apps/api/dist/data/repository.js')
 const { FileStore } = require('../../apps/api/dist/storage/file-store.js');
 const { PgScopeRepository } = require('../../apps/api/dist/data/scope-repository.js');
 const { createApplication } = require('../../apps/api/dist/application.js');
-const { repo, workspace, json } = await import('../task008-gate-d/io.mjs');
+const { workspace, json } = await import('../task008-gate-d/io.mjs');
 if (!process.argv.includes('--run')) {
   console.log(
-    'Preview only: --run creates a new larta_test_task009a_<timestamp> database; existing DBs never migrated.',
+    'Preview only: --run creates a new larta_test_task009a_<timestamp> database; existing DBs never migrated; full per-run manifest; no physical cleanup.',
   );
   process.exit(0);
 }
-config({ path: resolve(repo, '.env'), quiet: true });
-assert.ok(['localhost', '127.0.0.1'].includes(process.env.PGHOST));
-const db = 'larta_test_task009a_' + Date.now();
-assert.match(db, /^larta_test_task009a_\d+$/);
-const admin = new pg.Client({ database: 'postgres', connectionTimeoutMillis: 5000 });
-await admin.connect();
-try {
-  await admin.query(`CREATE DATABASE "${db}"`);
-} finally {
-  await admin.end();
-}
-// No reconnect to configured existing application DB; every connection below overrides database.
-const pool = new pg.Pool({ database: db, max: 8, connectionTimeoutMillis: 5000, statement_timeout: 10000 });
+const testRun = await createDisposableDatabase('task009a-lifecycle');
+const db = testRun.database,
+  pool = testRun.pool;
+process.env.PGHOST = '127.0.0.1';
+process.env.PGDATABASE = db;
+process.env.STORAGE_ROOT = testRun.storageRoot;
+process.env.DOCUMENT_AI_ENABLED = 'false';
+const originalConnect = pg.Client.prototype.connect;
+pg.Client.prototype.connect = function (...args) {
+  assert.equal(this.connectionParameters.database, db, 'Only this newly created database is allowed');
+  return originalConnect.apply(this, args);
+};
+let passed = false;
 const results = [];
 let app;
 const ok = (name) => {
@@ -43,13 +42,8 @@ const ok = (name) => {
 };
 try {
   assert.equal((await pool.query('SELECT current_database() db')).rows[0].db, db);
-  const hashes = {};
-  for (const name of ['001_initial.sql', '002_domain_foundation.sql', '003_tender_lifecycle.sql']) {
-    const sql = await readFile(resolve(repo, 'infra/migrations', name), 'utf8');
-    hashes[name] = createHash('sha256').update(sql).digest('hex');
-    await pool.query(sql);
-  }
-  ok('001/002/003 applied only to newly created synthetic DB');
+  const hashes = testRun.migrationHashes;
+  ok('001/002/003 applied atomically only to new disposable DB');
   const actor = randomUUID(),
     buyer = randomUUID(),
     reviewer = randomUUID(),
@@ -94,7 +88,7 @@ try {
   await rejected(() => lifecycle.act(actor, a.id, body(old, 'archive', { confirmationId: b.id })), 400);
   await rejected(() => lifecycle.act(actor, a.id, body(old, 'archive', { reason: '          ' })), 400);
   ok('exact title, exact ID and nonblank reason required');
-  const files = new FileStore(resolve(workspace, 'temp/task009a-implementation', db), workspace);
+  const files = new FileStore(testRun.storageRoot, workspace);
   const binary = Buffer.from('Synthetic shared original retained across lifecycle operations');
   const stored = await files.put(binary),
     sha = stored.sha256,
@@ -400,18 +394,55 @@ try {
     );
   assert.ok(Number((await pool.query('SELECT count(*) FROM tender_app.lifecycle_event')).rows[0].count) > 5);
   ok('all direct tenant dependencies guarded; immutable lifecycle audit retained');
+  // Provenance must commit/rollback together with the fixture transaction.
+  const rollbackId = randomUUID(),
+    rollbackClient = await pool.connect();
+  try {
+    await rollbackClient.query('BEGIN');
+    await rollbackClient.query(
+      "INSERT INTO tender_app.app_user(id,external_subject,display_name) VALUES($1,$2,'Rollback fixture')",
+      [rollbackId, 'rollback-' + rollbackId],
+    );
+    assert.equal(
+      (
+        await rollbackClient.query("SELECT count(*) FROM test_control.change_event WHERE new_row->>'id'=$1", [
+          rollbackId,
+        ])
+      ).rows[0].count,
+      '1',
+    );
+    await rollbackClient.query('ROLLBACK');
+  } finally {
+    rollbackClient.release();
+  }
+  assert.equal(
+    (await pool.query('SELECT count(*) FROM tender_app.app_user WHERE id=$1', [rollbackId])).rows[0].count,
+    '0',
+  );
+  assert.equal(
+    (await pool.query("SELECT count(*) FROM test_control.change_event WHERE new_row->>'id'=$1", [rollbackId]))
+      .rows[0].count,
+    '0',
+  );
+  ok('transaction rollback removes fixture and its provenance event together');
   const report = {
     at: new Date().toISOString(),
     database: db,
+    runId: testRun.runId,
+    manifestPath: resolve(testRun.runRoot, 'manifest.json'),
+    physicalCleanup: false,
     newDatabaseOnly: true,
     existingDatabaseChanged: false,
     migrationHashes: hashes,
     results,
     workspace,
   };
-  await json(resolve(repo, 'docs/testing/TASK-009A-IMPLEMENTATION/results.json'), report);
-  console.log('Synthetic test database retained for review: ' + db);
+  await json(resolve(testRun.runRoot, 'results.json'), report);
+  passed = true;
+  console.log('Synthetic database retained; cleanup requires separate approval: ' + db);
+  console.log('Run manifest: ' + testRun.runRoot);
 } finally {
   await app?.close();
-  await pool.end();
+  await testRun.close(passed ? 'PASSED_RETAINED' : 'FAILED_RETAINED');
+  pg.Client.prototype.connect = originalConnect;
 }

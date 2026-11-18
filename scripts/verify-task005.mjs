@@ -3,19 +3,19 @@ import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash, randomUUID, randomBytes } from 'node:crypto';
-import { config } from 'dotenv';
-import pg from 'pg';
+import { isolatedRun } from './testing/isolated-run.mjs';
 import application from '../apps/api/dist/application.js';
 import repositories from '../apps/api/dist/data/repository.js';
 import scopes from '../apps/api/dist/data/scope-repository.js';
 import offers from '../apps/api/dist/data/offer-repository.js';
 if (!process.argv.includes('--run'))
-  console.log('Preview only. --run uses approved larta_test_task003; synthetic fixtures remain.');
+  console.log(
+    'Preview: no connection. --run creates a new UUID database and storage; retained after completion.',
+  );
 else {
   const root = fileURLToPath(new URL('../', import.meta.url));
-  config({ path: resolve(root, '.env'), quiet: true });
-  if (process.env.PGDATABASE !== 'larta_test_task003') throw new Error('Approved test database required');
-  const pool = new pg.Pool({ connectionTimeoutMillis: 5000, statement_timeout: 10000 }),
+  const testRun = await isolatedRun('task005');
+  const pool = testRun.pool,
     apps = [];
   const actor = randomUUID(),
     reviewer = randomUUID(),
@@ -219,10 +219,12 @@ else {
       'PASS TASK005: two batches/7 originals, replay/dedup/conflict, partial rejection+audit, EML attachment+candidate, manual append-only association, stale writes, permissions and limits. Synthetic fixtures retained.',
     );
   } catch (e) {
+    process.exitCode = 1;
     console.error(`FAIL TASK005 phase=${phase} code=${e.code ?? e.name}`);
     throw e;
   } finally {
-    for (const app of apps) await app.close();
-    await pool.end();
+    const stopped = await Promise.allSettled(apps.map((app) => app.close()));
+    if (stopped.some((r) => r.status === 'rejected')) process.exitCode = 1;
+    await testRun.close(process.exitCode ? 'FAILED_RETAINED' : 'PASSED_RETAINED');
   }
 }

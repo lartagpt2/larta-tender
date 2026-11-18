@@ -1,3 +1,7 @@
+function historicalRunnerDisabled() {
+  throw new Error('TASK-014: historical portal writer disabled; use isolated verify-task008 or test:e2e:ai.');
+}
+historicalRunnerDisabled();
 // Preregistered TASK-008F first-pass benchmark: new synthetic files only, no tuning, DDL or confirmations.
 import assert from 'node:assert/strict';
 import http from 'node:http';

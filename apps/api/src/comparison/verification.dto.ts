@@ -1,3 +1,4 @@
+import { IntakeContextDto } from '../unified-intake/intake-context.dto';
 import { Type } from 'class-transformer';
 import {
   ArrayMaxSize,
@@ -41,6 +42,11 @@ export class VerifiedCostDto {
   @ValidateIf(known) @IsIn(currencies) currency: string | null = null;
 }
 export class VerificationDto {
+  @ValidateIf((_o, v) => v !== undefined)
+  @IsObject()
+  @ValidateNested()
+  @Type(() => IntakeContextDto)
+  intakeContext?: IntakeContextDto;
   @IsUUID() supplierId!: string;
   @IsUUID() lotId!: string;
   @IsUUID() documentId!: string;

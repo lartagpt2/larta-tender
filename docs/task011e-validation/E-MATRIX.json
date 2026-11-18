@@ -1,0 +1,394 @@
+{
+  "status": "TECHNICAL_PASS_OWNER_ACCEPTANCE_PENDING",
+  "gateA": "PASS",
+  "gateB": "PASS",
+  "areas": [
+    {
+      "requirement": "E1",
+      "description": "Review workspace, detached receipt, server sort, company history/evidence, author, sources, accessible controls",
+      "status": "PASS",
+      "evidence": "E-regression-12.log / technical-quality-final.json / B,C,D regression results"
+    },
+    {
+      "requirement": "E2",
+      "description": "Independent company/manual correction, coherent country/identifier edit, observation rejection, CAS/replay/auth, confirmed reprocess preservation",
+      "status": "PASS",
+      "evidence": "E-regression-12.log / technical-quality-final.json / B,C,D regression results"
+    },
+    {
+      "requirement": "E3",
+      "description": "Canonical document/purpose projection and distinct actual receipt events; no synthetic replacement IDs",
+      "status": "PASS",
+      "evidence": "E-regression-12.log / technical-quality-final.json / B,C,D regression results"
+    },
+    {
+      "requirement": "E4",
+      "description": "Separate association confirmation, shared SHA independence and scoped supplier mapping",
+      "status": "PASS",
+      "evidence": "E-regression-12.log / technical-quality-final.json / B,C,D regression results"
+    },
+    {
+      "requirement": "E5",
+      "description": "Native labeled extraction with conflict abstention; manual draft/source lineage; valid commercial verification",
+      "status": "PASS",
+      "evidence": "E-regression-12.log / technical-quality-final.json / B,C,D regression results"
+    },
+    {
+      "requirement": "E6",
+      "description": "Managed/unmanaged comparison, stale exclusion, impact acknowledgment, CSV and legacy no-reply stage",
+      "status": "PASS",
+      "evidence": "E-regression-12.log / technical-quality-final.json / B,C,D regression results"
+    },
+    {
+      "requirement": "E7",
+      "description": "Fresh UUID DB provenance, policy/allowlist guards, full B/C/D, unit/build/lint and actual Playwright",
+      "status": "PASS",
+      "evidence": "E-regression-12.log / technical-quality-final.json / B,C,D regression results"
+    }
+  ],
+  "cases": [
+    {
+      "requirement": "E-T01",
+      "description": "10 D receipts/runs: 9 completed,1 failed,3 preliminary,0 confirmed; failed visible",
+      "status": "PASS",
+      "exitCode": 0,
+      "runId": "da5e90d4-8319-460d-8547-209483336a7a",
+      "evidence": [
+        "E-T01/02/18/19/20: exact accepted D fixture, server GET purity, pagination/errors, evidence/history and read scopes"
+      ],
+      "log": "E-regression-12.log",
+      "results": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/task011e-results.json",
+      "playwright": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/playwright-results.json"
+    },
+    {
+      "requirement": "E-T02",
+      "description": "Reload/reopen persists server history/evidence, no GET effects",
+      "status": "PASS",
+      "exitCode": 0,
+      "runId": "da5e90d4-8319-460d-8547-209483336a7a",
+      "evidence": [
+        "E-T01/02/18/19/20: exact accepted D fixture, server GET purity, pagination/errors, evidence/history and read scopes",
+        "E-T02: detached receipt survives list page/filter and GET has no writes",
+        "E UI Playwright actual isolated API/Worker: 11 scenarios"
+      ],
+      "log": "E-regression-12.log",
+      "results": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/task011e-results.json",
+      "playwright": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/playwright-results.json"
+    },
+    {
+      "requirement": "E-T03",
+      "description": "Edit one company field -> new manual revision, preserve other fields",
+      "status": "PASS",
+      "exitCode": 0,
+      "runId": "da5e90d4-8319-460d-8547-209483336a7a",
+      "evidence": [
+        "E-T03/04/06/07/22/23: manual revision, independent company confirmation, parallel same-key replay, changed body/stale/extra-field guards"
+      ],
+      "log": "E-regression-12.log",
+      "results": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/task011e-results.json",
+      "playwright": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/playwright-results.json"
+    },
+    {
+      "requirement": "E-T04",
+      "description": "Confirm new supplier/membership; no price/document confirmation",
+      "status": "PASS",
+      "exitCode": 0,
+      "runId": "da5e90d4-8319-460d-8547-209483336a7a",
+      "evidence": [
+        "E-T03/04/06/07/22/23: manual revision, independent company confirmation, parallel same-key replay, changed body/stale/extra-field guards"
+      ],
+      "log": "E-regression-12.log",
+      "results": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/task011e-results.json",
+      "playwright": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/playwright-results.json"
+    },
+    {
+      "requirement": "E-T05",
+      "description": "Choose existing participant, no duplicate",
+      "status": "PASS",
+      "exitCode": 0,
+      "runId": "da5e90d4-8319-460d-8547-209483336a7a",
+      "evidence": [
+        "E-T05: choose_existing reuses actual participant and retains company/evidence history"
+      ],
+      "log": "E-regression-12.log",
+      "results": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/task011e-results.json",
+      "playwright": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/playwright-results.json"
+    },
+    {
+      "requirement": "E-T06",
+      "description": "Same-key confirm replay same supplier/result",
+      "status": "PASS",
+      "exitCode": 0,
+      "runId": "da5e90d4-8319-460d-8547-209483336a7a",
+      "evidence": [
+        "E-T03/04/06/07/22/23: manual revision, independent company confirmation, parallel same-key replay, changed body/stale/extra-field guards"
+      ],
+      "log": "E-regression-12.log",
+      "results": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/task011e-results.json",
+      "playwright": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/playwright-results.json"
+    },
+    {
+      "requirement": "E-T07",
+      "description": "Parallel confirm consistent/no duplicate",
+      "status": "PASS",
+      "exitCode": 0,
+      "runId": "da5e90d4-8319-460d-8547-209483336a7a",
+      "evidence": [
+        "E-T03/04/06/07/22/23: manual revision, independent company confirmation, parallel same-key replay, changed body/stale/extra-field guards",
+        "E-T07: different-key create/choose race preserves one mapping; invalid country/registration rejected"
+      ],
+      "log": "E-regression-12.log",
+      "results": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/task011e-results.json",
+      "playwright": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/playwright-results.json"
+    },
+    {
+      "requirement": "E-T08",
+      "description": "Confirmed offer projection actual IDs/exactly one received event",
+      "status": "PASS",
+      "exitCode": 0,
+      "runId": "da5e90d4-8319-460d-8547-209483336a7a",
+      "evidence": [
+        "E-T08/09/10/12/21: real canonical projection/offer receipt, independent type/link/price, non-offer no projection, contextual PATCH/evidence guard",
+        "E-T08/11: same SHA canonical document reused; separate receipts, offer.received events and independently confirmed suppliers"
+      ],
+      "log": "E-regression-12.log",
+      "results": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/task011e-results.json",
+      "playwright": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/playwright-results.json"
+    },
+    {
+      "requirement": "E-T09",
+      "description": "No offer projection for quality/supporting/unknown",
+      "status": "PASS",
+      "exitCode": 0,
+      "runId": "da5e90d4-8319-460d-8547-209483336a7a",
+      "evidence": [
+        "E-T08/09/10/12/21: real canonical projection/offer receipt, independent type/link/price, non-offer no projection, contextual PATCH/evidence guard",
+        "E-T09/10: quality/supporting/unknown remain unprojected; unconfirmed company cannot confirm supplier_of"
+      ],
+      "log": "E-regression-12.log",
+      "results": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/task011e-results.json",
+      "playwright": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/playwright-results.json"
+    },
+    {
+      "requirement": "E-T10",
+      "description": "Unconfirmed company supplier_of denied",
+      "status": "PASS",
+      "exitCode": 0,
+      "runId": "da5e90d4-8319-460d-8547-209483336a7a",
+      "evidence": [
+        "E-T08/09/10/12/21: real canonical projection/offer receipt, independent type/link/price, non-offer no projection, contextual PATCH/evidence guard",
+        "E-T09/10: quality/supporting/unknown remain unprojected; unconfirmed company cannot confirm supplier_of"
+      ],
+      "log": "E-regression-12.log",
+      "results": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/task011e-results.json",
+      "playwright": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/playwright-results.json"
+    },
+    {
+      "requirement": "E-T11",
+      "description": "Shared SHA two receipts independent contexts",
+      "status": "PASS",
+      "exitCode": 0,
+      "runId": "da5e90d4-8319-460d-8547-209483336a7a",
+      "evidence": [
+        "E-T08/11: same SHA canonical document reused; separate receipts, offer.received events and independently confirmed suppliers"
+      ],
+      "log": "E-regression-12.log",
+      "results": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/task011e-results.json",
+      "playwright": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/playwright-results.json"
+    },
+    {
+      "requirement": "E-T12",
+      "description": "Managed legacy PATCH 409 receipt_context_required; unmanaged unchanged",
+      "status": "PASS",
+      "exitCode": 0,
+      "runId": "da5e90d4-8319-460d-8547-209483336a7a",
+      "evidence": [
+        "E-T08/09/10/12/21: real canonical projection/offer receipt, independent type/link/price, non-offer no projection, contextual PATCH/evidence guard",
+        "E-T12/17/24: legacy unmanaged PATCH/verification intact; mixed comparison rank/formula/CSV and negotiation no-reply retain price"
+      ],
+      "log": "E-regression-12.log",
+      "results": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/task011e-results.json",
+      "playwright": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/playwright-results.json"
+    },
+    {
+      "requirement": "E-T13",
+      "description": "Transfer only selected empty fields, lineage; no price",
+      "status": "PASS",
+      "exitCode": 0,
+      "runId": "da5e90d4-8319-460d-8547-209483336a7a",
+      "evidence": [
+        "E-T13/14/15/16/17: draft does not create price, manual values survive, direct bypass denied, valid confirm is atomic/idempotent with per-field lineage, stale context excluded after preview acknowledgment",
+        "E-T14/15/21/22: revoked/stale/foreign receipt/result/company/association/draft/lot contexts denied with zero versions; lineage FK/immutability and manual sources"
+      ],
+      "log": "E-regression-12.log",
+      "results": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/task011e-results.json",
+      "playwright": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/playwright-results.json"
+    },
+    {
+      "requirement": "E-T14",
+      "description": "Direct proposed/stale/revoked context denied before version",
+      "status": "PASS",
+      "exitCode": 0,
+      "runId": "da5e90d4-8319-460d-8547-209483336a7a",
+      "evidence": [
+        "E-T13/14/15/16/17: draft does not create price, manual values survive, direct bypass denied, valid confirm is atomic/idempotent with per-field lineage, stale context excluded after preview acknowledgment",
+        "E-T14/15/21/22: revoked/stale/foreign receipt/result/company/association/draft/lot contexts denied with zero versions; lineage FK/immutability and manual sources"
+      ],
+      "log": "E-regression-12.log",
+      "results": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/task011e-results.json",
+      "playwright": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/playwright-results.json"
+    },
+    {
+      "requirement": "E-T15",
+      "description": "Valid commercial confirm atomic version/audit/field lineage",
+      "status": "PASS",
+      "exitCode": 0,
+      "runId": "da5e90d4-8319-460d-8547-209483336a7a",
+      "evidence": [
+        "E-T13/14/15/16/17: draft does not create price, manual values survive, direct bypass denied, valid confirm is atomic/idempotent with per-field lineage, stale context excluded after preview acknowledgment",
+        "E-T14/15/21/22: revoked/stale/foreign receipt/result/company/association/draft/lot contexts denied with zero versions; lineage FK/immutability and manual sources"
+      ],
+      "log": "E-regression-12.log",
+      "results": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/task011e-results.json",
+      "playwright": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/playwright-results.json"
+    },
+    {
+      "requirement": "E-T16",
+      "description": "Change/revoke after price needs preview/ack, history retained",
+      "status": "PASS",
+      "exitCode": 0,
+      "runId": "da5e90d4-8319-460d-8547-209483336a7a",
+      "evidence": [
+        "E-T13/14/15/16/17: draft does not create price, manual values survive, direct bypass denied, valid confirm is atomic/idempotent with per-field lineage, stale context excluded after preview acknowledgment",
+        "E-T16/17/24: CSV exposes stale managed context; archive blocks API/SQL observation writes; restore preserves history",
+        "E UI Playwright actual isolated API/Worker: 11 scenarios"
+      ],
+      "log": "E-regression-12.log",
+      "results": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/task011e-results.json",
+      "playwright": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/playwright-results.json"
+    },
+    {
+      "requirement": "E-T17",
+      "description": "Managed guards and unchanged unmanaged comparison",
+      "status": "PASS",
+      "exitCode": 0,
+      "runId": "da5e90d4-8319-460d-8547-209483336a7a",
+      "evidence": [
+        "E-T13/14/15/16/17: draft does not create price, manual values survive, direct bypass denied, valid confirm is atomic/idempotent with per-field lineage, stale context excluded after preview acknowledgment",
+        "E-T16/17/24: CSV exposes stale managed context; archive blocks API/SQL observation writes; restore preserves history",
+        "E-T12/17/24: legacy unmanaged PATCH/verification intact; mixed comparison rank/formula/CSV and negotiation no-reply retain price",
+        "E UI Playwright actual isolated API/Worker: 11 scenarios"
+      ],
+      "log": "E-regression-12.log",
+      "results": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/task011e-results.json",
+      "playwright": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/playwright-results.json"
+    },
+    {
+      "requirement": "E-T18",
+      "description": "Reviewer GET allowed/write 403",
+      "status": "PASS",
+      "exitCode": 0,
+      "runId": "da5e90d4-8319-460d-8547-209483336a7a",
+      "evidence": [
+        "E-T01/02/18/19/20: exact accepted D fixture, server GET purity, pagination/errors, evidence/history and read scopes",
+        "E-T03/04/06/07/22/23: manual revision, independent company confirmation, parallel same-key replay, changed body/stale/extra-field guards",
+        "E2/009: observation rejection real API CAS/replay/auth/scope, immutable evidence/history, typed FK and SQL revision guards",
+        "E UI Playwright actual isolated API/Worker: 11 scenarios"
+      ],
+      "log": "E-regression-12.log",
+      "results": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/task011e-results.json",
+      "playwright": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/playwright-results.json"
+    },
+    {
+      "requirement": "E-T19",
+      "description": "Outsider/foreign ID 404",
+      "status": "PASS",
+      "exitCode": 0,
+      "runId": "da5e90d4-8319-460d-8547-209483336a7a",
+      "evidence": [
+        "E-T01/02/18/19/20: exact accepted D fixture, server GET purity, pagination/errors, evidence/history and read scopes",
+        "E2/009: observation rejection real API CAS/replay/auth/scope, immutable evidence/history, typed FK and SQL revision guards"
+      ],
+      "log": "E-regression-12.log",
+      "results": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/task011e-results.json",
+      "playwright": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/playwright-results.json"
+    },
+    {
+      "requirement": "E-T20",
+      "description": "No auth 401",
+      "status": "PASS",
+      "exitCode": 0,
+      "runId": "da5e90d4-8319-460d-8547-209483336a7a",
+      "evidence": [
+        "E-T01/02/18/19/20: exact accepted D fixture, server GET purity, pagination/errors, evidence/history and read scopes"
+      ],
+      "log": "E-regression-12.log",
+      "results": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/task011e-results.json",
+      "playwright": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/playwright-results.json"
+    },
+    {
+      "requirement": "E-T21",
+      "description": "Foreign receipt/company/evidence/lot: deny, no writes",
+      "status": "PASS",
+      "exitCode": 0,
+      "runId": "da5e90d4-8319-460d-8547-209483336a7a",
+      "evidence": [
+        "E-T08/09/10/12/21: real canonical projection/offer receipt, independent type/link/price, non-offer no projection, contextual PATCH/evidence guard",
+        "E2/009: observation rejection real API CAS/replay/auth/scope, immutable evidence/history, typed FK and SQL revision guards",
+        "E-T14/15/21/22: revoked/stale/foreign receipt/result/company/association/draft/lot contexts denied with zero versions; lineage FK/immutability and manual sources"
+      ],
+      "log": "E-regression-12.log",
+      "results": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/task011e-results.json",
+      "playwright": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/playwright-results.json"
+    },
+    {
+      "requirement": "E-T22",
+      "description": "Stale revision/context 409 before business write",
+      "status": "PASS",
+      "exitCode": 0,
+      "runId": "da5e90d4-8319-460d-8547-209483336a7a",
+      "evidence": [
+        "E-T03/04/06/07/22/23: manual revision, independent company confirmation, parallel same-key replay, changed body/stale/extra-field guards",
+        "E2/009: observation rejection real API CAS/replay/auth/scope, immutable evidence/history, typed FK and SQL revision guards",
+        "E-T14/15/21/22: revoked/stale/foreign receipt/result/company/association/draft/lot contexts denied with zero versions; lineage FK/immutability and manual sources"
+      ],
+      "log": "E-regression-12.log",
+      "results": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/task011e-results.json",
+      "playwright": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/playwright-results.json"
+    },
+    {
+      "requirement": "E-T23",
+      "description": "Client actorId/status/extra fields 400",
+      "status": "PASS",
+      "exitCode": 0,
+      "runId": "da5e90d4-8319-460d-8547-209483336a7a",
+      "evidence": [
+        "E-T03/04/06/07/22/23: manual revision, independent company confirmation, parallel same-key replay, changed body/stale/extra-field guards",
+        "E2/009: observation rejection real API CAS/replay/auth/scope, immutable evidence/history, typed FK and SQL revision guards"
+      ],
+      "log": "E-regression-12.log",
+      "results": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/task011e-results.json",
+      "playwright": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/playwright-results.json"
+    },
+    {
+      "requirement": "E-T24",
+      "description": "Old offer/review/stages/comparison/CSV/archive regressions",
+      "status": "PASS",
+      "exitCode": 0,
+      "runId": "da5e90d4-8319-460d-8547-209483336a7a",
+      "evidence": [
+        "E-T16/17/24: CSV exposes stale managed context; archive blocks API/SQL observation writes; restore preserves history",
+        "E-T12/17/24: legacy unmanaged PATCH/verification intact; mixed comparison rank/formula/CSV and negotiation no-reply retain price",
+        "E UI Playwright actual isolated API/Worker: 11 scenarios"
+      ],
+      "log": "E-regression-12.log",
+      "results": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/task011e-results.json",
+      "playwright": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/playwright-results.json"
+    }
+  ],
+  "modelQualityAcceptance": false,
+  "realModelCalls": 0,
+  "approvedCorpusChanges": false,
+  "manualCommercialTranscriptionExplicit": true,
+  "acceptanceAuthority": "owner only"
+}

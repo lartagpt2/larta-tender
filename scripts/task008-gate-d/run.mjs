@@ -1,3 +1,7 @@
+function historicalRunnerDisabled() {
+  throw new Error('TASK-014: historical portal/model writer disabled; use isolated verify-task008.');
+}
+historicalRunnerDisabled();
 // Opt-in benchmark: generated Russian synthetic files only, approved test DB, no DDL or confirmations.
 import assert from 'node:assert/strict';
 import http from 'node:http';

@@ -1,3 +1,5 @@
+import { contextualRegistry } from '../unified-intake/offer-registry-bridge';
+import { bridgeInstalled } from '../unified-intake/business-bridge';
 import { NewSupplierDto } from '../offer.dto';
 import { Pool } from 'pg';
 import { DocumentProcessingPort } from '../offer-files';
@@ -48,12 +50,13 @@ export class PgOfferRepository extends PgScopeRepository {
   }
   async list(actor: string, id: string): Promise<OfferDocument[]> {
     await this.read(actor, id);
-    return (
+    const documents = (
       await this.pool.query<OfferDocument>(
         `SELECT d.id,d.original_name AS name,d.status,d.supplier_id AS "supplierId",s.legal_name AS "supplierName",d.sender_email AS email,d.association_status AS "associationStatus",d.revision,d.parent_document_id AS "parentId",st.label AS stage,COALESCE((SELECT json_agg(json_build_object('id',fd.id,'batchId',fd.value::jsonb->>'batchId','receivedAt',fd.decided_at,'actorId',fd.decided_by,'actorName',u.display_name,'source',fd.value::jsonb->>'source','stage',rs.label,'supplierId',fd.value::jsonb->>'supplierId','supplierName',ss.legal_name,'senderEmail',fd.value::jsonb->>'senderEmail','originalName',fd.value::jsonb->>'originalName','legacy',COALESCE((fd.value::jsonb->>'legacy')::boolean,false)) ORDER BY fd.decided_at,fd.id) FROM tender_app.field_decision fd JOIN tender_app.app_user u ON u.id=fd.decided_by LEFT JOIN tender_app.tender_stage rs ON rs.id::text=fd.value::jsonb->>'stageId' AND rs.tender_id=d.tender_id LEFT JOIN tender_app.supplier ss ON ss.id::text=fd.value::jsonb->>'supplierId' WHERE fd.document_id=d.id AND fd.field_key='offer.received.v1'),json_build_array(json_build_object('id',d.id,'batchId',d.batch_id,'receivedAt',d.received_at,'actorId',d.uploaded_by,'actorName',(SELECT display_name FROM tender_app.app_user WHERE id=d.uploaded_by),'source',d.channel,'stage',st.label,'supplierId',NULL,'supplierName',NULL,'senderEmail',d.sender_email,'originalName',d.original_name,'legacy',true))) AS receipts FROM tender_app.document d LEFT JOIN tender_app.supplier s ON s.id=d.supplier_id LEFT JOIN tender_app.tender_stage st ON st.id=d.stage_id WHERE d.tender_id=$1 AND d.purpose='offer' AND (NOT EXISTS(SELECT 1 FROM tender_app.field_decision role WHERE role.document_id=d.id AND role.field_key='accreditation.file.v1') OR EXISTS(SELECT 1 FROM tender_app.field_decision rr WHERE rr.document_id=d.id AND rr.field_key='offer.received.v1')) ORDER BY d.created_at,d.id`,
         [id],
       )
     ).rows;
+    return contextualRegistry(this.pool, id, documents);
   }
   async suppliers(actor: string, id: string) {
     await this.read(actor, id);
@@ -292,6 +295,16 @@ export class PgOfferRepository extends PgScopeRepository {
   ) {
     return transaction(this.pool, async (c) => {
       const t = await this.lock(c, actor, id);
+      if (
+        (await bridgeInstalled(c)) &&
+        (
+          await c.query(
+            'SELECT 1 FROM tender_app.intake_receipt_projection WHERE tender_id=$1 AND legacy_document_id=$2 LIMIT 1',
+            [id, doc],
+          )
+        ).rowCount
+      )
+        throw new ConflictException('receipt_context_required');
       const d = await c.query(
         "SELECT revision FROM tender_app.document WHERE id=$1 AND tender_id=$2 AND purpose='offer' FOR UPDATE",
         [doc, id],

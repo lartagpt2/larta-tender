@@ -4,30 +4,24 @@ import { randomUUID, createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
-import { config } from 'dotenv';
-import pg from 'pg';
+import { isolatedRun } from './testing/isolated-run.mjs';
 import repository from '../apps/api/dist/data/repository.js';
 const args = process.argv.slice(2);
-const value = (flag) => args[args.indexOf(flag) + 1];
 const root = fileURLToPath(new URL('../', import.meta.url));
 const hash = createHash('sha256')
   .update(await readFile(resolve(root, 'infra/migrations/002_domain_foundation.sql')))
   .digest('hex');
 if (!args.includes('--run')) {
   console.log(
-    'Preview only: no database connection. --run requires an approved disposable larta_test_<name> database; synthetic fixtures remain.',
+    'Preview only: no database connection. --run creates a fresh UUID database; no existing target allowed; synthetic fixtures retained.',
   );
 } else {
-  const database = value('--database');
-  if (
-    !args.includes('--database') ||
-    !/^larta_test_[a-z0-9_]+$/.test(database ?? '') ||
-    !args.includes('--reviewed-sha') ||
-    value('--reviewed-sha') !== hash
-  )
-    throw new Error('Explicit test database and reviewed migration checksum required.');
-  config({ path: resolve(root, '.env'), quiet: true });
-  const pool = new pg.Pool({ database, max: 4, connectionTimeoutMillis: 5000, statement_timeout: 10000 });
+  if (args.includes('--database'))
+    throw new Error(
+      'Existing database targets forbidden. Omit --database; a fresh UUID database is created.',
+    );
+  const testRun = await isolatedRun('verify-test-db');
+  const pool = testRun.pool;
   const uuid = () => randomUUID();
   try {
     const ledger = await pool.query(
@@ -131,6 +125,6 @@ if (!args.includes('--run')) {
     );
     process.exitCode = 1;
   } finally {
-    await pool.end();
+    await testRun.close(process.exitCode ? 'FAILED_RETAINED' : 'PASSED_RETAINED');
   }
 }

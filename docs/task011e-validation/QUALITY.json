@@ -1,0 +1,139 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "prettier-write",
+      "exitCode": 0,
+      "log": "prettier-write-07.log"
+    },
+    {
+      "name": "prettier-check",
+      "exitCode": 0,
+      "log": "prettier-check-07.log"
+    },
+    {
+      "name": "eslint-changed",
+      "exitCode": 0,
+      "log": "eslint-changed-07.log"
+    },
+    {
+      "name": "eslint-all",
+      "exitCode": 0,
+      "log": "eslint-all-07.log"
+    },
+    {
+      "name": "typecheck-shared",
+      "exitCode": 0,
+      "log": "typecheck-shared-07.log"
+    },
+    {
+      "name": "typecheck-api",
+      "exitCode": 0,
+      "log": "typecheck-api-07.log"
+    },
+    {
+      "name": "typecheck-web",
+      "exitCode": 0,
+      "log": "typecheck-web-07.log"
+    },
+    {
+      "name": "unit-api",
+      "exitCode": 0,
+      "log": "unit-api-07.log"
+    },
+    {
+      "name": "unit-eml-health",
+      "exitCode": 0,
+      "log": "unit-eml-health-07.log"
+    },
+    {
+      "name": "unit-web",
+      "exitCode": 0,
+      "log": "unit-web-07.log"
+    },
+    {
+      "name": "unit-guards-coverage",
+      "exitCode": 0,
+      "log": "unit-guards-coverage-07.log"
+    },
+    {
+      "name": "build-shared",
+      "exitCode": 0,
+      "log": "build-shared-07.log"
+    },
+    {
+      "name": "build-api",
+      "exitCode": 0,
+      "log": "build-api-07.log"
+    },
+    {
+      "name": "build-web",
+      "exitCode": 0,
+      "log": "build-web-07.log"
+    }
+  ],
+  "changed": [
+    "apps/api/src/tenders.module.ts",
+    "apps/api/src/unified-intake/business-bridge.ts",
+    "apps/api/src/unified-intake/classification.spec.ts",
+    "apps/api/src/unified-intake/commercial-port.spec.ts",
+    "apps/api/src/unified-intake/commercial-port.ts",
+    "apps/api/src/unified-intake/intake-worker.ts",
+    "apps/api/src/unified-intake/review-repository.ts",
+    "apps/api/src/unified-intake/review.dto.ts",
+    "apps/web/src/intake-review-api.ts",
+    "apps/web/src/IntakeWorkspace.vue",
+    "apps/web/src/OfferReview.vue",
+    "jest.config.cjs",
+    "scripts/seed-task008-demo.mjs",
+    "scripts/task008-gate-d/run.mjs",
+    "scripts/task008e/run.mjs",
+    "scripts/task008f/run-v2.mjs",
+    "scripts/task008f/run.mjs",
+    "scripts/task008g/run.mjs",
+    "scripts/task011b/contract-probe.mjs",
+    "scripts/task011b/coverage-unit.test.mjs",
+    "scripts/task011b/regression-durable.mjs",
+    "scripts/task011c/regression-durable.mjs",
+    "scripts/task011d/regression-api.mjs",
+    "scripts/task011d/regression-durable.mjs",
+    "scripts/task011d/regression-policy.mjs",
+    "scripts/task011d/regression-policy.test.mjs",
+    "scripts/task011d/regression-runtime.mjs",
+    "scripts/task011d/regression-worker.mjs",
+    "scripts/task011e/acceptance-extended.mjs",
+    "scripts/task011e/acceptance-full.mjs",
+    "scripts/task011e/browser.mjs",
+    "scripts/task011e/prepare-full.mjs",
+    "scripts/task011e/uat-server.mjs",
+    "scripts/testing/disposable-database.mjs"
+  ],
+  "deltaChecks": [
+    {
+      "name": "delta-eslint",
+      "exitCode": 0,
+      "log": "delta-eslint.log"
+    },
+    {
+      "name": "delta-prettier",
+      "exitCode": 0,
+      "log": "delta-prettier.log"
+    },
+    {
+      "name": "delta-web-typecheck",
+      "exitCode": 0,
+      "log": "delta-web-typecheck.log"
+    },
+    {
+      "name": "delta-web-build",
+      "exitCode": 0,
+      "log": "delta-web-build.log"
+    }
+  ],
+  "deltaReason": "final new MJS negative tests and Vite emptyOutDir=false; API/unit source unchanged since final complete unit run",
+  "apiSuites": 25,
+  "apiTests": 219,
+  "webSuites": 8,
+  "webTests": 49,
+  "nodeGuardAndCoverageTests": 13
+}

@@ -7,22 +7,24 @@
     "packages/*"
   ],
   "engines": {
-    "node": "\u003e=24 \u003c25"
+    "node": ">=24 <25"
   },
   "scripts": {
     "dev:web": "npm run dev --workspace @tender/web",
     "dev:api": "npm run dev --workspace @tender/api",
-    "build": "npm run build --workspace @tender/shared \u0026\u0026 npm run build --workspace @tender/api \u0026\u0026 npm run build --workspace @tender/web",
-    "typecheck": "tsc -p packages/shared --noEmit \u0026\u0026 tsc -p apps/api --noEmit \u0026\u0026 vue-tsc -p apps/web/tsconfig.json --noEmit",
+    "build": "npm run build --workspace @tender/shared && npm run build --workspace @tender/api && npm run build --workspace @tender/web",
+    "typecheck": "tsc -p packages/shared --noEmit && tsc -p apps/api --noEmit && vue-tsc -p apps/web/tsconfig.json --noEmit",
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "test": "npm run test:api \u0026\u0026 npm run test:web",
+    "test": "npm run test:api && npm run test:web",
     "test:api": "jest --runInBand",
     "test:web": "vitest run --config apps/web/vite.config.ts",
     "test:e2e": "playwright test",
     "test:e2e:ai": "playwright test --config playwright.task008.config.ts",
-    "check": "npm run typecheck \u0026\u0026 npm run lint \u0026\u0026 npm test \u0026\u0026 npm run build"
+    "check": "npm run typecheck && npm run lint && npm test && npm run build",
+    "test:isolation": "node --test scripts/testing/*.spec.mjs",
+    "test:e2e:isolation-failure": "playwright test --config playwright.task014.config.ts"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.0",

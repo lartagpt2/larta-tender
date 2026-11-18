@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, artifact } from '../isolated-fixture';
 test('create supplier without email, flag duplicates, and persist independent receipts', async ({
   page,
   request,
@@ -65,5 +65,5 @@ test('create supplier without email, flag duplicates, and persist independent re
     `/api/tenders/${id}/offers/${(await (await request.get(`/api/tenders/${id}/offers`)).json()).find((d: { name: string }) => d.name === files[0].name).id}/original`,
   );
   expect(await original.body()).toEqual(files[0].buffer);
-  await page.screenshot({ path: 'test-results/task005b-suppliers-history.png', fullPage: true });
+  await page.screenshot({ path: await artifact('task005b-suppliers-history.png'), fullPage: true });
 });

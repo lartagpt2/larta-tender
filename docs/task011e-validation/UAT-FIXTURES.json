@@ -1,0 +1,127 @@
+{
+  "syntheticOnly": true,
+  "runtimePolicyUnchanged": true,
+  "policySha256": "74dffd227d0232b9e60afdcdb09e0f01461d02a9d72f043df480377a174b5a3e",
+  "files": [
+    {
+      "name": "offer.pdf",
+      "path": "C:\\Users\\oalimova\\ai_project\\temp\\task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade\\uat-fixtures\\offer.pdf",
+      "bytes": 646,
+      "sha256": "d2636b159b14bf2fae7dbcc1f8fa634308fb8e4fcbde91a6d6546709d263754f",
+      "generator": "scripts/task011d/fixtures.mjs",
+      "generatorSha256": "1aee97523b9418f5bb722d33cd2f2e11dab84bc0e772ac51c8ed22ee82de7805",
+      "expectedProcessing": "completed",
+      "expectedType": "offer",
+      "expectedCompany": "Synthetic Alpha"
+    },
+    {
+      "name": "offer.txt",
+      "path": "C:\\Users\\oalimova\\ai_project\\temp\\task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade\\uat-fixtures\\offer.txt",
+      "bytes": 70,
+      "sha256": "e7e9d17da47cb75132b765372ffa13c050edf76db6bccf27622834aa38b044b9",
+      "generator": "scripts/task011d/fixtures.mjs",
+      "generatorSha256": "1aee97523b9418f5bb722d33cd2f2e11dab84bc0e772ac51c8ed22ee82de7805",
+      "expectedProcessing": "completed",
+      "expectedType": "offer",
+      "expectedCompany": "Synthetic Beta"
+    },
+    {
+      "name": "offer.xlsx",
+      "path": "C:\\Users\\oalimova\\ai_project\\temp\\task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade\\uat-fixtures\\offer.xlsx",
+      "bytes": 891,
+      "sha256": "86c1bd658389b6dce92a4ce187c2740b07c32620d7a64bb9d36518ca74d81479",
+      "generator": "scripts/task011d/fixtures.mjs",
+      "generatorSha256": "1aee97523b9418f5bb722d33cd2f2e11dab84bc0e772ac51c8ed22ee82de7805",
+      "expectedProcessing": "completed",
+      "expectedType": "offer",
+      "expectedCompany": "Synthetic Gamma"
+    },
+    {
+      "name": "quality.txt",
+      "path": "C:\\Users\\oalimova\\ai_project\\temp\\task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade\\uat-fixtures\\quality.txt",
+      "bytes": 74,
+      "sha256": "cf11188fb0a55a8a90e611af2aaef25e53fd37ca08e40fa35366d424d1bb3787",
+      "generator": "scripts/task011d/fixtures.mjs",
+      "generatorSha256": "1aee97523b9418f5bb722d33cd2f2e11dab84bc0e772ac51c8ed22ee82de7805",
+      "expectedProcessing": "completed",
+      "expectedType": "quality_certificate",
+      "expectedCompany": "Synthetic Alpha"
+    },
+    {
+      "name": "quality.pdf",
+      "path": "C:\\Users\\oalimova\\ai_project\\temp\\task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade\\uat-fixtures\\quality.pdf",
+      "bytes": 648,
+      "sha256": "7d10abf6d57e6658ce51dfe5b01acc68e2396de8029d2b2229daee79fa20255a",
+      "generator": "scripts/task011d/fixtures.mjs",
+      "generatorSha256": "1aee97523b9418f5bb722d33cd2f2e11dab84bc0e772ac51c8ed22ee82de7805",
+      "expectedProcessing": "completed",
+      "expectedType": "quality_certificate",
+      "expectedCompany": "Synthetic Beta"
+    },
+    {
+      "name": "quality.xlsx",
+      "path": "C:\\Users\\oalimova\\ai_project\\temp\\task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade\\uat-fixtures\\quality.xlsx",
+      "bytes": 894,
+      "sha256": "bc9384a90bfdfaa4003473b082b907596cc527b2a0278668ecdca2c0133924eb",
+      "generator": "scripts/task011d/fixtures.mjs",
+      "generatorSha256": "1aee97523b9418f5bb722d33cd2f2e11dab84bc0e772ac51c8ed22ee82de7805",
+      "expectedProcessing": "completed",
+      "expectedType": "quality_certificate",
+      "expectedCompany": "Synthetic Gamma"
+    },
+    {
+      "name": "specification.txt",
+      "path": "C:\\Users\\oalimova\\ai_project\\temp\\task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade\\uat-fixtures\\specification.txt",
+      "bytes": 77,
+      "sha256": "e5f8c168a0e680e77d83a811a2390bc9c31e9c203f20945aeb36b50b41aa5648",
+      "generator": "scripts/task011d/fixtures.mjs",
+      "generatorSha256": "1aee97523b9418f5bb722d33cd2f2e11dab84bc0e772ac51c8ed22ee82de7805",
+      "expectedProcessing": "completed",
+      "expectedType": "specification",
+      "expectedCompany": null
+    },
+    {
+      "name": "specification.pdf",
+      "path": "C:\\Users\\oalimova\\ai_project\\temp\\task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade\\uat-fixtures\\specification.pdf",
+      "bytes": 652,
+      "sha256": "b8900d4ff82bed051355e529dd20bbfd3590c2c6d29abeedcc3631c65a517a0b",
+      "generator": "scripts/task011d/fixtures.mjs",
+      "generatorSha256": "1aee97523b9418f5bb722d33cd2f2e11dab84bc0e772ac51c8ed22ee82de7805",
+      "expectedProcessing": "completed",
+      "expectedType": "specification",
+      "expectedCompany": null
+    },
+    {
+      "name": "supporting.txt",
+      "path": "C:\\Users\\oalimova\\ai_project\\temp\\task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade\\uat-fixtures\\supporting.txt",
+      "bytes": 60,
+      "sha256": "3e19d53720d5687b8361e297b7d0d306cfe19b9dd189a22eb3d468be8394348e",
+      "generator": "scripts/task011d/fixtures.mjs",
+      "generatorSha256": "1aee97523b9418f5bb722d33cd2f2e11dab84bc0e772ac51c8ed22ee82de7805",
+      "expectedProcessing": "completed",
+      "expectedType": "supporting",
+      "expectedCompany": null
+    },
+    {
+      "name": "broken.pdf",
+      "path": "C:\\Users\\oalimova\\ai_project\\temp\\task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade\\uat-fixtures\\broken.pdf",
+      "bytes": 25,
+      "sha256": "7344f50bffba5831278bd0daa2d182876fe692f9e2f9171ceeceb8a7159ba676",
+      "generator": "scripts/task011d/fixtures.mjs",
+      "generatorSha256": "1aee97523b9418f5bb722d33cd2f2e11dab84bc0e772ac51c8ed22ee82de7805",
+      "expectedProcessing": "failed",
+      "expectedType": "unknown",
+      "expectedCompany": null
+    }
+  ],
+  "expectedInitial": {
+    "receipts": 10,
+    "runs": 10,
+    "completed": 9,
+    "failed": 1,
+    "preliminaryCompanies": 3,
+    "confirmedSuppliers": 0,
+    "offerVersions": 0
+  },
+  "realModelCalls": 0
+}

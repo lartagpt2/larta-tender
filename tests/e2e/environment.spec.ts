@@ -1,13 +1,13 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, artifact } from '../isolated-fixture';
 test('desktop navigation, API and persistent themes', async ({ page, request }) => {
-  const response = await request.get('http://127.0.0.1:3000/api/health');
+  const response = await request.get('/api/health');
   expect(response.ok()).toBeTruthy();
   expect((await response.json()).status).toBe('ok');
   expect(response.headers()['x-correlation-id']).toMatch(/^[a-f0-9-]{36}$/);
   await page.goto('/');
   await expect(page.getByRole('heading', { name: 'Тендеры', exact: true })).toBeVisible();
   await expect(page.locator('footer').getByRole('status')).toHaveText('API подключён');
-  await page.screenshot({ path: 'test-results/task002-desktop.png', fullPage: true });
+  await page.screenshot({ path: await artifact('task002-desktop.png'), fullPage: true });
   await page.getByRole('link', { name: /Документы S03/ }).click();
   await expect(page.getByRole('heading', { name: 'Документы', exact: true }).first()).toBeVisible();
   await expect(page).toHaveURL(/\/documents$/);

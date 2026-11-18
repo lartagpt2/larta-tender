@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, artifact } from '../isolated-fixture';
 import { resolve } from 'node:path';
 test('manual review, phone source, questions, supplier isolation, comparison and CSV', async ({
   page,
@@ -108,10 +108,10 @@ test('manual review, phone source, questions, supplier isolation, comparison and
     .check();
   await page.getByRole('button', { name: 'Сохранить и подтвердить', exact: true }).click();
   await expect(page.getByRole('status').filter({ hasText: 'Проверено' })).toBeVisible();
-  await page.screenshot({ path: 'test-results/task006-review.png', fullPage: true });
+  await page.screenshot({ path: await artifact('task006-review.png'), fullPage: true });
   await page.setViewportSize({ width: 390, height: 844 });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
-  await page.screenshot({ path: 'test-results/task006-review-mobile.png', fullPage: true });
+  await page.screenshot({ path: await artifact('task006-review-mobile.png'), fullPage: true });
   await page.setViewportSize({ width: 1280, height: 800 });
   await page.getByRole('link', { name: 'К сравнению', exact: true }).click();
   await expect(page.getByRole('columnheader', { name: 'Browser supplier A', exact: true })).toBeVisible();
@@ -132,7 +132,7 @@ test('manual review, phone source, questions, supplier isolation, comparison and
   expect(exported.status()).toBe(200);
   expect(await exported.text()).toContain('Browser supplier B');
   expect(await exported.text()).toContain('Synthetic phone call: 7 days');
-  await page.screenshot({ path: 'test-results/task006-comparison.png', fullPage: true });
+  await page.screenshot({ path: await artifact('task006-comparison.png'), fullPage: true });
   await page.setViewportSize({ width: 390, height: 844 });
   await expect(page.getByRole('heading', { name: 'Сравнение', exact: true })).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);

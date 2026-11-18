@@ -29,6 +29,8 @@ const aiStatus: Record<string, string> = {
   unsupported: 'Неподдерживаемый формат',
 };
 interface Doc {
+  managedReceipt?: boolean;
+  contextReceiptIds?: string[];
   id: string;
   name: string;
   status: string;
@@ -185,6 +187,7 @@ async function upload() {
   }
 }
 function edit(doc: Doc) {
+  if (doc.managedReceipt) return;
   selected.value = doc;
   creating.value = false;
   supplier.value = doc.supplierId ?? '';
@@ -312,6 +315,15 @@ async function save() {
             </p>
             <details :aria-label="`История поступлений ${doc.name}`" class="receipt-history">
               <summary>Поступления: {{ doc.receipts.length }}</summary>
+              <p v-if="doc.managedReceipt">
+                Контекст единой загрузки:
+                <RouterLink
+                  v-for="receipt in doc.contextReceiptIds"
+                  :key="receipt"
+                  :to="{ path: `/tenders/${tenderId}/intake`, query: { receiptId: receipt } }"
+                  >Проверить поступление {{ receipt }}</RouterLink
+                >
+              </p>
               <ul>
                 <li v-for="receipt in doc.receipts" :key="receipt.id">
                   <time :datetime="receipt.receivedAt">{{

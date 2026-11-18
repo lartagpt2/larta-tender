@@ -20,6 +20,7 @@ export interface LifecyclePreview {
   ocrHash: string;
   counts: Record<string, number>;
   sharedBlobs: number;
+  canWrite: boolean;
   held: boolean;
   busy: boolean;
   dbActive: number;
@@ -52,6 +53,7 @@ export function confirmationValid(
 export function loadLifecyclePage(state: LifecycleState, page: number, search: string) {
   return api<LifecyclePage>(
     `/tenders/lifecycle/page?${new URLSearchParams({ state, page: String(page), pageSize: '25', search })}`,
+    { signal: AbortSignal.timeout(15000) },
   );
 }
 export const classificationLabels: Record<string, string> = {

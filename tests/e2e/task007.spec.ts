@@ -1,4 +1,4 @@
-import { test, expect, type APIRequestContext } from '@playwright/test';
+import { test, expect, artifact, type APIRequestContext } from '../isolated-fixture';
 async function seed(request: APIRequestContext) {
   const created = await request.post('/api/tenders', {
     data: { title: `Synthetic TASK007 browser ${Date.now()}` },
@@ -158,7 +158,7 @@ test('commercial stage rows, explicit no reply, sourced editable drafts and no f
   await expect(row('Этап 3: Нет ответа · скидка, %')).toContainText('0');
   await expect(row('Этап 3: Нет ответа · общее снижение, %')).toContainText('10');
   await expect(row('Этап 3: Нет ответа · ответ')).toContainText('Нет ответа');
-  await page.screenshot({ path: 'test-results/task007-comparison.png', fullPage: true });
+  await page.screenshot({ path: await artifact('task007-comparison.png'), fullPage: true });
 });
 test('accreditation upload and history remain supplier-specific', async ({ page, request }) => {
   const { id, suppliers } = await seed(request);
@@ -189,7 +189,7 @@ test('accreditation upload and history remain supplier-specific', async ({ page,
   );
   await page.setViewportSize({ width: 390, height: 844 });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
-  await page.screenshot({ path: 'test-results/task007-accreditation-mobile.png', fullPage: true });
+  await page.screenshot({ path: await artifact('task007-accreditation-mobile.png'), fullPage: true });
   await page.goto(`/comparison?tenderId=${id}`);
   const row = page
     .getByRole('row')

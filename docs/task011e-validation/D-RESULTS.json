@@ -1,0 +1,113 @@
+{
+  "status": "PASS",
+  "exitCode": 0,
+  "command": [
+    "node",
+    "run.mjs",
+    "scripts/task011d/regression-durable.mjs",
+    "--run"
+  ],
+  "results": [
+    {
+      "path": "temp/integration-runs/3518215c-82ab-4410-8800-498fd877f7ed/task011d-api-results.json",
+      "status": "PASS",
+      "results": [
+        {
+          "name": "HTTP only atomically enqueues 10 independent runs; separate automatic Worker completes 9, permanently fails corrupt original once; 3 companies/0 business suppliers; quality_for proposals, original SHA and complete stage coverage",
+          "status": "PASS"
+        },
+        {
+          "name": "disabled/unapproved SHA accepted as explicit blocked jobs with zero parser attempts/checkpoints; blocked is busy; GET/list/history/batch never enqueue or mutate",
+          "status": "PASS"
+        },
+        {
+          "name": "policy revoked after actual parsing: fenced finalization writes no results/companies; expired job becomes blocked and explicit authorized cancellation clears busy without deleting originals",
+          "status": "PASS"
+        },
+        {
+          "name": "expired lease -> new token/revision; stale worker fenced out; healthy heartbeat prevents theft beyond initial lease; killed worker recovered with explicit system identity and no duplicate claims",
+          "status": "PASS"
+        },
+        {
+          "name": "forced process death after claim/read/classification/Organizations/resolver/commit: SQL checkpoints survive, uncommitted resolver rolls back, terminal commit never repeats, no reload/duplicate originals/companies/observations/claims",
+          "status": "PASS"
+        },
+        {
+          "name": "transient read failure retries, permanent never loops, maximum 3 total attempts with bounded retry_wait/backoff and immutable attempt history",
+          "status": "PASS"
+        },
+        {
+          "name": "actual SQLSTATE 40001 rolls back finalization then retries from checkpoints once; failed SQL heartbeat prohibits finalization and recovered lease produces one result/company",
+          "status": "PASS"
+        },
+        {
+          "name": "explicit operation key and expectedRunRevision; parallel reprocess yields one new generation/retry_of; same key/body replay, changed key body/stale/active rejected; original and company identity preserved",
+          "status": "PASS"
+        },
+        {
+          "name": "MIME containment is independent of semantic supplier links; shared SHA/two receipts/two parents never inherits supplier; manufacturer-only quality stays unassigned; explicit in-tender receipt proofs create specification/supersedes proposals",
+          "status": "PASS"
+        },
+        {
+          "name": "real disposable Archive/Restore and stale preview/busy protection; archived finalization audited without new results, invalid busy Restore rejected; real HTTP process death after enqueue commit replays without duplicate run",
+          "status": "PASS"
+        },
+        {
+          "name": "authorization-port denial permanently fails queued job before parsing; no ACL or capability mutation",
+          "status": "PASS"
+        },
+        {
+          "name": "isolated HTTP API automatically starts its own separate worker; real upload completes without manual worker launch",
+          "status": "PASS"
+        }
+      ],
+      "identity": {
+        "runId": "3518215c-82ab-4410-8800-498fd877f7ed",
+        "database": "larta_test_run_3518215c82ab44108800498fd877f7ed",
+        "databaseOid": "262838",
+        "owner": "codex_dev"
+      },
+      "connections": [
+        "postgres",
+        "larta_test_run_3518215c82ab44108800498fd877f7ed",
+        "larta_test_run_3518215c82ab44108800498fd877f7ed",
+        "larta_test_run_3518215c82ab44108800498fd877f7ed",
+        "larta_test_run_3518215c82ab44108800498fd877f7ed"
+      ],
+      "mainConnections": 0,
+      "modelCalls": 0,
+      "mainScenario": {
+        "documents": 10,
+        "runs": 10,
+        "completed": 9,
+        "failed": 1,
+        "preliminaryCompanies": 3,
+        "confirmedSuppliers": 0
+      },
+      "productionTiming": {
+        "leaseMs": 180000,
+        "heartbeatMs": 15000,
+        "pollMs": 1000,
+        "backoffMs": [
+          2000,
+          10000,
+          30000
+        ],
+        "concurrency": 1
+      },
+      "testTiming": {
+        "leaseMs": 900,
+        "heartbeatMs": 100,
+        "pollMs": 30,
+        "backoffMs": [
+          80,
+          140,
+          220
+        ],
+        "concurrency": 1
+      }
+    }
+  ],
+  "remainingAssertions": "EXECUTED",
+  "cleanup": "NOT_AUTHORIZED"
+}

@@ -1,3 +1,5 @@
+if (process.argv.includes('--run-synthetic'))
+  throw new Error('TASK-014: real Ollama smoke disabled pending separate owner permission.');
 // Deliberate opt-in, generated synthetic documents only. No arbitrary file argument.
 import { performance } from 'node:perf_hooks';
 import { quotePdf, gold } from './task008-fixtures.mjs';

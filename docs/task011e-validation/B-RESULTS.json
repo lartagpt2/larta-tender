@@ -1,0 +1,98 @@
+{
+  "status": "PASS",
+  "exitCode": 0,
+  "command": [
+    "node",
+    "run.mjs",
+    "scripts/task011b/regression-durable.mjs",
+    "--run"
+  ],
+  "results": [
+    {
+      "path": "temp/integration-runs/7b04e22f-841e-4dc7-96a5-4f1237cedeb5/task011b-api-results.json",
+      "status": "PASS",
+      "results": [
+        {
+          "name": "10 mixed native/TXT/XLSX/scan/corrupt files: actual content types, honest unknown, 10 exact SHA, no business rows or background jobs",
+          "status": "PASS"
+        },
+        {
+          "name": "same-key replay, changed manifest 409, independent receipts with one original, concurrent same-key request",
+          "status": "PASS"
+        },
+        {
+          "name": "filename independent classification, mixed unsupported rejection, corrupted XLSX rejection, 10/20/40 transport limits",
+          "status": "PASS"
+        },
+        {
+          "name": "human classification, stale 409, immutable initial result/evidence, reprocess preserves approved override and receipt/SHA",
+          "status": "PASS"
+        },
+        {
+          "name": "actual API 401/403/404, cross-tender original/history/FKs, same-tender wrong revision FK, immutable SQL guards",
+          "status": "PASS"
+        },
+        {
+          "name": "intake active statuses counted as busy, synchronous ingestion leaves no background job, archived API and direct SQL writes rejected, archived read works",
+          "status": "PASS"
+        },
+        {
+          "name": "fresh application reads persistent results/history, original offer/TZ routes work, existing document fingerprint unchanged by intake",
+          "status": "PASS"
+        }
+      ],
+      "identity": {
+        "runId": "7b04e22f-841e-4dc7-96a5-4f1237cedeb5",
+        "database": "larta_test_run_7b04e22f841e4dc796a54f1237cedeb5",
+        "databaseOid": "262837",
+        "owner": "codex_dev"
+      },
+      "connections": [
+        {
+          "database": "postgres",
+          "host": "127.0.0.1"
+        },
+        {
+          "database": "larta_test_run_7b04e22f841e4dc796a54f1237cedeb5",
+          "host": "127.0.0.1"
+        },
+        {
+          "database": "larta_test_run_7b04e22f841e4dc796a54f1237cedeb5",
+          "host": "127.0.0.1"
+        },
+        {
+          "database": "larta_test_run_7b04e22f841e4dc796a54f1237cedeb5",
+          "host": "127.0.0.1"
+        },
+        {
+          "database": "larta_test_run_7b04e22f841e4dc796a54f1237cedeb5",
+          "host": "127.0.0.1"
+        },
+        {
+          "database": "larta_test_run_7b04e22f841e4dc796a54f1237cedeb5",
+          "host": "127.0.0.1"
+        },
+        {
+          "database": "larta_test_run_7b04e22f841e4dc796a54f1237cedeb5",
+          "host": "127.0.0.1"
+        },
+        {
+          "database": "larta_test_run_7b04e22f841e4dc796a54f1237cedeb5",
+          "host": "127.0.0.1"
+        },
+        {
+          "database": "larta_test_run_7b04e22f841e4dc796a54f1237cedeb5",
+          "host": "127.0.0.1"
+        },
+        {
+          "database": "larta_test_run_7b04e22f841e4dc796a54f1237cedeb5",
+          "host": "127.0.0.1"
+        }
+      ],
+      "mainConnections": 0,
+      "modelCalls": 0
+    }
+  ],
+  "remainingAssertions": "EXECUTED",
+  "cleanup": "NOT_AUTHORIZED"
+}

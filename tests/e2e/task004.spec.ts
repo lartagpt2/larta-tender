@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, artifact } from '../isolated-fixture';
 const unique = (name: string) => `${name} ${Date.now()}-${Math.random().toString(16).slice(2, 6)}`;
 test('title-only purchase persists, skips and reopens specification without losing the purchase', async ({
   page,
@@ -48,7 +48,7 @@ test('manual positions and comparison mode persist through reload in both themes
   await expect(page.getByRole('cell', { name: 'Монтаж', exact: true })).toBeVisible();
   await page.getByLabel('Тема оформления').selectOption('current');
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy();
-  await page.screenshot({ path: 'test-results/task004-mobile.png', fullPage: true });
+  await page.screenshot({ path: await artifact('task004-mobile.png'), fullPage: true });
   await page.getByRole('button', { name: 'Изменить состав' }).click();
   await page.getByLabel('Количество 1', { exact: true }).fill('3');
   await page.getByRole('button', { name: 'Сохранить состав' }).click();
@@ -71,14 +71,14 @@ test('specification creation uploads a real original and never invents recognize
   });
   await page.getByRole('button', { name: 'Создать тендер', exact: true }).click();
   await expect(page.getByRole('heading', { name: title, exact: true })).toBeVisible();
-  await expect(page.getByText('synthetic-tz.txt', { exact: true })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'synthetic-tz.txt', exact: true })).toBeVisible();
   await expect(page.getByText('Ожидает обработки', { exact: true })).toBeVisible();
   const id = new URL(page.url()).searchParams.get('tenderId')!;
   await page.reload();
-  await expect(page.getByText('synthetic-tz.txt', { exact: true })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'synthetic-tz.txt', exact: true })).toBeVisible();
   const scope = await request.get(`/api/tenders/${id}/scope`);
   expect((await scope.json()).items).toEqual([]);
   const docs = await request.get(`/api/tenders/${id}/tz`);
   expect((await docs.json())[0].status).toBe('uploaded');
-  await page.screenshot({ path: 'test-results/task004-specification.png', fullPage: true });
+  await page.screenshot({ path: await artifact('task004-specification.png'), fullPage: true });
 });

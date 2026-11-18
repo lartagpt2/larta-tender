@@ -1,6 +1,7 @@
 module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
+  setupFiles: ['reflect-metadata'],
   roots: ['<rootDir>/apps/api/src'],
   testMatch: ['**/*.spec.ts'],
   transform: {

@@ -1,3 +1,18 @@
+import {
+  CompanyDecisionDto,
+  ObservationDecisionDto,
+  AssociationDecisionDto,
+  ReviewClassificationDto,
+  TransferDraftDto,
+  WorkspaceQueryDto,
+} from './unified-intake/review.dto';
+import { PgIntakeRepository } from './unified-intake/intake-repository';
+import {
+  companyListSchema,
+  companyDetailSchema,
+  extendedReceiptSchema,
+} from './unified-intake/organizations.openapi';
+import { ReclassifyDto } from './unified-intake/intake.dto';
 import { PgLifecycleRepository } from './lifecycle/lifecycle-repository';
 import { LifecycleActionDto, LifecyclePageDto } from './lifecycle/lifecycle.dto';
 import { ocrInventory } from './lifecycle/ocr-inventory';
@@ -23,7 +38,7 @@ import { TzExtractionRepository } from './extraction/extraction-repository';
 import { ConfirmDraftDto } from './extraction/extraction.dto';
 import { PayloadTooLargeException } from '@nestjs/common';
 import { Res } from '@nestjs/common';
-import { ApiHeader, ApiProduces } from '@nestjs/swagger';
+import { ApiHeader, ApiProduces, ApiOperation, ApiQuery } from '@nestjs/swagger';
 import { FastifyReply } from 'fastify';
 import { ValidateIf } from 'class-validator';
 import { BadRequestException, Patch, Req } from '@nestjs/common';
@@ -61,7 +76,7 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import { isUUID, IsString, Length, Matches } from 'class-validator';
-import { timingSafeEqual } from 'node:crypto';
+import { timingSafeEqual, randomUUID } from 'node:crypto';
 import { Pool } from 'pg';
 import { PgTenderRepository, TenderRepository } from './data/repository';
 export class CreateTenderDto {
@@ -107,6 +122,7 @@ export class LotDto {
   @ApiProperty({ type: Number }) ordinal!: number;
 }
 export interface DataOptions {
+  intakeRepository?: PgIntakeRepository;
   enabled?: boolean;
   environment?: string;
   token?: string;
@@ -122,6 +138,7 @@ export interface DataOptions {
   lifecycleEnabled?: boolean;
 }
 class DataContext {
+  readonly intake?: PgIntakeRepository;
   readonly repository?: TenderRepository;
   readonly scope?: ScopeRepository;
   readonly extractions?: TzExtractionRepository;
@@ -160,6 +177,11 @@ class DataContext {
             ? new PgLifecycleRepository(this.pool, (id) => ocrInventory(workspace, roots, id))
             : undefined);
       }
+      this.intake =
+        options.intakeRepository ??
+        (this.pool && process.env.UNIFIED_INTAKE_ENABLED === 'true'
+          ? new PgIntakeRepository(this.pool)
+          : undefined);
       const aiConfig = aiOptions();
       this.ai =
         options.aiRepository ?? (this.pool && aiConfig ? new PgAIRepository(this.pool, aiConfig) : undefined);
@@ -207,6 +229,338 @@ class DataContext {
 @Controller('tenders')
 class TendersController {
   constructor(@Inject(DataContext) private readonly data: DataContext) {}
+  private intake() {
+    if (!this.data.intake) throw new ServiceUnavailableException();
+    return this.data.intake;
+  }
+  @Get(':id/intake/companies')
+  @ApiOperation({ summary: 'Read preliminary companies; never confirms a business supplier' })
+  @ApiQuery({
+    name: 'cursor',
+    required: false,
+    type: String,
+    description: 'Exclusive last preliminary company UUID',
+  })
+  @ApiQuery({ name: 'limit', required: false, type: Number, description: '1–100, default 30' })
+  @ApiQuery({
+    name: 'reviewStatus',
+    required: false,
+    enum: ['proposed', 'needs_review', 'confirmed', 'rejected', 'superseded'],
+  })
+  @ApiQuery({
+    name: 'search',
+    required: false,
+    type: String,
+    description: 'Literal search within this tender, max 200 characters',
+  })
+  @ApiOkResponse({
+    schema: companyListSchema,
+    description:
+      'intake-organizations-v1: items (preliminaryCompanyId, name, requisites, supplierRole, observationCount, receiptCount, documents, reviewState, conflicts, matchProposals, evidenceReferences, existingParticipantCandidates), nextCursor, unassignedReceipts',
+  })
+  intakeCompanies(
+    @Headers('authorization') h: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Query() query: { cursor?: string; limit?: string; reviewStatus?: string; search?: string },
+  ) {
+    return this.intake().companies(this.data.actor(h), id, query);
+  }
+  @Get(':id/intake/companies/:companyId')
+  @ApiOperation({
+    summary:
+      'Read preliminary company revisions, observations, roles, identifiers, evidence and proposed associations',
+  })
+  @ApiOkResponse({
+    schema: companyDetailSchema,
+    description:
+      'intake-organizations-v1; currentRevision, revisions, observations, evidence and company list card fields; confirmedSupplierId stays null',
+  })
+  intakeCompany(
+    @Headers('authorization') h: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Param('companyId', new ParseUUIDPipe()) company: string,
+  ) {
+    return this.intake().company(this.data.actor(h), id, company);
+  }
+  @Get(':id/intake/documents')
+  intakeDocuments(
+    @Headers('authorization') h: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+  ) {
+    return this.intake().list(this.data.actor(h), id);
+  }
+  @Get(':id/intake/batches/:batchId')
+  intakeBatchResult(
+    @Headers('authorization') h: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Param('batchId', new ParseUUIDPipe()) batch: string,
+  ) {
+    return this.intake().getBatch(this.data.actor(h), id, batch);
+  }
+  @Get(':id/intake/receipts/:receiptId')
+  @ApiOkResponse({
+    schema: extendedReceiptSchema,
+    description:
+      'Backward-compatible intake history plus organizationsContractVersion, organizations, organizationResults and matchProposals. Each extracted field maps to evidence_by_field; no confirmed supplier is created.',
+  })
+  intakeHistory(
+    @Headers('authorization') h: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Param('receiptId', new ParseUUIDPipe()) receipt: string,
+  ) {
+    return this.intake().history(this.data.actor(h), id, receipt);
+  }
+  @Get(':id/intake/originals/:originalId/download')
+  async intakeOriginal(
+    @Headers('authorization') h: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Param('originalId', new ParseUUIDPipe()) original: string,
+    @Res() reply: FastifyReply,
+  ) {
+    const file = await this.intake().original(this.data.actor(h), id, original);
+    return reply
+      .header('content-type', 'application/octet-stream')
+      .header('x-content-type-options', 'nosniff')
+      .header('content-disposition', "attachment; filename*=UTF-8''" + encodeURIComponent(file.name))
+      .send(await this.store().get(file.key));
+  }
+  @Post(':id/intake/receipts/:receiptId/classification-decisions')
+  intakeDecision(
+    @Headers('authorization') h: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Param('receiptId', new ParseUUIDPipe()) receipt: string,
+    @Body(
+      new ValidationPipe({
+        expectedType: ReviewClassificationDto,
+        whitelist: true,
+        forbidNonWhitelisted: true,
+        transform: true,
+      }),
+    )
+    input: ReviewClassificationDto,
+    @Headers('idempotency-key') operationKey?: string,
+  ) {
+    return this.intake().review.classification(
+      this.data.actor(h),
+      id,
+      receipt,
+      operationKey ? this.reviewKey(operationKey) : randomUUID(),
+      input,
+    );
+  }
+  private reviewKey(key: string | undefined) {
+    if (!key || !isUUID(key)) throw new BadRequestException('Idempotency-Key UUID required');
+    return key;
+  }
+  @Get(':id/intake/workspace')
+  reviewWorkspace(
+    @Headers('authorization') h: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Query(
+      new ValidationPipe({
+        expectedType: WorkspaceQueryDto,
+        transform: true,
+        whitelist: true,
+        forbidNonWhitelisted: true,
+      }),
+    )
+    query: WorkspaceQueryDto,
+  ) {
+    return this.intake().review.workspace(this.data.actor(h), id, query);
+  }
+  @Get(':id/intake/receipts/:receiptId/review')
+  reviewReceipt(
+    @Headers('authorization') h: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Param('receiptId', new ParseUUIDPipe()) receipt: string,
+  ) {
+    return this.intake().review.detail(this.data.actor(h), id, receipt);
+  }
+  @Get(':id/intake/receipts/:receiptId/results/:resultId/evidence/:evidenceId')
+  reviewEvidence(
+    @Headers('authorization') h: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Param('receiptId', new ParseUUIDPipe()) receipt: string,
+    @Param('resultId', new ParseUUIDPipe()) result: string,
+    @Param('evidenceId', new ParseUUIDPipe()) evidence: string,
+  ) {
+    return this.intake().review.evidence(this.data.actor(h), id, receipt, result, evidence);
+  }
+  @Post(':id/intake/receipts/:receiptId/observations/:observationId/decisions')
+  rejectObservation(
+    @Headers('authorization') h: string | undefined,
+    @Headers('idempotency-key') key: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Param('receiptId', new ParseUUIDPipe()) receipt: string,
+    @Param('observationId', new ParseUUIDPipe()) observation: string,
+    @Body(
+      new ValidationPipe({
+        expectedType: ObservationDecisionDto,
+        transform: true,
+        whitelist: true,
+        forbidNonWhitelisted: true,
+      }),
+    )
+    input: ObservationDecisionDto,
+  ) {
+    return this.intake().review.observationDecision(
+      this.data.actor(h),
+      id,
+      receipt,
+      observation,
+      this.reviewKey(key),
+      input,
+    );
+  }
+  @Post(':id/intake/companies/:companyId/decisions')
+  reviewCompany(
+    @Headers('authorization') h: string | undefined,
+    @Headers('idempotency-key') key: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Param('companyId', new ParseUUIDPipe()) company: string,
+    @Body(
+      new ValidationPipe({
+        expectedType: CompanyDecisionDto,
+        transform: true,
+        whitelist: true,
+        forbidNonWhitelisted: true,
+      }),
+    )
+    input: CompanyDecisionDto,
+  ) {
+    return this.intake().review.companyDecision(this.data.actor(h), id, company, this.reviewKey(key), input);
+  }
+  @Post(':id/intake/receipts/:receiptId/associations/:associationId/decisions')
+  reviewAssociation(
+    @Headers('authorization') h: string | undefined,
+    @Headers('idempotency-key') key: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Param('receiptId', new ParseUUIDPipe()) receipt: string,
+    @Param('associationId', new ParseUUIDPipe()) association: string,
+    @Body(
+      new ValidationPipe({
+        expectedType: AssociationDecisionDto,
+        transform: true,
+        whitelist: true,
+        forbidNonWhitelisted: true,
+      }),
+    )
+    input: AssociationDecisionDto,
+  ) {
+    return this.intake().review.association(
+      this.data.actor(h),
+      id,
+      receipt,
+      association,
+      this.reviewKey(key),
+      input,
+    );
+  }
+  @Post(':id/intake/receipts/:receiptId/transfer-draft')
+  reviewTransfer(
+    @Headers('authorization') h: string | undefined,
+    @Headers('idempotency-key') key: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Param('receiptId', new ParseUUIDPipe()) receipt: string,
+    @Body(
+      new ValidationPipe({
+        expectedType: TransferDraftDto,
+        transform: true,
+        whitelist: true,
+        forbidNonWhitelisted: true,
+      }),
+    )
+    input: TransferDraftDto,
+  ) {
+    return this.intake().review.transfer(this.data.actor(h), id, receipt, this.reviewKey(key), input);
+  }
+  @Post(':id/intake/receipts/:receiptId/reprocess')
+  intakeReprocess(
+    @Headers('authorization') h: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Param('receiptId', new ParseUUIDPipe()) receipt: string,
+    @Headers('idempotency-key') operationKey: string,
+    @Body(
+      new ValidationPipe({
+        expectedType: ReclassifyDto,
+        whitelist: true,
+        forbidNonWhitelisted: true,
+        transform: true,
+      }),
+    )
+    input: ReclassifyDto,
+  ) {
+    if (!isUUID(operationKey)) throw new BadRequestException();
+    return this.intake().queue.reprocess(this.data.actor(h), id, receipt, operationKey, input);
+  }
+  @Get(':id/intake/receipts/:receiptId/processing')
+  @ApiOkResponse({
+    description:
+      'intake-processing-v2: runs (status, stage, attempt_count, revision, safe error, coverage, timestamps), immutable worker/human run events',
+  })
+  intakeProcessing(
+    @Headers('authorization') h: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Param('receiptId', new ParseUUIDPipe()) receipt: string,
+  ) {
+    return this.intake().processing(this.data.actor(h), id, receipt);
+  }
+  @Post(':id/intake/receipts/:receiptId/cancel-processing')
+  cancelIntake(
+    @Headers('authorization') h: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Param('receiptId', new ParseUUIDPipe()) receipt: string,
+    @Headers('idempotency-key') key: string,
+    @Body(
+      new ValidationPipe({
+        expectedType: ReclassifyDto,
+        whitelist: true,
+        forbidNonWhitelisted: true,
+        transform: true,
+      }),
+    )
+    input: ReclassifyDto,
+  ) {
+    if (!isUUID(key)) throw new BadRequestException();
+    return this.intake().queue.reprocess(this.data.actor(h), id, receipt, key, input, true);
+  }
+  @Post(':id/intake/batches')
+  @ApiConsumes('multipart/form-data')
+  async intakeBatch(
+    @Headers('authorization') h: string | undefined,
+    @Headers('idempotency-key') key: string,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Req() request: FastifyRequest,
+    @Headers('x-tender-stage-id') stage: string | undefined,
+    @Res({ passthrough: true }) reply: FastifyReply,
+  ) {
+    const actor = this.data.actor(h),
+      repo = this.intake();
+    if (!isUUID(key) || (stage !== undefined && !isUUID(stage))) throw new BadRequestException();
+    await repo.assertWrite(actor, id);
+    const files: IncomingOfferFile[] = [];
+    let total = 0;
+    try {
+      for await (const part of request.parts({
+        limits: { files: 10, parts: 10, fields: 0, fileSize: 20 * 1024 * 1024 },
+      })) {
+        if (part.type !== 'file' || part.fieldname !== 'files') throw new BadRequestException();
+        const content = await part.toBuffer();
+        total += content.length;
+        if (part.file.truncated || total > 40 * 1024 * 1024) throw new PayloadTooLargeException();
+        files.push({ name: part.filename, mime: part.mimetype, content });
+      }
+    } catch (e) {
+      const code = (e as { code?: string }).code;
+      if (code === 'FST_REQ_FILE_TOO_LARGE') throw new PayloadTooLargeException();
+      if (code?.startsWith('FST_')) throw new BadRequestException();
+      throw e;
+    }
+    if (!files.length) throw new BadRequestException();
+    const { replayed, ...body } = await repo.batch(actor, id, key, files, this.store(), stage);
+    reply.code(replayed ? 200 : 201);
+    return body;
+  }
   @Get()
   @ApiOkResponse({ type: TenderDto, isArray: true, description: 'At most 100 visible tenders, newest first' })
   list(@Headers('authorization') header?: string) {

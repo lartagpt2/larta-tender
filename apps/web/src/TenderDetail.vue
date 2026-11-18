@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import TenderLifecycle from './TenderLifecycle.vue';
+import UnifiedIntake from './UnifiedIntake.vue';
 import { computed, nextTick, ref } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/vue-query';
@@ -152,15 +153,19 @@ function useAIScope(rows: Record<string, { value: string | null }>[]) {
         >{{ doc.name }}</a
       >
     </p>
+    <section class="page-heading">
+      <div>
+        <p class="eyebrow">КАРТОЧКА ЗАКУПКИ / S03</p>
+        <h1>{{ scope.title }}</h1>
+        <p class="subtitle">Состав, техническое задание и документы</p>
+      </div>
+      <RouterLink to="/tenders" class="secondary-action">К списку тендеров</RouterLink>
+    </section>
+    <RouterLink :to="`/tenders/${id}/intake`" class="primary-action"
+      >Загрузить документы и открыть единую проверку</RouterLink
+    >
+    <UnifiedIntake :key="'intake-' + id" :tender-id="id" :read-only="lifecycleReadOnly" />
     <fieldset :disabled="lifecycleReadOnly" class="lifecycle-fields">
-      <section class="page-heading">
-        <div>
-          <p class="eyebrow">КАРТОЧКА ЗАКУПКИ / S03</p>
-          <h1>{{ scope.title }}</h1>
-          <p class="subtitle">Состав, техническое задание и документы</p>
-        </div>
-        <RouterLink to="/tenders" class="secondary-action">К списку тендеров</RouterLink>
-      </section>
       <div v-if="patch.isError.value" role="alert" class="content-card purchase-card form-error">
         {{ patch.error.value?.message }}
         <button class="secondary-action" @click="query.refetch()">Обновить карточку</button>

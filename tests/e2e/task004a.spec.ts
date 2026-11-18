@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, artifact } from '../isolated-fixture';
 import { resolve } from 'node:path';
 test('PDF draft: seven items, source, corrections, explicit confirmation and idempotent repeat', async ({
   page,
@@ -45,7 +45,7 @@ test('PDF draft: seven items, source, corrections, explicit confirmation and ide
   state = await (await request.get(`/api/tenders/${id}/scope`)).json();
   expect(state.items.map((item: { id: string }) => item.id)).toEqual(ids);
   expect(state.items[0].quantity).toBe('71.000000');
-  await page.screenshot({ path: 'test-results/task004a-confirmed.png', fullPage: true });
+  await page.screenshot({ path: await artifact('task004a-confirmed.png'), fullPage: true });
 });
 test('text-free PDF needs OCR and does not create a fictitious draft', async ({ page, request }) => {
   await page.goto('/tenders/new');

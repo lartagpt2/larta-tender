@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "BOriginalByteIdentical": true,
+  "BOriginalSha256": "6dc1ae9476e4490b6e4597ab236a4a0d3db6c7a896f6d055394515efe343139c",
+  "BOriginalAssertions": 95,
+  "BExactlyTwoExpectedChanges": [
+    {
+      "line": 129,
+      "actual": "byName['six.pdf'].processingStatus",
+      "from": "unsupported",
+      "to": "failed",
+      "ownerApproved": true
+    },
+    {
+      "line": 271,
+      "actual": "formulaRow.processingStatus",
+      "from": "unsupported",
+      "to": "failed",
+      "ownerApproved": true
+    }
+  ],
+  "BAllOtherOriginalAssertionsPreserved": true,
+  "BAddedCoverageAssertions": true,
+  "BNoMissingFieldFallback": true,
+  "BAdditionalFixtureEventSetup": "B-busy-fixture-adaptation.json",
+  "COriginalByteIdentical": true,
+  "CAdaptedHarnessUnchangedFromAcceptedRemediation": false,
+  "DOriginalByteIdentical": true,
+  "CAllOriginalAssertionsPreserved": true,
+  "DAllOriginalAssertionsPreserved": true,
+  "C009FixtureQueryAdaptation": "C-009-truncate-fixture-adaptation.json; same 55000 expectation; exact FK child named without CASCADE",
+  "EMLExpectedChangeOwnerApproved": {
+    "path": "apps/api/src/unified-intake/classification.spec.ts",
+    "onlyExpectedChange": "nativeTextAttempted false→true",
+    "added": [
+      "model=false",
+      "ocr=false"
+    ],
+    "healthAssertionsUnchanged": true
+  }
+}

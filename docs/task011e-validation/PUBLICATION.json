@@ -1,0 +1,112 @@
+{
+  "sourceManifestSha256": "684e7731117a9b2f84d167cd2c1813434e8b184a955cb8d5cf3a79b03928c693",
+  "baseCommit": "29a9c5a799cb93dd3c915e53ff538627a590ea59",
+  "branch": "feat/task-011e-review-21794bb1",
+  "sourceFilesCopied": 274,
+  "sourceRuntimeByteIdentical": true,
+  "originalAndAcceptedCopiesChanged": false,
+  "physicalClone": true,
+  "hardlinks": false,
+  "symlinks": false,
+  "evidence": [
+    {
+      "path": "docs/task011e-validation/SOURCE-MANIFEST.json",
+      "bytes": 63759,
+      "sha256": "684e7731117a9b2f84d167cd2c1813434e8b184a955cb8d5cf3a79b03928c693",
+      "origin": "final-manifest.json"
+    },
+    {
+      "path": "docs/task011e-validation/MIGRATIONS.json",
+      "bytes": 1486,
+      "sha256": "8ea6a7a7890b3af039834a460aaa4387a24358e7e365b0431c224b5c8ab68e2b",
+      "origin": "migration-manifest.json"
+    },
+    {
+      "path": "docs/task011e-validation/RESULTS.json",
+      "bytes": 6847,
+      "sha256": "4124f38937b058016fe34131f5b4256a600c92af7afa5cc92ffb8b1ad367ba40",
+      "origin": "continuation-results.json"
+    },
+    {
+      "path": "docs/task011e-validation/E-MATRIX.json",
+      "bytes": 21097,
+      "sha256": "447904e41943e713642b9b05cde04f48d5a16d3797b2b17b814e212f309522d3",
+      "origin": "E-acceptance-matrix.json"
+    },
+    {
+      "path": "docs/task011e-validation/QUALITY.json",
+      "bytes": 3618,
+      "sha256": "12b9911b8d7c4227955e2b5c64faa8034f1ebfade87008b219501510d488bc9a",
+      "origin": "technical-quality-final.json"
+    },
+    {
+      "path": "docs/task011e-validation/DB-PROVENANCE.json",
+      "bytes": 45465,
+      "sha256": "cc2281155ae9cbe23801dfa224c8c9c78384ee54fcf81eaf42e8ea7f42916ea0",
+      "origin": "database-provenance.json"
+    },
+    {
+      "path": "docs/task011e-validation/FIXTURE-HASHES.json",
+      "bytes": 329,
+      "sha256": "d44ddf7775bc2bda0d895c333cd0ecbbac322b627819a2afad8f35f201f712e5",
+      "origin": "fixture-manifest-hashes.json"
+    },
+    {
+      "path": "docs/task011e-validation/ASSERTIONS.json",
+      "bytes": 1343,
+      "sha256": "d604542a5bb2e5f8d8cfe873aa8a405a17b34ddc1c616ba93c140eeb54287b8d",
+      "origin": "assertion-preservation.json"
+    },
+    {
+      "path": "docs/task011e-validation/B-RESULTS.json",
+      "bytes": 3260,
+      "sha256": "3ba660b7187b5db58cb2639238fd8e4cec589cea896cab16751413466e752fc2",
+      "origin": "B-regression-results.json"
+    },
+    {
+      "path": "docs/task011e-validation/C-RESULTS.json",
+      "bytes": 154795,
+      "sha256": "9b95fcf1781f75202c6d2b8d591b4f0b7f16c5add341ecf355626484b520e4db",
+      "origin": "C-regression-results.json"
+    },
+    {
+      "path": "docs/task011e-validation/D-RESULTS.json",
+      "bytes": 4616,
+      "sha256": "c7095bf82cbf8e5811c8551c80ca2752b2216d1c2dced8521b39abdc31c7531e",
+      "origin": "D-regression-results.json"
+    },
+    {
+      "path": "docs/task011e-validation/E-RESULTS.json",
+      "bytes": 3842,
+      "sha256": "7ab1f21507ea8e4fea5e63564bf1cc4912c8c50dd4e495de7f7511fa2dac53e6",
+      "origin": "E-regression-results.json"
+    },
+    {
+      "path": "docs/task011e-validation/REGRESSION-B.json",
+      "bytes": 40304,
+      "sha256": "9516fe047ea8a425f36e7addbf9bcda537d0a633968ded1fcc3e6d8bd5921977",
+      "origin": "regression-only-B-full-manifest.json"
+    },
+    {
+      "path": "docs/task011e-validation/REGRESSION-C.json",
+      "bytes": 146884,
+      "sha256": "6f690861d0f43974b978d67573e8d7ea2c4fc5e15799f01d916d1f6359ae99af",
+      "origin": "regression-only-C-manifest.json"
+    },
+    {
+      "path": "docs/task011e-validation/REGRESSION-D.json",
+      "bytes": 21137,
+      "sha256": "0ca6d6643cfa88eca9118737130acd6ab1c6c578e522eb77a51f0e87cda99ec3",
+      "origin": "regression-only-D-final-manifest.json"
+    },
+    {
+      "path": "docs/task011e-validation/UAT-FIXTURES.json",
+      "bytes": 5835,
+      "sha256": "d0a5f341f47b600f8f15a70448f5a37095872e43904eee4fe3bb8920110f2deb",
+      "origin": "uat-fixtures/manifest.json"
+    }
+  ],
+  "ownerAcceptance": "PENDING",
+  "userAuthorizedCommitAndPush": true,
+  "mergeDeployment": false
+}

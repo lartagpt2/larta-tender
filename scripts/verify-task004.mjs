@@ -4,19 +4,18 @@ import { randomUUID, randomBytes, createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
-import { config } from 'dotenv';
-import pg from 'pg';
+import { isolatedRun } from './testing/isolated-run.mjs';
 import application from '../apps/api/dist/application.js';
 import repositories from '../apps/api/dist/data/repository.js';
 import scopes from '../apps/api/dist/data/scope-repository.js';
 if (!process.argv.includes('--run'))
-  console.log('Preview: no connection. --run writes synthetic fixtures to larta_test_task003 only.');
+  console.log(
+    'Preview: no connection. --run creates a new UUID database and storage; retained after completion.',
+  );
 else {
   const root = fileURLToPath(new URL('../', import.meta.url));
-  config({ path: resolve(root, '.env'), quiet: true });
-  if (process.env.PGDATABASE !== 'larta_test_task003')
-    throw new Error('Only approved larta_test_task003 is allowed.');
-  const pool = new pg.Pool({ connectionTimeoutMillis: 5000, statement_timeout: 10000, max: 5 });
+  const testRun = await isolatedRun('task004');
+  const pool = testRun.pool;
   const apps = [];
   const token = randomBytes(32).toString('hex');
   const headers = { authorization: `Bearer ${token}` };
@@ -211,12 +210,14 @@ else {
       'PASS: persisted three positions, exact decimal, reviewer read-only, outsider hidden, optimistic concurrency, invalid replacement rollback, file signature, upload replay/conflict/deduplication, single audit, no invented OCR. Synthetic fixtures remain.',
     );
   } catch (error) {
+    process.exitCode = 1;
     console.error(
       `TASK-004 checks failed (${error.code ?? error.name ?? 'unknown'}). No credentials or payloads printed.`,
     );
     process.exitCode = 1;
   } finally {
-    await Promise.all(apps.map((app) => app.close()));
-    await pool.end();
+    const stopped = await Promise.allSettled(apps.map((app) => app.close()));
+    if (stopped.some((r) => r.status === 'rejected')) process.exitCode = 1;
+    await testRun.close(process.exitCode ? 'FAILED_RETAINED' : 'PASSED_RETAINED');
   }
 }

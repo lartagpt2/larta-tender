@@ -1,9 +1,8 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from '../isolated-fixture';
+import { ARCHIVE_REASON } from '../../apps/web/src/archive-api';
 const id = '10000000-0000-4000-8000-000000000001',
   title = 'Синтетический тест жизненного цикла';
-test('server filters, exact confirmation, archive and restore without deleting related data', async ({
-  page,
-}) => {
+test('two-click registry archive, automatic reason and unchanged restore flow', async ({ page }) => {
   let state = 'active';
   const requests: Record<string, unknown>[] = [];
   await page.route('**/api/**', async (route) => {
@@ -35,6 +34,9 @@ test('server filters, exact confirmation, archive and restore without deleting r
         title,
         state,
         classification: 'unclassified',
+        canWrite: true,
+        held: false,
+        busy: false,
         previewHash: 'a'.repeat(64),
         counts: { document: 2, offer_version: 3, audit_event: 7 },
         sharedBlobs: 1,
@@ -50,21 +52,27 @@ test('server filters, exact confirmation, archive and restore without deleting r
     return send({ message: 'Unexpected synthetic mock route' }, 404);
   });
   await page.goto('/tenders');
-  await page.getByRole('button', { name: 'Архив / восстановление / корзина' }).click();
-  await page.getByRole('button', { name: 'Проверить состояние и зависимости' }).click();
-  await page.getByRole('combobox', { name: 'Действие', exact: true }).selectOption('archive');
-  const submit = page.getByRole('button', { name: 'Подтвердить операцию' });
-  await expect(submit).toBeDisabled();
-  await page.getByLabel('Введите точное название').fill(title + ' ');
-  await page.getByLabel('Введите ID тендера').fill(id);
-  await page.getByLabel('Причина (от 10 символов)').fill('Синтетическая проверка архивирования');
-  await expect(submit).toBeDisabled();
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.getByRole('button', { name: 'В архив', exact: true }).focus();
+  await page.keyboard.press('Enter');
+  const dialog = page.getByRole('dialog', { name: 'Переместить тендер в архив?' });
+  await expect(dialog).toBeVisible();
+  await expect(dialog).toContainText(title);
+  await expect(dialog.locator('input,select,textarea')).toHaveCount(0);
+  await expect(dialog.getByRole('button', { name: 'Отмена' })).toBeFocused();
+  await page.keyboard.press('Escape');
+  await expect(dialog).not.toBeVisible();
   expect(requests).toHaveLength(0);
-  await page.getByLabel('Введите точное название').fill(title);
-  await submit.click();
+  await page.getByRole('button', { name: 'В архив', exact: true }).click();
+  await expect(dialog).toBeVisible();
+  const bounds = await dialog.boundingBox();
+  expect(bounds!.width).toBeLessThanOrEqual(390);
+  expect(bounds!.x).toBeGreaterThanOrEqual(0);
+  await dialog.getByRole('button', { name: 'Да, в архив' }).click();
   await expect(page.getByRole('link', { name: new RegExp(title) })).toHaveCount(0);
   expect(requests).toHaveLength(1);
   expect(requests[0].action).toBe('archive');
+  expect(requests[0].reason).toBe(ARCHIVE_REASON);
   await page.getByRole('combobox', { name: 'Состояние', exact: true }).selectOption('archived');
   await page.getByRole('button', { name: 'Архив / восстановление / корзина' }).click();
   await expect(
@@ -75,7 +83,7 @@ test('server filters, exact confirmation, archive and restore without deleting r
   await page.getByLabel('Введите точное название').fill(title);
   await page.getByLabel('Введите ID тендера').fill(id);
   await page.getByLabel('Причина (от 10 символов)').fill('Восстановление синтетического тендера');
-  await submit.click();
+  await page.getByRole('button', { name: 'Подтвердить операцию' }).click();
   await expect.poll(() => requests.length).toBe(2);
   expect(requests[1].action).toBe('restore');
   await page.getByRole('combobox', { name: 'Состояние', exact: true }).selectOption('active');

@@ -1,3 +1,4 @@
+import type { IntakeContext } from './intake-review-api';
 export interface CommercialFields {
   amount: string | null;
   currency: string | null;
@@ -19,6 +20,7 @@ export interface VerifiedCost {
   currency: string | null;
 }
 export interface VerificationMeta {
+  intakeContext?: IntakeContext;
   offerId: string;
   versionId: string;
   documentId: string;
@@ -42,6 +44,9 @@ export interface VerificationContext {
   lotItems: Record<string, { id: string; name: string; quantity: string; unit: string }[]>;
   suppliers: { id: string; name: string }[];
   documents: {
+    managedReceipt?: boolean;
+    supplierId?: string | null;
+    contextReceiptIds?: string[];
     id: string;
     name: string;
     receipts: {

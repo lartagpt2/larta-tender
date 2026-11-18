@@ -33,6 +33,15 @@ export interface Specification {
   name: string;
   status: string;
 }
+export class ApiError extends Error {
+  constructor(
+    message: string,
+    public readonly status?: number,
+  ) {
+    super(message);
+    this.name = 'ApiError';
+  }
+}
 export async function api<T>(path: string, options: RequestInit = {}): Promise<T> {
   let response: Response;
   try {
@@ -44,7 +53,7 @@ export async function api<T>(path: string, options: RequestInit = {}): Promise<T
       },
     });
   } catch {
-    throw new Error('Нет соединения с сервером. Обновите страницу после восстановления соединения.');
+    throw new ApiError('Нет соединения с сервером. Обновите страницу после восстановления соединения.');
   }
   if (!response.ok) {
     const messages: Record<number, string> = {
@@ -56,7 +65,10 @@ export async function api<T>(path: string, options: RequestInit = {}): Promise<T
       413: 'Размер файла превышает 20 МБ.',
       503: 'Доступ к данным пока не настроен.',
     };
-    throw new Error(messages[response.status] ?? 'Не удалось выполнить запрос. Попробуйте ещё раз.');
+    throw new ApiError(
+      messages[response.status] ?? 'Не удалось выполнить запрос. Попробуйте ещё раз.',
+      response.status,
+    );
   }
   return response.json() as Promise<T>;
 }

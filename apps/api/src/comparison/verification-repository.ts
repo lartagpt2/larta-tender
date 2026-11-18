@@ -1,3 +1,10 @@
+import type { IntakeContextDto } from '../unified-intake/intake-context.dto';
+import {
+  prepareManagedVerification,
+  recordManagedVersion,
+  recordManagedOperation,
+} from '../unified-intake/verification-bridge';
+import { actualContext, bridgeInstalled } from '../unified-intake/business-bridge';
 import { stagePrice, CommercialPrice } from '../stages/stage-calculation';
 import { BadRequestException, ConflictException, NotFoundException } from '@nestjs/common';
 import { randomUUID } from 'node:crypto';
@@ -37,6 +44,7 @@ interface Provenance {
   at: string;
 }
 export interface VerificationMeta extends PriceSnapshot {
+  intakeContext?: IntakeContextDto;
   offerId: string;
   versionId: string;
   documentId: string;
@@ -142,6 +150,8 @@ export class PgVerificationRepository extends PgScopeRepository {
   async saveVerification(actor: string, id: string, input: VerificationDto) {
     return transaction(this.pool, async (c) => {
       const tender = await this.lock(c, actor, id);
+      const managed = await prepareManagedVerification(c, actor, id, input);
+      if (managed?.reply) return managed.reply;
       if (
         !(
           await c.query('SELECT 1 FROM tender_app.tender_supplier WHERE tender_id=$1 AND supplier_id=$2', [
@@ -174,7 +184,7 @@ export class PgVerificationRepository extends PgScopeRepository {
         input.receiptId === input.documentId &&
         !(
           await c.query(
-            "SELECT 1 FROM tender_app.field_decision WHERE document_id=$1 AND field_key='offer.received.v1' LIMIT 1",
+            "SELECT 1 FROM tender_app.field_decision WHERE document_id=$1 AND field_key='offer.received.v1' AND NOT (value::jsonb ? 'intakeReceiptId') LIMIT 1",
             [input.documentId],
           )
         ).rowCount;
@@ -283,10 +293,14 @@ export class PgVerificationRepository extends PgScopeRepository {
         );
         return versionId;
       };
-      if (!existing) await writeVersion(original, 1, true);
+      if (!existing) {
+        const initialId = await writeVersion(original, 1, true);
+        await recordManagedVersion(c, managed, actor, input, initialId, original, true);
+      }
       const version = (latest?.version ?? 1) + 1,
         fields = { ...input.fields, ...(required.length ? { amount: null } : {}) };
       const versionId = await writeVersion(fields, version, false);
+      await recordManagedVersion(c, managed, actor, input, versionId, fields, false);
       const snapshot = {
         fields,
         items: input.items,
@@ -312,6 +326,7 @@ export class PgVerificationRepository extends PgScopeRepository {
         if (!previous || canonical(value) !== canonical(prior[key]))
           sources[key] = { type: input.sourceType, note: input.sourceNote.trim(), actorId: actor, at };
       const meta: VerificationMeta = {
+        ...(managed ? { intakeContext: input.intakeContext } : {}),
         ...snapshot,
         offerId,
         versionId,
@@ -374,7 +389,7 @@ export class PgVerificationRepository extends PgScopeRepository {
         `INSERT INTO tender_app.audit_event(id,actor_id,tender_id,document_id,action,entity_revision,entity,entity_id) VALUES($1,$2,$3,$4,'offer.fields.saved',$5,'offer_version',$6)`,
         [randomUUID(), actor, id, input.documentId, version, versionId],
       );
-      return {
+      const reply = {
         offerId,
         versionId,
         version,
@@ -382,6 +397,8 @@ export class PgVerificationRepository extends PgScopeRepository {
         warnings: result.warnings,
         tenderRevision: tender.revision + 1,
       };
+      await recordManagedOperation(c, managed, actor, input, reply);
+      return reply;
     });
   }
   async comparison(actor: string, id: string, lotId?: string, mode?: 'lot' | 'items', itemId?: string) {
@@ -462,6 +479,20 @@ export class PgVerificationRepository extends PgScopeRepository {
             ],
           };
         }
+      }
+    if (await bridgeInstalled(this.pool))
+      for (let i = 0; i < current.length; i++) {
+        const reason = await actualContext(this.pool, id, current[i].id);
+        if (reason)
+          results[i] = {
+            ...results[i],
+            rankable: false,
+            comparable: null,
+            warnings: [
+              ...results[i].warnings,
+              { code: reason, message: 'Контекст единой загрузки отозван, изменён или не подтверждён' },
+            ],
+          };
       }
     const places = ranks(
       results.map((r, i) => ({

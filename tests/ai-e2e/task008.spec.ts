@@ -1,11 +1,11 @@
 import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import { test, expect } from '@playwright/test';
-import { quotePdf, gold } from '../../scripts/task008-fixtures.mjs';
+import { test, expect, artifact } from '../isolated-fixture';
 test('AI drafts persist separately; buyer explicitly confirms; stage prices and manual fields remain intact', async ({
   page,
   request,
 }) => {
+  const { quotePdf, gold } = await import('../../scripts/task008-fixtures.mjs');
   const r = await request.post('/api/tenders', {
     data: { title: `Synthetic TASK008 browser ${Date.now()}` },
   });
@@ -89,7 +89,7 @@ test('AI drafts persist separately; buyer explicitly confirms; stage prices and 
   await expect(page.getByLabel('Подтверждаемые значения: цена', { exact: true })).toHaveValue('1400');
   await page.setViewportSize({ width: 390, height: 844 });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-  await page.screenshot({ path: 'test-results/task008-review-mobile.png', fullPage: true });
+  await page.screenshot({ path: await artifact('task008-review-mobile.png'), fullPage: true });
   docs = await (await request.get(base + '/offers')).json();
   expect(docs[0].receipts).toHaveLength(1);
 });

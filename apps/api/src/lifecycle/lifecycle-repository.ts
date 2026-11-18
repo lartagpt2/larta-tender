@@ -125,9 +125,22 @@ export class PgLifecycleRepository {
         )
       ).rows[0].count,
     );
+    const intakeInstalled = (
+      await c.query("SELECT to_regclass('tender_app.intake_processing_run') IS NOT NULL AS installed")
+    ).rows[0].installed;
+    const intakeActive = intakeInstalled
+      ? Number(
+          (
+            await c.query(
+              "SELECT count(*) FROM tender_app.intake_processing_run WHERE tender_id=$1 AND status IN ('blocked','queued','running','retry_wait')",
+              [id],
+            )
+          ).rows[0].count,
+        )
+      : 0;
     const ocr = await this.ocr(id),
       held = protectedTenders.has(id),
-      busy = dbActive + ocr.active > 0;
+      busy = dbActive + intakeActive + ocr.active > 0;
     const ocrHash = createHash('sha256').update(JSON.stringify(ocr.jobs)).digest('hex');
     const value = {
       ocrHash,
@@ -141,6 +154,7 @@ export class PgLifecycleRepository {
       sharedBlobs,
       ocr,
       dbActive,
+      intakeActive,
       held,
       capabilities,
       canWrite,
@@ -148,7 +162,7 @@ export class PgLifecycleRepository {
     const previewHash = createHash('sha256').update(JSON.stringify(value)).digest('hex');
     const allowed = {
       archive: canWrite && !held && !busy && lifecycle.state === 'active',
-      restore: canWrite && !held && lifecycle.state !== 'active',
+      restore: canWrite && !held && !busy && lifecycle.state !== 'active',
       trash:
         canWrite &&
         !held &&

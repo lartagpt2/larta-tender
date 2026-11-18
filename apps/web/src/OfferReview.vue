@@ -1,4 +1,10 @@
 <script setup lang="ts">
+import {
+  reviewDetails,
+  verificationIntakeContext,
+  type IntakeContext,
+  type DraftFieldSource,
+} from './intake-review-api';
 import { computed, ref, watch, onBeforeUnmount } from 'vue';
 import { useRoute, RouterLink } from 'vue-router';
 import { useQuery, useQueryClient } from '@tanstack/vue-query';
@@ -28,6 +34,10 @@ const query = useQuery({
   queryFn: () => api<VerificationContext>(`/tenders/${id.value}/verification`),
   enabled: computed(() => !!id.value),
 });
+const managedSources = ref<DraftFieldSource[]>([]);
+const managedContext = ref<IntakeContext | null>(null),
+  managedDraftRevision = ref(0),
+  importedDraft = ref('');
 const supplierId = ref(''),
   lotId = ref(''),
   documentId = ref(''),
@@ -48,7 +58,13 @@ const items = ref<VerifiedItem[]>([]),
   saved = ref(''),
   previewUrl = ref('');
 const required = computed(() => query.data.value?.lotItems[lotId.value] ?? []),
-  document = computed(() => query.data.value?.documents.find((d) => d.id === documentId.value));
+  document = computed(
+    () =>
+      query.data.value?.documents.find(
+        (d) =>
+          d.id === documentId.value && (!receiptId.value || d.receipts.some((r) => r.id === receiptId.value)),
+      ) ?? query.data.value?.documents.find((d) => d.id === documentId.value),
+  );
 const offer = computed(() =>
   query.data.value?.offers.find((o) => o.supplierId === supplierId.value && o.lotId === lotId.value),
 );
@@ -61,6 +77,7 @@ function closePreview() {
 }
 onBeforeUnmount(closePreview);
 function load() {
+  managedSources.value = [];
   closePreview();
   error.value = '';
   saved.value = '';
@@ -72,6 +89,7 @@ function load() {
   resolveIds.value = [];
   const value = latest.value?.metadata;
   expectedVersion.value = latest.value?.version ?? 0;
+  managedContext.value = value?.intakeContext ? clone(value.intakeContext) : null;
   original.value = value ? clone(value.original) : emptyFields();
   fields.value = value ? clone(value.fields) : emptyFields();
   items.value = required.value.map((r) => {
@@ -91,7 +109,9 @@ watch(query.data, () => {
     lotId.value = query.data.value.lots[0]?.id ?? '';
   load();
   if (typeof route.query.documentId === 'string' && typeof route.query.receiptId === 'string') {
-    const doc = query.data.value.documents.find((d) => d.id === route.query.documentId);
+    const doc = query.data.value.documents.find(
+      (d) => d.id === route.query.documentId && d.receipts.some((r) => r.id === route.query.receiptId),
+    );
     if (doc?.receipts.some((r) => r.id === route.query.receiptId)) {
       if (
         typeof route.query.supplierId === 'string' &&
@@ -106,6 +126,7 @@ watch(query.data, () => {
       queueMicrotask(() => {
         documentId.value = doc.id;
         receiptId.value = String(route.query.receiptId);
+        void importIntakeDraft();
       });
     }
   }
@@ -149,6 +170,38 @@ async function createLot() {
     busy.value = false;
   }
 }
+function currentFieldsForDraft() {
+  return normalizedFields(fields.value);
+}
+async function importIntakeDraft() {
+  if (
+    typeof route.query.intakeReceiptId !== 'string' ||
+    typeof route.query.intakeDraftId !== 'string' ||
+    importedDraft.value === route.query.intakeDraftId
+  )
+    return;
+  try {
+    const detail = await reviewDetails(id.value, route.query.intakeReceiptId),
+      draft = detail.drafts.find((d) => d.id === route.query.intakeDraftId);
+    if (!draft || !detail.intakeContext || draft.context_token !== detail.intakeContext.contextToken)
+      throw Error('Контекст draft изменён. Вернитесь в единую проверку.');
+    managedSources.value = detail.draftFields.filter((s) => s.draft_id === draft.id);
+    const input = draft.form.fields;
+    for (const key of Object.keys(input) as (keyof typeof input)[]) {
+      if (fields.value[key] === null || fields.value[key] === 'unknown')
+        Object.assign(fields.value, { [key]: input[key] });
+    }
+    if (!expectedVersion.value) original.value = clone(fields.value);
+    if (!items.value.some((i) => i.unitPrice !== null)) items.value = clone(draft.form.items);
+    managedContext.value = verificationIntakeContext(detail.intakeContext, draft.id);
+    managedDraftRevision.value = draft.revision;
+    importedDraft.value = draft.id;
+    sourceType.value = 'other';
+    saved.value = 'Серверный draft перенесён только в пустые поля. Коммерческие данные ещё не подтверждены.';
+  } catch (e) {
+    error.value = (e as Error).message;
+  }
+}
 async function save(intent: 'draft' | 'confirm') {
   error.value = '';
   saved.value = '';
@@ -176,6 +229,30 @@ async function save(intent: 'draft' | 'confirm') {
   }
   busy.value = true;
   try {
+    if (managedContext.value && intent === 'draft') {
+      const current = await reviewDetails(id.value, managedContext.value.receiptId);
+      if (!current.intakeContext) throw Error('Контекст не подтверждён');
+      const draft = await api<{ draftId: string; revision: number }>(
+        `/tenders/${id.value}/intake/receipts/${managedContext.value.receiptId}/transfer-draft`,
+        {
+          method: 'POST',
+          headers: { 'idempotency-key': crypto.randomUUID() },
+          body: JSON.stringify({
+            expectedRevision: current.drafts.at(-1)?.revision ?? 0,
+            contextToken: current.intakeContext.contextToken,
+            lotId: lotId.value,
+            selectedFields: [],
+            form: currentFieldsForDraft(),
+            items: items.value,
+            note: sourceNote.value,
+          }),
+        },
+      );
+      managedContext.value = verificationIntakeContext(current.intakeContext, draft.draftId);
+      managedDraftRevision.value = draft.revision;
+      saved.value = 'Draft сохранён без бизнес-версии и подтверждения цены.';
+      return;
+    }
     const saveBody = async (path: string, options: { method: string; body: string }) => {
       if (intent === 'draft' && activeAIJob.value) {
         const job = await api<{ revision: number }>(`/tenders/${id.value}/document-ai/${activeAIJob.value}`);
@@ -201,6 +278,7 @@ async function save(intent: 'draft' | 'confirm') {
         documentId: documentId.value,
         receiptId: receiptId.value,
         expectedVersion: expectedVersion.value,
+        ...(managedContext.value ? { intakeContext: managedContext.value } : {}),
         contextConfirmed: true,
         intent,
         fields: current,
@@ -222,6 +300,7 @@ async function save(intent: 'draft' | 'confirm') {
         resolveQuestionIds: resolveIds.value,
       }),
     });
+    if (managedContext.value) managedContext.value.operationKey = crypto.randomUUID();
     if (result.status === 'ai_draft') {
       saved.value = 'ИИ-черновик сохранён. Сравнение не изменено.';
       return;
@@ -543,8 +622,24 @@ function restoreAI(snapshot: Record<string, unknown>, jobId: string) {
               <option v-for="(label, value) in sourceLabels" :key="value" :value="value">{{ label }}</option>
             </select></label
           ><label>Комментарий к изменению<input v-model="sourceNote" maxlength="1000" /></label>
+          <details v-if="managedSources.length">
+            <summary>Источники перенесённого черновика</summary>
+            <ul>
+              <li v-for="s in managedSources" :key="s.id">
+                {{ s.field_path }} · {{ s.evidence_id || s.manual_note }} · {{ s.manual_actor_id }} ·
+                {{ s.manual_created_at }}
+              </li>
+            </ul>
+          </details>
           <details v-if="latest?.metadata">
             <summary>Источники подтверждённых полей</summary>
+            <ul>
+              <li v-for="s in managedSources" :key="s.id">
+                {{ s.field_path }} ·
+                {{ s.evidence_id ? `Evidence ${s.evidence_id}` : `Ручная транскрипция: ${s.manual_note}` }} ·
+                {{ s.manual_actor_id }} · {{ s.manual_created_at }}
+              </li>
+            </ul>
             <dl>
               <template v-for="(source, field) in latest.metadata.sources" :key="field"
                 ><dt>{{ fieldLabels[field] ?? field }}</dt>

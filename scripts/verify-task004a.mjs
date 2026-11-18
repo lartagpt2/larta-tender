@@ -3,22 +3,19 @@ import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash, randomUUID, randomBytes } from 'node:crypto';
-import { config } from 'dotenv';
-import pg from 'pg';
+import { isolatedRun } from './testing/isolated-run.mjs';
 import application from '../apps/api/dist/application.js';
 import repositories from '../apps/api/dist/data/repository.js';
 import scopes from '../apps/api/dist/data/scope-repository.js';
 import extraction from '../apps/api/dist/extraction/extraction-repository.js';
 if (!process.argv.includes('--run'))
   console.log(
-    'Preview: no database connection; --run uses only approved larta_test_task003 and leaves synthetic fixtures.',
+    'Preview: no connection. --run creates a new UUID database and storage; retained after completion.',
   );
 else {
   const root = fileURLToPath(new URL('../', import.meta.url));
-  config({ path: resolve(root, '.env'), quiet: true });
-  if (process.env.PGDATABASE !== 'larta_test_task003')
-    throw new Error('Approved disposable test database required.');
-  const pool = new pg.Pool({ connectionTimeoutMillis: 5000, statement_timeout: 10000 });
+  const testRun = await isolatedRun('task004a');
+  const pool = testRun.pool;
   const apps = [];
   const actor = randomUUID(),
     reviewer = randomUUID(),
@@ -187,12 +184,14 @@ else {
       'PASS: real PDF draft seven rows; no LotItem before approval; source pages/artifact; original SHA/bytes intact; correction + confirm + reload; reviewer/outsider denied; stale/invalid confirmation rejected; replay does not duplicate or overwrite; scan needs_ocr. Synthetic fixtures remain.',
     );
   } catch (error) {
+    process.exitCode = 1;
     console.error(
       `TASK-004A failed at ${phase} (${error.code ?? error.name}); no secrets or document text printed.`,
     );
     process.exitCode = 1;
   } finally {
-    await Promise.all(apps.map((app) => app.close()));
-    await pool.end();
+    const stopped = await Promise.allSettled(apps.map((app) => app.close()));
+    if (stopped.some((r) => r.status === 'rejected')) process.exitCode = 1;
+    await testRun.close(process.exitCode ? 'FAILED_RETAINED' : 'PASSED_RETAINED');
   }
 }

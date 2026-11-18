@@ -1,0 +1,3069 @@
+{
+  "status": "PASS",
+  "exitCode": 0,
+  "command": [
+    "node",
+    "run.mjs",
+    "scripts/task011c/regression-durable.mjs",
+    "--run"
+  ],
+  "results": [
+    {
+      "path": "temp/integration-runs/018aa21c-49c4-4f90-9485-9f151d1ab526/task011c-api-results.json",
+      "status": "PASS",
+      "failures": [],
+      "manifestSha256": "6f690861d0f43974b978d67573e8d7ea2c4fc5e15799f01d916d1f6359ae99af",
+      "fixtureVerification": {
+        "status": "PASS",
+        "count": 36,
+        "manifestSha256": "6f690861d0f43974b978d67573e8d7ea2c4fc5e15799f01d916d1f6359ae99af",
+        "fixtures": [
+          {
+            "name": "one.pdf",
+            "bytes": 700,
+            "sha256": "3e192740a10971408e513af43dbf8ba87c4e126865d3ff6c19702c840b57b7c0",
+            "generator": "scripts/task011c/fixtures.mjs",
+            "generatorLine": 25,
+            "status": "PASS"
+          },
+          {
+            "name": "two.txt",
+            "bytes": 126,
+            "sha256": "10ed9eee7e8a718c2b4ae814c6448d89535e241fa69be6297dfee3a358913e8b",
+            "generator": "scripts/task011c/fixtures.mjs",
+            "generatorLine": 32,
+            "status": "PASS"
+          },
+          {
+            "name": "three.xlsx",
+            "bytes": 873,
+            "sha256": "c46fb0d0af0783faa5908a11e35814f541e4bfec597761d94ea5821153dfe931",
+            "generator": "scripts/task011c/fixtures.mjs",
+            "generatorLine": 33,
+            "status": "PASS"
+          },
+          {
+            "name": "four.txt",
+            "bytes": 52,
+            "sha256": "53d737b403b5c55a7cf4c63cabd729da2f12aa8b2fb764195b8ff3d86711803d",
+            "generator": "scripts/task011c/fixtures.mjs",
+            "generatorLine": 34,
+            "status": "PASS"
+          },
+          {
+            "name": "five.pdf",
+            "bytes": 626,
+            "sha256": "63054b850aec226b14491b183cd848f2ae1649d186f780ae917cdc68d3507064",
+            "generator": "scripts/task011c/fixtures.mjs",
+            "generatorLine": 35,
+            "status": "PASS"
+          },
+          {
+            "name": "six.eml",
+            "bytes": 177,
+            "sha256": "06765129fe30f05e8588a0e59de84596e7bd1920c2a17b485bd9deca1091152f",
+            "generator": "scripts/task011c/fixtures.mjs",
+            "generatorLine": 36,
+            "status": "PASS"
+          },
+          {
+            "name": "seven.txt",
+            "bytes": 75,
+            "sha256": "d1c27d4074465f650d954b56a1917fa4d461e79e84a4b482528d7d34456852db",
+            "generator": "scripts/task011c/fixtures.mjs",
+            "generatorLine": 37,
+            "status": "PASS"
+          },
+          {
+            "name": "eight.xlsx",
+            "bytes": 899,
+            "sha256": "8c8fd56fe36b1fceed1c6ac8aaa571fc604e3fc171845fa915672bab53f969da",
+            "generator": "scripts/task011c/fixtures.mjs",
+            "generatorLine": 38,
+            "status": "PASS"
+          },
+          {
+            "name": "nine.txt",
+            "bytes": 52,
+            "sha256": "7ef5db0f08be159391d54de8eba62f4ef35f9623376dda2d8c931960917860b2",
+            "generator": "scripts/task011c/fixtures.mjs",
+            "generatorLine": 39,
+            "status": "PASS"
+          },
+          {
+            "name": "ten.pdf",
+            "bytes": 633,
+            "sha256": "c32eb51d4278c2f3a2f0ed1beb75b5088dd624474ad5199ae579b34b36585566",
+            "generator": "scripts/task011c/fixtures.mjs",
+            "generatorLine": 40,
+            "status": "PASS"
+          },
+          {
+            "name": "bad.txt",
+            "bytes": 55,
+            "sha256": "3f95e642b2206adf52a83871b9d5cb81516a0ea5bd9930b548d5e4f31f68cba9",
+            "generator": "scripts/task011c/integration.mjs",
+            "generatorLine": 297,
+            "status": "PASS"
+          },
+          {
+            "name": "conflict.txt",
+            "bytes": 73,
+            "sha256": "48fc9c4ce72d78103d16bd8778753bf74ef8970a0298612d68a44c565c6122f4",
+            "generator": "scripts/task011c/integration.mjs",
+            "generatorLine": 299,
+            "status": "PASS"
+          },
+          {
+            "name": "ambiguous.txt",
+            "bytes": 65,
+            "sha256": "358983d9efbf3545e26186c514665b678a574766a98285561a39d4c55551b00d",
+            "generator": "scripts/task011c/integration.mjs",
+            "generatorLine": 293,
+            "status": "PASS"
+          },
+          {
+            "name": "two-sellers.txt",
+            "bytes": 114,
+            "sha256": "bf10667775fdcd0bca496ce6cb9778f0cfaebf3d9d1de6ca4fbcfa42fc666eea",
+            "generator": "scripts/task011c/integration.mjs",
+            "generatorLine": 337,
+            "status": "PASS"
+          },
+          {
+            "name": "leading.txt",
+            "bytes": 60,
+            "sha256": "e10b3f81ff6c203c231ec55ae27b3ab57ff697ed4568a21c07d6e027a4f9b7b2",
+            "generator": "scripts/task011c/integration.mjs",
+            "generatorLine": 344,
+            "status": "PASS"
+          },
+          {
+            "name": "a.txt",
+            "bytes": 58,
+            "sha256": "def6f2d7a8e59dd561a155aaa654f139610c92b2a15e564ff2be377e6f34553a",
+            "generator": "scripts/task011c/integration.mjs",
+            "generatorLine": 213,
+            "status": "PASS"
+          },
+          {
+            "name": "b.pdf",
+            "bytes": 632,
+            "sha256": "f573c63ef411c0f100a9cea6cb7f5ef7db5c08c35dd5e8f710a687120afdd566",
+            "generator": "scripts/task011c/integration.mjs",
+            "generatorLine": 214,
+            "status": "PASS"
+          },
+          {
+            "name": "c.txt",
+            "bytes": 58,
+            "sha256": "def6f2d7a8e59dd561a155aaa654f139610c92b2a15e564ff2be377e6f34553a",
+            "generator": "scripts/task011c/integration.mjs",
+            "generatorLine": 225,
+            "status": "PASS"
+          },
+          {
+            "name": "buyer.txt",
+            "bytes": 57,
+            "sha256": "7de9463dfa219a34b6bf2d64a2c000b57b70f070ea0431220c4d939e6ab1b0e8",
+            "generator": "scripts/task011c/integration.mjs",
+            "generatorLine": 291,
+            "status": "PASS"
+          },
+          {
+            "name": "maker.txt",
+            "bytes": 64,
+            "sha256": "fb54f00c50a104e6237992bd62a979f84f20d36e0be150a538782117f41e8f42",
+            "generator": "scripts/task011c/integration.mjs",
+            "generatorLine": 292,
+            "status": "PASS"
+          },
+          {
+            "name": "unnamed.txt",
+            "bytes": 38,
+            "sha256": "3416af0c1f28ad81b012b045ea95e38f8d2042fc857ca50713d2303b8836c2a4",
+            "generator": "scripts/task011c/integration.mjs",
+            "generatorLine": 294,
+            "status": "PASS"
+          },
+          {
+            "name": "weak-one.txt",
+            "bytes": 53,
+            "sha256": "abea9f89c3f08c4f5e7269478e8c14efc6076bdd5240231c6f0e828cad1e9810",
+            "generator": "scripts/task011c/integration.mjs",
+            "generatorLine": 295,
+            "status": "PASS"
+          },
+          {
+            "name": "weak-two.txt",
+            "bytes": 53,
+            "sha256": "abea9f89c3f08c4f5e7269478e8c14efc6076bdd5240231c6f0e828cad1e9810",
+            "generator": "scripts/task011c/integration.mjs",
+            "generatorLine": 296,
+            "status": "PASS"
+          },
+          {
+            "name": "unknown.txt",
+            "bytes": 67,
+            "sha256": "5d14a9b95c739778639fc28c7d945dcaed14d7ec386818101081554c052fc547",
+            "generator": "scripts/task011c/integration.mjs",
+            "generatorLine": 298,
+            "status": "PASS"
+          },
+          {
+            "name": "multi.txt",
+            "bytes": 120,
+            "sha256": "07c89481f25b2e00e157b2177652a60fcdc50660350c4d4961b8b964a75364f9",
+            "generator": "scripts/task011c/integration.mjs",
+            "generatorLine": 300,
+            "status": "PASS"
+          },
+          {
+            "name": "one.txt",
+            "bytes": 63,
+            "sha256": "e3e51fed4fde9c8ba69d80ed822cb3801ed2f1c00fc4dfbc1596dc25a935a51b",
+            "generator": "scripts/task011c/integration.mjs",
+            "generatorLine": 323,
+            "status": "PASS"
+          },
+          {
+            "name": "two.txt",
+            "bytes": 63,
+            "sha256": "a4acf1b46fa3ed5e366f9ee0a8b0a9f962fa08c9d1f029335e35ff9735407554",
+            "generator": "scripts/task011c/integration.mjs",
+            "generatorLine": 324,
+            "status": "PASS"
+          },
+          {
+            "name": "a.txt",
+            "bytes": 66,
+            "sha256": "ed6d3f5d36cd131b6650eff6226bea38ac13397d7c0e9a8fac36619af929f772",
+            "generator": "scripts/task011c/integration.mjs",
+            "generatorLine": 329,
+            "status": "PASS"
+          },
+          {
+            "name": "b.txt",
+            "bytes": 66,
+            "sha256": "b55b7abab6f82bea6335e8c757f17974540a0635c0909d4ed326b082b3744f9e",
+            "generator": "scripts/task011c/integration.mjs",
+            "generatorLine": 330,
+            "status": "PASS"
+          },
+          {
+            "name": "one.txt",
+            "bytes": 56,
+            "sha256": "62ff5684f8c182627cda11eaa5d534d409eaadb31ef1aff77361983352f61211",
+            "generator": "scripts/task011c/integration.mjs",
+            "generatorLine": 355,
+            "status": "PASS"
+          },
+          {
+            "name": "two.txt",
+            "bytes": 56,
+            "sha256": "ecfbc0752f0a4690d38a62de7bd2472614ac7d624bffcc97bb2769a80f5cc076",
+            "generator": "scripts/task011c/integration.mjs",
+            "generatorLine": 356,
+            "status": "PASS"
+          },
+          {
+            "name": "existing.txt",
+            "bytes": 64,
+            "sha256": "7c0d7614c87f2c9f249e8bd167633c022de276e02249086ad0ee846c9442fc52",
+            "generator": "scripts/task011c/integration.mjs",
+            "generatorLine": 400,
+            "status": "PASS"
+          },
+          {
+            "name": "foreign-number.txt",
+            "bytes": 86,
+            "sha256": "d05c893e4a6eeb0fc08d468e322721cd0fd4187a490159dc32fb4f3862a56279",
+            "generator": "scripts/task011c/integration.mjs",
+            "generatorLine": 405,
+            "status": "PASS"
+          },
+          {
+            "name": "rollback.txt",
+            "bytes": 56,
+            "sha256": "a0177c08e0447f14ac342ca28f01870813f78716c40135ee6b8599c28c32ff93",
+            "generator": "scripts/task011c/integration.mjs",
+            "generatorLine": 445,
+            "status": "PASS"
+          },
+          {
+            "name": "forbidden.txt",
+            "bytes": 47,
+            "sha256": "ec7ba6f7312b5a07308f085c796530af27bf5afa25ee8879e2235cb7a0bf5c09",
+            "generator": "scripts/task011c/integration.mjs",
+            "generatorLine": 550,
+            "status": "PASS"
+          },
+          {
+            "name": "mock.txt",
+            "bytes": 52,
+            "sha256": "ae9e99bdd44fbd4f0640a125f175aaeb5ae30aae4f5110c491acae4d4bfc0ddc",
+            "generator": "scripts/task011c/integration.mjs",
+            "generatorLine": 579,
+            "status": "PASS"
+          }
+        ]
+      },
+      "assertionResults": [
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:248:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:248:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:248:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:248:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:248:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "notEqual",
+          "status": "PASS",
+          "location": "    at pg.Client.connect (file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:85:10)"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:251:15"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:251:15"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:252:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:253:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:264:12"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:265:12"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:266:12"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:267:12"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:268:12"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:269:12"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:276:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:276:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:276:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:276:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:276:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:277:12"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:278:12"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:288:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:294:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:295:23"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:296:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:297:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:288:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:294:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:295:23"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:296:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:297:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:288:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:294:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:295:23"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:296:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:297:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:288:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:294:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:295:23"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:296:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:297:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:288:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:294:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:295:23"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:296:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:297:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:288:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:294:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:295:23"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:296:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:297:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:288:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:294:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:295:23"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:296:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:297:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:288:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:294:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:295:23"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:296:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:297:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:288:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:294:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:295:23"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:296:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:297:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:288:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:294:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:295:23"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:296:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:297:14"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:301:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:302:18"
+        },
+        {
+          "group": "main runtime 10 to 3 to 0",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:303:18"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:344:12"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:360:12"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:361:22"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "notEqual",
+          "status": "PASS",
+          "location": "    at pg.Client.connect (file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:85:10)"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:367:12"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:371:12"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:372:12"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:373:12"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:374:12"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:379:12"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:380:12"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:381:12"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:389:12"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:390:12"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:391:12"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "rejects",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:400:18"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:412:12"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:417:12"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:422:12"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "idempotency and concurrency",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:432:14"
+        },
+        {
+          "group": "role and weak identity matrix",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:445:18"
+        },
+        {
+          "group": "role and weak identity matrix",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:461:5"
+        },
+        {
+          "group": "role and weak identity matrix",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:461:5"
+        },
+        {
+          "group": "role and weak identity matrix",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:462:23"
+        },
+        {
+          "group": "role and weak identity matrix",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:463:12"
+        },
+        {
+          "group": "role and weak identity matrix",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:464:12"
+        },
+        {
+          "group": "role and weak identity matrix",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:465:12"
+        },
+        {
+          "group": "role and weak identity matrix",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:470:12"
+        },
+        {
+          "group": "role and weak identity matrix",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:471:12"
+        },
+        {
+          "group": "role and weak identity matrix",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:476:12"
+        },
+        {
+          "group": "role and weak identity matrix",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:477:15"
+        },
+        {
+          "group": "role and weak identity matrix",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:478:5"
+        },
+        {
+          "group": "role and weak identity matrix",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:478:5"
+        },
+        {
+          "group": "role and weak identity matrix",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:482:12"
+        },
+        {
+          "group": "role and weak identity matrix",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:483:25"
+        },
+        {
+          "group": "role and weak identity matrix",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:488:12"
+        },
+        {
+          "group": "role and weak identity matrix",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:489:12"
+        },
+        {
+          "group": "role and weak identity matrix",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:490:12"
+        },
+        {
+          "group": "role and weak identity matrix",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:491:27"
+        },
+        {
+          "group": "role and weak identity matrix",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:492:5"
+        },
+        {
+          "group": "role and weak identity matrix",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:492:5"
+        },
+        {
+          "group": "role and weak identity matrix",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:495:25"
+        },
+        {
+          "group": "role and weak identity matrix",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:496:12"
+        },
+        {
+          "group": "role and weak identity matrix",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:497:12"
+        },
+        {
+          "group": "role and weak identity matrix",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:498:19"
+        },
+        {
+          "group": "role and weak identity matrix",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:500:5"
+        },
+        {
+          "group": "role and weak identity matrix",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:500:5"
+        },
+        {
+          "group": "role and weak identity matrix",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:501:12"
+        },
+        {
+          "group": "role and weak identity matrix",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:509:18"
+        },
+        {
+          "group": "role and weak identity matrix",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:510:5"
+        },
+        {
+          "group": "role and weak identity matrix",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:510:5"
+        },
+        {
+          "group": "role and weak identity matrix",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:514:12"
+        },
+        {
+          "group": "role and weak identity matrix",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:516:8"
+        },
+        {
+          "group": "role and weak identity matrix",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:515:12"
+        },
+        {
+          "group": "current tender participants only",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:576:5"
+        },
+        {
+          "group": "current tender participants only",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:576:5"
+        },
+        {
+          "group": "current tender participants only",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:577:19"
+        },
+        {
+          "group": "current tender participants only",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:578:12"
+        },
+        {
+          "group": "current tender participants only",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:579:12"
+        },
+        {
+          "group": "current tender participants only",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:580:5"
+        },
+        {
+          "group": "current tender participants only",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:580:5"
+        },
+        {
+          "group": "current tender participants only",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:587:8"
+        },
+        {
+          "group": "current tender participants only",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:586:12"
+        },
+        {
+          "group": "current tender participants only",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:589:12"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:601:20"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:652:14"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:656:12"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:658:14"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:658:14"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:658:14"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:659:45"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:659:45"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:659:45"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:659:45"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:659:45"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:659:45"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:659:45"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:659:45"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:659:45"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:659:45"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:659:45"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:659:45"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:661:14"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:661:14"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:661:14"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:661:14"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:663:12"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:664:12"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:681:12"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:683:12"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:684:12"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:685:12"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:686:12"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:687:12"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:691:12"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:692:12"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:700:14"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:700:14"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:700:14"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:700:14"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:700:14"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:700:14"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:700:14"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:700:14"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:700:14"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:700:14"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:700:14"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:700:14"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:701:12"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:717:28"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:743:12"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:744:12"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:746:12"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:747:67"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:747:67"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:755:14"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:755:14"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:755:14"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:755:14"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:755:14"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:755:14"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:755:14"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:755:14"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:755:14"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:755:14"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:755:14"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:755:14"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:755:14"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:755:14"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:755:14"
+        },
+        {
+          "group": "rollback and retry",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:755:14"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "rejects",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:789:5"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "rejects",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:793:5"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "rejects",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:794:5"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "rejects",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:796:5"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "rejects",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:798:5"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "rejects",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:801:5"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "rejects",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:805:5"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "rejects",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:815:5"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "rejects",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:826:5"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:839:21"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:840:12"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:841:12"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:842:20"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "notEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:843:12"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:844:19"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:844:12"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:845:19"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:845:12"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:846:19"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:846:12"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:848:14"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:848:14"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:848:14"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:848:14"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:849:12"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:850:12"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:851:12"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:852:12"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:853:12"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:857:12"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:861:12"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:862:12"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:863:12"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:871:12"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:880:12"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:887:14"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:887:14"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:887:14"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:887:14"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:887:14"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:887:14"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:887:14"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:887:14"
+        },
+        {
+          "group": "SQL guards, authorization and pagination",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:887:14"
+        },
+        {
+          "group": "LocalAI test port and restart",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:901:18"
+        },
+        {
+          "group": "LocalAI test port and restart",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:902:5"
+        },
+        {
+          "group": "LocalAI test port and restart",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:902:5"
+        },
+        {
+          "group": "LocalAI test port and restart",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:903:12"
+        },
+        {
+          "group": "LocalAI test port and restart",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:904:12"
+        },
+        {
+          "group": "LocalAI test port and restart",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:931:26"
+        },
+        {
+          "group": "LocalAI test port and restart",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:932:5"
+        },
+        {
+          "group": "LocalAI test port and restart",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:932:5"
+        },
+        {
+          "group": "LocalAI test port and restart",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:935:23"
+        },
+        {
+          "group": "LocalAI test port and restart",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:933:27"
+        },
+        {
+          "group": "LocalAI test port and restart",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:937:12"
+        },
+        {
+          "group": "LocalAI test port and restart",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:938:12"
+        },
+        {
+          "group": "LocalAI test port and restart",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:940:12"
+        },
+        {
+          "group": "LocalAI test port and restart",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:941:12"
+        },
+        {
+          "group": "LocalAI test port and restart",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:945:12"
+        },
+        {
+          "group": "LocalAI test port and restart",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at async file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:948:25"
+        },
+        {
+          "group": "LocalAI test port and restart",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:956:12"
+        },
+        {
+          "group": "LocalAI test port and restart",
+          "assertion": "deepEqual",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:957:12"
+        },
+        {
+          "group": "LocalAI test port and restart",
+          "assertion": "ok",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:958:12"
+        },
+        {
+          "group": "LocalAI test port and restart",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:966:10"
+        },
+        {
+          "group": "LocalAI test port and restart",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:967:10"
+        },
+        {
+          "group": "LocalAI test port and restart",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:971:10"
+        },
+        {
+          "group": "LocalAI test port and restart",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:975:10"
+        },
+        {
+          "group": "LocalAI test port and restart",
+          "assertion": "equal",
+          "status": "PASS",
+          "location": "    at file:///C:/Users/oalimova/ai_project/temp/task011e-continue-21794bb1-fb2b-4f7a-ba36-16042c101ade/source/scripts/task011c/regression-durable.mjs:979:10"
+        }
+      ],
+      "results": [
+        {
+          "name": "10 actual mixed PDF/TXT/XLSX/EML files -> 3 preliminary companies -> 0 confirmed/business suppliers; 2 unassigned receipts; per-field evidence and exact original SHA",
+          "status": "PASS"
+        },
+        {
+          "name": "parent tender serialization: 2 documents -> 1 company/2 observations/2 associations/1 claim; replay and explicit reprocess preserve identity, receipts, initial classifications and evidence; stale rejected",
+          "status": "PASS"
+        },
+        {
+          "name": "buyer/manufacturer-only, ambiguous role, missing name, no ID, invalid checksum, unknown foreign scheme, conflicting IDs, multiple evidenced roles, weak names/email and different strong IDs do not falsely merge",
+          "status": "PASS"
+        },
+        {
+          "name": "existing current tender supplier produces proposal only; foreign tender supplier never leaks; business supplier/tender_supplier/offer_version/document fingerprints unchanged",
+          "status": "PASS"
+        },
+        {
+          "name": "durable committed upload retained; promotion fault after observation rolls back all partial rows; explicit retry and replay preserve evidence; independent pre-enqueue fault rolls back upload/enqueue",
+          "status": "PASS"
+        },
+        {
+          "name": "actual SQL append-only/CAS/cross-tender/evidence guards; explicit lifecycle triggers on all 9 tables; read/write auth, actor spoofing, scope, literal search/cursor/limit/review filters",
+          "status": "PASS"
+        },
+        {
+          "name": "disabled adapter/no production models; marked test_mock port is separate from genuine native acceptance; OpenAPI endpoints/queries; fresh child process identity verification and equal persisted registry; no business writes",
+          "status": "PASS"
+        }
+      ],
+      "identity": {
+        "runId": "018aa21c-49c4-4f90-9485-9f151d1ab526",
+        "database": "larta_test_run_018aa21c49c44f9094859f151d1ab526",
+        "databaseOid": "262840",
+        "owner": "codex_dev"
+      },
+      "connections": [
+        "postgres",
+        "larta_test_run_018aa21c49c44f9094859f151d1ab526",
+        "larta_test_run_018aa21c49c44f9094859f151d1ab526",
+        "larta_test_run_018aa21c49c44f9094859f151d1ab526",
+        "larta_test_run_018aa21c49c44f9094859f151d1ab526"
+      ],
+      "mainConnections": 0,
+      "modelCalls": 0,
+      "mainScenario": {
+        "expected": {
+          "documents": 10,
+          "preliminaryCompanies": 3,
+          "confirmedSuppliers": 0,
+          "unassignedReceipts": 2
+        },
+        "actual": {
+          "documents": 10,
+          "preliminaryCompanies": 3,
+          "unassignedReceipts": 2
+        }
+      }
+    }
+  ],
+  "remainingAssertions": "EXECUTED",
+  "cleanup": "NOT_AUTHORIZED"
+}

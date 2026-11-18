@@ -1,3 +1,4 @@
+import IntakeWorkspace from './IntakeWorkspace.vue';
 import TenderStages from './TenderStages.vue';
 import OfferReview from './OfferReview.vue';
 import OfferComparison from './OfferComparison.vue';
@@ -15,6 +16,7 @@ export const router = createRouter({
     { path: '/tenders', component: TenderList },
     { path: '/tenders/new', component: TenderCreate },
     { path: '/tenders/:id', component: TenderDetail },
+    { path: '/tenders/:id/intake', component: IntakeWorkspace },
     { path: '/documents', component: DocumentsPage },
     { path: '/review', component: OfferReview },
     { path: '/comparison', component: OfferComparison },

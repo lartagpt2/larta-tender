@@ -3,8 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash, randomUUID, randomBytes } from 'node:crypto';
-import { config } from 'dotenv';
-import pg from 'pg';
+import { isolatedRun } from './testing/isolated-run.mjs';
 import application from '../apps/api/dist/application.js';
 import repositories from '../apps/api/dist/data/repository.js';
 import scopes from '../apps/api/dist/data/scope-repository.js';
@@ -13,14 +12,12 @@ import verifications from '../apps/api/dist/comparison/verification-repository.j
 import stages from '../apps/api/dist/stages/stage-repository.js';
 if (!process.argv.includes('--run'))
   console.log(
-    'Preview: no DB connection. --run uses only approved larta_test_task003 and retains synthetic fixtures.',
+    'Preview: no connection. --run creates a new UUID database and storage; retained after completion.',
   );
 else {
   const root = fileURLToPath(new URL('../', import.meta.url));
-  config({ path: resolve(root, '.env'), quiet: true });
-  if (process.env.PGDATABASE !== 'larta_test_task003')
-    throw new Error('Approved synthetic test database required');
-  const pool = new pg.Pool({ connectionTimeoutMillis: 5000, statement_timeout: 10000 }),
+  const testRun = await isolatedRun('task007');
+  const pool = testRun.pool,
     apps = [];
   const actor = randomUUID(),
     reviewer = randomUUID(),
@@ -537,10 +534,12 @@ else {
       'PASS TASK007: stage snapshots, 100000/95000/90000/no reply, technical-save isolation, same-file supplier isolation, concurrent revision, sourced drafts/history/no send, accreditation uploads/history/access, immutable initial and CSV.',
     );
   } catch (error) {
+    process.exitCode = 1;
     console.error('TASK007 failed during ' + phase + ' (' + (error.code ?? error.name) + ')');
     throw error;
   } finally {
-    for (const app of apps) await app.close();
-    await pool.end();
+    const stopped = await Promise.allSettled(apps.map((app) => app.close()));
+    if (stopped.some((r) => r.status === 'rejected')) process.exitCode = 1;
+    await testRun.close(process.exitCode ? 'FAILED_RETAINED' : 'PASSED_RETAINED');
   }
 }

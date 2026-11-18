@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, artifact } from '../isolated-fixture';
 test('batch offer registry retains seven files, rejects ZIP, clarifies and downloads', async ({
   page,
   request,
@@ -35,5 +35,5 @@ test('batch offer registry retains seven files, rejects ZIP, clarifies and downl
   const link = page.getByRole('link', { name: 'browser-0.pdf', exact: true });
   const original = await request.get((await link.getAttribute('href'))!);
   expect(await original.body()).toEqual(files[0].buffer);
-  await page.screenshot({ path: 'test-results/task005-registry.png', fullPage: true });
+  await page.screenshot({ path: await artifact('task005-registry.png'), fullPage: true });
 });

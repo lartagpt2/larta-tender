@@ -1,0 +1,97 @@
+{
+  "status": "PASS",
+  "exitCode": 0,
+  "command": [
+    "node",
+    "run.mjs",
+    "scripts/task011e/acceptance-full.mjs",
+    "--run"
+  ],
+  "results": [
+    {
+      "path": "temp/integration-runs/da5e90d4-8319-460d-8547-209483336a7a/task011e-results.json",
+      "status": "PASS",
+      "results": [
+        {
+          "name": "E-T01/02/18/19/20: exact accepted D fixture, server GET purity, pagination/errors, evidence/history and read scopes",
+          "status": "PASS"
+        },
+        {
+          "name": "E-T03/04/06/07/22/23: manual revision, independent company confirmation, parallel same-key replay, changed body/stale/extra-field guards",
+          "status": "PASS"
+        },
+        {
+          "name": "E-T08/09/10/12/21: real canonical projection/offer receipt, independent type/link/price, non-offer no projection, contextual PATCH/evidence guard",
+          "status": "PASS"
+        },
+        {
+          "name": "E-T13/14/15/16/17: draft does not create price, manual values survive, direct bypass denied, valid confirm is atomic/idempotent with per-field lineage, stale context excluded after preview acknowledgment",
+          "status": "PASS"
+        },
+        {
+          "name": "E-T02: detached receipt survives list page/filter and GET has no writes",
+          "status": "PASS"
+        },
+        {
+          "name": "E-T05: choose_existing reuses actual participant and retains company/evidence history",
+          "status": "PASS"
+        },
+        {
+          "name": "E-T07: different-key create/choose race preserves one mapping; invalid country/registration rejected",
+          "status": "PASS"
+        },
+        {
+          "name": "E2/009: observation rejection real API CAS/replay/auth/scope, immutable evidence/history, typed FK and SQL revision guards",
+          "status": "PASS"
+        },
+        {
+          "name": "E-T08/11: same SHA canonical document reused; separate receipts, offer.received events and independently confirmed suppliers",
+          "status": "PASS"
+        },
+        {
+          "name": "E-T14/15/21/22: revoked/stale/foreign receipt/result/company/association/draft/lot contexts denied with zero versions; lineage FK/immutability and manual sources",
+          "status": "PASS"
+        },
+        {
+          "name": "E-T09/10: quality/supporting/unknown remain unprojected; unconfirmed company cannot confirm supplier_of",
+          "status": "PASS"
+        },
+        {
+          "name": "E-T16/17/24: CSV exposes stale managed context; archive blocks API/SQL observation writes; restore preserves history",
+          "status": "PASS"
+        },
+        {
+          "name": "E-T12/17/24: legacy unmanaged PATCH/verification intact; mixed comparison rank/formula/CSV and negotiation no-reply retain price",
+          "status": "PASS"
+        },
+        {
+          "name": "E2/reprocess: explicit native reprocess preserves confirmed mapping, manual company revision/requisites, approved type and original evidence; foreign lot-item mapping denied",
+          "status": "PASS"
+        },
+        {
+          "name": "E UI Playwright actual isolated API/Worker: 11 scenarios",
+          "status": "PASS"
+        }
+      ],
+      "identity": {
+        "runId": "da5e90d4-8319-460d-8547-209483336a7a",
+        "database": "larta_test_run_da5e90d48319460d8547209483336a7a",
+        "databaseOid": "279605",
+        "owner": "codex_dev"
+      },
+      "mainConnections": 0,
+      "modelCalls": 0,
+      "policySha256": "74dffd227d0232b9e60afdcdb09e0f01461d02a9d72f043df480377a174b5a3e",
+      "mainScenario": {
+        "receipts": 10,
+        "runs": 10,
+        "completed": 9,
+        "failed": 1,
+        "initialPreliminaryCompanies": 3,
+        "initialConfirmedSuppliers": 0
+      }
+    }
+  ],
+  "remainingAssertions": "EXECUTED",
+  "cleanup": "NOT_AUTHORIZED"
+}

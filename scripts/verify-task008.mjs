@@ -4,8 +4,7 @@ import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash, randomUUID, randomBytes } from 'node:crypto';
 import { setTimeout as delay } from 'node:timers/promises';
-import { config } from 'dotenv';
-import pg from 'pg';
+import { isolatedRun } from './testing/isolated-run.mjs';
 import application from '../apps/api/dist/application.js';
 import repositories from '../apps/api/dist/data/repository.js';
 import scopes from '../apps/api/dist/data/scope-repository.js';
@@ -21,12 +20,11 @@ const root = fileURLToPath(new URL('../', import.meta.url)),
   workspace = resolve(root, '..');
 if (!process.argv.includes('--run'))
   console.log(
-    'Preview only. --run uses approved larta_test_task003, mock model and synthetic fixtures; no migrations.',
+    'Preview: no connection. --run creates a new UUID database and storage; retained after completion.',
   );
 else {
-  config({ path: resolve(root, '.env'), quiet: true });
-  if (process.env.PGDATABASE !== 'larta_test_task003') throw new Error('Approved test DB required');
-  const pool = new pg.Pool({ connectionTimeoutMillis: 5000, statement_timeout: 10000 }),
+  const testRun = await isolatedRun('task008');
+  const pool = testRun.pool,
     apps = [],
     actor = randomUUID(),
     reviewer = randomUUID(),
@@ -37,7 +35,7 @@ else {
     scan = quotePdf(true),
     later = quotePdf(false, 0.9),
     hash = (b) => createHash('sha256').update(b).digest('hex'),
-    runRoot = resolve(workspace, 'temp/task008-integration', randomUUID());
+    runRoot = resolve(testRun.storageRoot, 'ai-jobs');
   let mode = 'normal';
   let calls = 0,
     fail = false;
@@ -510,10 +508,12 @@ else {
       'PASS TASK008: mock/native/vision, seven rows on two pages, supplier vs buyer, evidence/digest, per-receipt drafts, draft save/restart/idempotency, explicit manual confirmation only, immutable initial/stage price, failure/retry, concurrent-create FIFO with slow writes, synthetic SHA policy, RBAC and 409. No migrations.',
     );
   } catch (error) {
+    process.exitCode = 1;
     console.error('TASK008 failed during ' + phase + ' (' + (error.code ?? error.name) + ')');
     throw error;
   } finally {
-    for (const app of apps) await app.close();
-    await pool.end();
+    const stopped = await Promise.allSettled(apps.map((app) => app.close()));
+    if (stopped.some((r) => r.status === 'rejected')) process.exitCode = 1;
+    await testRun.close(process.exitCode ? 'FAILED_RETAINED' : 'PASSED_RETAINED');
   }
 }

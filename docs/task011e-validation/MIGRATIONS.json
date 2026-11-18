@@ -1,0 +1,33 @@
+{
+  "migrations": {
+    "001_initial.sql": "053d98a74502db2bf246a6e7ea3e0ece04b00e89b566dc3b20bc3ab53860b323",
+    "002_domain_foundation.sql": "896f8133b5f09da8e6fadc650c71d81165c115a6e6ad095df1279619f93e8764",
+    "003_tender_lifecycle.sql": "af1c943240ea3e53092fe3ed86041e522e6132a928b7b9c53dbc67118b5d6b53",
+    "004_unified_intake_foundation.sql": "0b81d88ad462a96c87e7c3a6609b824ccd533b1f0837fcbd413df7a15f98b3d1",
+    "005_intake_organizations.sql": "600ef2c38c5457685e0dbd57af5f8d4feedefc7094e0c3843c8ec80823972a73",
+    "006_intake_orchestration.sql": "1293e77a300323aebff5c1d80ed2f28ba6e979548d4a3d260e3510e1123d7310",
+    "007_intake_business_bridge.sql": "56404d9ffc285dfa22b151222bfa4f8e5ac43e61efd17eca0d0e632c0c61c8ed",
+    "008_organization_head_sqlstate.sql": "f134b146c1e4f4a70096a77740a8c2a048eada4e56b7ce084df289f80663357f",
+    "009_intake_observation_review.sql": "92ac6ef4b5359e48dcc0ed2cd064239d8b2c519fcabc8c6aa1a348950ead54e5"
+  },
+  "unchanged001to009": true,
+  "migration009Source": "created during authorized previous Gate B continuation; frozen by latest owner decision; bytes remain identical",
+  "applicationTableCount": 64,
+  "newMigrationsThisOwnerEMLContinuation": [],
+  "backfill": false,
+  "guards": [
+    "FK",
+    "CAS",
+    "append-only",
+    "Lifecycle",
+    "test provenance"
+  ],
+  "SQLSTATES": [
+    "23503",
+    "23514",
+    "55000",
+    "LT409",
+    "40001"
+  ],
+  "tests": "E-regression-12.log; C-regression-05.log; D-regression-05.log"
+}
